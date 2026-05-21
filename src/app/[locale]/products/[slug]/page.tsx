@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { productContent } from '@/data/productContent';
+import { setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
   return Object.keys(productContent).map((slug) => ({
@@ -14,8 +15,13 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ProductHero from '@/components/landing/ProductHero';
 import TechShowcase3D from '@/components/landing/TechShowcase3D';
 
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
   const product = productContent[slug];
 
   if (!product) {

@@ -1,48 +1,7 @@
-import React from 'react';
-import Navbar from '@/components/landing/Navbar';
-import HeroSection from '@/components/landing/HeroSection';
-import CinematicAppFlow from '@/components/illustrations/CinematicAppFlow';
-import MarqueeSection from '@/components/landing/MarqueeSection';
-import PlatformHighlights from '@/components/landing/PlatformHighlights';
-import SmartCardsSection from '@/components/landing/SmartCardsSection';
-import ProductShowcase from '@/components/landing/ProductShowcase';
-import SecuritySection from '@/components/landing/SecuritySection';
-import ArchitectureSection from '@/components/landing/ArchitectureSection';
-import TechStackSection from '@/components/landing/TechStackSection';
-import StatsSection from '@/components/landing/StatsSection';
-import WhyChooseSection from '@/components/landing/WhyChooseSection';
-import Footer from '@/components/landing/Footer';
+import { redirect } from 'next/navigation';
 
-export default function HomePage() {
-  return (
-    <main
-      style={{
-        minHeight: '100vh',
-        background: 'var(--bg-base)',
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <Navbar />
-
-      {/* ═══ HERO SECTION ═══ */}
-      <HeroSection />
-
-      {/* ═══ CINEMATIC APP FLOW ═══ */}
-      <CinematicAppFlow />
-
-      {/* ═══ REST OF LANDING PAGE ═══ */}
-      <MarqueeSection />
-      <PlatformHighlights />
-      <SmartCardsSection />
-      <ProductShowcase />
-      <WhyChooseSection />
-      <SecuritySection />
-      <ArchitectureSection />
-      <TechStackSection />
-      <StatsSection />
-      <Footer />
-    </main>
-  );
+// For GitHub Pages static export without middleware, we need to redirect the root to the default locale.
+// In a standard deployment, this would be handled by next-intl middleware.
+export default function RootPage() {
+  redirect('/en');
 }

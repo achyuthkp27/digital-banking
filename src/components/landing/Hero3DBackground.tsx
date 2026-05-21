@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
+import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { OrthographicCamera, Float, Text, Billboard, RoundedBox } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -18,8 +19,16 @@ const serverMaterial = new THREE.MeshPhysicalMaterial({
 });
 
 // Glowing materials
-const accentMaterial = new THREE.MeshBasicMaterial({ color: '#10b981', transparent: true, opacity: 0.7 });
-const cyanMaterial = new THREE.MeshBasicMaterial({ color: '#06b6d4', transparent: true, opacity: 0.7 });
+const accentMaterial = new THREE.MeshBasicMaterial({
+  color: '#10b981',
+  transparent: true,
+  opacity: 0.7,
+});
+const cyanMaterial = new THREE.MeshBasicMaterial({
+  color: '#06b6d4',
+  transparent: true,
+  opacity: 0.7,
+});
 
 function CentralDatabase() {
   return (
@@ -43,7 +52,13 @@ function CentralDatabase() {
   );
 }
 
-function ServerRack({ position, color }: { position: [number, number, number], color: 'emerald' | 'cyan' }) {
+function ServerRack({
+  position,
+  color,
+}: {
+  position: [number, number, number];
+  color: 'emerald' | 'cyan';
+}) {
   const glowMat = color === 'emerald' ? accentMaterial : cyanMaterial;
   const hoverGroup = useRef<THREE.Group>(null);
 
@@ -88,7 +103,12 @@ function CircuitLines() {
         return (
           // @ts-ignore
           <line key={i} geometry={geometry}>
-            <lineBasicMaterial color={i % 2 === 0 ? "#10b981" : "#06b6d4"} transparent opacity={0.3} linewidth={2} />
+            <lineBasicMaterial
+              color={i % 2 === 0 ? '#10b981' : '#06b6d4'}
+              transparent
+              opacity={0.3}
+              linewidth={2}
+            />
           </line>
         );
       })}
@@ -97,11 +117,10 @@ function CircuitLines() {
 }
 
 function DataPackets() {
-  const [packets] = React.useState<any[]>(() => 
+  const [packets] = React.useState<any[]>(() =>
     Array.from({ length: 12 }).map((_, i) => ({
-      // eslint-disable-next-line react-hooks/purity
       progress: Math.random(),
-      // eslint-disable-next-line react-hooks/purity
+
       speed: 0.008 + Math.random() * 0.015,
       pathIndex: i % 4,
       meshRef: React.createRef<THREE.Mesh>(),
@@ -143,7 +162,12 @@ function DataPackets() {
       {packets.map((p, i) => (
         <mesh key={i} ref={p.meshRef}>
           <boxGeometry args={[0.5, 0.5, 0.5]} />
-          <meshBasicMaterial color={i % 2 === 0 ? "#10b981" : "#06b6d4"} transparent opacity={0} blending={THREE.AdditiveBlending} />
+          <meshBasicMaterial
+            color={i % 2 === 0 ? '#10b981' : '#06b6d4'}
+            transparent
+            opacity={0}
+            blending={THREE.AdditiveBlending}
+          />
         </mesh>
       ))}
     </group>
@@ -152,7 +176,15 @@ function DataPackets() {
 
 // --- NEW ENHANCEMENTS ---
 
-function CreditCard({ position, rotation, color }: { position: [number, number, number], rotation: [number, number, number], color: string }) {
+function CreditCard({
+  position,
+  rotation,
+  color,
+}: {
+  position: [number, number, number];
+  rotation: [number, number, number];
+  color: string;
+}) {
   return (
     <Float speed={2.5} rotationIntensity={1.5} floatIntensity={2.5} position={position}>
       <group rotation={rotation}>
@@ -174,8 +206,6 @@ function CreditCard({ position, rotation, color }: { position: [number, number, 
   );
 }
 
-
-
 function SceneControls() {
   const groupRef = useRef<THREE.Group>(null);
   const targetRotation = useRef({ x: 0, y: 0 });
@@ -184,8 +214,8 @@ function SceneControls() {
     if (groupRef.current) groupRef.current.scale.set(0.01, 0.01, 0.01);
 
     const handleMouseMove = (e: MouseEvent) => {
-      targetRotation.current.y = ((e.clientX / window.innerWidth) * 2 - 1) * Math.PI / 8;
-      targetRotation.current.x = -((e.clientY / window.innerHeight) * 2 - 1) * Math.PI / 16;
+      targetRotation.current.y = (((e.clientX / window.innerWidth) * 2 - 1) * Math.PI) / 8;
+      targetRotation.current.x = (-((e.clientY / window.innerHeight) * 2 - 1) * Math.PI) / 16;
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -195,8 +225,16 @@ function SceneControls() {
     if (groupRef.current) {
       groupRef.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.04);
       groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3 - 2;
-      groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, targetRotation.current.y, 0.05);
-      groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetRotation.current.x, 0.05);
+      groupRef.current.rotation.y = THREE.MathUtils.lerp(
+        groupRef.current.rotation.y,
+        targetRotation.current.y,
+        0.05
+      );
+      groupRef.current.rotation.x = THREE.MathUtils.lerp(
+        groupRef.current.rotation.x,
+        targetRotation.current.x,
+        0.05
+      );
     }
   });
 
@@ -209,7 +247,7 @@ function SceneControls() {
       <ServerRack position={[-7, 0, -7]} color="emerald" />
       <CircuitLines />
       <DataPackets />
-      
+
       {/* Rich Banking Elements */}
       <CreditCard position={[-6, 4, -4]} rotation={[0, Math.PI / 4, 0]} color="#0f172a" />
       <CreditCard position={[6, 3, 5]} rotation={[0, -Math.PI / 3, Math.PI / 6]} color="#10b981" />
@@ -221,21 +259,21 @@ export default function Hero3DBackground() {
   return (
     <div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none', opacity: 1 }}>
       <Canvas gl={{ antialias: true, alpha: true }}>
-        <OrthographicCamera 
-          makeDefault 
-          position={[25, 25, 25]} 
-          zoom={28} 
-          near={-100} 
-          far={100} 
-          onUpdate={c => c.lookAt(0, 0, 0)}
+        <OrthographicCamera
+          makeDefault
+          position={[25, 25, 25]}
+          zoom={28}
+          near={-100}
+          far={100}
+          onUpdate={(c) => c.lookAt(0, 0, 0)}
         />
-        
+
         {/* Much brighter lighting so objects are clearly visible */}
         <ambientLight intensity={1.5} />
         <directionalLight position={[10, 20, 10]} intensity={2.5} color="#ffffff" />
         <directionalLight position={[-10, 15, -10]} intensity={1.5} color="#06b6d4" />
         <spotLight position={[0, 20, 0]} angle={0.8} penumbra={1} intensity={2} color="#10b981" />
-        
+
         <React.Suspense fallback={null}>
           <SceneControls />
         </React.Suspense>

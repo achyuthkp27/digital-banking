@@ -1,0 +1,9 @@
+{
+  "Navigation": {
+    "products": "Products",
+    "architecture": "Architecture",
+    "security": "Security",
+    "technology": "Technology",
+    "requestDemo": "Request Demo"
+  }
+}

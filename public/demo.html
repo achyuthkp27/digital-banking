@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium Horizontal Scroll Experience</title>
+  <style>
+    :root {
+      --bg-color: #030712;
+      --text-color: #f9fafb;
+      --accent: #10b981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      -ms-overflow-style: none; /* Hide scrollbar */
+      scrollbar-width: none;
+    }
+    body::-webkit-scrollbar { display: none; }
+
+    /* The outermost container pinned by ScrollTrigger. */
+    .horizontal-scroll-container {
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    /* The wrapper that translates to the left. */
+    .horizontal-scroll-wrapper {
+      display: flex;
+      height: 100%;
+      width: fit-content;
+      will-change: transform;
+    }
+
+    /* Each panel is forced to be exactly 100vw. */
+    .panel {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 4rem;
+    }
+
+    .panel h2 { font-size: clamp(3rem, 8vw, 6rem); z-index: 10; }
+    .panel p { font-size: clamp(1.1rem, 2vw, 1.5rem); color: #9ca3af; z-index: 10; max-width: 600px; text-align: center; }
+
+    /* Decorative Parallax Blocks */
+    .image-block {
+      position: absolute;
+      width: 40vw;
+      height: 60vh;
+      background: rgba(255,255,255,0.03);
+      border-radius: 24px;
+      z-index: 0;
+    }
+
+    .hero, .footer { height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1 style="font-size: clamp(4rem, 8vw, 8rem); font-weight: 800; letter-spacing: -0.04em;">Immersive Web.</h1>
+    <p style="margin-top: 1rem; color: #10b981; letter-spacing: 0.2em; text-transform: uppercase;">Scroll Down</p>
+  </section>
+
+  <!-- Horizontal Scroll Area -->
+  <section class="horizontal-scroll-container">
+    <div class="horizontal-scroll-wrapper">
+      
+      <div class="panel" style="background: radial-gradient(circle, rgba(16,185,129,0.1), #030712 60%);">
+        <div class="image-block" style="left: 10%; top: 20%; transform: rotate(-5deg);"></div>
+        <h2>Discover</h2>
+        <p>Vertical mouse wheel movements map to horizontal transitions.</p>
+      </div>
+      
+      <div class="panel" style="background: radial-gradient(circle, rgba(59,130,246,0.1), #030712 60%);">
+        <div class="image-block" style="right: 10%; bottom: 10%; transform: rotate(5deg);"></div>
+        <h2>Engage</h2>
+        <p>Notice the smooth scrubbing fluid momentum.</p>
+      </div>
+      
+      <div class="panel" style="background: radial-gradient(circle, rgba(139,92,246,0.1), #030712 60%);">
+        <div class="image-block" style="left: 30%; top: 10%; width: 30vw; height: 40vh;"></div>
+        <h2>Immerse</h2>
+        <p>Independent parallax movements create depth.</p>
+      </div>
+      
+      <div class="panel" style="background: radial-gradient(circle, rgba(244,63,94,0.1), #030712 60%);">
+        <h2>Transform</h2>
+        <p>Responsive. Works elegantly on trackpads and mice.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="footer">
+    <h2 style="font-size: clamp(2rem, 5vw, 4rem);">End of Journey.</h2>
+  </section>
+
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const sections = gsap.utils.toArray(".panel");
+    const wrapper = document.querySelector(".horizontal-scroll-wrapper");
+
+    // Main Horizontal Translation
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".horizontal-scroll-container",
+        pin: true,
+        scrub: 1, // Smoothing effect
+        snap: {
+          snapTo: 1 / (sections.length - 1),
+          duration: {min: 0.2, max: 1}, 
+          ease: "power1.inOut"
+        },
+        end: () => "+=" + wrapper.offsetWidth
+      }
+    });
+
+    // Secondary Parallax on elements inside the panels
+    gsap.utils.toArray(".image-block").forEach((img) => {
+      gsap.fromTo(img, 
+        { x: "15vw" }, 
+        {
+          x: "-15vw",  
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".horizontal-scroll-container",
+            start: "top top",
+            end: () => "+=" + wrapper.offsetWidth,
+            scrub: 1
+          }
+        }
+      );
+    });
+  </script>
+</body>
+</html>

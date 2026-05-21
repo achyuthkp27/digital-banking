@@ -1,17 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const navItems = [
-  { label: 'Products', href: '/#products' },
-  { label: 'Architecture', href: '/#architecture' },
-  { label: 'Security', href: '/#security' },
-  { label: 'Technology', href: '/#technology' },
-];
+import { ThemeToggle } from '@/components/common/ThemeToggle';
+import { LanguageSwitcher } from '@/components/common/LanguageSwitcher';
+import { useTranslations } from 'next-intl';
 
 export default function Navbar() {
+  const t = useTranslations('Navigation');
   const [scrolled, setScrolled] = useState(false);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
 
@@ -49,65 +46,85 @@ export default function Navbar() {
       >
         {/* Left: Logo */}
         <div style={{ justifySelf: 'start' }}>
-        <Link 
-          href="/" 
-          onMouseEnter={() => setIsLogoHovered(true)}
-          onMouseLeave={() => setIsLogoHovered(false)}
-          style={{ display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
-        >
-          <motion.div style={{ display: 'flex', alignItems: 'center', fontSize: '24px', fontWeight: 800, letterSpacing: '-0.03em' }}>
-            {/* D -> Digital */}
-            <span style={{ color: 'var(--text-primary)' }}>D</span>
-            <AnimatePresence>
-              {isLogoHovered && (
-                <motion.span
-                  initial={{ width: 0, opacity: 0, y: 15 }}
-                  animate={{ width: 'auto', opacity: 1, y: 0 }}
-                  exit={{ width: 0, opacity: 0, y: 15 }}
-                  transition={{ type: 'spring', bounce: 0.5, duration: 0.6 }}
-                  style={{ color: 'var(--text-primary)', display: 'inline-block', whiteSpace: 'nowrap', overflow: 'hidden' }}
-                >
-                  igital
-                </motion.span>
-              )}
-            </AnimatePresence>
-            
-            {/* B -> Banking */}
-            <span style={{ color: 'var(--accent)', marginLeft: isLogoHovered ? '6px' : '0px', transition: 'margin 0.3s ease' }}>B</span>
-            <AnimatePresence>
-              {isLogoHovered && (
-                <motion.span
-                  initial={{ width: 0, opacity: 0, y: 15 }}
-                  animate={{ width: 'auto', opacity: 1, y: 0 }}
-                  exit={{ width: 0, opacity: 0, y: 15 }}
-                  transition={{ type: 'spring', bounce: 0.5, duration: 0.6, delay: 0.05 }}
-                  style={{ color: 'var(--accent)', display: 'inline-block', whiteSpace: 'nowrap', overflow: 'hidden' }}
-                >
-                  anking
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </motion.div>
-          
-          <span
-            style={{
-              width: '6px',
-              height: '6px',
-              borderRadius: '50%',
-              backgroundColor: 'var(--accent)',
-              display: 'inline-block',
-              marginBottom: '4px',
-              marginLeft: '2px',
-            }}
-          />
-        </Link>
+          <Link
+            href="/"
+            aria-label="Digital Banking Home"
+            onMouseEnter={() => setIsLogoHovered(true)}
+            onMouseLeave={() => setIsLogoHovered(false)}
+            style={{ display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
+          >
+            <motion.div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                fontSize: '24px',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+              }}
+            >
+              {/* D -> Digital */}
+              <span style={{ color: '#ffffff' }}>D</span>
+              <AnimatePresence>
+                {isLogoHovered && (
+                  <motion.span
+                    initial={{ width: 0, opacity: 0, y: 15 }}
+                    animate={{ width: 'auto', opacity: 1, y: 0 }}
+                    exit={{ width: 0, opacity: 0, y: 15 }}
+                    transition={{ type: 'spring', bounce: 0.5, duration: 0.6 }}
+                    style={{
+                      color: '#ffffff',
+                      display: 'inline-block',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    igital
+                  </motion.span>
+                )}
+              </AnimatePresence>
+
+              {/* B -> Banking */}
+              <span
+                style={{
+                  color: '#10b981',
+                  marginLeft: isLogoHovered ? '6px' : '0px',
+                  transition: 'margin 0.3s ease',
+                }}
+              >
+                B
+              </span>
+              <AnimatePresence>
+                {isLogoHovered && (
+                  <motion.span
+                    initial={{ width: 0, opacity: 0, y: 15 }}
+                    animate={{ width: 'auto', opacity: 1, y: 0 }}
+                    exit={{ width: 0, opacity: 0, y: 15 }}
+                    transition={{ type: 'spring', bounce: 0.5, duration: 0.6, delay: 0.05 }}
+                    style={{
+                      color: '#10b981',
+                      display: 'inline-block',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    anking
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </Link>
         </div>
 
         {/* Center: Nav Links */}
         <div style={{ display: 'flex', gap: '32px', justifySelf: 'center' }}>
-          {navItems.map((item) => (
+          {[
+            { key: 'products', href: '/#products' },
+            { key: 'architecture', href: '/#architecture' },
+            { key: 'security', href: '/#security' },
+            { key: 'technology', href: '/#technology' },
+          ].map((item) => (
             <Link
-              key={item.label}
+              key={item.key}
               href={item.href}
               style={{
                 color: 'var(--text-secondary)',
@@ -118,18 +135,21 @@ export default function Navbar() {
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
             >
-              {item.label}
+              {t(item.key)}
             </Link>
           ))}
         </div>
 
-        {/* Right: CTA */}
-        <div style={{ justifySelf: 'end' }}>
+        {/* Right: CTA and Theme Toggle */}
+        <div style={{ justifySelf: 'end', display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <LanguageSwitcher />
+          <ThemeToggle />
           <button
             className="pill-button pill-button-secondary"
+            aria-label="Request Demo"
             style={{ fontSize: '14px', padding: '10px 24px' }}
           >
-            Request Demo
+            {t('requestDemo')}
           </button>
         </div>
       </div>

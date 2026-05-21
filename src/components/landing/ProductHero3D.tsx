@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
+import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 /* ─── 3D Refractive Knot (contained in right panel) ─── */
 function RefractiveKnot() {
@@ -148,7 +149,16 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               transition: 'color 0.2s ease',
             }}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M10 12L6 8l4-4" />
             </svg>
             Back to Products
@@ -251,7 +261,16 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               }}
             >
               Request Access
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M3 8h10M9 4l4 4-4 4" />
               </svg>
             </Link>
@@ -296,13 +315,17 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 60%)',
+              background:
+                'radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 60%)',
               pointerEvents: 'none',
               zIndex: 0,
             }}
           />
 
-          <Canvas camera={{ position: [0, 0, 7], fov: 40 }} style={{ position: 'relative', zIndex: 1 }}>
+          <Canvas
+            camera={{ position: [0, 0, 7], fov: 40 }}
+            style={{ position: 'relative', zIndex: 1 }}
+          >
             <ambientLight intensity={0.5} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
             <RefractiveKnot />
@@ -310,10 +333,62 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
           </Canvas>
 
           {/* Corner accents */}
-          <div style={{ position: 'absolute', top: '16px', left: '16px', width: '24px', height: '24px', borderTop: '2px solid rgba(16, 185, 129, 0.3)', borderLeft: '2px solid rgba(16, 185, 129, 0.3)', borderRadius: '4px 0 0 0', pointerEvents: 'none', zIndex: 2 }} />
-          <div style={{ position: 'absolute', top: '16px', right: '16px', width: '24px', height: '24px', borderTop: '2px solid rgba(16, 185, 129, 0.3)', borderRight: '2px solid rgba(16, 185, 129, 0.3)', borderRadius: '0 4px 0 0', pointerEvents: 'none', zIndex: 2 }} />
-          <div style={{ position: 'absolute', bottom: '16px', left: '16px', width: '24px', height: '24px', borderBottom: '2px solid rgba(16, 185, 129, 0.3)', borderLeft: '2px solid rgba(16, 185, 129, 0.3)', borderRadius: '0 0 0 4px', pointerEvents: 'none', zIndex: 2 }} />
-          <div style={{ position: 'absolute', bottom: '16px', right: '16px', width: '24px', height: '24px', borderBottom: '2px solid rgba(16, 185, 129, 0.3)', borderRight: '2px solid rgba(16, 185, 129, 0.3)', borderRadius: '0 0 4px 0', pointerEvents: 'none', zIndex: 2 }} />
+          <div
+            style={{
+              position: 'absolute',
+              top: '16px',
+              left: '16px',
+              width: '24px',
+              height: '24px',
+              borderTop: '2px solid rgba(16, 185, 129, 0.3)',
+              borderLeft: '2px solid rgba(16, 185, 129, 0.3)',
+              borderRadius: '4px 0 0 0',
+              pointerEvents: 'none',
+              zIndex: 2,
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              top: '16px',
+              right: '16px',
+              width: '24px',
+              height: '24px',
+              borderTop: '2px solid rgba(16, 185, 129, 0.3)',
+              borderRight: '2px solid rgba(16, 185, 129, 0.3)',
+              borderRadius: '0 4px 0 0',
+              pointerEvents: 'none',
+              zIndex: 2,
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '16px',
+              left: '16px',
+              width: '24px',
+              height: '24px',
+              borderBottom: '2px solid rgba(16, 185, 129, 0.3)',
+              borderLeft: '2px solid rgba(16, 185, 129, 0.3)',
+              borderRadius: '0 0 0 4px',
+              pointerEvents: 'none',
+              zIndex: 2,
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '16px',
+              right: '16px',
+              width: '24px',
+              height: '24px',
+              borderBottom: '2px solid rgba(16, 185, 129, 0.3)',
+              borderRight: '2px solid rgba(16, 185, 129, 0.3)',
+              borderRadius: '0 0 4px 0',
+              pointerEvents: 'none',
+              zIndex: 2,
+            }}
+          />
         </div>
       </div>
 
@@ -345,7 +420,9 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
       />
 
       {/* Keyframes */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes hero3d-pulse {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.5; transform: scale(0.8); }
@@ -353,7 +430,9 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
         @media (max-width: 768px) {
           /* Stack vertically on mobile */
         }
-      `}} />
+      `,
+        }}
+      />
     </section>
   );
 }

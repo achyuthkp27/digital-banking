@@ -2,22 +2,28 @@
 
 import React, { useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Float, Text, MeshTransmissionMaterial, Environment, ContactShadows } from '@react-three/drei';
+import {
+  Float,
+  Text,
+  MeshTransmissionMaterial,
+  Environment,
+  ContactShadows,
+} from '@react-three/drei';
 import * as THREE from 'three';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 
 function RefractiveKnot() {
   const meshRef = useRef<THREE.Mesh>(null);
-  
+
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.1;
       meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.15;
-      
+
       // Interactive floating based on mouse
-      const targetX = (state.pointer.x * 0.5);
-      const targetY = (state.pointer.y * 0.5);
-      
+      const targetX = state.pointer.x * 0.5;
+      const targetY = state.pointer.y * 0.5;
+
       meshRef.current.position.x += (targetX - meshRef.current.position.x) * 0.05;
       meshRef.current.position.y += (targetY - meshRef.current.position.y) * 0.05;
     }
@@ -49,7 +55,7 @@ function RefractiveKnot() {
 function Typography() {
   const { viewport } = useThree();
   const isMobile = viewport.width < 5;
-  
+
   return (
     <group position={[0, 0, -2]}>
       <Text
@@ -78,7 +84,7 @@ function Typography() {
 
 export default function HeroPremium() {
   return (
-    <section 
+    <section
       style={{
         position: 'relative',
         height: '100vh',
@@ -96,27 +102,27 @@ export default function HeroPremium() {
         <Canvas camera={{ position: [0, 0, 10], fov: 35 }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 5]} intensity={1} />
-          
+
           <Typography />
           <RefractiveKnot />
-          
+
           <Environment preset="city" />
           <ContactShadows position={[0, -3, 0]} opacity={0.4} scale={20} blur={2} far={4.5} />
         </Canvas>
       </div>
 
       {/* HTML Overlay Content (CTAs, Subtitle) sitting on top of canvas */}
-      <div 
-        style={{ 
-          position: 'absolute', 
-          bottom: '10%', 
-          zIndex: 10, 
-          display: 'flex', 
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '10%',
+          zIndex: 10,
+          display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           width: '100%',
           padding: '0 24px',
-          pointerEvents: 'none' // Let mouse events pass through to Canvas
+          pointerEvents: 'none', // Let mouse events pass through to Canvas
         }}
       >
         <p
@@ -131,23 +137,38 @@ export default function HeroPremium() {
             background: 'rgba(0,0,0,0.2)',
             padding: '16px 24px',
             borderRadius: '16px',
-            border: '1px solid rgba(255,255,255,0.05)'
+            border: '1px solid rgba(255,255,255,0.05)',
           }}
         >
           An infinitely scalable, zero-trust digital platform engineered for the future of finance.
         </p>
 
         <div style={{ display: 'flex', gap: '16px', pointerEvents: 'auto' }}>
-          <Link href="/demo" className="pill-button" style={{ background: '#ffffff', color: '#000', padding: '16px 40px', fontSize: '15px' }}>
+          <Link
+            href="/demo"
+            className="pill-button"
+            style={{ background: '#ffffff', color: '#000', padding: '16px 40px', fontSize: '15px' }}
+          >
             Request Access
           </Link>
-          <Link href="/architecture" className="pill-button" style={{ background: 'rgba(255, 255, 255, 0.05)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.1)', padding: '16px 40px', fontSize: '15px', backdropFilter: 'blur(10px)' }}>
+          <Link
+            href="/architecture"
+            className="pill-button"
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              color: '#ffffff',
+              border: '1px solid rgba(255,255,255,0.1)',
+              padding: '16px 40px',
+              fontSize: '15px',
+              backdropFilter: 'blur(10px)',
+            }}
+          >
             Explore Platform
           </Link>
         </div>
       </div>
-      
-      <div 
+
+      <div
         style={{
           position: 'absolute',
           inset: 0,
@@ -155,7 +176,7 @@ export default function HeroPremium() {
           zIndex: 20,
           pointerEvents: 'none',
           opacity: 0.5,
-          mixBlendMode: 'screen'
+          mixBlendMode: 'screen',
         }}
       />
     </section>

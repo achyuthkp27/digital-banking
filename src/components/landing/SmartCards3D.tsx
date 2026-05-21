@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
+import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { Float, RoundedBox, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -11,7 +12,7 @@ function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
       <group position={position} rotation={rotation}>
         {/* Main Card Body (Glass) */}
         <RoundedBox args={[3.37, 2.125, 0.05]} radius={0.15} smoothness={4}>
-          <meshPhysicalMaterial 
+          <meshPhysicalMaterial
             color={color}
             metalness={0.2}
             roughness={0.1}
@@ -26,7 +27,12 @@ function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
         </RoundedBox>
 
         {/* Smart Chip (Gold/Metallic) */}
-        <RoundedBox args={[0.4, 0.3, 0.06]} radius={0.05} smoothness={2} position={[-1.1, 0.35, 0.01]}>
+        <RoundedBox
+          args={[0.4, 0.3, 0.06]}
+          radius={0.05}
+          smoothness={2}
+          position={[-1.1, 0.35, 0.01]}
+        >
           <meshStandardMaterial color="#fbbf24" metalness={0.9} roughness={0.2} />
         </RoundedBox>
 
@@ -56,10 +62,10 @@ function CardsAssembly() {
   useFrame((state, delta) => {
     if (groupRef.current) {
       groupRef.current.rotation.y += delta * 0.1;
-      
+
       const targetX = (state.pointer.x * Math.PI) / 8;
       const targetY = (state.pointer.y * Math.PI) / 8;
-      
+
       groupRef.current.rotation.x += (-targetY - groupRef.current.rotation.x) * 0.05;
       groupRef.current.rotation.z += (-targetX * 0.3 - groupRef.current.rotation.z) * 0.05;
     }
@@ -67,22 +73,22 @@ function CardsAssembly() {
 
   return (
     <group ref={groupRef}>
-      <CreditCard 
-        position={[0, 0, 0.8]} 
-        rotation={[-0.1, 0.1, -0.1]} 
-        color="#10b981" 
+      <CreditCard
+        position={[0, 0, 0.8]}
+        rotation={[-0.1, 0.1, -0.1]}
+        color="#10b981"
         floatSpeed={2.2}
       />
-      <CreditCard 
-        position={[-0.8, 0.4, -0.2]} 
-        rotation={[-0.2, 0.3, -0.2]} 
-        color="#0ea5e9" 
+      <CreditCard
+        position={[-0.8, 0.4, -0.2]}
+        rotation={[-0.2, 0.3, -0.2]}
+        color="#0ea5e9"
         floatSpeed={1.8}
       />
-      <CreditCard 
-        position={[0.8, -0.4, -1.2]} 
-        rotation={[0.1, -0.2, 0.05]} 
-        color="#f8fafc" 
+      <CreditCard
+        position={[0.8, -0.4, -1.2]}
+        rotation={[0.1, -0.2, 0.05]}
+        color="#f8fafc"
         floatSpeed={2.5}
       />
     </group>
