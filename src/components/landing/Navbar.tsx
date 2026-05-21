@@ -119,13 +119,22 @@ export default function Navbar() {
         <div style={{ display: 'flex', gap: '32px', justifySelf: 'center' }}>
           {[
             { key: 'products', href: '/#products' },
-            { key: 'architecture', href: '/#architecture' },
             { key: 'security', href: '/#security' },
+            { key: 'architecture', href: '/#architecture' },
             { key: 'technology', href: '/#technology' },
           ].map((item) => (
             <Link
               key={item.key}
               href={item.href}
+              onClick={(e) => {
+                const targetId = item.href.replace('/#', '');
+                const element = document.getElementById(targetId);
+                if (element) {
+                  e.preventDefault();
+                  const yOffset = element.getBoundingClientRect().top + window.scrollY - 72; // 72px is navbar height
+                  window.scrollTo({ top: yOffset, behavior: 'smooth' });
+                }
+              }}
               style={{
                 color: 'var(--text-secondary)',
                 fontSize: '14px',
