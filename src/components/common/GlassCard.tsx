@@ -12,10 +12,10 @@ export default function GlassCard({ children, hover = false, glow, sx, ...props 
   return (
     <Box
       sx={{
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
+        background: 'linear-gradient(135deg, rgba(var(--color-invert-rgb), 0.05) 0%, rgba(var(--color-invert-rgb), 0.01) 100%)',
         backdropFilter: 'blur(24px) saturate(120%)',
-        border: '1px solid rgba(255, 255, 255, 0.06)',
-        boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 8px 32px rgba(0, 0, 0, 0.4)',
+        border: '1px solid rgba(var(--color-invert-rgb), 0.06)',
+        boxShadow: 'inset 0 1px 1px rgba(var(--color-invert-rgb), 0.12), 0 8px 32px rgba(var(--color-base-rgb), 0.4)',
         borderRadius: '20px',
         position: 'relative',
         overflow: 'hidden',
@@ -23,8 +23,8 @@ export default function GlassCard({ children, hover = false, glow, sx, ...props 
         ...(hover && {
           '&:hover': {
             transform: 'translateY(-4px)',
-            borderColor: 'rgba(255, 255, 255, 0.15)',
-            boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 16px 40px -10px rgba(0,0,0,0.6)',
+            borderColor: 'rgba(var(--color-invert-rgb), 0.15)',
+            boxShadow: 'inset 0 1px 1px rgba(var(--color-invert-rgb), 0.25), 0 16px 40px -10px rgba(var(--color-base-rgb), 0.6)',
           }
         }),
         ...sx

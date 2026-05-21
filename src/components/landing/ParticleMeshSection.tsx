@@ -233,7 +233,7 @@ export default function ParticleMeshSection() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        background: '#030712',
+        background: 'var(--bg-base)',
         overflow: 'hidden',
       }}
     >
@@ -256,7 +256,7 @@ export default function ParticleMeshSection() {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(90deg, #030712 0%, #030712 30%, rgba(3,7,18,0.6) 55%, transparent 75%)',
+            'linear-gradient(90deg, var(--bg-base) 0%, var(--bg-base) 30%, rgba(var(--bg-base-rgb), 0.6) 55%, transparent 75%)',
           pointerEvents: 'none',
           zIndex: 1,
         }}
@@ -323,7 +323,7 @@ export default function ParticleMeshSection() {
               fontFamily: 'var(--font-syne), sans-serif',
               fontSize: 'clamp(36px, 5vw, 64px)',
               fontWeight: 700,
-              color: '#ffffff',
+              color: 'var(--text-primary)',
               lineHeight: 1.1,
               letterSpacing: '-0.035em',
               marginBottom: '24px',
@@ -349,7 +349,7 @@ export default function ParticleMeshSection() {
             variants={itemVariants}
             style={{
               fontSize: 'clamp(15px, 1.5vw, 18px)',
-              color: 'rgba(255,255,255,0.45)',
+              color: 'rgba(var(--color-invert-rgb), 0.45)',
               lineHeight: 1.7,
               maxWidth: '460px',
               marginBottom: '40px',
@@ -388,7 +388,7 @@ export default function ParticleMeshSection() {
                 <span
                   style={{
                     fontSize: '12px',
-                    color: 'rgba(255,255,255,0.35)',
+                    color: 'rgba(var(--color-invert-rgb), 0.35)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em',
                   }}
@@ -408,9 +408,9 @@ export default function ParticleMeshSection() {
                 alignItems: 'center',
                 gap: '10px',
                 padding: '14px 28px',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                color: 'rgba(255,255,255,0.8)',
+                background: 'rgba(var(--color-invert-rgb), 0.06)',
+                border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
+                color: 'rgba(var(--color-invert-rgb), 0.8)',
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '14px',
                 fontWeight: 600,
@@ -420,13 +420,13 @@ export default function ParticleMeshSection() {
                 letterSpacing: '-0.01em',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.1)';
+                e.currentTarget.style.borderColor = 'rgba(var(--color-invert-rgb), 0.2)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.06)';
+                e.currentTarget.style.borderColor = 'rgba(var(--color-invert-rgb), 0.1)';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >

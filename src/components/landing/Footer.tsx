@@ -43,7 +43,7 @@ export default function Footer() {
                   alignItems: 'center',
                 }}
               >
-                <span style={{ color: '#ffffff' }}>D</span>
+                <span style={{ color: 'var(--text-primary)' }}>D</span>
                 <span style={{ color: '#10b981' }}>B</span>
               </span>
             </Link>

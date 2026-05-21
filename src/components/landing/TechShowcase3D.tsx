@@ -64,7 +64,7 @@ export default function TechShowcase3D() {
       style={{
         position: 'relative',
         width: '100%',
-        background: '#010308',
+        background: 'var(--bg-base)',
         overflow: 'hidden',
         padding: 'clamp(80px, 10vw, 140px) 0',
       }}
@@ -101,8 +101,8 @@ export default function TechShowcase3D() {
             height: 'clamp(350px, 45vh, 500px)',
             borderRadius: '32px',
             overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.06)',
-            background: 'rgba(255,255,255,0.015)',
+            border: '1px solid var(--border-default)',
+            background: 'var(--bg-surface)',
             position: 'relative',
           }}
         >
@@ -258,8 +258,8 @@ export default function TechShowcase3D() {
                   alignItems: 'flex-start',
                   padding: '16px',
                   borderRadius: '12px',
-                  border: '1px solid rgba(255,255,255,0.04)',
-                  background: 'rgba(255,255,255,0.02)',
+                  border: '1px solid rgba(var(--color-invert-rgb), 0.04)',
+                  background: 'rgba(var(--color-invert-rgb), 0.02)',
                   transition: 'background 0.3s ease, border-color 0.3s ease',
                   cursor: 'default',
                 }}
@@ -268,8 +268,8 @@ export default function TechShowcase3D() {
                   e.currentTarget.style.borderColor = 'rgba(16,185,129,0.12)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)';
+                  e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.02)';
+                  e.currentTarget.style.borderColor = 'rgba(var(--color-invert-rgb), 0.04)';
                 }}
               >
                 <div

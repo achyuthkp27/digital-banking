@@ -55,7 +55,7 @@ export default function KioskBankingIllustration() {
           <div style={{
             margin: '0 14px', flex: 1, borderRadius: '8px',
             border: '1px solid rgba(16,185,129,0.15)',
-            background: 'rgba(0,0,0,0.3)', padding: '14px',
+            background: 'rgba(var(--color-base-rgb), 0.3)', padding: '14px',
             position: 'relative', overflow: 'hidden',
           }}>
             {/* Receipt lines animating */}

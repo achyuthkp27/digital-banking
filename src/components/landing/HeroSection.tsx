@@ -60,7 +60,7 @@ export default function HeroSection() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#030712',
+        backgroundColor: 'var(--bg-base)',
         overflow: 'hidden',
         paddingTop: '80px',
         paddingBottom: '80px',
@@ -101,7 +101,7 @@ export default function HeroSection() {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.015) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
           zIndex: 0,
@@ -117,7 +117,7 @@ export default function HeroSection() {
           right: 0,
           height: '1px',
           background:
-            'linear-gradient(90deg, transparent, rgba(255,255,255,0.03) 20%, rgba(255,255,255,0.03) 80%, transparent)',
+            'linear-gradient(90deg, transparent, rgba(var(--color-invert-rgb), 0.03) 20%, rgba(var(--color-invert-rgb), 0.03) 80%, transparent)',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -130,7 +130,7 @@ export default function HeroSection() {
           right: 0,
           height: '1px',
           background:
-            'linear-gradient(90deg, transparent, rgba(255,255,255,0.03) 20%, rgba(255,255,255,0.03) 80%, transparent)',
+            'linear-gradient(90deg, transparent, rgba(var(--color-invert-rgb), 0.03) 20%, rgba(var(--color-invert-rgb), 0.03) 80%, transparent)',
           pointerEvents: 'none',
           zIndex: 0,
         }}

@@ -42,7 +42,7 @@
   font-family: var(--font-syne), sans-serif;
   font-size: clamp(44px, 6vw, 80px);
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.08;
   letter-spacing: -0.035em;
   margin-bottom: 28px;
@@ -56,7 +56,7 @@
 
 .subtext {
   font-size: clamp(15px, 1.5vw, 18px);
-  color: rgba(255,255,255,0.45);
+  color: rgba(var(--color-invert-rgb), 0.45);
   line-height: 1.7;
   max-width: 480px;
   margin-bottom: 48px;
@@ -75,7 +75,7 @@
   gap: 10px;
   padding: 14px 28px;
   background: #10b981;
-  color: #030712;
+  color: var(--bg-base);
   font-family: var(--font-geist-sans), sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -96,9 +96,9 @@
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(var(--color-invert-rgb), 0.04);
+  color: rgba(var(--color-invert-rgb), 0.7);
+  border: 1px solid rgba(var(--color-invert-rgb), 0.08);
   font-family: var(--font-geist-sans), sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -109,9 +109,9 @@
 }
 
 .ctaSecondary:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.9);
+  background: rgba(var(--color-invert-rgb), 0.08);
+  border-color: rgba(var(--color-invert-rgb), 0.15);
+  color: rgba(var(--color-invert-rgb), 0.9);
   transform: translateY(-2px);
 }
 
@@ -121,7 +121,7 @@
   gap: 24px;
   margin-top: 56px;
   padding-top: 32px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(var(--color-invert-rgb), 0.05);
 }
 
 .trustItem {
@@ -133,14 +133,14 @@
 .trustValue {
   font-size: 14px;
   font-weight: 700;
-  color: rgba(255,255,255,0.85);
+  color: rgba(var(--color-invert-rgb), 0.85);
   font-family: var(--font-geist-mono), monospace;
   letter-spacing: -0.02em;
 }
 
 .trustLabel {
   font-size: 11px;
-  color: rgba(255,255,255,0.3);
+  color: rgba(var(--color-invert-rgb), 0.3);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -148,7 +148,7 @@
 .trustDivider {
   width: 1px;
   height: 14px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(var(--color-invert-rgb), 0.08);
   margin-left: 18px;
   display: inline-block;
 }

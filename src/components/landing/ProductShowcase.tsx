@@ -135,15 +135,15 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
       height: '60vh',
       minHeight: '400px',
       maxHeight: '600px',
-      background: 'rgba(255,255,255,0.015)',
+      background: 'rgba(var(--color-invert-rgb), 0.015)',
       borderRadius: '24px',
-      border: '1px solid rgba(255,255,255,0.06)',
+      border: '1px solid rgba(var(--color-invert-rgb), 0.06)',
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      boxShadow: '0 24px 64px -16px rgba(0,0,0,0.4)',
+      boxShadow: '0 24px 64px -16px rgba(var(--color-base-rgb), 0.4)',
     }}
   >
     <div style={{ position: 'absolute', inset: 0, zIndex: 10 }}>
@@ -251,7 +251,7 @@ const ProductContent = React.memo(({ product, index }: { product: any; index: nu
       style={{
         display: 'block',
         fontSize: '14px',
-        color: 'rgba(255,255,255,0.5)',
+        color: 'rgba(var(--color-invert-rgb), 0.5)',
         fontWeight: 600,
         marginBottom: '8px',
       }}
@@ -325,7 +325,7 @@ const ProductContent = React.memo(({ product, index }: { product: any; index: nu
           display: 'inline-flex',
           alignItems: 'center',
           gap: '8px',
-          color: '#fff',
+          color: 'var(--text-primary)',
           fontSize: '15px',
           fontWeight: 600,
           textDecoration: 'none',
@@ -396,20 +396,20 @@ export default function ProductShowcase() {
             alignItems: 'center',
             gap: '12px',
             padding: '12px 24px',
-            background: 'rgba(255,255,255,0.08)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            background: 'rgba(var(--color-invert-rgb), 0.08)',
+            border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
             borderRadius: '999px',
-            color: '#fff',
+            color: 'var(--text-primary)',
             cursor: 'pointer',
             fontFamily: 'var(--font-syne)',
             fontWeight: 600,
             backdropFilter: 'blur(20px)',
             transition: 'all 0.3s ease',
             pointerEvents: 'auto',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+            boxShadow: '0 10px 30px rgba(var(--color-base-rgb), 0.3)',
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.12)')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.12)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.08)')}
         >
           {isHorizontal ? <ViewStreamIcon fontSize="small" /> : <ViewColumnIcon fontSize="small" />}
           <span>{isHorizontal ? 'Switch to Vertical' : 'Switch to Horizontal'}</span>

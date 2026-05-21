@@ -59,7 +59,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
         position: 'relative',
         minHeight: '100vh',
         width: '100%',
-        background: '#010308',
+        background: 'var(--bg-base)',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',

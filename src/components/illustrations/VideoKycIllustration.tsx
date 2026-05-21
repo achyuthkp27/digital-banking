@@ -45,7 +45,7 @@ export default function VideoKycIllustration() {
             animation: 'vkyc-scan 2.5s ease-in-out infinite',
           }} />
           {/* Face features (stylized) */}
-          <svg viewBox="0 0 100 130" style={{ width: '100%', height: '100%', opacity: 0.25 }}>
+          <svg viewBox="0 0 100 130" style={{ width: '100%', height: '100%', opacity: 0.8 }}>
             <circle cx="35" cy="45" r="5" fill="#10b981" />
             <circle cx="65" cy="45" r="5" fill="#10b981" />
             <path d="M35 80 Q50 95 65 80" stroke="#10b981" strokeWidth="2" fill="none" />

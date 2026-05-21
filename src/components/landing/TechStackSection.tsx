@@ -88,7 +88,7 @@ export default function TechStackSection() {
                     style={{
                       background: 'var(--bg-elevated)',
                       border: '1px solid var(--border-subtle)',
-                      color: 'var(--text-secondary)',
+                      color: 'var(--text-primary)',
                       fontSize: '13px',
                       fontWeight: 500,
                       borderRadius: '999px',

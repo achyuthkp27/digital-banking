@@ -48,11 +48,11 @@ export default function DashboardSection() {
             scale,
             opacity,
             transformStyle: 'preserve-3d',
-            background: 'rgba(10,10,10,0.8)',
+            background: 'rgba(var(--color-base-rgb), 0.8)',
             backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
             borderRadius: '16px',
-            boxShadow: '0 40px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05) inset',
+            boxShadow: '0 40px 100px rgba(var(--color-base-rgb), 0.8), 0 0 0 1px rgba(var(--color-invert-rgb), 0.05) inset',
             aspectRatio: '16/9',
             position: 'relative',
             overflow: 'hidden',
@@ -60,12 +60,12 @@ export default function DashboardSection() {
         >
           {/* Dashboard Header */}
           <div style={{
-            height: '48px', borderBottom: '1px solid rgba(255,255,255,0.05)',
+            height: '48px', borderBottom: '1px solid rgba(var(--color-invert-rgb), 0.05)',
             display: 'flex', alignItems: 'center', padding: '0 20px', gap: '8px'
           }}>
-            <div style={{ width: 12, height: 12, borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }} />
-            <div style={{ width: 12, height: 12, borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }} />
-            <div style={{ width: 12, height: 12, borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }} />
+            <div style={{ width: 12, height: 12, borderRadius: '50%', background: 'rgba(var(--color-invert-rgb), 0.1)' }} />
+            <div style={{ width: 12, height: 12, borderRadius: '50%', background: 'rgba(var(--color-invert-rgb), 0.1)' }} />
+            <div style={{ width: 12, height: 12, borderRadius: '50%', background: 'rgba(var(--color-invert-rgb), 0.1)' }} />
             <div style={{ margin: '0 auto', fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: '#666', letterSpacing: '0.1em' }}>
               DASHBOARD / LIVE_STREAM
             </div>
@@ -101,13 +101,13 @@ export default function DashboardSection() {
               {/* Top Stats Row */}
               <div style={{ display: 'flex', gap: '24px' }}>
                 {[
-                  { label: 'Total Volume', value: '$24.5M', color: '#fff' },
-                  { label: 'Active Sessions', value: '1,248', color: '#fff' },
+                  { label: 'Total Volume', value: '$24.5M', color: 'var(--text-primary)' },
+                  { label: 'Active Sessions', value: '1,248', color: 'var(--text-primary)' },
                   { label: 'System Health', value: '99.9%', color: '#10b981' }
                 ].map((stat, i) => (
                   <div key={i} style={{
-                    flex: 1, background: 'rgba(255,255,255,0.02)', borderRadius: '8px',
-                    padding: '20px', border: '1px solid rgba(255,255,255,0.05)'
+                    flex: 1, background: 'rgba(var(--color-invert-rgb), 0.02)', borderRadius: '8px',
+                    padding: '20px', border: '1px solid rgba(var(--color-invert-rgb), 0.05)'
                   }}>
                     <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '12px', color: '#666', marginBottom: '8px', textTransform: 'uppercase' }}>{stat.label}</div>
                     <div style={{ fontFamily: 'var(--font-syne), sans-serif', fontSize: '24px', fontWeight: 700, color: stat.color }}>{stat.value}</div>
@@ -116,7 +116,7 @@ export default function DashboardSection() {
               </div>
 
               {/* Transactions Table */}
-              <div style={{ flex: 1, background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.03)', padding: '24px' }}>
+              <div style={{ flex: 1, background: 'rgba(var(--color-invert-rgb), 0.02)', borderRadius: '8px', border: '1px solid rgba(var(--color-invert-rgb), 0.03)', padding: '24px' }}>
                 <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '12px', color: '#888', marginBottom: '16px', textTransform: 'uppercase' }}>Recent Transactions</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   {[
@@ -125,18 +125,18 @@ export default function DashboardSection() {
                     { id: 'tx_5921c', amount: '+$3,200.50', status: 'Settled', time: '1h ago' },
                     { id: 'tx_3398d', amount: '-$15.00', status: 'Settled', time: '2h ago' },
                   ].map((tx, i) => (
-                    <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: i === 3 ? 'none' : '1px solid rgba(255,255,255,0.05)', paddingBottom: i === 3 ? 0 : '16px' }}>
+                    <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: i === 3 ? 'none' : '1px solid rgba(var(--color-invert-rgb), 0.05)', paddingBottom: i === 3 ? 0 : '16px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(var(--color-invert-rgb), 0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <div style={{ width: 8, height: 8, borderRadius: '50%', background: tx.amount.startsWith('+') ? '#10b981' : '#ef4444' }} />
                         </div>
                         <div>
-                          <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '13px', color: '#fff' }}>{tx.id}</div>
+                          <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '13px', color: 'var(--text-primary)' }}>{tx.id}</div>
                           <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: '#666' }}>{tx.time}</div>
                         </div>
                       </div>
                       <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontFamily: 'var(--font-syne), sans-serif', fontSize: '15px', fontWeight: 600, color: '#fff' }}>{tx.amount}</div>
+                        <div style={{ fontFamily: 'var(--font-syne), sans-serif', fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)' }}>{tx.amount}</div>
                         <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: tx.status === 'Settled' ? '#10b981' : '#f59e0b' }}>{tx.status}</div>
                       </div>
                     </div>
@@ -149,7 +149,7 @@ export default function DashboardSection() {
           {/* Subtle reflection overlay */}
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%)',
+            background: 'linear-gradient(135deg, rgba(var(--color-invert-rgb), 0.05) 0%, transparent 40%)',
             pointerEvents: 'none',
           }} />
         </motion.div>

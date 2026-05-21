@@ -17,7 +17,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
         position: 'relative',
         minHeight: '100vh',
         width: '100%',
-        background: '#010308',
+        background: 'var(--bg-base)',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
@@ -57,7 +57,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.04) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
           zIndex: 1,
@@ -197,7 +197,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
                 gap: '10px',
                 padding: '16px 40px',
                 borderRadius: '9999px',
-                background: '#ffffff',
+                background: 'var(--text-primary)',
                 color: '#000000',
                 fontSize: '15px',
                 fontWeight: 600,
@@ -232,7 +232,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
                 fontSize: '15px',
                 fontWeight: 500,
                 textDecoration: 'none',
-                border: '1px solid rgba(255,255,255,0.12)',
+                border: '1px solid rgba(var(--color-invert-rgb), 0.12)',
                 transition: 'border-color 0.25s ease, background 0.25s ease',
                 cursor: 'pointer',
               }}
@@ -251,8 +251,8 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
             minWidth: '300px',
             borderRadius: '32px',
             overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.06)',
-            background: 'rgba(255,255,255,0.015)',
+            border: '1px solid rgba(var(--color-invert-rgb), 0.06)',
+            background: 'rgba(var(--color-invert-rgb), 0.015)',
           }}
         >
           <div

@@ -245,14 +245,14 @@ export default function WhyChooseSection() {
               className="stat-card"
               style={{
                 display: 'flex', flexDirection: 'column', gap: '16px',
-                borderTop: '1px solid rgba(255,255,255,0.06)',
+                borderTop: '1px solid rgba(var(--color-invert-rgb), 0.06)',
                 paddingTop: '24px', position: 'relative',
                 cursor: 'default',
-                background: 'rgba(255, 255, 255, 0.01)',
+                background: 'rgba(var(--color-invert-rgb), 0.01)',
                 backdropFilter: 'blur(4px)',
                 padding: '24px',
                 borderRadius: '12px',
-                border: '1px solid rgba(255, 255, 255, 0.04)'
+                border: '1px solid rgba(var(--color-invert-rgb), 0.04)'
               }}
             >
               <div className="stat-line" style={{

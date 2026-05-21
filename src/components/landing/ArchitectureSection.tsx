@@ -83,7 +83,7 @@ export default function ArchitectureSection() {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.05) 1px, transparent 1px)',
           backgroundSize: '24px 24px',
           opacity: 0.5,
           pointerEvents: 'none',
@@ -260,11 +260,11 @@ export default function ArchitectureSection() {
 
       <style dangerouslySetInnerHTML={{__html: `
         .bento-glass {
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+          background: linear-gradient(135deg, rgba(var(--color-invert-rgb), 0.05) 0%, rgba(var(--color-invert-rgb), 0.01) 100%);
           backdrop-filter: blur(24px) saturate(120%);
           -webkit-backdrop-filter: blur(24px) saturate(120%);
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 8px 32px rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(var(--color-invert-rgb), 0.06);
+          box-shadow: inset 0 1px 1px rgba(var(--color-invert-rgb), 0.12), 0 8px 32px rgba(var(--color-base-rgb), 0.4);
           border-radius: 20px;
           transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
           overflow: hidden;
@@ -280,9 +280,9 @@ export default function ArchitectureSection() {
           opacity: 0.15;
         }
         .arch-layer:hover, .arch-callout:hover {
-          border-color: rgba(255, 255, 255, 0.15);
+          border-color: rgba(var(--color-invert-rgb), 0.15);
           transform: translateY(-4px);
-          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), inset 0 0 40px rgba(255, 255, 255, 0.02), 0 16px 40px -10px rgba(0,0,0,0.6);
+          box-shadow: inset 0 1px 1px rgba(var(--color-invert-rgb), 0.25), inset 0 0 40px rgba(var(--color-invert-rgb), 0.02), 0 16px 40px -10px rgba(var(--color-base-rgb), 0.6);
         }
         @media (max-width: 768px) {
           .arch-callouts {

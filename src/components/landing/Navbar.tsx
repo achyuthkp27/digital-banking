@@ -26,7 +26,7 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 1000,
-        background: 'rgba(3, 7, 18, 0.8)',
+        background: 'rgba(var(--bg-base-rgb), 0.8)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         borderBottom: `1px solid ${scrolled ? 'var(--border-default)' : 'var(--border-subtle)'}`,
@@ -63,7 +63,7 @@ export default function Navbar() {
               }}
             >
               {/* D -> Digital */}
-              <span style={{ color: '#ffffff' }}>D</span>
+              <span style={{ color: 'var(--text-primary)' }}>D</span>
               <AnimatePresence>
                 {isLogoHovered && (
                   <motion.span
@@ -72,7 +72,7 @@ export default function Navbar() {
                     exit={{ width: 0, opacity: 0, y: 15 }}
                     transition={{ type: 'spring', bounce: 0.5, duration: 0.6 }}
                     style={{
-                      color: '#ffffff',
+                      color: 'var(--text-primary)',
                       display: 'inline-block',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',

@@ -44,7 +44,7 @@ function RefractiveKnot() {
           distortionScale={0.5}
           temporalDistortion={0.1}
           ior={1.5}
-          color="#ffffff"
+          color="var(--text-primary)"
           resolution={1024}
         />
       </mesh>
@@ -61,7 +61,7 @@ function Typography() {
       <Text
         fontSize={isMobile ? 1 : 2}
         letterSpacing={-0.05}
-        color="#ffffff"
+        color="var(--text-primary)"
         anchorX="center"
         anchorY="bottom"
         position={[0, 0, 0]}
@@ -87,9 +87,9 @@ export default function HeroPremium() {
     <section
       style={{
         position: 'relative',
-        height: '100vh',
         width: '100%',
-        background: '#010308', // Deep, premium ultra-dark blue/black
+        minHeight: '100vh',
+        background: 'var(--bg-base)',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
@@ -134,10 +134,10 @@ export default function HeroPremium() {
             marginBottom: '32px',
             lineHeight: 1.6,
             backdropFilter: 'blur(4px)',
-            background: 'rgba(0,0,0,0.2)',
+            background: 'rgba(var(--color-base-rgb), 0.2)',
             padding: '16px 24px',
             borderRadius: '16px',
-            border: '1px solid rgba(255,255,255,0.05)',
+            border: '1px solid rgba(var(--color-invert-rgb), 0.05)',
           }}
         >
           An infinitely scalable, zero-trust digital platform engineered for the future of finance.
@@ -147,7 +147,7 @@ export default function HeroPremium() {
           <Link
             href="/demo"
             className="pill-button"
-            style={{ background: '#ffffff', color: '#000', padding: '16px 40px', fontSize: '15px' }}
+            style={{ background: 'var(--text-primary)', color: '#000', padding: '16px 40px', fontSize: '15px' }}
           >
             Request Access
           </Link>
@@ -155,9 +155,9 @@ export default function HeroPremium() {
             href="/architecture"
             className="pill-button"
             style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              color: '#ffffff',
-              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'rgba(var(--color-invert-rgb), 0.05)',
+              color: 'var(--text-primary)',
+              border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
               padding: '16px 40px',
               fontSize: '15px',
               backdropFilter: 'blur(10px)',

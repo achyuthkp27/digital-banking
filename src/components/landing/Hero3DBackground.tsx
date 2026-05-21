@@ -126,7 +126,7 @@ function GlobeDots({ radius }: { radius: number }) {
         color="#10b981"
         size={0.03}
         transparent
-        opacity={0.5}
+        opacity={0.8}
         sizeAttenuation
         depthWrite={false}
       />
@@ -166,7 +166,7 @@ function GlobeGrid({ radius }: { radius: number }) {
         return (
           // @ts-ignore - line element
           <line key={i} geometry={geo}>
-            <lineBasicMaterial color="#10b981" transparent opacity={0.06} linewidth={1} />
+            <lineBasicMaterial color="#10b981" transparent opacity={0.1} linewidth={1} />
           </line>
         );
       })}
@@ -382,7 +382,7 @@ function AtmosphereGlow({ radius }: { radius: number }) {
 // -------------------------------------------------------------------
 // Main scene controller — mouse-reactive rotation
 // -------------------------------------------------------------------
-function GlobeScene() {
+function GlobeScene({ isLight }: { isLight: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
   const targetRotation = useRef({ x: 0, y: 0 });
   const RADIUS = 3;
@@ -424,12 +424,13 @@ function GlobeScene() {
       <mesh>
         <sphereGeometry args={[RADIUS, 64, 64]} />
         <meshPhysicalMaterial
-          color="#0a1628"
-          metalness={0.1}
-          roughness={0.8}
+          color={isLight ? '#ffffff' : '#0a1628'}
+          metalness={isLight ? 0.2 : 0.1}
+          roughness={isLight ? 0.5 : 0.8}
+          clearcoat={isLight ? 0.5 : 0}
           transparent
-          opacity={0.85}
-          transmission={0.1}
+          opacity={isLight ? 0.95 : 0.85}
+          transmission={isLight ? 0 : 0.1}
         />
       </mesh>
 
@@ -448,21 +449,26 @@ function GlobeScene() {
   );
 }
 
+import { useTheme } from 'next-themes';
+
 // -------------------------------------------------------------------
 // Exported component
 // -------------------------------------------------------------------
 export default function Hero3DBackground() {
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === 'light';
+
   return (
     <div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none', opacity: 1 }}>
       <Canvas gl={{ antialias: true, alpha: true }} camera={{ position: [0, 0, 12], fov: 40 }}>
         {/* Lighting — subtle, cinematic */}
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[5, 5, 5]} intensity={0.8} color="#ffffff" />
-        <directionalLight position={[-5, 3, -5]} intensity={0.4} color="#06b6d4" />
-        <pointLight position={[0, 0, 5]} intensity={0.6} color="#10b981" distance={12} decay={2} />
+        <ambientLight intensity={isLight ? 0.8 : 0.3} />
+        <directionalLight position={[5, 5, 5]} intensity={isLight ? 1.5 : 0.8} color="#ffffff" />
+        <directionalLight position={[-5, 3, -5]} intensity={isLight ? 0.8 : 0.4} color={isLight ? '#a7f3d0' : '#06b6d4'} />
+        <pointLight position={[0, 0, 5]} intensity={isLight ? 1.2 : 0.6} color="#10b981" distance={12} decay={2} />
 
         <React.Suspense fallback={null}>
-          <GlobeScene />
+          <GlobeScene isLight={isLight} />
         </React.Suspense>
       </Canvas>
     </div>

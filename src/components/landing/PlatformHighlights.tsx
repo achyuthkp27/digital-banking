@@ -71,16 +71,16 @@ function BentoCard({ feature }: { feature: typeof features[0] }) {
         display: 'flex',
         flexDirection: 'column',
         padding: '32px',
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
+        background: 'var(--bg-surface)',
         borderRadius: '24px',
-        border: '1px solid rgba(255,255,255,0.05)',
+        border: '1px solid var(--border-subtle)',
         overflow: 'hidden',
         cursor: 'default',
-        boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.4)'
+        boxShadow: 'var(--shadow-sm, 0 4px 6px rgba(0,0,0,0.05))'
       }}
       variants={{
-        rest: { scale: 1, borderColor: 'rgba(255,255,255,0.05)' },
-        hover: { scale: 1.02, borderColor: 'rgba(255,255,255,0.15)' }
+        rest: { scale: 1, borderColor: 'var(--border-subtle)' },
+        hover: { scale: 1.02, borderColor: 'var(--border-strong)' }
       }}
       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
     >
@@ -109,8 +109,8 @@ function BentoCard({ feature }: { feature: typeof features[0] }) {
       <div style={{ position: 'relative', zIndex: 10 }}>
         <motion.div
           variants={{
-            rest: { background: 'rgba(255,255,255,0.03)', color: 'rgba(255,255,255,0.5)', borderColor: 'rgba(255,255,255,0.05)', boxShadow: 'none' },
-            hover: { background: `${feature.color}20`, color: '#fff', borderColor: feature.color, boxShadow: `0 0 20px ${feature.color}40` }
+            rest: { background: 'var(--bg-elevated)', color: 'var(--text-secondary)', borderColor: 'var(--border-subtle)', boxShadow: 'none' },
+            hover: { background: `${feature.color}20`, color: 'var(--text-primary)', borderColor: feature.color, boxShadow: `0 0 20px ${feature.color}40` }
           }}
           transition={{ duration: 0.3 }}
           style={{
@@ -122,13 +122,13 @@ function BentoCard({ feature }: { feature: typeof features[0] }) {
         </motion.div>
 
         <motion.h3
-          variants={{ rest: { color: 'rgba(255,255,255,0.8)' }, hover: { color: '#fff' } }}
+          variants={{ rest: { color: 'var(--text-primary)' }, hover: { color: 'var(--text-primary)' } }}
           style={{ fontFamily: 'var(--font-syne)', fontSize: '20px', fontWeight: 600, marginBottom: '12px', margin: 0 }}
         >
           {feature.title}
         </motion.h3>
 
-        <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '15px', lineHeight: 1.6, margin: 0 }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.6, margin: 0 }}>
           {feature.description}
         </p>
       </div>
@@ -143,10 +143,10 @@ export default function PlatformHighlights() {
         <span style={{ display: 'block', fontSize: '12px', color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 700 }}>
           Enterprise Platform
         </span>
-        <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 800, color: '#fff', fontFamily: 'var(--font-syne), sans-serif', marginBottom: '24px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+        <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif', marginBottom: '24px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
           Built for massive scale.
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '18px', lineHeight: 1.6 }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.6 }}>
           Comprehensive architecture designed to power the future of digital banking globally.
         </p>
       </div>

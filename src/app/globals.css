@@ -11,6 +11,10 @@
   --border-subtle: rgba(255, 255, 255, 0.05);
   --border-default: rgba(255, 255, 255, 0.1);
   --border-strong: rgba(255, 255, 255, 0.2);
+  --color-invert-rgb: 255, 255, 255;
+  --color-invert-rgb: 255, 255, 255;
+  --color-base-rgb: 0, 0, 0;
+  --bg-base-rgb: 3, 7, 18;
 }
 
 .light {
@@ -26,6 +30,10 @@
   --border-subtle: rgba(0, 0, 0, 0.05);
   --border-default: rgba(0, 0, 0, 0.1);
   --border-strong: rgba(0, 0, 0, 0.2);
+  --color-invert-rgb: 0, 0, 0;
+  --color-invert-rgb: 0, 0, 0;
+  --color-base-rgb: 255, 255, 255;
+  --bg-base-rgb: 249, 250, 251;
 }
 
 *,

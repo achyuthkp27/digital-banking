@@ -43,13 +43,13 @@ export default function SecuritySection() {
         background: 'var(--bg-base)',
         padding: 'clamp(100px, 15vw, 160px) 0',
         overflow: 'hidden',
-        borderTop: '1px solid rgba(255,255,255,0.03)',
+        borderTop: '1px solid rgba(var(--color-invert-rgb), 0.03)',
       }}
     >
       {/* Background pattern */}
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)',
+        backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.03) 1px, transparent 1px)',
         backgroundSize: '32px 32px', pointerEvents: 'none',
       }} />
 
@@ -116,8 +116,8 @@ export default function SecuritySection() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.1 }}
                   style={{
-                    background: 'rgba(255,255,255,0.01)',
-                    border: '1px solid rgba(255,255,255,0.04)',
+                    background: 'rgba(var(--color-invert-rgb), 0.01)',
+                    border: '1px solid rgba(var(--color-invert-rgb), 0.04)',
                     borderRadius: '16px', padding: '20px 24px',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     transition: 'background 0.3s ease',
@@ -128,8 +128,8 @@ export default function SecuritySection() {
                     e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.2)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.01)';
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)';
+                    e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.01)';
+                    e.currentTarget.style.borderColor = 'rgba(var(--color-invert-rgb), 0.04)';
                   }}
                 >
                   <div style={{
@@ -147,7 +147,7 @@ export default function SecuritySection() {
             </div>
 
             {/* Features List column */}
-            <div style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+            <div style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column', borderTop: '1px solid rgba(var(--color-invert-rgb), 0.06)' }}>
               {features.map((feature, i) => (
                 <motion.div
                   key={feature.title}
@@ -158,7 +158,7 @@ export default function SecuritySection() {
                   className="sec-feature-row"
                   style={{
                     display: 'flex', flexDirection: 'column', gap: '8px',
-                    padding: '24px 0', borderBottom: '1px solid rgba(255,255,255,0.06)',
+                    padding: '24px 0', borderBottom: '1px solid rgba(var(--color-invert-rgb), 0.06)',
                     position: 'relative', cursor: 'default'
                   }}
                 >
