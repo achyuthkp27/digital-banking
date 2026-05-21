@@ -13,7 +13,7 @@ import Footer from '@/components/landing/Footer';
 import CustomCursor from '@/components/common/CustomCursor';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ProductHero from '@/components/landing/ProductHero';
-import TechShowcase3D from '@/components/landing/TechShowcase3D';
+import TechShowcaseClient from '@/components/landing/TechShowcaseClient';
 
 export default async function ProductPage({
   params,
@@ -230,7 +230,7 @@ export default async function ProductPage({
 
         {/* 3D Tech Showcase Section */}
         <div style={{ marginTop: '80px' }}>
-          <TechShowcase3D />
+          <TechShowcaseClient />
         </div>
       </main>
       <Footer />

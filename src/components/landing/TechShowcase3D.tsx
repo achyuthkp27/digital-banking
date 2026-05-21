@@ -4,12 +4,12 @@ import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
-import * as THREE from 'three';
+import { Mesh } from 'three';
 import { motion } from 'framer-motion';
 
 /* ─── 3D Refractive Knot ─── */
 function RefractiveKnot() {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {

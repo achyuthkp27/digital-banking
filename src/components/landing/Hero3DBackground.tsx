@@ -67,7 +67,8 @@ function GlobeDots({ radius }: { radius: number }) {
 
   React.useEffect(() => {
     const img = new Image();
-    img.src = '/earth-map.jpg'; // Load local specular map (land is dark, water is bright)
+    const isProd = process.env.NODE_ENV === 'production';
+    img.src = isProd ? '/digital-banking/earth-map.jpg' : '/earth-map.jpg'; // Load local specular map
     img.onload = () => {
       const canvas = document.createElement('canvas');
       const w = 512;

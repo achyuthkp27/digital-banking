@@ -2,7 +2,12 @@
 
 import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import Hero3DBackground from './Hero3DBackground';
+import dynamic from 'next/dynamic';
+
+const Hero3DBackground = dynamic(() => import('./Hero3DBackground'), {
+  ssr: false,
+  loading: () => null,
+});
 import HeroContent from './HeroContent';
 
 export default function HeroSection() {

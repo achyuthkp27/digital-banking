@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { Float, RoundedBox, Environment } from '@react-three/drei';
-import * as THREE from 'three';
+import { Group, DoubleSide } from 'three';
 
 function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
   return (
@@ -39,17 +39,17 @@ function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
         {/* Holographic/NFC Icon detail */}
         <mesh position={[-1.3, -0.5, 0.026]}>
           <ringGeometry args={[0.08, 0.12, 32]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.3} side={THREE.DoubleSide} />
+          <meshBasicMaterial color="#ffffff" transparent opacity={0.3} side={DoubleSide} />
         </mesh>
         <mesh position={[-1.0, -0.5, 0.026]}>
           <ringGeometry args={[0.08, 0.12, 32]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.3} side={THREE.DoubleSide} />
+          <meshBasicMaterial color="#ffffff" transparent opacity={0.3} side={DoubleSide} />
         </mesh>
 
         {/* Abstract Magnetic Strip on back (visible through glass) */}
         <mesh position={[0, 0.5, -0.026]}>
           <planeGeometry args={[3.37, 0.4]} />
-          <meshBasicMaterial color="#000000" transparent opacity={0.4} side={THREE.DoubleSide} />
+          <meshBasicMaterial color="#000000" transparent opacity={0.4} side={DoubleSide} />
         </mesh>
       </group>
     </Float>
@@ -57,7 +57,7 @@ function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
 }
 
 function CardsAssembly() {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<Group>(null);
 
   useFrame((state, delta) => {
     if (groupRef.current) {

@@ -32,14 +32,6 @@ export const metadata: Metadata = {
     'corporate banking',
     'payment solutions',
   ],
-  icons: {
-    icon: [
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-  },
 };
 
 export default async function RootLayout({

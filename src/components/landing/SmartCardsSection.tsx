@@ -1,42 +1,70 @@
 'use client';
 
 import React from 'react';
-import SmartCards3D from './SmartCards3D';
+import dynamic from 'next/dynamic';
+
+const SmartCards3D = dynamic(() => import('./SmartCards3D'), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        minHeight: '500px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div className="loading-spinner"></div>
+    </div>
+  ),
+});
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const cardFeatures = [
   {
     title: 'Virtual & Physical Cards',
-    description: 'Instantly issue secure virtual cards for immediate use, while physical metal cards are shipped seamlessly to your corporate clients.',
+    description:
+      'Instantly issue secure virtual cards for immediate use, while physical metal cards are shipped seamlessly to your corporate clients.',
   },
   {
     title: 'Real-Time Expense Controls',
-    description: 'Set granular spending limits, merchant category restrictions, and multi-currency budgets directly through the API.',
+    description:
+      'Set granular spending limits, merchant category restrictions, and multi-currency budgets directly through the API.',
   },
   {
     title: 'Apple & Google Pay',
-    description: 'Native integration with digital wallets. Customers can provision their cards directly from your banking app.',
+    description:
+      'Native integration with digital wallets. Customers can provision their cards directly from your banking app.',
   },
 ];
 
 export default function SmartCardsSection() {
   return (
-    <section 
-      style={{ 
-        position: 'relative', 
+    <section
+      style={{
+        position: 'relative',
         overflow: 'hidden',
         width: '100%',
         padding: '120px 0',
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
+        background:
+          'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
         borderTop: '1px solid var(--border-subtle)',
         borderBottom: '1px solid var(--border-subtle)',
       }}
     >
       {/* Global noise applied via body tag in globals.css */}
-      
+
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
-          
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '64px',
+            alignItems: 'center',
+          }}
+        >
           {/* Text Content Left */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span
@@ -74,18 +102,31 @@ export default function SmartCardsSection() {
                 marginBottom: '40px',
               }}
             >
-              Empower your customers with intelligent card programs. Issue physical, virtual, and single-use cards instantly with programmable spending limits and real-time fraud prevention built into the core.
+              Empower your customers with intelligent card programs. Issue physical, virtual, and
+              single-use cards instantly with programmable spending limits and real-time fraud
+              prevention built into the core.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               {cardFeatures.map((feature, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <CheckCircleIcon sx={{ color: 'var(--accent)', fontSize: '24px', flexShrink: 0 }} />
+                  <CheckCircleIcon
+                    sx={{ color: 'var(--accent)', fontSize: '24px', flexShrink: 0 }}
+                  />
                   <div>
-                    <h4 style={{ color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600, marginBottom: '8px' }}>
+                    <h4
+                      style={{
+                        color: 'var(--text-primary)',
+                        fontSize: '16px',
+                        fontWeight: 600,
+                        marginBottom: '8px',
+                      }}
+                    >
                       {feature.title}
                     </h4>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
+                    <p
+                      style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}
+                    >
                       {feature.description}
                     </p>
                   </div>
@@ -93,28 +134,30 @@ export default function SmartCardsSection() {
               ))}
             </div>
           </div>
-          
+
           {/* Empty spacer for grid */}
           <div className="spacer-right" />
         </div>
       </div>
 
       {/* 3D Content Right (Absolute to bleed off edge) */}
-      <div 
+      <div
         className="canvas-wrapper"
-        style={{ 
-          position: 'absolute', 
-          right: 0, 
-          top: 0, 
-          bottom: 0, 
+        style={{
+          position: 'absolute',
+          right: 0,
+          top: 0,
+          bottom: 0,
           width: '50vw',
-          zIndex: 5
+          zIndex: 5,
         }}
       >
         <SmartCards3D />
       </div>
-      
-      <style dangerouslySetInnerHTML={{__html: `
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @media (max-width: 992px) {
           .spacer-right {
             display: none;
@@ -129,7 +172,9 @@ export default function SmartCardsSection() {
             grid-template-columns: 1fr !important;
           }
         }
-      `}} />
+      `,
+        }}
+      />
     </section>
   );
 }

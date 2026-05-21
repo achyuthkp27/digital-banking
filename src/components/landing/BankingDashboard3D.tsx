@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { Float, RoundedBox, Text, Trail, MeshWobbleMaterial, Edges } from '@react-three/drei';
-import * as THREE from 'three';
+import { Mesh, Group, CatmullRomCurve3, Vector3 } from 'three';
 
 function DataNode({
   position,
@@ -15,7 +15,7 @@ function DataNode({
   color: string;
   label: string;
 }) {
-  const ref = useRef<THREE.Mesh>(null);
+  const ref = useRef<Mesh>(null);
 
   useFrame((state) => {
     if (ref.current) {
@@ -47,7 +47,7 @@ function DataNode({
 }
 
 function MockupInterface() {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<Group>(null);
 
   useFrame((state) => {
     if (groupRef.current) {
@@ -89,12 +89,12 @@ function MockupInterface() {
         <mesh position={[0, 0.2, 0.2]}>
           <tubeGeometry
             args={[
-              new THREE.CatmullRomCurve3([
-                new THREE.Vector3(-2.4, -0.5, 0),
-                new THREE.Vector3(-1.2, 0.2, 0),
-                new THREE.Vector3(0, -0.2, 0),
-                new THREE.Vector3(1.2, 0.6, 0),
-                new THREE.Vector3(2.4, 0.8, 0),
+              new CatmullRomCurve3([
+                new Vector3(-2.4, -0.5, 0),
+                new Vector3(-1.2, 0.2, 0),
+                new Vector3(0, -0.2, 0),
+                new Vector3(1.2, 0.6, 0),
+                new Vector3(2.4, 0.8, 0),
               ]),
               64,
               0.02,

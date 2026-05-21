@@ -128,7 +128,7 @@ const products = [
   },
 ];
 
-const IllustrationPanel = ({ slug }: { slug: string }) => (
+const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
   <div
     style={{
       flex: 1,
@@ -212,10 +212,126 @@ const IllustrationPanel = ({ slug }: { slug: string }) => (
         pointerEvents: 'none',
       }}
     />
-
-    <ProductIllustration slug={slug} />
   </div>
-);
+));
+
+const ProductContent = React.memo(({ product, index }: { product: any; index: number }) => (
+  <div
+    style={{
+      flex: 1,
+      paddingRight: '2vw',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    }}
+  >
+    <div
+      style={{
+        display: 'inline-flex',
+        padding: '6px 12px',
+        background: 'rgba(16,185,129,0.1)',
+        borderRadius: '8px',
+        color: 'var(--accent)',
+        fontSize: '12px',
+        fontWeight: 700,
+        textTransform: 'uppercase',
+        letterSpacing: '0.1em',
+        marginBottom: '24px',
+        alignSelf: 'flex-start',
+      }}
+    >
+      {index + 1} / {products.length}
+    </div>
+
+    <span
+      style={{
+        display: 'block',
+        fontSize: '14px',
+        color: 'rgba(255,255,255,0.5)',
+        fontWeight: 600,
+        marginBottom: '8px',
+      }}
+    >
+      {product.label}
+    </span>
+
+    <h3
+      style={{
+        fontSize: 'clamp(32px, 4vw, 48px)',
+        fontWeight: 800,
+        color: 'var(--text-primary)',
+        marginBottom: '24px',
+        fontFamily: 'var(--font-syne), sans-serif',
+        lineHeight: 1.1,
+      }}
+    >
+      {product.title}
+    </h3>
+
+    <p
+      style={{
+        fontSize: '18px',
+        color: 'var(--text-secondary)',
+        lineHeight: 1.6,
+        marginBottom: '40px',
+        maxWidth: '500px',
+      }}
+    >
+      {product.description}
+    </p>
+
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '48px' }}>
+      {product.features.map((feature: string, i: number) => (
+        <div
+          key={`feature-${i}`}
+          style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}
+        >
+          <CheckCircleIcon sx={{ color: 'var(--accent)', fontSize: '20px', mt: '2px' }} />
+          <span style={{ color: 'var(--text-primary)', fontSize: '15px' }}>{feature}</span>
+        </div>
+      ))}
+    </div>
+
+    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+      <Link
+        href={`/products/${product.slug}`}
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '14px 32px',
+          borderRadius: '9999px',
+          background: 'var(--accent)',
+          color: '#000',
+          fontSize: '15px',
+          fontWeight: 700,
+          textDecoration: 'none',
+          transition: 'transform 0.25s ease',
+          cursor: 'pointer',
+        }}
+      >
+        Learn More
+      </Link>
+
+      <a
+        href="https://dev.fisdbs.com/OLBRETAIL/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          color: '#fff',
+          fontSize: '15px',
+          fontWeight: 600,
+          textDecoration: 'none',
+        }}
+      >
+        Live Demo <span>&rarr;</span>
+      </a>
+    </div>
+  </div>
+));
 
 export default function ProductShowcase() {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -237,121 +353,7 @@ export default function ProductShowcase() {
   const titleOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const titleY = useTransform(scrollYProgress, [0, 0.1], [0, -50]);
 
-  // Reusable Product Content Column
-  const ProductContent = ({ product, index }: { product: any; index: number }) => (
-    <div
-      style={{
-        flex: 1,
-        paddingRight: '2vw',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-      }}
-    >
-      <div
-        style={{
-          display: 'inline-flex',
-          padding: '6px 12px',
-          background: 'rgba(16,185,129,0.1)',
-          borderRadius: '8px',
-          color: 'var(--accent)',
-          fontSize: '12px',
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          letterSpacing: '0.1em',
-          marginBottom: '24px',
-          alignSelf: 'flex-start',
-        }}
-      >
-        {index + 1} / {products.length}
-      </div>
-
-      <span
-        style={{
-          display: 'block',
-          fontSize: '14px',
-          color: 'rgba(255,255,255,0.5)',
-          fontWeight: 600,
-          marginBottom: '8px',
-        }}
-      >
-        {product.label}
-      </span>
-
-      <h3
-        style={{
-          fontSize: 'clamp(32px, 4vw, 48px)',
-          fontWeight: 800,
-          color: 'var(--text-primary)',
-          marginBottom: '24px',
-          fontFamily: 'var(--font-syne), sans-serif',
-          lineHeight: 1.1,
-        }}
-      >
-        {product.title}
-      </h3>
-
-      <p
-        style={{
-          fontSize: '18px',
-          color: 'var(--text-secondary)',
-          lineHeight: 1.6,
-          marginBottom: '40px',
-          maxWidth: '500px',
-        }}
-      >
-        {product.description}
-      </p>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '48px' }}>
-        {product.features.map((feature: string, i: number) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-            <CheckCircleIcon sx={{ color: 'var(--accent)', fontSize: '20px', mt: '2px' }} />
-            <span style={{ color: 'var(--text-primary)', fontSize: '15px' }}>{feature}</span>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-        <Link
-          href={`/products/${product.slug}`}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '14px 32px',
-            borderRadius: '9999px',
-            background: 'var(--accent)',
-            color: '#000',
-            fontSize: '15px',
-            fontWeight: 700,
-            textDecoration: 'none',
-            transition: 'transform 0.25s ease',
-            cursor: 'pointer',
-          }}
-        >
-          Learn More
-        </Link>
-
-        <a
-          href="https://dev.fisdbs.com/OLBRETAIL/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            color: '#fff',
-            fontSize: '15px',
-            fontWeight: 600,
-            textDecoration: 'none',
-          }}
-        >
-          Live Demo <span>&rarr;</span>
-        </a>
-      </div>
-    </div>
-  );
+  // ProductContent is now imported/defined above and memoized
 
   return (
     <section

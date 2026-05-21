@@ -9,11 +9,11 @@ import {
   Environment,
   ContactShadows,
 } from '@react-three/drei';
-import * as THREE from 'three';
+import { Mesh } from 'three';
 import { Link } from '@/i18n/routing';
 
 function RefractiveKnot() {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<Mesh>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
