@@ -146,6 +146,10 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
       boxShadow: '0 24px 64px -16px rgba(0,0,0,0.4)',
     }}
   >
+    <div style={{ position: 'absolute', inset: 0, zIndex: 10 }}>
+      <ProductIllustration slug={slug} />
+    </div>
+    
     {/* Inner glow */}
     <div
       style={{
