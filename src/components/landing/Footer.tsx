@@ -44,7 +44,7 @@ export default function Footer() {
                 }}
               >
                 <span style={{ color: 'var(--text-primary)' }}>D</span>
-                <span style={{ color: '#10b981' }}>B</span>
+                <span style={{ color: 'var(--accent)' }}>B</span>
               </span>
             </Link>
             <p

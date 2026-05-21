@@ -6,6 +6,7 @@ import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import { Mesh } from 'three';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 /* ─── 3D Refractive Knot ─── */
 function RefractiveKnot() {
@@ -58,9 +59,12 @@ const capabilities = [
   { label: 'Multi-Region Deploy', desc: 'Active-active deployment across 40+ global data centers' },
 ];
 
-export default function TechShowcase3D() {
+const TechShowcase3D = React.memo(function TechShowcase3D() {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
+
   return (
     <section
+      ref={ref}
       style={{
         position: 'relative',
         width: '100%',
@@ -74,7 +78,7 @@ export default function TechShowcase3D() {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb),0.03) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
         }}
@@ -111,18 +115,20 @@ export default function TechShowcase3D() {
               position: 'absolute',
               inset: 0,
               background:
-                'radial-gradient(circle at 50% 50%, rgba(16,185,129,0.06) 0%, transparent 60%)',
+                'radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb),0.06) 0%, transparent 60%)',
               pointerEvents: 'none',
             }}
           />
-          <Canvas camera={{ position: [0, 0, 7], fov: 40 }}>
-            <React.Suspense fallback={null}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[10, 10, 5]} intensity={1} />
-              <RefractiveKnot />
-              <Environment preset="city" />
-            </React.Suspense>
-          </Canvas>
+          {inView && (
+            <Canvas camera={{ position: [0, 0, 7], fov: 40 }}>
+              <React.Suspense fallback={null}>
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[10, 10, 5]} intensity={1} />
+                <RefractiveKnot />
+                <Environment preset="city" />
+              </React.Suspense>
+            </Canvas>
+          )}
 
           {/* Corner accents */}
           <div
@@ -132,8 +138,8 @@ export default function TechShowcase3D() {
               left: '16px',
               width: '24px',
               height: '24px',
-              borderTop: '2px solid rgba(16,185,129,0.3)',
-              borderLeft: '2px solid rgba(16,185,129,0.3)',
+              borderTop: '2px solid rgba(var(--accent-rgb),0.3)',
+              borderLeft: '2px solid rgba(var(--accent-rgb),0.3)',
               borderRadius: '4px 0 0 0',
               pointerEvents: 'none',
             }}
@@ -145,8 +151,8 @@ export default function TechShowcase3D() {
               right: '16px',
               width: '24px',
               height: '24px',
-              borderTop: '2px solid rgba(16,185,129,0.3)',
-              borderRight: '2px solid rgba(16,185,129,0.3)',
+              borderTop: '2px solid rgba(var(--accent-rgb),0.3)',
+              borderRight: '2px solid rgba(var(--accent-rgb),0.3)',
               borderRadius: '0 4px 0 0',
               pointerEvents: 'none',
             }}
@@ -158,8 +164,8 @@ export default function TechShowcase3D() {
               left: '16px',
               width: '24px',
               height: '24px',
-              borderBottom: '2px solid rgba(16,185,129,0.3)',
-              borderLeft: '2px solid rgba(16,185,129,0.3)',
+              borderBottom: '2px solid rgba(var(--accent-rgb),0.3)',
+              borderLeft: '2px solid rgba(var(--accent-rgb),0.3)',
               borderRadius: '0 0 0 4px',
               pointerEvents: 'none',
             }}
@@ -171,8 +177,8 @@ export default function TechShowcase3D() {
               right: '16px',
               width: '24px',
               height: '24px',
-              borderBottom: '2px solid rgba(16,185,129,0.3)',
-              borderRight: '2px solid rgba(16,185,129,0.3)',
+              borderBottom: '2px solid rgba(var(--accent-rgb),0.3)',
+              borderRight: '2px solid rgba(var(--accent-rgb),0.3)',
               borderRadius: '0 0 4px 0',
               pointerEvents: 'none',
             }}
@@ -216,7 +222,7 @@ export default function TechShowcase3D() {
             Engineered for{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #10b981, #34d399)',
+                background: 'linear-gradient(135deg, var(--accent), #34d399)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -264,8 +270,8 @@ export default function TechShowcase3D() {
                   cursor: 'default',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(16,185,129,0.04)';
-                  e.currentTarget.style.borderColor = 'rgba(16,185,129,0.12)';
+                  e.currentTarget.style.background = 'rgba(var(--accent-rgb),0.04)';
+                  e.currentTarget.style.borderColor = 'rgba(var(--accent-rgb),0.12)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.02)';
@@ -277,10 +283,10 @@ export default function TechShowcase3D() {
                     width: '8px',
                     height: '8px',
                     borderRadius: '50%',
-                    background: '#10b981',
+                    background: 'var(--accent)',
                     flexShrink: 0,
                     marginTop: '6px',
-                    boxShadow: '0 0 8px rgba(16,185,129,0.4)',
+                    boxShadow: '0 0 8px rgba(var(--accent-rgb),0.4)',
                   }}
                 />
                 <div>
@@ -325,4 +331,6 @@ export default function TechShowcase3D() {
       />
     </section>
   );
-}
+});
+
+export default TechShowcase3D;

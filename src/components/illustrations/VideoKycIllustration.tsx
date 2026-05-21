@@ -34,32 +34,32 @@ export default function VideoKycIllustration() {
         {/* Face oval */}
         <div style={{
           width: '100%', height: '100%', borderRadius: '50%',
-          border: '2px solid rgba(16, 185, 129, 0.4)',
+          border: '2px solid rgba(var(--accent-rgb), 0.4)',
           position: 'relative', overflow: 'hidden',
         }}>
           {/* Scan line */}
           <div style={{
             position: 'absolute', left: 0, right: 0, height: '2px',
-            background: 'linear-gradient(90deg, transparent, #10b981, transparent)',
-            boxShadow: '0 0 12px rgba(16,185,129,0.6)',
+            background: 'linear-gradient(90deg, transparent, var(--accent), transparent)',
+            boxShadow: '0 0 12px rgba(var(--accent-rgb),0.6)',
             animation: 'vkyc-scan 2.5s ease-in-out infinite',
           }} />
           {/* Face features (stylized) */}
           <svg viewBox="0 0 100 130" style={{ width: '100%', height: '100%', opacity: 0.8 }}>
-            <circle cx="35" cy="45" r="5" fill="#10b981" />
-            <circle cx="65" cy="45" r="5" fill="#10b981" />
-            <path d="M35 80 Q50 95 65 80" stroke="#10b981" strokeWidth="2" fill="none" />
+            <circle cx="35" cy="45" r="5" fill="var(--accent)" />
+            <circle cx="65" cy="45" r="5" fill="var(--accent)" />
+            <path d="M35 80 Q50 95 65 80" stroke="var(--accent)" strokeWidth="2" fill="none" />
           </svg>
         </div>
         {/* Pulse ring */}
         <div style={{
           position: 'absolute', inset: '-16px', borderRadius: '50%',
-          border: '1px solid rgba(16,185,129,0.3)',
+          border: '1px solid rgba(var(--accent-rgb),0.3)',
           animation: 'vkyc-pulse 2s ease-in-out infinite',
         }} />
         <div style={{
           position: 'absolute', inset: '-32px', borderRadius: '50%',
-          border: '1px solid rgba(16,185,129,0.15)',
+          border: '1px solid rgba(var(--accent-rgb),0.15)',
           animation: 'vkyc-pulse 2s ease-in-out 0.3s infinite',
         }} />
       </motion.div>
@@ -68,7 +68,7 @@ export default function VideoKycIllustration() {
       {[0, 1, 2].map(i => (
         <div key={i} style={{
           position: 'absolute', left: '52%', top: `${45 + i * 8}%`,
-          width: '4px', height: '4px', borderRadius: '50%', background: '#10b981',
+          width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)',
           animation: `vkyc-dot 1.5s ease-in-out ${i * 0.3}s infinite`,
         }} />
       ))}
@@ -80,21 +80,21 @@ export default function VideoKycIllustration() {
         transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: 'relative', width: '120px', height: '80px', marginLeft: '60px',
-          borderRadius: '12px', border: '1.5px solid rgba(16,185,129,0.3)',
-          background: 'rgba(16,185,129,0.04)', padding: '12px',
+          borderRadius: '12px', border: '1.5px solid rgba(var(--accent-rgb),0.3)',
+          background: 'rgba(var(--accent-rgb),0.04)', padding: '12px',
           display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         }}
       >
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <div style={{ width: '24px', height: '24px', borderRadius: '50%', border: '1px solid rgba(16,185,129,0.3)' }} />
+          <div style={{ width: '24px', height: '24px', borderRadius: '50%', border: '1px solid rgba(var(--accent-rgb),0.3)' }} />
           <div>
-            <div style={{ width: '50px', height: '4px', borderRadius: '2px', background: 'rgba(16,185,129,0.2)', marginBottom: '4px' }} />
-            <div style={{ width: '35px', height: '3px', borderRadius: '2px', background: 'rgba(16,185,129,0.12)' }} />
+            <div style={{ width: '50px', height: '4px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.2)', marginBottom: '4px' }} />
+            <div style={{ width: '35px', height: '3px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.12)' }} />
           </div>
         </div>
         <div>
-          <div style={{ width: '80px', height: '3px', borderRadius: '2px', background: 'rgba(16,185,129,0.1)', marginBottom: '4px' }} />
-          <div style={{ width: '60px', height: '3px', borderRadius: '2px', background: 'rgba(16,185,129,0.08)' }} />
+          <div style={{ width: '80px', height: '3px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.1)', marginBottom: '4px' }} />
+          <div style={{ width: '60px', height: '3px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.08)' }} />
         </div>
         {/* Checkmark */}
         <motion.div
@@ -104,8 +104,8 @@ export default function VideoKycIllustration() {
           style={{
             position: 'absolute', top: '-10px', right: '-10px',
             width: '24px', height: '24px', borderRadius: '50%',
-            background: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 0 12px rgba(16,185,129,0.5)',
+            background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 0 12px rgba(var(--accent-rgb),0.5)',
           }}
         >
           <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

@@ -14,7 +14,7 @@ const features = [
     title: 'Digital Platform Dashboard',
     description: 'Comprehensive unified dashboard with real-time analytics, transaction monitoring, and customizable widgets for complete oversight.',
     icon: <DashboardIcon sx={{ fontSize: '24px' }} />,
-    color: '#10b981' // Emerald
+    color: 'var(--accent)' // Emerald
   },
   {
     title: 'Architecture',
@@ -48,7 +48,7 @@ const features = [
   }
 ];
 
-function BentoCard({ feature }: { feature: typeof features[0] }) {
+const BentoCard = React.memo(function BentoCard({ feature }: { feature: typeof features[0] }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -76,7 +76,7 @@ function BentoCard({ feature }: { feature: typeof features[0] }) {
         border: '1px solid var(--border-subtle)',
         overflow: 'hidden',
         cursor: 'default',
-        boxShadow: 'var(--shadow-sm, 0 4px 6px rgba(0,0,0,0.05))'
+        boxShadow: 'var(--shadow-sm, 0 4px 6px rgba(var(--color-base-rgb),0.05))'
       }}
       variants={{
         rest: { scale: 1, borderColor: 'var(--border-subtle)' },
@@ -134,13 +134,13 @@ function BentoCard({ feature }: { feature: typeof features[0] }) {
       </div>
     </motion.div>
   );
-}
+});
 
-export default function PlatformHighlights() {
+const PlatformHighlights = React.memo(function PlatformHighlights() {
   return (
     <section id="platform" style={{ padding: '120px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ textAlign: 'center', marginBottom: '80px', maxWidth: '800px' }}>
-        <span style={{ display: 'block', fontSize: '12px', color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 700 }}>
+        <span style={{ display: 'block', fontSize: '12px', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 700 }}>
           Enterprise Platform
         </span>
         <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif', marginBottom: '24px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
@@ -164,4 +164,6 @@ export default function PlatformHighlights() {
       </div>
     </section>
   );
-}
+});
+
+export default PlatformHighlights;

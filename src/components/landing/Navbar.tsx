@@ -86,7 +86,7 @@ export default function Navbar() {
               {/* B -> Banking */}
               <span
                 style={{
-                  color: '#10b981',
+                  color: 'var(--accent)',
                   marginLeft: isLogoHovered ? '6px' : '0px',
                   transition: 'margin 0.3s ease',
                 }}
@@ -101,7 +101,7 @@ export default function Navbar() {
                     exit={{ width: 0, opacity: 0, y: 15 }}
                     transition={{ type: 'spring', bounce: 0.5, duration: 0.6, delay: 0.05 }}
                     style={{
-                      color: '#10b981',
+                      color: 'var(--accent)',
                       display: 'inline-block',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',

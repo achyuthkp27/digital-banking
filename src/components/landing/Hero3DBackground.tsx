@@ -3,8 +3,9 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
-import { Float } from '@react-three/drei';
+
 import * as THREE from 'three';
+import { useInView } from 'react-intersection-observer';
 
 // -------------------------------------------------------------------
 // Convert lat/lng (degrees) to 3D position on a sphere
@@ -251,7 +252,7 @@ function ConnectionArcs({ radius }: { radius: number }) {
 // -------------------------------------------------------------------
 function DataPackets({ radius }: { radius: number }) {
   const packetData = useMemo(() => {
-    return connections.map(([fromIdx, toIdx], i) => {
+    return connections.map(([fromIdx, toIdx]) => {
       const from = latLngToVec3(cities[fromIdx][0], cities[fromIdx][1], radius);
       const to = latLngToVec3(cities[toIdx][0], cities[toIdx][1], radius);
       const mid = new THREE.Vector3().addVectors(from, to).multiplyScalar(0.5);
@@ -457,20 +458,23 @@ import { useTheme } from 'next-themes';
 export default function Hero3DBackground() {
   const { resolvedTheme } = useTheme();
   const isLight = resolvedTheme === 'light';
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
 
   return (
-    <div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none', opacity: 1 }}>
-      <Canvas gl={{ antialias: true, alpha: true }} camera={{ position: [0, 0, 12], fov: 40 }}>
-        {/* Lighting — subtle, cinematic */}
-        <ambientLight intensity={isLight ? 0.8 : 0.3} />
-        <directionalLight position={[5, 5, 5]} intensity={isLight ? 1.5 : 0.8} color="#ffffff" />
-        <directionalLight position={[-5, 3, -5]} intensity={isLight ? 0.8 : 0.4} color={isLight ? '#a7f3d0' : '#06b6d4'} />
-        <pointLight position={[0, 0, 5]} intensity={isLight ? 1.2 : 0.6} color="#10b981" distance={12} decay={2} />
+    <div ref={ref} style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none', opacity: 1 }}>
+      {inView && (
+        <Canvas gl={{ antialias: true, alpha: true }} camera={{ position: [0, 0, 12], fov: 40 }}>
+          {/* Lighting — subtle, cinematic */}
+          <ambientLight intensity={isLight ? 0.8 : 0.3} />
+          <directionalLight position={[5, 5, 5]} intensity={isLight ? 1.5 : 0.8} color="#ffffff" />
+          <directionalLight position={[-5, 3, -5]} intensity={isLight ? 0.8 : 0.4} color={isLight ? '#a7f3d0' : '#06b6d4'} />
+          <pointLight position={[0, 0, 5]} intensity={isLight ? 1.2 : 0.6} color="#10b981" distance={12} decay={2} />
 
-        <React.Suspense fallback={null}>
-          <GlobeScene isLight={isLight} />
-        </React.Suspense>
-      </Canvas>
+          <React.Suspense fallback={null}>
+            <GlobeScene isLight={isLight} />
+          </React.Suspense>
+        </Canvas>
+      )}
     </div>
   );
 }

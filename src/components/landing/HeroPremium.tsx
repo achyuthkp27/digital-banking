@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import {
   Float,
@@ -11,6 +11,7 @@ import {
 } from '@react-three/drei';
 import { Mesh } from 'three';
 import { Link } from '@/i18n/routing';
+import { useInView } from 'react-intersection-observer';
 
 function RefractiveKnot() {
   const meshRef = useRef<Mesh>(null);
@@ -83,8 +84,11 @@ function Typography() {
 }
 
 export default function HeroPremium() {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
+
   return (
     <section
+      ref={ref}
       style={{
         position: 'relative',
         width: '100%',
@@ -99,16 +103,18 @@ export default function HeroPremium() {
     >
       {/* 3D Canvas rendering Text AND the Refractive Glass */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
-        <Canvas camera={{ position: [0, 0, 10], fov: 35 }}>
-          <React.Suspense fallback={null}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <Typography />
-            <RefractiveKnot />
-            <Environment preset="city" />
-            <ContactShadows position={[0, -3, 0]} opacity={0.4} scale={20} blur={2} far={4.5} />
-          </React.Suspense>
-        </Canvas>
+        {inView && (
+          <Canvas camera={{ position: [0, 0, 10], fov: 35 }}>
+            <React.Suspense fallback={null}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[10, 10, 5]} intensity={1} />
+              <Typography />
+              <RefractiveKnot />
+              <Environment preset="city" />
+              <ContactShadows position={[0, -3, 0]} opacity={0.4} scale={20} blur={2} far={4.5} />
+            </React.Suspense>
+          </Canvas>
+        )}
       </div>
 
       {/* HTML Overlay Content (CTAs, Subtitle) sitting on top of canvas */}

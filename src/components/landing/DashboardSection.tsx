@@ -83,10 +83,10 @@ export default function DashboardSection() {
               ].map((item, i) => (
                 <div key={i} style={{
                   padding: '12px 16px',
-                  background: item.active ? 'rgba(16,185,129,0.1)' : 'transparent',
+                  background: item.active ? 'rgba(var(--accent-rgb),0.1)' : 'transparent',
                   borderRadius: '6px',
-                  border: item.active ? '1px solid rgba(16,185,129,0.2)' : '1px solid transparent',
-                  color: item.active ? '#10b981' : '#666',
+                  border: item.active ? '1px solid rgba(var(--accent-rgb),0.2)' : '1px solid transparent',
+                  color: item.active ? 'var(--accent)' : '#666',
                   fontFamily: 'var(--font-geist-mono), monospace',
                   fontSize: '13px',
                 }}>
@@ -103,7 +103,7 @@ export default function DashboardSection() {
                 {[
                   { label: 'Total Volume', value: '$24.5M', color: 'var(--text-primary)' },
                   { label: 'Active Sessions', value: '1,248', color: 'var(--text-primary)' },
-                  { label: 'System Health', value: '99.9%', color: '#10b981' }
+                  { label: 'System Health', value: '99.9%', color: 'var(--accent)' }
                 ].map((stat, i) => (
                   <div key={i} style={{
                     flex: 1, background: 'rgba(var(--color-invert-rgb), 0.02)', borderRadius: '8px',
@@ -128,7 +128,7 @@ export default function DashboardSection() {
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: i === 3 ? 'none' : '1px solid rgba(var(--color-invert-rgb), 0.05)', paddingBottom: i === 3 ? 0 : '16px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                         <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(var(--color-invert-rgb), 0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <div style={{ width: 8, height: 8, borderRadius: '50%', background: tx.amount.startsWith('+') ? '#10b981' : '#ef4444' }} />
+                          <div style={{ width: 8, height: 8, borderRadius: '50%', background: tx.amount.startsWith('+') ? 'var(--accent)' : '#ef4444' }} />
                         </div>
                         <div>
                           <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '13px', color: 'var(--text-primary)' }}>{tx.id}</div>
@@ -137,7 +137,7 @@ export default function DashboardSection() {
                       </div>
                       <div style={{ textAlign: 'right' }}>
                         <div style={{ fontFamily: 'var(--font-syne), sans-serif', fontSize: '15px', fontWeight: 600, color: 'var(--text-primary)' }}>{tx.amount}</div>
-                        <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: tx.status === 'Settled' ? '#10b981' : '#f59e0b' }}>{tx.status}</div>
+                        <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: tx.status === 'Settled' ? 'var(--accent)' : '#f59e0b' }}>{tx.status}</div>
                       </div>
                     </div>
                   ))}

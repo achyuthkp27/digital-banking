@@ -46,7 +46,7 @@ export default function TwoFactorAuthIllustration() {
         }}>
           {Array.from({ length: 12 }).map((_, row) => (
             <span key={row} style={{
-              fontSize: '9px', color: '#10b981',
+              fontSize: '9px', color: 'var(--accent)',
               fontFamily: 'var(--font-geist-mono), monospace',
               animation: `tfa-char ${1.5 + Math.random()}s ease-in-out ${Math.random() * 3}s infinite`,
             }}>
@@ -69,10 +69,10 @@ export default function TwoFactorAuthIllustration() {
           animation: 'tfa-ring1 12s linear infinite',
         }}>
           <svg viewBox="0 0 180 180" style={{ width: '100%', height: '100%' }}>
-            <circle cx="90" cy="90" r="85" fill="none" stroke="rgba(16,185,129,0.12)" strokeWidth="1" strokeDasharray="8 12" />
+            <circle cx="90" cy="90" r="85" fill="none" stroke="rgba(var(--accent-rgb),0.12)" strokeWidth="1" strokeDasharray="8 12" />
             {/* Lock notches */}
             {[0, 90, 180, 270].map(angle => (
-              <circle key={angle} cx={90 + 85 * Math.cos(angle * Math.PI / 180)} cy={90 + 85 * Math.sin(angle * Math.PI / 180)} r="3" fill="rgba(16,185,129,0.3)" />
+              <circle key={angle} cx={90 + 85 * Math.cos(angle * Math.PI / 180)} cy={90 + 85 * Math.sin(angle * Math.PI / 180)} r="3" fill="rgba(var(--accent-rgb),0.3)" />
             ))}
           </svg>
         </div>
@@ -83,9 +83,9 @@ export default function TwoFactorAuthIllustration() {
           animation: 'tfa-ring2 8s linear infinite',
         }}>
           <svg viewBox="0 0 140 140" style={{ width: '100%', height: '100%' }}>
-            <circle cx="70" cy="70" r="65" fill="none" stroke="rgba(16,185,129,0.18)" strokeWidth="1.5" strokeDasharray="4 8" />
+            <circle cx="70" cy="70" r="65" fill="none" stroke="rgba(var(--accent-rgb),0.18)" strokeWidth="1.5" strokeDasharray="4 8" />
             {[0, 60, 120, 180, 240, 300].map(angle => (
-              <circle key={angle} cx={70 + 65 * Math.cos(angle * Math.PI / 180)} cy={70 + 65 * Math.sin(angle * Math.PI / 180)} r="2" fill="rgba(16,185,129,0.4)" />
+              <circle key={angle} cx={70 + 65 * Math.cos(angle * Math.PI / 180)} cy={70 + 65 * Math.sin(angle * Math.PI / 180)} r="2" fill="rgba(var(--accent-rgb),0.4)" />
             ))}
           </svg>
         </div>
@@ -99,8 +99,8 @@ export default function TwoFactorAuthIllustration() {
           <svg width="60" height="70" viewBox="0 0 24 28" fill="none">
             <motion.path
               d="M12 1L2 5v8c0 7 10 13 10 13s10-6 10-13V5L12 1z"
-              stroke="#10b981" strokeWidth="1.5"
-              fill="rgba(16,185,129,0.08)"
+              stroke="var(--accent)" strokeWidth="1.5"
+              fill="rgba(var(--accent-rgb),0.08)"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 1.5, delay: 0.5 }}
@@ -109,7 +109,7 @@ export default function TwoFactorAuthIllustration() {
             {digits.length === 6 && (
               <motion.path
                 d="M8 14l3 3 5-7"
-                stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                 fill="none"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
@@ -133,8 +133,8 @@ export default function TwoFactorAuthIllustration() {
             transition={{ delay: 1 + i * 0.1 }}
             style={{
               width: '28px', height: '36px', borderRadius: '6px',
-              border: `1.5px solid rgba(16,185,129,${digits[i] !== undefined ? 0.5 : 0.15})`,
-              background: digits[i] !== undefined ? 'rgba(16,185,129,0.06)' : 'transparent',
+              border: `1.5px solid rgba(var(--accent-rgb),${digits[i] !== undefined ? 0.5 : 0.15})`,
+              background: digits[i] !== undefined ? 'rgba(var(--accent-rgb),0.06)' : 'transparent',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               transition: 'all 0.3s ease',
             }}
@@ -145,7 +145,7 @@ export default function TwoFactorAuthIllustration() {
                 animate={{ opacity: 1, scale: 1 }}
                 style={{
                   fontSize: '16px', fontWeight: 700,
-                  color: '#10b981',
+                  color: 'var(--accent)',
                   fontFamily: 'var(--font-geist-mono), monospace',
                 }}
               >
@@ -163,7 +163,7 @@ export default function TwoFactorAuthIllustration() {
         transition={{ delay: 1.5 }}
         style={{
           position: 'absolute', bottom: '14%', left: '50%', transform: 'translateX(-50%)',
-          fontSize: '9px', color: 'rgba(16,185,129,0.4)',
+          fontSize: '9px', color: 'rgba(var(--accent-rgb),0.4)',
           fontFamily: 'var(--font-geist-mono), monospace',
           letterSpacing: '0.1em', textTransform: 'uppercase',
         }}

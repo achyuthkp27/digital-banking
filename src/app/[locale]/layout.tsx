@@ -20,19 +20,44 @@ const syne = Syne({
   variable: '--font-syne',
 });
 
-export const metadata: Metadata = {
-  title: 'DB | Digital Banking Platform',
-  description:
-    'Enterprise-grade digital banking solutions with cutting-edge security, seamless integration, and unparalleled user experience across all platforms.',
-  keywords: [
-    'digital banking',
-    'fintech',
-    'banking platform',
-    'mobile banking',
-    'corporate banking',
-    'payment solutions',
-  ],
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  
+  return {
+    title: 'DB | Digital Banking Platform',
+    description:
+      'Enterprise-grade digital banking solutions with cutting-edge security, seamless integration, and unparalleled user experience across all platforms.',
+    keywords: [
+      'digital banking',
+      'fintech',
+      'banking platform',
+      'mobile banking',
+      'corporate banking',
+      'payment solutions',
+    ],
+    metadataBase: new URL('https://db-demo.example.com'),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: '/en',
+        es: '/es',
+        'en-US': '/en',
+      },
+    },
+    openGraph: {
+      title: 'DB | Digital Banking Platform',
+      description: 'Enterprise-grade digital banking solutions with cutting-edge security.',
+      url: `https://db-demo.example.com/${locale}`,
+      siteName: 'Digital Banking Platform',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'DB | Digital Banking Platform',
+      description: 'Enterprise-grade digital banking solutions with cutting-edge security.',
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

@@ -62,7 +62,7 @@ export default function AppFlowAnimation() {
       <div style={{
         position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
         width: '1200px', height: '1200px',
-        background: 'radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(3, 7, 18, 0) 60%)',
+        background: 'radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, rgba(3, 7, 18, 0) 60%)',
         pointerEvents: 'none', zIndex: 0
       }} />
 
@@ -119,7 +119,7 @@ export default function AppFlowAnimation() {
               >
                 <div style={{ width: '400px', padding: '48px', background: 'rgba(var(--color-invert-rgb), 0.03)', borderRadius: '24px', border: '1px solid rgba(var(--color-invert-rgb), 0.05)', display: 'flex', flexDirection: 'column', gap: '24px', boxShadow: '0 20px 40px rgba(var(--color-base-rgb), 0.5)' }}>
                   <div style={{ textAlign: 'center', marginBottom: '8px' }}>
-                    <div style={{ width: '56px', height: '56px', background: 'linear-gradient(135deg, #10b981, #047857)', borderRadius: '16px', margin: '0 auto 24px', boxShadow: '0 10px 30px rgba(16,185,129,0.3)' }} />
+                    <div style={{ width: '56px', height: '56px', background: 'linear-gradient(135deg, var(--accent), #047857)', borderRadius: '16px', margin: '0 auto 24px', boxShadow: '0 10px 30px rgba(var(--accent-rgb),0.3)' }} />
                     <h2 style={{ fontFamily: 'var(--font-syne), sans-serif', fontSize: '28px', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>Welcome back</h2>
                     <p style={{ color: 'rgba(var(--color-invert-rgb), 0.5)', fontSize: '15px', marginTop: '8px' }}>Enter your credentials to securely access your enterprise dashboard.</p>
                   </div>
@@ -147,7 +147,7 @@ export default function AppFlowAnimation() {
                       'Sign In to Dashboard'
                     )}
                     {step === 3 && (
-                      <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 20, opacity: 0 }} transition={{ duration: 1.5, ease: 'easeOut' }} style={{ position: 'absolute', width: '20px', height: '20px', background: 'rgba(16,185,129,0.5)', borderRadius: '50%' }} />
+                      <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 20, opacity: 0 }} transition={{ duration: 1.5, ease: 'easeOut' }} style={{ position: 'absolute', width: '20px', height: '20px', background: 'rgba(var(--accent-rgb),0.5)', borderRadius: '50%' }} />
                     )}
                   </motion.div>
                 </div>
@@ -171,9 +171,9 @@ export default function AppFlowAnimation() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 * i, duration: 0.5 }}
-                      style={{ height: '48px', background: i === 0 ? 'rgba(16,185,129,0.1)' : 'transparent', borderRadius: '8px', display: 'flex', alignItems: 'center', padding: '0 16px', border: i === 0 ? '1px solid rgba(16,185,129,0.2)' : '1px solid transparent' }}
+                      style={{ height: '48px', background: i === 0 ? 'rgba(var(--accent-rgb),0.1)' : 'transparent', borderRadius: '8px', display: 'flex', alignItems: 'center', padding: '0 16px', border: i === 0 ? '1px solid rgba(var(--accent-rgb),0.2)' : '1px solid transparent' }}
                     >
-                      <span style={{ color: i === 0 ? '#10b981' : 'rgba(var(--color-invert-rgb), 0.5)', fontFamily: 'var(--font-syne)', fontWeight: i === 0 ? 600 : 400, fontSize: '15px' }}>{label}</span>
+                      <span style={{ color: i === 0 ? 'var(--accent)' : 'rgba(var(--color-invert-rgb), 0.5)', fontFamily: 'var(--font-syne)', fontWeight: i === 0 ? 600 : 400, fontSize: '15px' }}>{label}</span>
                     </motion.div>
                   ))}
                   <div style={{ marginTop: 'auto', padding: '20px', background: 'rgba(var(--color-invert-rgb), 0.03)', borderRadius: '12px', border: '1px solid rgba(var(--color-invert-rgb), 0.05)' }}>
@@ -225,8 +225,8 @@ export default function AppFlowAnimation() {
                           )}
                         </div>
                         {step >= 5 && (
-                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} style={{ color: stat.trend === 'up' ? '#10b981' : stat.trend === 'down' ? '#ef4444' : 'rgba(var(--color-invert-rgb), 0.5)', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 500 }}>
-                            <span style={{ display: 'inline-block', padding: '2px 6px', background: stat.trend === 'up' ? 'rgba(16,185,129,0.1)' : stat.trend === 'down' ? 'rgba(239,68,68,0.1)' : 'rgba(var(--color-invert-rgb), 0.05)', borderRadius: '4px' }}>
+                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} style={{ color: stat.trend === 'up' ? 'var(--accent)' : stat.trend === 'down' ? '#ef4444' : 'rgba(var(--color-invert-rgb), 0.5)', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 500 }}>
+                            <span style={{ display: 'inline-block', padding: '2px 6px', background: stat.trend === 'up' ? 'rgba(var(--accent-rgb),0.1)' : stat.trend === 'down' ? 'rgba(239,68,68,0.1)' : 'rgba(var(--color-invert-rgb), 0.05)', borderRadius: '4px' }}>
                               {stat.change}
                             </span>
                           </motion.div>
@@ -268,7 +268,7 @@ export default function AppFlowAnimation() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: `${h}%`, opacity: 1 }}
                             transition={{ delay: 0.8 + (i * 0.08), type: 'spring', stiffness: 50 }}
-                            style={{ flex: 1, background: 'linear-gradient(to top, rgba(16,185,129,0.8), rgba(16,185,129,0.1))', borderRadius: '6px 6px 0 0', position: 'relative', zIndex: 1 }}
+                            style={{ flex: 1, background: 'linear-gradient(to top, rgba(var(--accent-rgb),0.8), rgba(var(--accent-rgb),0.1))', borderRadius: '6px 6px 0 0', position: 'relative', zIndex: 1 }}
                           >
                             <motion.div 
                               initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 + (i * 0.1) }}
@@ -377,7 +377,7 @@ export default function AppFlowAnimation() {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: 1, overflowY: 'auto', paddingRight: '8px' }}>
                           {step >= 5 && [
                             { name: 'AWS Cloud Services', cat: 'Software', amount: '-$840.00', time: '2m ago', color: '#f59e0b' },
-                            { name: 'Stripe Payout', cat: 'Revenue', amount: '+$12,450.00', time: 'Just now', color: '#10b981' },
+                            { name: 'Stripe Payout', cat: 'Revenue', amount: '+$12,450.00', time: 'Just now', color: 'var(--accent)' },
                             { name: 'WeWork Office', cat: 'Real Estate', amount: '-$3,200.00', time: '2h ago', color: '#8b5cf6' },
                           ].map((tx, i) => (
                             <motion.div
@@ -396,7 +396,7 @@ export default function AppFlowAnimation() {
                                   <div style={{ color: 'rgba(var(--color-invert-rgb), 0.5)', fontSize: '12px' }}>{tx.cat} • {tx.time}</div>
                                 </div>
                               </div>
-                              <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '14px', fontWeight: 600, color: tx.amount.startsWith('+') ? '#10b981' : 'var(--text-primary)' }}>
+                              <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '14px', fontWeight: 600, color: tx.amount.startsWith('+') ? 'var(--accent)' : 'var(--text-primary)' }}>
                                 {tx.amount}
                               </div>
                             </motion.div>

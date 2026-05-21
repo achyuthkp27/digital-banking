@@ -171,8 +171,8 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
         left: '12px',
         width: '20px',
         height: '20px',
-        borderTop: '2px solid rgba(16,185,129,0.25)',
-        borderLeft: '2px solid rgba(16,185,129,0.25)',
+        borderTop: '2px solid rgba(var(--accent-rgb),0.25)',
+        borderLeft: '2px solid rgba(var(--accent-rgb),0.25)',
         borderRadius: '4px 0 0 0',
         pointerEvents: 'none',
       }}
@@ -184,8 +184,8 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
         right: '12px',
         width: '20px',
         height: '20px',
-        borderTop: '2px solid rgba(16,185,129,0.25)',
-        borderRight: '2px solid rgba(16,185,129,0.25)',
+        borderTop: '2px solid rgba(var(--accent-rgb),0.25)',
+        borderRight: '2px solid rgba(var(--accent-rgb),0.25)',
         borderRadius: '0 4px 0 0',
         pointerEvents: 'none',
       }}
@@ -197,8 +197,8 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
         left: '12px',
         width: '20px',
         height: '20px',
-        borderBottom: '2px solid rgba(16,185,129,0.25)',
-        borderLeft: '2px solid rgba(16,185,129,0.25)',
+        borderBottom: '2px solid rgba(var(--accent-rgb),0.25)',
+        borderLeft: '2px solid rgba(var(--accent-rgb),0.25)',
         borderRadius: '0 0 0 4px',
         pointerEvents: 'none',
       }}
@@ -210,8 +210,8 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
         right: '12px',
         width: '20px',
         height: '20px',
-        borderBottom: '2px solid rgba(16,185,129,0.25)',
-        borderRight: '2px solid rgba(16,185,129,0.25)',
+        borderBottom: '2px solid rgba(var(--accent-rgb),0.25)',
+        borderRight: '2px solid rgba(var(--accent-rgb),0.25)',
         borderRadius: '0 0 4px 0',
         pointerEvents: 'none',
       }}
@@ -233,7 +233,7 @@ const ProductContent = React.memo(({ product, index }: { product: any; index: nu
       style={{
         display: 'inline-flex',
         padding: '6px 12px',
-        background: 'rgba(16,185,129,0.1)',
+        background: 'rgba(var(--accent-rgb),0.1)',
         borderRadius: '8px',
         color: 'var(--accent)',
         fontSize: '12px',
@@ -340,6 +340,20 @@ const ProductContent = React.memo(({ product, index }: { product: any; index: nu
 export default function ProductShowcase() {
   const targetRef = useRef<HTMLDivElement>(null);
   const [isHorizontal, setIsHorizontal] = useState(true);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      if (window.innerWidth < 992) {
+        setIsHorizontal(false);
+      } else {
+        setIsHorizontal(true);
+      }
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,

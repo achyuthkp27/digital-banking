@@ -46,8 +46,8 @@ export default function CorporateBankingIllustration() {
             style={{
               position: 'absolute', bottom: 0, left: b.x,
               width: b.w, borderRadius: '4px 4px 0 0',
-              border: '1.5px solid rgba(16,185,129,0.25)',
-              background: 'rgba(16,185,129,0.04)',
+              border: '1.5px solid rgba(var(--accent-rgb),0.25)',
+              background: 'rgba(var(--accent-rgb),0.04)',
               overflow: 'hidden',
             }}
           >
@@ -59,7 +59,7 @@ export default function CorporateBankingIllustration() {
                 {Array.from({ length: Math.floor(b.w / 10) }).map((_, wj) => (
                   <div key={wj} style={{
                     width: '4px', height: '5px', borderRadius: '1px',
-                    background: `rgba(16,185,129,${Math.random() > 0.4 ? 0.3 : 0.08})`,
+                    background: `rgba(var(--accent-rgb),${Math.random() > 0.4 ? 0.3 : 0.08})`,
                   }} />
                 ))}
               </div>
@@ -71,9 +71,9 @@ export default function CorporateBankingIllustration() {
         <svg style={{ position: 'absolute', inset: 0, overflow: 'visible' }} viewBox="0 0 200 140">
           {[[18, 50, 60, 35], [96, 30, 150, 40]].map(([x1, y1, x2, y2], i) => (
             <g key={i}>
-              <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(16,185,129,0.15)" strokeWidth="1" strokeDasharray="4 4" />
+              <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(var(--accent-rgb),0.15)" strokeWidth="1" strokeDasharray="4 4" />
               {/* Traveling dots */}
-              <circle r="3" fill="#10b981" opacity="0.6">
+              <circle r="3" fill="var(--accent)" opacity="0.6">
                 <animateMotion dur={`${2 + i}s`} repeatCount="indefinite" path={`M${x1},${y1} L${x2},${y2}`} />
               </circle>
             </g>
@@ -88,8 +88,8 @@ export default function CorporateBankingIllustration() {
         transition={{ delay: 0.8, duration: 0.6 }}
         style={{
           marginLeft: '32px', width: '120px', padding: '14px',
-          borderRadius: '12px', border: '1px solid rgba(16,185,129,0.2)',
-          background: 'rgba(16,185,129,0.03)',
+          borderRadius: '12px', border: '1px solid rgba(var(--accent-rgb),0.2)',
+          background: 'rgba(var(--accent-rgb),0.03)',
         }}
       >
         {/* Mini bar chart */}
@@ -102,7 +102,7 @@ export default function CorporateBankingIllustration() {
               transition={{ duration: 0.5, delay: 1.2 + i * 0.1 }}
               style={{
                 flex: 1, borderRadius: '2px 2px 0 0',
-                background: `rgba(16,185,129,${0.15 + i * 0.05})`,
+                background: `rgba(var(--accent-rgb),${0.15 + i * 0.05})`,
               }}
             />
           ))}
@@ -110,9 +110,9 @@ export default function CorporateBankingIllustration() {
 
         {/* Mini pie/donut */}
         <svg width="40" height="40" viewBox="0 0 40 40" style={{ margin: '0 auto 10px', display: 'block' }}>
-          <circle cx="20" cy="20" r="15" fill="none" stroke="rgba(16,185,129,0.1)" strokeWidth="4" />
+          <circle cx="20" cy="20" r="15" fill="none" stroke="rgba(var(--accent-rgb),0.1)" strokeWidth="4" />
           <motion.circle
-            cx="20" cy="20" r="15" fill="none" stroke="#10b981" strokeWidth="4"
+            cx="20" cy="20" r="15" fill="none" stroke="var(--accent)" strokeWidth="4"
             strokeDasharray="94.25"
             initial={{ strokeDashoffset: 94.25 }}
             animate={{ strokeDashoffset: 30 }}
@@ -125,8 +125,8 @@ export default function CorporateBankingIllustration() {
         {/* Metric lines */}
         {[70, 50, 85].map((w, i) => (
           <div key={i} style={{ display: 'flex', gap: '6px', alignItems: 'center', marginBottom: '6px' }}>
-            <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: `rgba(16,185,129,${0.3 + i * 0.15})` }} />
-            <div style={{ width: `${w}%`, height: '2px', borderRadius: '1px', background: 'rgba(16,185,129,0.15)' }} />
+            <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: `rgba(var(--accent-rgb),${0.3 + i * 0.15})` }} />
+            <div style={{ width: `${w}%`, height: '2px', borderRadius: '1px', background: 'rgba(var(--accent-rgb),0.15)' }} />
           </div>
         ))}
       </motion.div>
@@ -143,7 +143,7 @@ export default function CorporateBankingIllustration() {
             top: `${15 + i * 18}%`,
             left: `${10 + (i % 2) * 70}%`,
             fontSize: '11px', fontWeight: 600,
-            color: 'rgba(16,185,129,0.4)',
+            color: 'rgba(var(--accent-rgb),0.4)',
             fontFamily: 'var(--font-geist-mono), monospace',
           }}
         >

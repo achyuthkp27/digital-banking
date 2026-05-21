@@ -33,7 +33,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(var(--accent-rgb),0.08) 0%, transparent 70%)',
           pointerEvents: 'none',
           filter: 'blur(80px)',
         }}
@@ -120,8 +120,8 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
               gap: '10px',
               padding: '8px 18px',
               borderRadius: '9999px',
-              background: 'rgba(16,185,129,0.08)',
-              border: '1px solid rgba(16,185,129,0.2)',
+              background: 'rgba(var(--accent-rgb),0.08)',
+              border: '1px solid rgba(var(--accent-rgb),0.2)',
               marginBottom: '28px',
               alignSelf: 'flex-start',
             }}
@@ -131,8 +131,8 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
                 width: 7,
                 height: 7,
                 borderRadius: '50%',
-                background: '#10b981',
-                boxShadow: '0 0 8px rgba(16,185,129,0.7)',
+                background: 'var(--accent)',
+                boxShadow: '0 0 8px rgba(var(--accent-rgb),0.7)',
                 animation: 'prod-hero-pulse 2s ease-in-out infinite',
               }}
             />
@@ -140,7 +140,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
               style={{
                 fontSize: '12px',
                 fontWeight: 600,
-                color: '#10b981',
+                color: 'var(--accent)',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
               }}
@@ -168,9 +168,9 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
               width: '80px',
               height: '4px',
               borderRadius: '2px',
-              background: 'linear-gradient(90deg, #10b981, #06b6d4)',
+              background: 'linear-gradient(90deg, var(--accent), #06b6d4)',
               marginBottom: '24px',
-              boxShadow: '0 0 16px rgba(16,185,129,0.4)',
+              boxShadow: '0 0 16px rgba(var(--accent-rgb),0.4)',
             }}
           />
 
@@ -260,7 +260,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
               position: 'absolute',
               inset: 0,
               background:
-                'radial-gradient(circle at 50% 50%, rgba(16,185,129,0.06) 0%, transparent 60%)',
+                'radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb),0.06) 0%, transparent 60%)',
               pointerEvents: 'none',
               zIndex: 0,
             }}
@@ -287,10 +287,10 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
                 ...(c.bottom !== undefined ? { bottom: c.bottom } : {}),
                 ...(c.left !== undefined ? { left: c.left } : {}),
                 ...(c.right !== undefined ? { right: c.right } : {}),
-                ...(c.bT ? { borderTop: '2px solid rgba(16,185,129,0.3)' } : {}),
-                ...(c.bB ? { borderBottom: '2px solid rgba(16,185,129,0.3)' } : {}),
-                ...(c.bL ? { borderLeft: '2px solid rgba(16,185,129,0.3)' } : {}),
-                ...(c.bR ? { borderRight: '2px solid rgba(16,185,129,0.3)' } : {}),
+                ...(c.bT ? { borderTop: '2px solid rgba(var(--accent-rgb),0.3)' } : {}),
+                ...(c.bB ? { borderBottom: '2px solid rgba(var(--accent-rgb),0.3)' } : {}),
+                ...(c.bL ? { borderLeft: '2px solid rgba(var(--accent-rgb),0.3)' } : {}),
+                ...(c.bR ? { borderRight: '2px solid rgba(var(--accent-rgb),0.3)' } : {}),
                 borderRadius: c.br,
                 pointerEvents: 'none',
                 zIndex: 2,

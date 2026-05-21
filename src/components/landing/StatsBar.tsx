@@ -28,7 +28,6 @@ const StatsBar: React.FC = () => {
               <StaggerItem key={stat.label}>
                 <GlassCard
                   hover
-                  glow="primary"
                   sx={{
                     p: { xs: 3, md: 4 },
                     textAlign: 'center',
@@ -78,7 +77,7 @@ const StatsBar: React.FC = () => {
                       height: '100px',
                       borderRadius: '50%',
                       background: idx === 0
-                        ? 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)'
+                        ? 'radial-gradient(circle, rgba(var(--accent-rgb),0.1) 0%, transparent 70%)'
                         : idx === 1
                         ? 'radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%)'
                         : 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)',

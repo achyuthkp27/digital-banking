@@ -42,7 +42,7 @@ export default function MerchantBankingIllustration() {
           return (
             <div key={i} style={{
               width: '12px', height: '12px', borderRadius: '2px',
-              background: filled ? 'rgba(16,185,129,0.4)' : 'rgba(16,185,129,0.08)',
+              background: filled ? 'rgba(var(--accent-rgb),0.4)' : 'rgba(var(--accent-rgb),0.08)',
               animation: filled ? `merch-qr ${2 + ((i * 3) % 2)}s ease-in-out ${(i * 5) % 3}s infinite` : 'none',
             }} />
           );
@@ -55,7 +55,7 @@ export default function MerchantBankingIllustration() {
           position: 'absolute', top: '50%', left: '50%',
           transform: 'translate(-50%, -50%)',
           width: '80px', height: '80px', borderRadius: '50%',
-          border: '1px solid rgba(16,185,129,0.25)',
+          border: '1px solid rgba(var(--accent-rgb),0.25)',
           animation: `merch-wave 2.5s ease-out ${i * 0.6}s infinite`,
         }} />
       ))}
@@ -71,7 +71,7 @@ export default function MerchantBankingIllustration() {
             position: 'absolute', top: '50%', left: '50%',
             marginTop: '-8px', marginLeft: '-8px',
             animation: `merch-orbit ${8 + i * 2}s linear ${i * 2}s infinite`,
-            fontSize: '14px', fontWeight: 600, color: 'rgba(16,185,129,0.5)',
+            fontSize: '14px', fontWeight: 600, color: 'rgba(var(--accent-rgb),0.5)',
             fontFamily: 'var(--font-geist-mono), monospace',
           }}
         >
@@ -92,8 +92,8 @@ export default function MerchantBankingIllustration() {
             transition={{ duration: 0.8, delay: 1 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
             style={{
               width: '10px', borderRadius: '3px 3px 0 0',
-              background: `rgba(16,185,129,${0.2 + i * 0.08})`,
-              border: '1px solid rgba(16,185,129,0.15)',
+              background: `rgba(var(--accent-rgb),${0.2 + i * 0.08})`,
+              border: '1px solid rgba(var(--accent-rgb),0.15)',
             }}
           />
         ))}
@@ -107,11 +107,11 @@ export default function MerchantBankingIllustration() {
         style={{
           position: 'absolute', left: '10%', top: '40%',
           width: '40px', height: '26px', borderRadius: '4px',
-          border: '1.5px solid rgba(16,185,129,0.35)',
-          background: 'rgba(16,185,129,0.06)',
+          border: '1.5px solid rgba(var(--accent-rgb),0.35)',
+          background: 'rgba(var(--accent-rgb),0.06)',
         }}
       >
-        <div style={{ position: 'absolute', top: '8px', left: '6px', right: '6px', height: '3px', borderRadius: '1px', background: 'rgba(16,185,129,0.3)' }} />
+        <div style={{ position: 'absolute', top: '8px', left: '6px', right: '6px', height: '3px', borderRadius: '1px', background: 'rgba(var(--accent-rgb),0.3)' }} />
       </motion.div>
     </div>
   );

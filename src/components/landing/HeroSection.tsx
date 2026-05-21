@@ -76,7 +76,7 @@ export default function HeroSection() {
           y: bgY,
           width: '900px',
           height: '900px',
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(var(--accent-rgb), 0.06) 0%, transparent 60%)',
           pointerEvents: 'none',
           zIndex: 0,
         }}

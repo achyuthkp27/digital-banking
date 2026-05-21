@@ -20,7 +20,7 @@ interface ProductIllustrationProps {
   slug: string;
 }
 
-export default function ProductIllustration({ slug }: ProductIllustrationProps) {
+const ProductIllustration = React.memo(function ProductIllustration({ slug }: ProductIllustrationProps) {
   const IllustrationComponent = illustrations[slug];
 
   if (!IllustrationComponent) {
@@ -35,7 +35,7 @@ export default function ProductIllustration({ slug }: ProductIllustrationProps) 
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: '32px',
-          background: 'radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 60%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.08) 0%, transparent 60%)',
         }}
       >
         <div
@@ -43,7 +43,7 @@ export default function ProductIllustration({ slug }: ProductIllustrationProps) 
             width: '120px',
             height: '120px',
             borderRadius: '50%',
-            border: '2px solid rgba(16, 185, 129, 0.2)',
+            border: '2px solid rgba(var(--accent-rgb), 0.2)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -60,6 +60,12 @@ export default function ProductIllustration({ slug }: ProductIllustrationProps) 
             }}
           />
         </div>
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes fallback-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.95); opacity: 0.7; }
+          }
+        `}} />
       </div>
     );
   }
@@ -69,4 +75,6 @@ export default function ProductIllustration({ slug }: ProductIllustrationProps) 
       <IllustrationComponent />
     </div>
   );
-}
+});
+
+export default ProductIllustration;

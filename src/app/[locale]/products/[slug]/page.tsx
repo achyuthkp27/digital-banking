@@ -240,11 +240,11 @@ export default async function ProductPage({
         dangerouslySetInnerHTML={{
           __html: `
         .bento-glass {
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+          background: linear-gradient(135deg, rgba(var(--color-invert-rgb), 0.03) 0%, rgba(var(--color-invert-rgb), 0.01) 100%);
           backdrop-filter: blur(24px) saturate(120%);
           -webkit-backdrop-filter: blur(24px) saturate(120%);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(var(--color-invert-rgb), 0.05);
+          box-shadow: inset 0 1px 1px rgba(var(--color-invert-rgb), 0.1), 0 8px 32px rgba(var(--color-base-rgb), 0.2);
           position: relative;
           overflow: hidden;
         }

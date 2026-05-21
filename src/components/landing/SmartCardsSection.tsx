@@ -40,7 +40,7 @@ const cardFeatures = [
   },
 ];
 
-export default function SmartCardsSection() {
+const SmartCardsSection = React.memo(function SmartCardsSection() {
   return (
     <section
       style={{
@@ -143,6 +143,7 @@ export default function SmartCardsSection() {
       {/* 3D Content Right (Absolute to bleed off edge) */}
       <div
         className="canvas-wrapper"
+        aria-hidden="true"
         style={{
           position: 'absolute',
           right: 0,
@@ -177,4 +178,6 @@ export default function SmartCardsSection() {
       />
     </section>
   );
-}
+});
+
+export default SmartCardsSection;

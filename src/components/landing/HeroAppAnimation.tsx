@@ -96,7 +96,7 @@ export default function HeroAppAnimation() {
                     fontFamily: 'var(--font-syne)', fontSize: '20px', fontWeight: 800
                   }}>
                     <span style={{ color: 'var(--text-primary)' }}>D</span>
-                    <span style={{ color: '#10b981' }}>B</span>
+                    <span style={{ color: 'var(--accent)' }}>B</span>
                   </div>
                   
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -108,7 +108,7 @@ export default function HeroAppAnimation() {
                     </div>
                     <motion.div
                       initial={{ background: 'var(--text-primary)', color: '#000' }}
-                      animate={{ background: 'rgba(16,185,129,0.2)', color: '#10b981' }}
+                      animate={{ background: 'rgba(var(--accent-rgb),0.2)', color: 'var(--accent)' }}
                       transition={{ delay: 2, duration: 0.5 }}
                       style={{ height: '40px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-syne)', fontSize: '13px', fontWeight: 600, marginTop: '8px' }}
                     >
@@ -146,7 +146,7 @@ export default function HeroAppAnimation() {
                       igital&nbsp;
                     </motion.span>
                   </div>
-                  <div style={{ display: 'flex', color: '#10b981' }}>
+                  <div style={{ display: 'flex', color: 'var(--accent)' }}>
                     <span>B</span>
                     <motion.span 
                       initial={{ width: 0, opacity: 0 }} 
@@ -176,8 +176,8 @@ export default function HeroAppAnimation() {
                   <div style={{ height: '24px', width: '100px', background: 'rgba(var(--color-invert-rgb), 0.1)', borderRadius: '4px', marginBottom: '32px' }} />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {['Overview', 'Transactions', 'Cards', 'Analytics'].map((lbl, i) => (
-                      <div key={i} style={{ height: '36px', borderRadius: '6px', padding: '0 12px', display: 'flex', alignItems: 'center', background: i === 0 ? 'rgba(16,185,129,0.1)' : 'transparent', border: i === 0 ? '1px solid rgba(16,185,129,0.2)' : 'none' }}>
-                        <span style={{ color: i === 0 ? '#10b981' : 'rgba(var(--color-invert-rgb), 0.5)', fontFamily: 'var(--font-syne)', fontSize: '13px', fontWeight: i === 0 ? 600 : 400 }}>{lbl}</span>
+                      <div key={i} style={{ height: '36px', borderRadius: '6px', padding: '0 12px', display: 'flex', alignItems: 'center', background: i === 0 ? 'rgba(var(--accent-rgb),0.1)' : 'transparent', border: i === 0 ? '1px solid rgba(var(--accent-rgb),0.2)' : 'none' }}>
+                        <span style={{ color: i === 0 ? 'var(--accent)' : 'rgba(var(--color-invert-rgb), 0.5)', fontFamily: 'var(--font-syne)', fontSize: '13px', fontWeight: i === 0 ? 600 : 400 }}>{lbl}</span>
                       </div>
                     ))}
                   </div>
@@ -202,7 +202,7 @@ export default function HeroAppAnimation() {
                       <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + (i * 0.1) }} style={{ background: 'rgba(var(--color-invert-rgb), 0.02)', border: '1px solid rgba(var(--color-invert-rgb), 0.05)', borderRadius: '12px', padding: '16px' }}>
                         <div style={{ color: 'rgba(var(--color-invert-rgb), 0.5)', fontSize: '11px', marginBottom: '8px' }}>{s.l}</div>
                         <div style={{ fontFamily: 'var(--font-syne)', fontSize: '20px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>{s.v}</div>
-                        <div style={{ color: s.t.startsWith('+') ? '#10b981' : '#ef4444', fontSize: '11px' }}>{s.t}</div>
+                        <div style={{ color: s.t.startsWith('+') ? 'var(--accent)' : '#ef4444', fontSize: '11px' }}>{s.t}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -211,7 +211,7 @@ export default function HeroAppAnimation() {
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} style={{ flex: 1.5, background: 'rgba(var(--color-invert-rgb), 0.02)', border: '1px solid rgba(var(--color-invert-rgb), 0.05)', borderRadius: '12px', padding: '16px', display: 'flex', flexDirection: 'column' }}>
                        <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: '8px' }}>
                          {[40, 60, 30, 80, 50, 90, 70, 100].map((h, i) => (
-                           <motion.div key={i} initial={{ height: 0 }} animate={{ height: `${h}%` }} transition={{ delay: 0.5 + (i * 0.05), type: 'spring' }} style={{ flex: 1, background: 'linear-gradient(to top, #10b981, rgba(16,185,129,0.2))', borderRadius: '4px 4px 0 0' }} />
+                           <motion.div key={i} initial={{ height: 0 }} animate={{ height: `${h}%` }} transition={{ delay: 0.5 + (i * 0.05), type: 'spring' }} style={{ flex: 1, background: 'linear-gradient(to top, var(--accent), rgba(var(--accent-rgb),0.2))', borderRadius: '4px 4px 0 0' }} />
                          ))}
                        </div>
                     </motion.div>

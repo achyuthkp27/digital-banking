@@ -5,10 +5,9 @@ import { Box, BoxProps } from '@mui/material';
 
 interface GlassCardProps extends BoxProps {
   hover?: boolean;
-  glow?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
 }
 
-export default function GlassCard({ children, hover = false, glow, sx, ...props }: GlassCardProps) {
+export default function GlassCard({ children, hover = false, sx, ...props }: GlassCardProps) {
   return (
     <Box
       sx={{

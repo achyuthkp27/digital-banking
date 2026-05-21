@@ -8,7 +8,7 @@ export const products: Product[] = [
     category: 'Remote Verification',
     description: 'Advanced video-based KYC verification and remote banking services with AI-powered identity verification, live video calls with bank officials, document scanning, and secure digital onboarding for seamless customer experience.',
     icon: 'VideocamRounded',
-    color: '#10B981',
+    color: 'var(--accent)',
     externalUrl: '#',
     features: [
       { icon: 'SmartToyRounded', title: 'AI Verification', description: 'Automated identity and document verification' },
@@ -104,7 +104,7 @@ export const products: Product[] = [
     category: 'Web Platform',
     description: 'Comprehensive web-based banking portal for retail customers with advanced features including account management, fund transfers, investment tracking, loan applications, and detailed transaction history.',
     icon: 'LaptopMacRounded',
-    color: '#10B981',
+    color: 'var(--accent)',
     externalUrl: '#',
     features: [
       { icon: 'InsightsRounded', title: 'Dashboard Analytics', description: 'Visual insights into spending patterns and savings' },

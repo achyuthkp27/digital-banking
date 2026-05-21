@@ -124,8 +124,8 @@ export default function SecuritySection() {
                     cursor: 'default'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(16, 185, 129, 0.04)';
-                    e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+                    e.currentTarget.style.background = 'rgba(var(--accent-rgb), 0.04)';
+                    e.currentTarget.style.borderColor = 'rgba(var(--accent-rgb), 0.2)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.01)';
@@ -202,19 +202,19 @@ export default function SecuritySection() {
             {/* Outer Ring */}
             <div style={{
               position: 'absolute', inset: 0, borderRadius: '50%',
-              border: '1px dashed rgba(16,185,129,0.3)',
+              border: '1px dashed rgba(var(--accent-rgb),0.3)',
               animation: 'spinVault 24s linear infinite'
             }} />
             {/* Middle Ring */}
             <div style={{
               position: 'absolute', inset: '12%', borderRadius: '50%',
-              border: '1px solid rgba(16,185,129,0.1)', borderTopColor: 'rgba(16,185,129,0.6)', borderBottomColor: 'rgba(16,185,129,0.6)',
+              border: '1px solid rgba(var(--accent-rgb),0.1)', borderTopColor: 'rgba(var(--accent-rgb),0.6)', borderBottomColor: 'rgba(var(--accent-rgb),0.6)',
               animation: 'spinVaultReverse 16s linear infinite'
             }} />
             {/* Inner Ring */}
             <div style={{
               position: 'absolute', inset: '24%', borderRadius: '50%',
-              border: '2px dotted rgba(16,185,129,0.2)',
+              border: '2px dotted rgba(var(--accent-rgb),0.2)',
               animation: 'spinVault 10s linear infinite'
             }} />
             

@@ -32,8 +32,8 @@ export default function RetailAdminIllustration() {
         {/* Scan line across entire dashboard */}
         <div style={{
           position: 'absolute', left: 0, right: 0, height: '1px',
-          background: 'linear-gradient(90deg, transparent, #10b981, transparent)',
-          boxShadow: '0 0 8px rgba(16,185,129,0.4)',
+          background: 'linear-gradient(90deg, transparent, var(--accent), transparent)',
+          boxShadow: '0 0 8px rgba(var(--accent-rgb),0.4)',
           animation: 'radmin-scan 4s ease-in-out infinite',
           zIndex: 5, pointerEvents: 'none',
         }} />
@@ -41,14 +41,14 @@ export default function RetailAdminIllustration() {
         {/* Panel 1: Line chart */}
         <div style={{
           padding: '14px', borderRadius: '10px',
-          border: '1px solid rgba(16,185,129,0.15)',
-          background: 'rgba(16,185,129,0.03)',
+          border: '1px solid rgba(var(--accent-rgb),0.15)',
+          background: 'rgba(var(--accent-rgb),0.03)',
         }}>
-          <div style={{ fontSize: '6px', color: 'rgba(16,185,129,0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Revenue</div>
+          <div style={{ fontSize: '6px', color: 'rgba(var(--accent-rgb),0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Revenue</div>
           <svg width="100%" height="45" viewBox="0 0 100 45">
             <motion.path
               d="M0 40 L15 32 L30 35 L45 22 L60 25 L75 12 L90 8 L100 5"
-              fill="none" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round"
+              fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 1.5, delay: 0.5, ease: 'easeInOut' }}
@@ -59,20 +59,20 @@ export default function RetailAdminIllustration() {
         {/* Panel 2: Progress bars */}
         <div style={{
           padding: '14px', borderRadius: '10px',
-          border: '1px solid rgba(16,185,129,0.15)',
-          background: 'rgba(16,185,129,0.03)',
+          border: '1px solid rgba(var(--accent-rgb),0.15)',
+          background: 'rgba(var(--accent-rgb),0.03)',
         }}>
-          <div style={{ fontSize: '6px', color: 'rgba(16,185,129,0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Performance</div>
+          <div style={{ fontSize: '6px', color: 'rgba(var(--accent-rgb),0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Performance</div>
           {[85, 62, 94, 45].map((w, i) => (
             <div key={i} style={{ marginBottom: '6px' }}>
-              <div style={{ height: '4px', borderRadius: '2px', background: 'rgba(16,185,129,0.08)', overflow: 'hidden' }}>
+              <div style={{ height: '4px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.08)', overflow: 'hidden' }}>
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${w}%` }}
                   transition={{ duration: 0.8, delay: 0.8 + i * 0.2, ease: [0.16, 1, 0.3, 1] }}
                   style={{
                     height: '100%', borderRadius: '2px',
-                    background: `rgba(16,185,129,${0.25 + i * 0.1})`,
+                    background: `rgba(var(--accent-rgb),${0.25 + i * 0.1})`,
                   }}
                 />
               </div>
@@ -83,32 +83,32 @@ export default function RetailAdminIllustration() {
         {/* Panel 3: Donut gauge */}
         <div style={{
           padding: '14px', borderRadius: '10px',
-          border: '1px solid rgba(16,185,129,0.15)',
-          background: 'rgba(16,185,129,0.03)',
+          border: '1px solid rgba(var(--accent-rgb),0.15)',
+          background: 'rgba(var(--accent-rgb),0.03)',
           display: 'flex', flexDirection: 'column', alignItems: 'center',
         }}>
-          <div style={{ fontSize: '6px', color: 'rgba(16,185,129,0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.08em', alignSelf: 'flex-start' }}>Uptime</div>
+          <div style={{ fontSize: '6px', color: 'rgba(var(--accent-rgb),0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.08em', alignSelf: 'flex-start' }}>Uptime</div>
           <svg width="60" height="60" viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(16,185,129,0.08)" strokeWidth="5" />
+            <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(var(--accent-rgb),0.08)" strokeWidth="5" />
             <motion.circle
-              cx="30" cy="30" r="24" fill="none" stroke="#10b981" strokeWidth="5"
+              cx="30" cy="30" r="24" fill="none" stroke="var(--accent)" strokeWidth="5"
               strokeDasharray="150.8"
               initial={{ strokeDashoffset: 150.8 }}
               animate={{ strokeDashoffset: 15 }}
               transition={{ duration: 1.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
               strokeLinecap="round" transform="rotate(-90 30 30)"
             />
-            <text x="30" y="33" textAnchor="middle" fill="rgba(16,185,129,0.6)" fontSize="10" fontFamily="var(--font-geist-mono), monospace" fontWeight="600">99.9</text>
+            <text x="30" y="33" textAnchor="middle" fill="rgba(var(--accent-rgb),0.6)" fontSize="10" fontFamily="var(--font-geist-mono), monospace" fontWeight="600">99.9</text>
           </svg>
         </div>
 
         {/* Panel 4: Checklist */}
         <div style={{
           padding: '14px', borderRadius: '10px',
-          border: '1px solid rgba(16,185,129,0.15)',
-          background: 'rgba(16,185,129,0.03)',
+          border: '1px solid rgba(var(--accent-rgb),0.15)',
+          background: 'rgba(var(--accent-rgb),0.03)',
         }}>
-          <div style={{ fontSize: '6px', color: 'rgba(16,185,129,0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Tasks</div>
+          <div style={{ fontSize: '6px', color: 'rgba(var(--accent-rgb),0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Tasks</div>
           {['Compliance', 'Audit', 'Reports', 'KYC Review'].map((task, i) => (
             <motion.div
               key={task}
@@ -123,19 +123,19 @@ export default function RetailAdminIllustration() {
                 transition={{ delay: 1.5 + i * 0.3, type: 'spring' }}
                 style={{
                   width: '10px', height: '10px', borderRadius: '3px',
-                  border: '1px solid rgba(16,185,129,0.3)',
-                  background: i < 3 ? 'rgba(16,185,129,0.2)' : 'transparent',
+                  border: '1px solid rgba(var(--accent-rgb),0.3)',
+                  background: i < 3 ? 'rgba(var(--accent-rgb),0.2)' : 'transparent',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   flexShrink: 0,
                 }}
               >
                 {i < 3 && (
-                  <svg width="6" height="6" viewBox="0 0 8 8" fill="none" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round">
+                  <svg width="6" height="6" viewBox="0 0 8 8" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round">
                     <path d="M1.5 4l2 2L6.5 2" />
                   </svg>
                 )}
               </motion.div>
-              <span style={{ fontSize: '7px', color: 'rgba(16,185,129,0.4)', fontFamily: 'var(--font-geist-mono), monospace' }}>{task}</span>
+              <span style={{ fontSize: '7px', color: 'rgba(var(--accent-rgb),0.4)', fontFamily: 'var(--font-geist-mono), monospace' }}>{task}</span>
             </motion.div>
           ))}
         </div>

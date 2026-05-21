@@ -55,7 +55,7 @@ export default function ParticleMeshSection() {
             vy: 0,
             size: 1 + Math.random() * 1.5,
             color: isGreen
-              ? `rgba(16, 185, 129, ${0.3 + Math.random() * 0.5})`
+              ? `rgba(var(--accent-rgb), ${0.3 + Math.random() * 0.5})`
               : `rgba(6, 182, 212, ${0.2 + Math.random() * 0.4})`,
             alpha: 0.3 + Math.random() * 0.5,
           });
@@ -181,7 +181,7 @@ export default function ParticleMeshSection() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < connectionDist) {
             const opacity = (1 - dist / connectionDist) * 0.15;
-            ctx.strokeStyle = `rgba(16, 185, 129, ${opacity})`;
+            ctx.strokeStyle = `rgba(var(--accent-rgb), ${opacity})`;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -288,8 +288,8 @@ export default function ParticleMeshSection() {
               padding: '8px 20px',
               borderRadius: '999px',
               background:
-                'linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(6,182,212,0.05) 100%)',
-              border: '1px solid rgba(16,185,129,0.15)',
+                'linear-gradient(135deg, rgba(var(--accent-rgb),0.08) 0%, rgba(6,182,212,0.05) 100%)',
+              border: '1px solid rgba(var(--accent-rgb),0.15)',
               marginBottom: '32px',
             }}
           >
@@ -298,15 +298,15 @@ export default function ParticleMeshSection() {
                 width: '6px',
                 height: '6px',
                 borderRadius: '50%',
-                background: '#10b981',
-                boxShadow: '0 0 10px rgba(16,185,129,0.6)',
+                background: 'var(--accent)',
+                boxShadow: '0 0 10px rgba(var(--accent-rgb),0.6)',
               }}
             />
             <span
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '11px',
-                color: 'rgba(16,185,129,0.9)',
+                color: 'rgba(var(--accent-rgb),0.9)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
                 fontWeight: 500,
@@ -333,7 +333,7 @@ export default function ParticleMeshSection() {
             <br />
             <span
               style={{
-                background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
+                background: 'linear-gradient(135deg, var(--accent) 0%, #06b6d4 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
@@ -378,7 +378,7 @@ export default function ParticleMeshSection() {
                   style={{
                     fontSize: '24px',
                     fontWeight: 700,
-                    color: '#10b981',
+                    color: 'var(--accent)',
                     fontFamily: 'var(--font-geist-mono), monospace',
                     letterSpacing: '-0.02em',
                   }}

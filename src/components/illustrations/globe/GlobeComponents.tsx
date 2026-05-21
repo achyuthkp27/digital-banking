@@ -2,7 +2,7 @@ import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import {
   BufferGeometry,
-  Float32BufferAttribute,
+
   Vector3,
   Mesh,
   MeshBasicMaterial,

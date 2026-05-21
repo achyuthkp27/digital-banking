@@ -43,9 +43,9 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
               fontWeight: 700,
               letterSpacing: '2px',
               textTransform: 'uppercase',
-              background: 'rgba(16, 185, 129, 0.08)',
-              border: '1px solid rgba(16, 185, 129, 0.3)',
-              color: '#10B981',
+              background: 'rgba(var(--accent-rgb), 0.08)',
+              border: '1px solid rgba(var(--accent-rgb), 0.3)',
+              color: 'var(--accent)',
               borderRadius: '20px',
               '& .MuiChip-label': {
                 px: 1,
@@ -67,7 +67,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
           color: light ? '#F9FAFB' : '#F9FAFB',
           marginBottom: subtitle ? '16px' : '0',
           ...(gradientText && {
-            background: 'linear-gradient(135deg, #10B981 0%, #8B5CF6 100%)',
+            background: 'linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',

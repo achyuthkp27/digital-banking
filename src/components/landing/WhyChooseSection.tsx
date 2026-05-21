@@ -167,7 +167,7 @@ export default function WhyChooseSection() {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'repeating-linear-gradient(90deg, transparent 0%, rgba(16,185,129,0.2) 2%, transparent 4%)',
+              background: 'repeating-linear-gradient(90deg, transparent 0%, rgba(var(--accent-rgb),0.2) 2%, transparent 4%)',
               backgroundSize: '200% 100%',
               animation: 'matrixEnergyH 6s linear infinite',
               opacity: 0.3,
@@ -179,7 +179,7 @@ export default function WhyChooseSection() {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'repeating-linear-gradient(180deg, transparent 0%, rgba(16,185,129,0.15) 2%, transparent 4%)',
+              background: 'repeating-linear-gradient(180deg, transparent 0%, rgba(var(--accent-rgb),0.15) 2%, transparent 4%)',
               backgroundSize: '100% 200%',
               animation: 'matrixEnergyV 8s linear infinite',
               opacity: 0.25,
@@ -192,7 +192,7 @@ export default function WhyChooseSection() {
       <div style={{
         position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)',
         width: '60vw', height: '60vw', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(16,185,129,0.03) 0%, transparent 60%)',
+        background: 'radial-gradient(circle, rgba(var(--accent-rgb),0.03) 0%, transparent 60%)',
         pointerEvents: 'none', filter: 'blur(80px)'
       }} />
 

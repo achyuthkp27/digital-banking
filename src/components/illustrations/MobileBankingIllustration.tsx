@@ -21,9 +21,9 @@ export default function MobileBankingIllustration() {
 
   const txns = [
     { label: 'Amazon Pay', amount: '-₹2,450', color: 'rgba(239,68,68,0.5)' },
-    { label: 'Salary Credit', amount: '+₹85,000', color: 'rgba(16,185,129,0.6)' },
+    { label: 'Salary Credit', amount: '+₹85,000', color: 'rgba(var(--accent-rgb),0.6)' },
     { label: 'Electricity', amount: '-₹1,280', color: 'rgba(239,68,68,0.5)' },
-    { label: 'UPI Transfer', amount: '+₹5,000', color: 'rgba(16,185,129,0.6)' },
+    { label: 'UPI Transfer', amount: '+₹5,000', color: 'rgba(var(--accent-rgb),0.6)' },
   ];
 
   return (
@@ -34,8 +34,8 @@ export default function MobileBankingIllustration() {
         transition={{ duration: 0.7 }}
         style={{
           width: '150px', height: '300px', borderRadius: '24px',
-          border: '2px solid rgba(16,185,129,0.25)',
-          background: 'rgba(16,185,129,0.02)',
+          border: '2px solid rgba(var(--accent-rgb),0.25)',
+          background: 'rgba(var(--accent-rgb),0.02)',
           position: 'relative', overflow: 'hidden',
           display: 'flex', flexDirection: 'column',
         }}
@@ -43,17 +43,17 @@ export default function MobileBankingIllustration() {
         {/* Notch */}
         <div style={{
           width: '60px', height: '16px', borderRadius: '0 0 12px 12px',
-          background: 'rgba(16,185,129,0.08)',
-          border: '1px solid rgba(16,185,129,0.12)',
+          background: 'rgba(var(--accent-rgb),0.08)',
+          border: '1px solid rgba(var(--accent-rgb),0.12)',
           borderTop: 'none', margin: '0 auto',
         }} />
 
         {/* Status bar */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 14px', fontSize: '6px', color: 'rgba(16,185,129,0.4)', fontFamily: 'var(--font-geist-mono), monospace' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 14px', fontSize: '6px', color: 'rgba(var(--accent-rgb),0.4)', fontFamily: 'var(--font-geist-mono), monospace' }}>
           <span>9:41</span>
           <div style={{ display: 'flex', gap: '3px' }}>
             {[6, 8, 10, 12].map((h, i) => (
-              <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: `rgba(16,185,129,${0.2 + i * 0.1})` }} />
+              <div key={i} style={{ width: '2px', height: `${h}px`, borderRadius: '1px', background: `rgba(var(--accent-rgb),${0.2 + i * 0.1})` }} />
             ))}
           </div>
         </div>
@@ -67,12 +67,12 @@ export default function MobileBankingIllustration() {
             transition={{ delay: 0.4 }}
             style={{
               padding: '10px', borderRadius: '10px', marginBottom: '10px',
-              background: 'linear-gradient(135deg, rgba(16,185,129,0.12), rgba(6,182,212,0.08))',
-              border: '1px solid rgba(16,185,129,0.15)',
+              background: 'linear-gradient(135deg, rgba(var(--accent-rgb),0.12), rgba(6,182,212,0.08))',
+              border: '1px solid rgba(var(--accent-rgb),0.15)',
             }}
           >
-            <div style={{ fontSize: '5px', color: 'rgba(16,185,129,0.5)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Total Balance</div>
-            <div style={{ fontSize: '14px', fontWeight: 700, color: 'rgba(16,185,129,0.7)', fontFamily: 'var(--font-geist-mono), monospace' }}>₹4,82,350</div>
+            <div style={{ fontSize: '5px', color: 'rgba(var(--accent-rgb),0.5)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Total Balance</div>
+            <div style={{ fontSize: '14px', fontWeight: 700, color: 'rgba(var(--accent-rgb),0.7)', fontFamily: 'var(--font-geist-mono), monospace' }}>₹4,82,350</div>
           </motion.div>
 
           {/* Fingerprint */}
@@ -83,7 +83,7 @@ export default function MobileBankingIllustration() {
             style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}
           >
             <div style={{ animation: 'mob-fp 2s ease-in-out infinite' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(16,185,129,0.5)" strokeWidth="1">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(var(--accent-rgb),0.5)" strokeWidth="1">
                 <path d="M12 2a10 10 0 0110 10M12 6a6 6 0 016 6M12 10a2 2 0 012 2v4M8 12a4 4 0 014-4M4 12a8 8 0 018-8" strokeLinecap="round" />
               </svg>
             </div>
@@ -99,10 +99,10 @@ export default function MobileBankingIllustration() {
               style={{
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                 padding: '6px 0',
-                borderBottom: i < txns.length - 1 ? '1px solid rgba(16,185,129,0.06)' : 'none',
+                borderBottom: i < txns.length - 1 ? '1px solid rgba(var(--accent-rgb),0.06)' : 'none',
               }}
             >
-              <span style={{ fontSize: '6px', color: 'rgba(16,185,129,0.4)', fontFamily: 'var(--font-geist-mono), monospace' }}>{tx.label}</span>
+              <span style={{ fontSize: '6px', color: 'rgba(var(--accent-rgb),0.4)', fontFamily: 'var(--font-geist-mono), monospace' }}>{tx.label}</span>
               <span style={{ fontSize: '7px', fontWeight: 600, color: tx.color, fontFamily: 'var(--font-geist-mono), monospace' }}>{tx.amount}</span>
             </motion.div>
           ))}
@@ -111,14 +111,14 @@ export default function MobileBankingIllustration() {
         {/* Bottom nav */}
         <div style={{
           display: 'flex', justifyContent: 'space-around', padding: '8px 0',
-          borderTop: '1px solid rgba(16,185,129,0.1)',
+          borderTop: '1px solid rgba(var(--accent-rgb),0.1)',
         }}>
           {[0, 1, 2, 3].map(i => (
             <div key={i} style={{
               width: i === 0 ? '16px' : '12px', height: '3px',
               borderRadius: '2px',
-              background: i === 0 ? '#10b981' : 'rgba(16,185,129,0.15)',
-              boxShadow: i === 0 ? '0 0 6px rgba(16,185,129,0.4)' : 'none',
+              background: i === 0 ? 'var(--accent)' : 'rgba(var(--accent-rgb),0.15)',
+              boxShadow: i === 0 ? '0 0 6px rgba(var(--accent-rgb),0.4)' : 'none',
             }} />
           ))}
         </div>
@@ -132,12 +132,12 @@ export default function MobileBankingIllustration() {
         style={{
           position: 'absolute', top: '15%', right: '20%',
           padding: '8px 12px', borderRadius: '8px',
-          background: 'rgba(16,185,129,0.1)',
-          border: '1px solid rgba(16,185,129,0.2)',
+          background: 'rgba(var(--accent-rgb),0.1)',
+          border: '1px solid rgba(var(--accent-rgb),0.2)',
           animation: 'mob-notif 4s ease-in-out 2s infinite',
         }}
       >
-        <div style={{ fontSize: '6px', color: '#10b981', fontFamily: 'var(--font-geist-mono), monospace', fontWeight: 600 }}>
+        <div style={{ fontSize: '6px', color: 'var(--accent)', fontFamily: 'var(--font-geist-mono), monospace', fontWeight: 600 }}>
           🔔 ₹5,000 received
         </div>
       </motion.div>

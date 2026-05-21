@@ -5,6 +5,7 @@ import { useFrame } from '@react-three/fiber';
 import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { Float, RoundedBox, Environment } from '@react-three/drei';
 import { Group, DoubleSide } from 'three';
+import { useInView } from 'react-intersection-observer';
 
 function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
   return (
@@ -96,17 +97,21 @@ function CardsAssembly() {
 }
 
 export default function SmartCards3D() {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
+
   return (
-    <div style={{ width: '100%', height: '100%', minHeight: '500px', position: 'relative' }}>
-      <Canvas camera={{ position: [0, 0, 8], fov: 40 }}>
-        <React.Suspense fallback={null}>
-          <Environment preset="city" />
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[5, 10, 5]} intensity={2} color="#10b981" />
-          <directionalLight position={[-5, -10, -5]} intensity={1} color="#0ea5e9" />
-          <CardsAssembly />
-        </React.Suspense>
-      </Canvas>
+    <div ref={ref} style={{ width: '100%', height: '100%', minHeight: '500px', position: 'relative' }}>
+      {inView && (
+        <Canvas camera={{ position: [0, 0, 8], fov: 40 }}>
+          <React.Suspense fallback={null}>
+            <Environment preset="city" />
+            <ambientLight intensity={0.4} />
+            <directionalLight position={[5, 10, 5]} intensity={2} color="#10b981" />
+            <directionalLight position={[-5, -10, -5]} intensity={1} color="#0ea5e9" />
+            <CardsAssembly />
+          </React.Suspense>
+        </Canvas>
+      )}
     </div>
   );
 }

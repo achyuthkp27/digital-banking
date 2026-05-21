@@ -34,8 +34,8 @@ export default function KioskBankingIllustration() {
         <div style={{
           width: '160px', height: '240px',
           borderRadius: '16px 16px 8px 8px',
-          border: '2px solid rgba(16,185,129,0.3)',
-          background: 'rgba(16,185,129,0.03)',
+          border: '2px solid rgba(var(--accent-rgb),0.3)',
+          background: 'rgba(var(--accent-rgb),0.03)',
           position: 'relative', overflow: 'hidden',
           display: 'flex', flexDirection: 'column',
         }}>
@@ -44,8 +44,8 @@ export default function KioskBankingIllustration() {
             {[0, 1, 2].map(i => (
               <div key={i} style={{
                 width: '5px', height: '5px', borderRadius: '50%',
-                background: i === 2 ? '#10b981' : 'rgba(16,185,129,0.3)',
-                boxShadow: i === 2 ? '0 0 6px rgba(16,185,129,0.6)' : 'none',
+                background: i === 2 ? 'var(--accent)' : 'rgba(var(--accent-rgb),0.3)',
+                boxShadow: i === 2 ? '0 0 6px rgba(var(--accent-rgb),0.6)' : 'none',
                 animation: `kiosk-led 1.5s ease-in-out ${i * 0.5}s infinite`,
               }} />
             ))}
@@ -54,7 +54,7 @@ export default function KioskBankingIllustration() {
           {/* Screen area */}
           <div style={{
             margin: '0 14px', flex: 1, borderRadius: '8px',
-            border: '1px solid rgba(16,185,129,0.15)',
+            border: '1px solid rgba(var(--accent-rgb),0.15)',
             background: 'rgba(var(--color-base-rgb), 0.3)', padding: '14px',
             position: 'relative', overflow: 'hidden',
           }}>
@@ -67,7 +67,7 @@ export default function KioskBankingIllustration() {
                 transition={{ duration: 0.6, delay: 0.8 + i * 0.2 }}
                 style={{
                   height: '3px', borderRadius: '2px', marginBottom: '8px',
-                  background: `rgba(16,185,129,${0.3 - i * 0.04})`,
+                  background: `rgba(var(--accent-rgb),${0.3 - i * 0.04})`,
                 }}
               />
             ))}
@@ -76,7 +76,7 @@ export default function KioskBankingIllustration() {
             <div style={{
               position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)',
               width: '20px', height: '20px', borderRadius: '50%',
-              border: '1px solid rgba(16,185,129,0.4)',
+              border: '1px solid rgba(var(--accent-rgb),0.4)',
               animation: 'kiosk-ripple 2s ease-out infinite',
             }} />
           </div>
@@ -84,8 +84,8 @@ export default function KioskBankingIllustration() {
           {/* Card slot */}
           <div style={{
             margin: '14px', height: '8px', borderRadius: '4px',
-            border: '1px solid rgba(16,185,129,0.2)',
-            background: 'rgba(16,185,129,0.05)',
+            border: '1px solid rgba(var(--accent-rgb),0.2)',
+            background: 'rgba(var(--accent-rgb),0.05)',
             position: 'relative', overflow: 'hidden',
           }}>
             <motion.div
@@ -94,7 +94,7 @@ export default function KioskBankingIllustration() {
               transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
               style={{
                 width: '20px', height: '100%', borderRadius: '2px',
-                background: 'rgba(16,185,129,0.4)',
+                background: 'rgba(var(--accent-rgb),0.4)',
               }}
             />
           </div>
@@ -104,8 +104,8 @@ export default function KioskBankingIllustration() {
         <div style={{
           width: '80px', height: '12px', margin: '0 auto',
           borderRadius: '0 0 8px 8px',
-          background: 'rgba(16,185,129,0.15)',
-          border: '1px solid rgba(16,185,129,0.2)',
+          background: 'rgba(var(--accent-rgb),0.15)',
+          border: '1px solid rgba(var(--accent-rgb),0.2)',
           borderTop: 'none',
         }} />
 
@@ -113,7 +113,7 @@ export default function KioskBankingIllustration() {
         {[0, 1, 2].map(i => (
           <div key={i} style={{
             position: 'absolute', bottom: '30px', left: `${30 + i * 20}%`,
-            width: '4px', height: '4px', borderRadius: '50%', background: '#10b981',
+            width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)',
             animation: `kiosk-flow 2s ease-in-out ${i * 0.4}s infinite`,
           }} />
         ))}

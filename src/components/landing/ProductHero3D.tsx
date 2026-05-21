@@ -6,6 +6,7 @@ import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import { Mesh } from 'three';
 import { Link } from '@/i18n/routing';
+import { useInView } from 'react-intersection-observer';
 
 /* ─── 3D Refractive Knot (contained in right panel) ─── */
 function RefractiveKnot() {
@@ -53,8 +54,11 @@ interface ProductHero3DProps {
 }
 
 export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
+
   return (
     <section
+      ref={ref}
       style={{
         position: 'relative',
         minHeight: '100vh',
@@ -75,7 +79,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, transparent 70%)',
           pointerEvents: 'none',
           filter: 'blur(80px)',
         }}
@@ -99,7 +103,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.04) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
           zIndex: 1,
@@ -172,8 +176,8 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               gap: '10px',
               padding: '8px 18px',
               borderRadius: '9999px',
-              background: 'rgba(16, 185, 129, 0.08)',
-              border: '1px solid rgba(16, 185, 129, 0.2)',
+              background: 'rgba(var(--accent-rgb), 0.08)',
+              border: '1px solid rgba(var(--accent-rgb), 0.2)',
               marginBottom: '28px',
               alignSelf: 'flex-start',
             }}
@@ -183,8 +187,8 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
                 width: 7,
                 height: 7,
                 borderRadius: '50%',
-                background: '#10b981',
-                boxShadow: '0 0 8px rgba(16, 185, 129, 0.7)',
+                background: 'var(--accent)',
+                boxShadow: '0 0 8px rgba(var(--accent-rgb), 0.7)',
                 animation: 'hero3d-pulse 2s ease-in-out infinite',
               }}
             />
@@ -192,7 +196,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               style={{
                 fontSize: '12px',
                 fontWeight: 600,
-                color: '#10b981',
+                color: 'var(--accent)',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
               }}
@@ -222,9 +226,9 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               width: '80px',
               height: '4px',
               borderRadius: '2px',
-              background: 'linear-gradient(90deg, #10b981, #06b6d4)',
+              background: 'linear-gradient(90deg, var(--accent), #06b6d4)',
               marginBottom: '24px',
-              boxShadow: '0 0 16px rgba(16, 185, 129, 0.4)',
+              boxShadow: '0 0 16px rgba(var(--accent-rgb), 0.4)',
             }}
           />
 
@@ -287,7 +291,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
                 fontSize: '15px',
                 fontWeight: 500,
                 textDecoration: 'none',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
+                border: '1px solid rgba(var(--color-invert-rgb), 0.12)',
                 transition: 'border-color 0.25s ease, background 0.25s ease',
                 cursor: 'pointer',
               }}
@@ -306,8 +310,8 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             minWidth: '300px',
             borderRadius: '32px',
             overflow: 'hidden',
-            border: '1px solid rgba(255, 255, 255, 0.06)',
-            background: 'rgba(255, 255, 255, 0.015)',
+            border: '1px solid rgba(var(--color-invert-rgb), 0.06)',
+            background: 'rgba(var(--color-invert-rgb), 0.015)',
           }}
         >
           {/* Inner glow */}
@@ -316,23 +320,25 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               position: 'absolute',
               inset: 0,
               background:
-                'radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 60%)',
+                'radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.06) 0%, transparent 60%)',
               pointerEvents: 'none',
               zIndex: 0,
             }}
           />
 
-          <Canvas
-            camera={{ position: [0, 0, 7], fov: 40 }}
-            style={{ position: 'relative', zIndex: 1 }}
-          >
-            <React.Suspense fallback={null}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[10, 10, 5]} intensity={1} />
-              <RefractiveKnot />
-              <Environment preset="city" />
-            </React.Suspense>
-          </Canvas>
+          {inView && (
+            <Canvas
+              camera={{ position: [0, 0, 7], fov: 40 }}
+              style={{ position: 'relative', zIndex: 1 }}
+            >
+              <React.Suspense fallback={null}>
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[10, 10, 5]} intensity={1} />
+                <RefractiveKnot />
+                <Environment preset="city" />
+              </React.Suspense>
+            </Canvas>
+          )}
 
           {/* Corner accents */}
           <div
@@ -342,8 +348,8 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               left: '16px',
               width: '24px',
               height: '24px',
-              borderTop: '2px solid rgba(16, 185, 129, 0.3)',
-              borderLeft: '2px solid rgba(16, 185, 129, 0.3)',
+              borderTop: '2px solid rgba(var(--accent-rgb), 0.3)',
+              borderLeft: '2px solid rgba(var(--accent-rgb), 0.3)',
               borderRadius: '4px 0 0 0',
               pointerEvents: 'none',
               zIndex: 2,
@@ -356,8 +362,8 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               right: '16px',
               width: '24px',
               height: '24px',
-              borderTop: '2px solid rgba(16, 185, 129, 0.3)',
-              borderRight: '2px solid rgba(16, 185, 129, 0.3)',
+              borderTop: '2px solid rgba(var(--accent-rgb), 0.3)',
+              borderRight: '2px solid rgba(var(--accent-rgb), 0.3)',
               borderRadius: '0 4px 0 0',
               pointerEvents: 'none',
               zIndex: 2,
@@ -370,8 +376,8 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               left: '16px',
               width: '24px',
               height: '24px',
-              borderBottom: '2px solid rgba(16, 185, 129, 0.3)',
-              borderLeft: '2px solid rgba(16, 185, 129, 0.3)',
+              borderBottom: '2px solid rgba(var(--accent-rgb), 0.3)',
+              borderLeft: '2px solid rgba(var(--accent-rgb), 0.3)',
               borderRadius: '0 0 0 4px',
               pointerEvents: 'none',
               zIndex: 2,
@@ -384,8 +390,8 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
               right: '16px',
               width: '24px',
               height: '24px',
-              borderBottom: '2px solid rgba(16, 185, 129, 0.3)',
-              borderRight: '2px solid rgba(16, 185, 129, 0.3)',
+              borderBottom: '2px solid rgba(var(--accent-rgb), 0.3)',
+              borderRight: '2px solid rgba(var(--accent-rgb), 0.3)',
               borderRadius: '0 0 4px 0',
               pointerEvents: 'none',
               zIndex: 2,

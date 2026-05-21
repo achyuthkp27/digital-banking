@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useTheme } from 'next-themes';
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -15,7 +15,7 @@ export function ThemeToggle() {
     return <div style={{ width: 32, height: 32 }} />;
   }
 
-  const isDark = theme === 'dark';
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <button
