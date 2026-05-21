@@ -178,35 +178,32 @@ function GlobeGrid({ radius }: { radius: number }) {
 // Glowing city points
 // -------------------------------------------------------------------
 function CityNodes({ radius }: { radius: number }) {
-  const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const tempMatrix = useMemo(() => new THREE.Matrix4(), []);
+  const tempVector = useMemo(() => new THREE.Vector3(), []);
+  const tempScale = useMemo(() => new THREE.Vector3(), []);
+
+  const positions = useMemo(() => {
+    return cities.map(city => latLngToVec3(city[0], city[1], radius));
+  }, [radius]);
 
   useFrame((state) => {
-    meshRefs.current.forEach((mesh, i) => {
-      if (mesh) {
-        const s = 1 + Math.sin(state.clock.elapsedTime * 2 + i) * 0.3;
-        mesh.scale.setScalar(s);
-      }
+    if (!meshRef.current) return;
+    positions.forEach((pos, i) => {
+      const s = 1 + Math.sin(state.clock.elapsedTime * 2 + i) * 0.3;
+      tempVector.copy(pos);
+      tempScale.setScalar(s);
+      tempMatrix.compose(tempVector, new THREE.Quaternion(), tempScale);
+      meshRef.current!.setMatrixAt(i, tempMatrix);
     });
+    meshRef.current.instanceMatrix.needsUpdate = true;
   });
 
   return (
-    <group>
-      {cities.map((city, i) => {
-        const pos = latLngToVec3(city[0], city[1], radius);
-        return (
-          <mesh
-            key={i}
-            ref={(el) => {
-              meshRefs.current[i] = el;
-            }}
-            position={pos}
-          >
-            <sphereGeometry args={[0.04, 8, 8]} />
-            <meshBasicMaterial color="#10b981" transparent opacity={0.9} />
-          </mesh>
-        );
-      })}
-    </group>
+    <instancedMesh ref={meshRef} args={[undefined, undefined, cities.length]}>
+      <sphereGeometry args={[0.04, 8, 8]} />
+      <meshBasicMaterial color="#10b981" transparent opacity={0.9} />
+    </instancedMesh>
   );
 }
 

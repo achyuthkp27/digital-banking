@@ -9,16 +9,12 @@
     "lint": "eslint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "prepare": "husky install"
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@fontsource/inter": "^5.2.8",
-    "@fontsource/syne": "^5.2.7",
-    "@gsap/react": "^2.1.2",
     "@mui/icons-material": "^9.0.1",
     "@mui/material": "^9.0.1",
     "@mui/material-nextjs": "^9.0.1",
@@ -27,9 +23,7 @@
     "@types/three": "^0.184.1",
     "framer-motion": "^12.40.0",
     "geist": "^1.7.1",
-    "gsap": "^3.15.0",
     "maath": "^0.10.8",
-    "motion": "^12.39.0",
     "next": "16.2.6",
     "next-intl": "^4.12.0",
     "next-themes": "^0.4.6",
@@ -48,10 +42,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
-    "husky": "^8.0.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
-    "lint-staged": "^17.0.5",
     "prettier": "^3.8.3",
     "ts-jest": "^29.4.10",
     "typescript": "^5"

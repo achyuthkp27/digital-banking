@@ -11,10 +11,12 @@ interface AdaptiveCanvasProps extends Omit<CanvasProps, 'children'> {
   fallback?: React.ReactNode;
 }
 
+import { PerformanceMonitor } from '@react-three/drei';
+
 export function AdaptiveCanvas({ children, fallback, ...props }: AdaptiveCanvasProps) {
   const { isLowEndDevice } = useDeviceCapabilities();
+  const [dpr, setDpr] = React.useState(1.5);
 
-  // The default sleek fallback if the user hasn't provided one
   const defaultFallback = (
     <div
       style={{
@@ -23,28 +25,19 @@ export function AdaptiveCanvas({ children, fallback, ...props }: AdaptiveCanvasP
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background:
-          'radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%)',
+        background: 'radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       <motion.div
-        animate={{
-          scale: [1, 1.05, 1],
-          opacity: [0.5, 0.8, 0.5],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
+        animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         style={{
           width: '60%',
           height: '60%',
           borderRadius: '50%',
-          background:
-            'radial-gradient(circle at center, rgba(16, 185, 129, 0.2) 0%, transparent 60%)',
+          background: 'radial-gradient(circle at center, rgba(16, 185, 129, 0.2) 0%, transparent 60%)',
           filter: 'blur(40px)',
         }}
       />
@@ -59,7 +52,11 @@ export function AdaptiveCanvas({ children, fallback, ...props }: AdaptiveCanvasP
 
   return (
     <ErrorBoundary fallback={fallbackUI}>
-      <Canvas {...props}>{children}</Canvas>
+      <Canvas dpr={dpr} {...props}>
+        <PerformanceMonitor onDecline={() => setDpr(0.75)} onIncline={() => setDpr(1.5)}>
+          {children}
+        </PerformanceMonitor>
+      </Canvas>
     </ErrorBoundary>
   );
 }

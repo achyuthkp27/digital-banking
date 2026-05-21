@@ -1,13 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { motion, useInView, useMotionValue, animate } from 'framer-motion';
 
 /* ─── keyframes ─── */
 const KEYFRAMES_ID = 'matrix-why-section-keyframes';
@@ -44,42 +38,48 @@ const stats = [
   { id: '06', value: 98.7, suffix: '%', label: 'AI Fraud Detection Accuracy', format: (v: number) => v.toFixed(1) },
 ];
 
+function AnimatedStatNumber({ stat }: { stat: typeof stats[0] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-10%' });
+  const startValue = stat.value > 50 ? 0 : (stat.value > 5 ? 0 : 99.0);
+  const motionValue = useMotionValue(startValue);
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(motionValue, stat.value, {
+        duration: 2,
+        ease: 'easeOut',
+      });
+      return controls.stop;
+    }
+  }, [isInView, motionValue, stat.value]);
+
+  useEffect(() => {
+    return motionValue.on('change', (latest) => {
+      if (ref.current) {
+        ref.current.textContent = `${stat.prefix || ''}${stat.format(latest)}${stat.suffix || ''}`;
+      }
+    });
+  }, [motionValue, stat]);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        fontFamily: 'var(--font-syne), sans-serif', fontSize: 'clamp(36px, 4vw, 52px)',
+        fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: 1
+      }}
+    >
+      0
+    </div>
+  );
+}
+
 export default function WhyChooseSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const numberRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     injectKeyframes();
-
-    if (!sectionRef.current) return;
-
-    numberRefs.current.forEach((el, index) => {
-      if (!el) return;
-      const stat = stats[index];
-      const startValue = stat.value > 50 ? 0 : (stat.value > 5 ? 0 : 99.0);
-      
-      gsap.fromTo(
-        el,
-        { innerHTML: startValue },
-        {
-          innerHTML: stat.value,
-          duration: 2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-          },
-          onUpdate: function () {
-            const val = Number(this.targets()[0].innerHTML);
-            this.targets()[0].innerHTML = `${stat.prefix || ''}${stat.format(val)}${stat.suffix || ''}`;
-          },
-        }
-      );
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
   }, []);
 
   const horizontalLines = Array.from({ length: 20 }, (_, i) => i);
@@ -268,15 +268,7 @@ export default function WhyChooseSection() {
                 {stat.id}
               </div>
               
-              <div
-                ref={el => { numberRefs.current[i] = el; }}
-                style={{
-                  fontFamily: 'var(--font-syne), sans-serif', fontSize: 'clamp(36px, 4vw, 52px)',
-                  fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em', lineHeight: 1
-                }}
-              >
-                0
-              </div>
+              <AnimatedStatNumber stat={stat} />
 
               <div style={{
                 fontSize: '15px', color: 'var(--text-secondary)', fontWeight: 500, letterSpacing: '-0.01em'

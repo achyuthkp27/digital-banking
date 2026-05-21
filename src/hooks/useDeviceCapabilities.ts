@@ -34,8 +34,8 @@ export function useDeviceCapabilities(): DeviceCapabilities {
       navigator.userAgent
     );
 
-    // Consider low end if CPU cores < 4 OR memory < 4GB OR on mobile (to save battery)
-    const isLowEndDevice = hardwareConcurrency < 4 || deviceMemory < 4 || isMobile || saveData;
+    // Consider low end only if severely restricted (e.g., <2 cores or <2GB RAM) or explicitly in save-data mode
+    const isLowEndDevice = hardwareConcurrency < 2 || deviceMemory < 2 || saveData;
 
     setCapabilities({
       isLowEndDevice,
