@@ -221,7 +221,10 @@ export default function ProductShowcase() {
   const targetRef = useRef<HTMLDivElement>(null);
   const [isHorizontal, setIsHorizontal] = useState(true);
 
-  const { scrollYProgress } = useScroll({ target: targetRef });
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ['start start', 'end end'],
+  });
 
   // Map vertical scroll progress (0 to 1) to horizontal translation
   const x = useTransform(
@@ -415,6 +418,7 @@ export default function ProductShowcase() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
+            style={{ height: '100%' }}
           >
             {/* Sticky container that locks to the viewport */}
             <div
