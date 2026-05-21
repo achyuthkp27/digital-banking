@@ -43,3 +43,4 @@ claude_report.txt
 direct_output.txt
 generate_raw.py
 user_inputs_temp.txt
+.husky
