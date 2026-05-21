@@ -116,10 +116,12 @@ export default function TechShowcase3D() {
             }}
           />
           <Canvas camera={{ position: [0, 0, 7], fov: 40 }}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <RefractiveKnot />
-            <Environment preset="city" />
+            <React.Suspense fallback={null}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[10, 10, 5]} intensity={1} />
+              <RefractiveKnot />
+              <Environment preset="city" />
+            </React.Suspense>
           </Canvas>
 
           {/* Corner accents */}

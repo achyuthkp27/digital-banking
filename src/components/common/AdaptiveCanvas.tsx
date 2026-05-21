@@ -11,7 +11,7 @@ interface AdaptiveCanvasProps extends Omit<CanvasProps, 'children'> {
   fallback?: React.ReactNode;
 }
 
-import { PerformanceMonitor } from '@react-three/drei';
+
 
 export function AdaptiveCanvas({ children, fallback, ...props }: AdaptiveCanvasProps) {
   const { isLowEndDevice } = useDeviceCapabilities();
@@ -53,9 +53,7 @@ export function AdaptiveCanvas({ children, fallback, ...props }: AdaptiveCanvasP
   return (
     <ErrorBoundary fallback={fallbackUI}>
       <Canvas dpr={dpr} {...props}>
-        <PerformanceMonitor onDecline={() => setDpr(0.75)} onIncline={() => setDpr(1.5)}>
-          {children}
-        </PerformanceMonitor>
+        {children}
       </Canvas>
     </ErrorBoundary>
   );
