@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
+  // Set basePath and assetPrefix to the repo name on GitHub Pages in production
+  basePath: isProd ? '/digital-banking' : '',
+  assetPrefix: isProd ? '/digital-banking/' : '',
+  images: {
+    unoptimized: true, // Required for static export
+  },
 };
 
 export default nextConfig;
