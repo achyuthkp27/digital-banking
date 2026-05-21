@@ -1,113 +1,245 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
-import { OrthographicCamera, Float, Text, Billboard, RoundedBox } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Premium dark glass material for servers (Brightened slightly)
-const serverMaterial = new THREE.MeshPhysicalMaterial({
-  color: '#1e293b', // Lighter slate so it's visible
-  metalness: 0.7,
-  roughness: 0.2,
-  transparent: true,
-  opacity: 0.9,
-  transmission: 0.4,
-  ior: 1.5,
-  thickness: 2,
-});
-
-// Glowing materials
-const accentMaterial = new THREE.MeshBasicMaterial({
-  color: '#10b981',
-  transparent: true,
-  opacity: 0.7,
-});
-const cyanMaterial = new THREE.MeshBasicMaterial({
-  color: '#06b6d4',
-  transparent: true,
-  opacity: 0.7,
-});
-
-function CentralDatabase() {
-  return (
-    <group position={[0, 1.5, 0]}>
-      <mesh material={serverMaterial} position={[0, -1, 0]}>
-        <cylinderGeometry args={[2.5, 2.5, 1, 32]} />
-      </mesh>
-      <mesh material={accentMaterial} position={[0, -0.45, 0]}>
-        <cylinderGeometry args={[2.55, 2.55, 0.1, 32]} />
-      </mesh>
-      <mesh material={serverMaterial} position={[0, 0, 0]}>
-        <cylinderGeometry args={[2.5, 2.5, 0.8, 32]} />
-      </mesh>
-      <mesh material={cyanMaterial} position={[0, 0.45, 0]}>
-        <cylinderGeometry args={[2.55, 2.55, 0.1, 32]} />
-      </mesh>
-      <mesh material={serverMaterial} position={[0, 1, 0]}>
-        <cylinderGeometry args={[2.5, 2.5, 1, 32]} />
-      </mesh>
-    </group>
+// -------------------------------------------------------------------
+// Convert lat/lng (degrees) to 3D position on a sphere
+// -------------------------------------------------------------------
+function latLngToVec3(lat: number, lng: number, radius: number): THREE.Vector3 {
+  const phi = (90 - lat) * (Math.PI / 180);
+  const theta = (lng + 180) * (Math.PI / 180);
+  return new THREE.Vector3(
+    -(radius * Math.sin(phi) * Math.cos(theta)),
+    radius * Math.cos(phi),
+    radius * Math.sin(phi) * Math.sin(theta)
   );
 }
 
-function ServerRack({
-  position,
-  color,
-}: {
-  position: [number, number, number];
-  color: 'emerald' | 'cyan';
-}) {
-  const glowMat = color === 'emerald' ? accentMaterial : cyanMaterial;
-  const hoverGroup = useRef<THREE.Group>(null);
+// -------------------------------------------------------------------
+// Major financial city coordinates
+// -------------------------------------------------------------------
+const cities: [number, number][] = [
+  [40.71, -74.01], // New York
+  [51.51, -0.13], // London
+  [35.68, 139.69], // Tokyo
+  [22.32, 114.17], // Hong Kong
+  [1.35, 103.82], // Singapore
+  [48.86, 2.35], // Paris
+  [19.08, 72.88], // Mumbai
+  [37.57, 126.98], // Seoul
+  [-33.87, 151.21], // Sydney
+  [55.76, 37.62], // Moscow
+  [25.2, 55.27], // Dubai
+  [-23.55, -46.63], // São Paulo
+  [47.37, 8.54], // Zurich
+  [35.69, 51.39], // Tehran
+  [31.23, 121.47], // Shanghai
+];
 
-  useFrame((state) => {
-    if (hoverGroup.current) {
-      hoverGroup.current.position.y = Math.sin(state.clock.elapsedTime * 2 + position[0]) * 0.15;
+// Connection pairs (indices into cities array)
+const connections: [number, number][] = [
+  [0, 1],
+  [0, 5],
+  [1, 2],
+  [1, 9],
+  [2, 3],
+  [3, 4],
+  [4, 6],
+  [5, 12],
+  [6, 14],
+  [7, 2],
+  [8, 3],
+  [10, 6],
+  [11, 0],
+  [13, 10],
+  [14, 7],
+];
+
+// -------------------------------------------------------------------
+// Geographically accurate dotted world map
+// -------------------------------------------------------------------
+function GlobeDots({ radius }: { radius: number }) {
+  const [dotsGeometry, setDotsGeometry] = React.useState<THREE.BufferGeometry | null>(null);
+
+  React.useEffect(() => {
+    const img = new Image();
+    img.src = '/earth-map.jpg'; // Load local specular map (land is dark, water is bright)
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const w = 512;
+      const h = 256;
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      ctx.drawImage(img, 0, 0, w, h);
+      const imgData = ctx.getImageData(0, 0, w, h).data;
+
+      const positions: number[] = [];
+      const numPoints = 40000; // Generate dense uniform points
+      const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
+
+      for (let i = 0; i < numPoints; i++) {
+        const y = 1 - (i / (numPoints - 1)) * 2; // y goes from 1 to -1
+        const r = Math.sqrt(1 - y * y);
+        const theta = phi * i;
+
+        const x = Math.cos(theta) * r;
+        const z = Math.sin(theta) * r;
+
+        // Convert to spherical coords
+        const latitude = Math.asin(y); // -PI/2 to PI/2
+        const longitude = Math.atan2(z, x); // -PI to PI
+
+        // Map to image pixel
+        const px = Math.floor(((longitude + Math.PI) / (2 * Math.PI)) * w);
+        const py = Math.floor(((-latitude + Math.PI / 2) / Math.PI) * h);
+
+        // Clamp bounds
+        const safePx = Math.max(0, Math.min(w - 1, px));
+        const safePy = Math.max(0, Math.min(h - 1, py));
+
+        const idx = (safePy * w + safePx) * 4;
+
+        // In this specular map, land is dark (low red channel value)
+        if (imgData[idx] < 50) {
+          positions.push(x * radius, y * radius, z * radius);
+        }
+      }
+
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+      setDotsGeometry(geo);
+    };
+  }, [radius]);
+
+  if (!dotsGeometry) return null;
+
+  return (
+    <points geometry={dotsGeometry}>
+      <pointsMaterial
+        color="#10b981"
+        size={0.03}
+        transparent
+        opacity={0.5}
+        sizeAttenuation
+        depthWrite={false}
+      />
+    </points>
+  );
+}
+
+// -------------------------------------------------------------------
+// Wireframe latitude / longitude lines
+// -------------------------------------------------------------------
+function GlobeGrid({ radius }: { radius: number }) {
+  const lines = useMemo(() => {
+    const result: THREE.Vector3[][] = [];
+    // Latitudes
+    for (let lat = -60; lat <= 60; lat += 30) {
+      const points: THREE.Vector3[] = [];
+      for (let lng = 0; lng <= 360; lng += 5) {
+        points.push(latLngToVec3(lat, lng, radius));
+      }
+      result.push(points);
     }
-  });
-
-  return (
-    <group position={position}>
-      <mesh material={serverMaterial} position={[0, 0.2, 0]}>
-        <boxGeometry args={[3, 0.4, 3]} />
-      </mesh>
-      <mesh material={serverMaterial} position={[0, 3, 0]}>
-        <boxGeometry args={[2.2, 5, 2.2]} />
-      </mesh>
-      <group ref={hoverGroup} position={[0, 6, 0]}>
-        <mesh material={glowMat} position={[0, 0.2, 0]}>
-          <boxGeometry args={[1.8, 0.1, 1.8]} />
-        </mesh>
-        <mesh material={serverMaterial} position={[0, 0.6, 0]}>
-          <boxGeometry args={[2.2, 0.5, 2.2]} />
-        </mesh>
-      </group>
-    </group>
-  );
-}
-
-function CircuitLines() {
-  const paths = [
-    [new THREE.Vector3(7, 0, 7), new THREE.Vector3(7, 0, 3), new THREE.Vector3(3, 0, 3)],
-    [new THREE.Vector3(-7, 0, 7), new THREE.Vector3(-7, 0, 3), new THREE.Vector3(-3, 0, 3)],
-    [new THREE.Vector3(7, 0, -7), new THREE.Vector3(7, 0, -3), new THREE.Vector3(3, 0, -3)],
-    [new THREE.Vector3(-7, 0, -7), new THREE.Vector3(-7, 0, -3), new THREE.Vector3(-3, 0, -3)],
-  ];
+    // Longitudes
+    for (let lng = 0; lng < 360; lng += 30) {
+      const points: THREE.Vector3[] = [];
+      for (let lat = -90; lat <= 90; lat += 5) {
+        points.push(latLngToVec3(lat, lng, radius));
+      }
+      result.push(points);
+    }
+    return result;
+  }, [radius]);
 
   return (
     <group>
-      {paths.map((points, i) => {
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      {lines.map((points, i) => {
+        const geo = new THREE.BufferGeometry().setFromPoints(points);
+        return (
+          // @ts-ignore - line element
+          <line key={i} geometry={geo}>
+            <lineBasicMaterial color="#10b981" transparent opacity={0.06} linewidth={1} />
+          </line>
+        );
+      })}
+    </group>
+  );
+}
+
+// -------------------------------------------------------------------
+// Glowing city points
+// -------------------------------------------------------------------
+function CityNodes({ radius }: { radius: number }) {
+  const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
+
+  useFrame((state) => {
+    meshRefs.current.forEach((mesh, i) => {
+      if (mesh) {
+        const s = 1 + Math.sin(state.clock.elapsedTime * 2 + i) * 0.3;
+        mesh.scale.setScalar(s);
+      }
+    });
+  });
+
+  return (
+    <group>
+      {cities.map((city, i) => {
+        const pos = latLngToVec3(city[0], city[1], radius);
+        return (
+          <mesh
+            key={i}
+            ref={(el) => {
+              meshRefs.current[i] = el;
+            }}
+            position={pos}
+          >
+            <sphereGeometry args={[0.04, 8, 8]} />
+            <meshBasicMaterial color="#10b981" transparent opacity={0.9} />
+          </mesh>
+        );
+      })}
+    </group>
+  );
+}
+
+// -------------------------------------------------------------------
+// Animated connection arcs between cities
+// -------------------------------------------------------------------
+function ConnectionArcs({ radius }: { radius: number }) {
+  const arcs = useMemo(() => {
+    return connections.map(([fromIdx, toIdx]) => {
+      const from = latLngToVec3(cities[fromIdx][0], cities[fromIdx][1], radius);
+      const to = latLngToVec3(cities[toIdx][0], cities[toIdx][1], radius);
+
+      // Create a curved arc by raising midpoint above the surface
+      const mid = new THREE.Vector3().addVectors(from, to).multiplyScalar(0.5);
+      const dist = from.distanceTo(to);
+      mid.normalize().multiplyScalar(radius + dist * 0.25);
+
+      const curve = new THREE.QuadraticBezierCurve3(from, mid, to);
+      return curve.getPoints(40);
+    });
+  }, [radius]);
+
+  return (
+    <group>
+      {arcs.map((points, i) => {
+        const geo = new THREE.BufferGeometry().setFromPoints(points);
         return (
           // @ts-ignore
-          <line key={i} geometry={geometry}>
+          <line key={i} geometry={geo}>
             <lineBasicMaterial
               color={i % 2 === 0 ? '#10b981' : '#06b6d4'}
               transparent
-              opacity={0.3}
-              linewidth={2}
+              opacity={0.25}
+              linewidth={1}
             />
           </line>
         );
@@ -116,57 +248,57 @@ function CircuitLines() {
   );
 }
 
-function DataPackets() {
-  const [packets] = React.useState<any[]>(() =>
-    Array.from({ length: 12 }).map((_, i) => ({
-      progress: Math.random(),
+// -------------------------------------------------------------------
+// Animated data packets traveling along arcs
+// -------------------------------------------------------------------
+function DataPackets({ radius }: { radius: number }) {
+  const packetData = useMemo(() => {
+    return connections.map(([fromIdx, toIdx], i) => {
+      const from = latLngToVec3(cities[fromIdx][0], cities[fromIdx][1], radius);
+      const to = latLngToVec3(cities[toIdx][0], cities[toIdx][1], radius);
+      const mid = new THREE.Vector3().addVectors(from, to).multiplyScalar(0.5);
+      const dist = from.distanceTo(to);
+      mid.normalize().multiplyScalar(radius + dist * 0.25);
+      return {
+        curve: new THREE.QuadraticBezierCurve3(from, mid, to),
+        speed: 0.15 + Math.random() * 0.2,
+        offset: Math.random(),
+      };
+    });
+  }, [radius]);
 
-      speed: 0.008 + Math.random() * 0.015,
-      pathIndex: i % 4,
-      meshRef: React.createRef<THREE.Mesh>(),
-    }))
-  );
+  const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
 
-  useFrame(() => {
-    if (packets.length === 0) return;
-    const paths = [
-      [new THREE.Vector3(7, 0, 7), new THREE.Vector3(7, 0, 3), new THREE.Vector3(3, 0, 3)],
-      [new THREE.Vector3(-7, 0, 7), new THREE.Vector3(-7, 0, 3), new THREE.Vector3(-3, 0, 3)],
-      [new THREE.Vector3(7, 0, -7), new THREE.Vector3(7, 0, -3), new THREE.Vector3(3, 0, -3)],
-      [new THREE.Vector3(-7, 0, -7), new THREE.Vector3(-7, 0, -3), new THREE.Vector3(-3, 0, -3)],
-    ];
-
-    packets.forEach((p) => {
-      p.progress += p.speed;
-      if (p.progress > 1) p.progress = 0;
-
-      if (p.meshRef.current) {
-        const path = paths[p.pathIndex];
-        let pos;
-        if (p.progress < 0.5) {
-          const t = p.progress * 2;
-          pos = new THREE.Vector3().lerpVectors(path[0], path[1], t);
-        } else {
-          const t = (p.progress - 0.5) * 2;
-          pos = new THREE.Vector3().lerpVectors(path[1], path[2], t);
-        }
-        p.meshRef.current.position.copy(pos);
-        const opacity = Math.sin(p.progress * Math.PI);
-        (p.meshRef.current.material as THREE.MeshBasicMaterial).opacity = opacity;
+  useFrame((state) => {
+    packetData.forEach((p, i) => {
+      const mesh = meshRefs.current[i];
+      if (mesh) {
+        const t = (state.clock.elapsedTime * p.speed + p.offset) % 1;
+        const pos = p.curve.getPointAt(t);
+        mesh.position.copy(pos);
+        // Pulse opacity
+        const opacity = Math.sin(t * Math.PI);
+        (mesh.material as THREE.MeshBasicMaterial).opacity = opacity * 0.9;
       }
     });
   });
 
   return (
     <group>
-      {packets.map((p, i) => (
-        <mesh key={i} ref={p.meshRef}>
-          <boxGeometry args={[0.5, 0.5, 0.5]} />
+      {packetData.map((p, i) => (
+        <mesh
+          key={i}
+          ref={(el) => {
+            meshRefs.current[i] = el;
+          }}
+        >
+          <sphereGeometry args={[0.03, 6, 6]} />
           <meshBasicMaterial
-            color={i % 2 === 0 ? '#10b981' : '#06b6d4'}
+            color={i % 2 === 0 ? '#34d399' : '#22d3ee'}
             transparent
             opacity={0}
             blending={THREE.AdditiveBlending}
+            depthWrite={false}
           />
         </mesh>
       ))}
@@ -174,48 +306,95 @@ function DataPackets() {
   );
 }
 
-// --- NEW ENHANCEMENTS ---
-
-function CreditCard({
-  position,
-  rotation,
+// -------------------------------------------------------------------
+// Orbiting outer ring particles
+// -------------------------------------------------------------------
+function OrbitRing({
+  radius,
+  count,
+  speed,
   color,
+  size,
 }: {
-  position: [number, number, number];
-  rotation: [number, number, number];
+  radius: number;
+  count: number;
+  speed: number;
   color: string;
+  size: number;
 }) {
+  const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
+  const offsets = useMemo(
+    () => Array.from({ length: count }, (_, i) => (i / count) * Math.PI * 2),
+    [count]
+  );
+
+  useFrame((state) => {
+    offsets.forEach((offset, i) => {
+      const mesh = meshRefs.current[i];
+      if (mesh) {
+        const angle = state.clock.elapsedTime * speed + offset;
+        mesh.position.x = Math.cos(angle) * radius;
+        mesh.position.z = Math.sin(angle) * radius;
+        mesh.position.y = Math.sin(angle * 2) * 0.3;
+      }
+    });
+  });
+
   return (
-    <Float speed={2.5} rotationIntensity={1.5} floatIntensity={2.5} position={position}>
-      <group rotation={rotation}>
-        <RoundedBox args={[3.4, 2.1, 0.1]} radius={0.1} smoothness={4}>
-          <meshPhysicalMaterial color={color} metalness={0.8} roughness={0.3} clearcoat={1} />
-        </RoundedBox>
-        {/* Chip */}
-        <mesh position={[-1.1, 0.3, 0.06]}>
-          <boxGeometry args={[0.5, 0.4, 0.05]} />
-          <meshStandardMaterial color="#fbbf24" metalness={0.9} roughness={0.2} />
+    <group>
+      {offsets.map((_, i) => (
+        <mesh
+          key={i}
+          ref={(el) => {
+            meshRefs.current[i] = el;
+          }}
+        >
+          <sphereGeometry args={[size, 6, 6]} />
+          <meshBasicMaterial
+            color={color}
+            transparent
+            opacity={0.6}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+          />
         </mesh>
-        {/* Magnetic Strip */}
-        <mesh position={[0, 0.6, -0.06]}>
-          <boxGeometry args={[3.4, 0.4, 0.05]} />
-          <meshStandardMaterial color="#000000" />
-        </mesh>
-      </group>
-    </Float>
+      ))}
+    </group>
   );
 }
 
-function SceneControls() {
+// -------------------------------------------------------------------
+// Atmospheric glow shell
+// -------------------------------------------------------------------
+function AtmosphereGlow({ radius }: { radius: number }) {
+  return (
+    <mesh>
+      <sphereGeometry args={[radius + 0.15, 32, 32]} />
+      <meshBasicMaterial
+        color="#10b981"
+        transparent
+        opacity={0.04}
+        side={THREE.BackSide}
+        depthWrite={false}
+      />
+    </mesh>
+  );
+}
+
+// -------------------------------------------------------------------
+// Main scene controller — mouse-reactive rotation
+// -------------------------------------------------------------------
+function GlobeScene() {
   const groupRef = useRef<THREE.Group>(null);
   const targetRotation = useRef({ x: 0, y: 0 });
+  const RADIUS = 3;
 
   React.useEffect(() => {
-    if (groupRef.current) groupRef.current.scale.set(0.01, 0.01, 0.01);
-
     const handleMouseMove = (e: MouseEvent) => {
-      targetRotation.current.y = (((e.clientX / window.innerWidth) * 2 - 1) * Math.PI) / 8;
-      targetRotation.current.x = (-((e.clientY / window.innerHeight) * 2 - 1) * Math.PI) / 16;
+      const nx = (e.clientX / window.innerWidth) * 2 - 1;
+      const ny = (e.clientY / window.innerHeight) * 2 - 1;
+      targetRotation.current.y = nx * 0.6;
+      targetRotation.current.x = -ny * 0.3;
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -223,59 +402,68 @@ function SceneControls() {
 
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.scale.lerp(new THREE.Vector3(1, 1, 1), 0.04);
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3 - 2;
+      // Auto-rotate + mouse influence
+      const autoY = state.clock.elapsedTime * 0.08;
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
         groupRef.current.rotation.y,
-        targetRotation.current.y,
-        0.05
+        autoY + targetRotation.current.y,
+        0.02
       );
       groupRef.current.rotation.x = THREE.MathUtils.lerp(
         groupRef.current.rotation.x,
-        targetRotation.current.x,
-        0.05
+        0.15 + targetRotation.current.x,
+        0.02
       );
+      // Gentle floating
+      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.15;
     }
   });
 
   return (
     <group ref={groupRef}>
-      <CentralDatabase />
-      <ServerRack position={[7, 0, 7]} color="emerald" />
-      <ServerRack position={[-7, 0, 7]} color="cyan" />
-      <ServerRack position={[7, 0, -7]} color="cyan" />
-      <ServerRack position={[-7, 0, -7]} color="emerald" />
-      <CircuitLines />
-      <DataPackets />
+      {/* Core globe */}
+      <mesh>
+        <sphereGeometry args={[RADIUS, 64, 64]} />
+        <meshPhysicalMaterial
+          color="#0a1628"
+          metalness={0.1}
+          roughness={0.8}
+          transparent
+          opacity={0.85}
+          transmission={0.1}
+        />
+      </mesh>
 
-      {/* Rich Banking Elements */}
-      <CreditCard position={[-6, 4, -4]} rotation={[0, Math.PI / 4, 0]} color="#0f172a" />
-      <CreditCard position={[6, 3, 5]} rotation={[0, -Math.PI / 3, Math.PI / 6]} color="#10b981" />
+      {/* Globe surface details */}
+      <GlobeDots radius={RADIUS + 0.01} />
+      <GlobeGrid radius={RADIUS + 0.02} />
+      <CityNodes radius={RADIUS + 0.03} />
+      <ConnectionArcs radius={RADIUS + 0.03} />
+      <DataPackets radius={RADIUS + 0.03} />
+      <AtmosphereGlow radius={RADIUS} />
+
+      {/* Outer orbit rings */}
+      <OrbitRing radius={RADIUS + 0.8} count={12} speed={0.3} color="#10b981" size={0.025} />
+      <OrbitRing radius={RADIUS + 1.2} count={8} speed={-0.2} color="#06b6d4" size={0.02} />
     </group>
   );
 }
 
+// -------------------------------------------------------------------
+// Exported component
+// -------------------------------------------------------------------
 export default function Hero3DBackground() {
   return (
     <div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none', opacity: 1 }}>
-      <Canvas gl={{ antialias: true, alpha: true }}>
-        <OrthographicCamera
-          makeDefault
-          position={[25, 25, 25]}
-          zoom={28}
-          near={-100}
-          far={100}
-          onUpdate={(c) => c.lookAt(0, 0, 0)}
-        />
-
-        {/* Much brighter lighting so objects are clearly visible */}
-        <ambientLight intensity={1.5} />
-        <directionalLight position={[10, 20, 10]} intensity={2.5} color="#ffffff" />
-        <directionalLight position={[-10, 15, -10]} intensity={1.5} color="#06b6d4" />
-        <spotLight position={[0, 20, 0]} angle={0.8} penumbra={1} intensity={2} color="#10b981" />
+      <Canvas gl={{ antialias: true, alpha: true }} camera={{ position: [0, 0, 12], fov: 40 }}>
+        {/* Lighting — subtle, cinematic */}
+        <ambientLight intensity={0.3} />
+        <directionalLight position={[5, 5, 5]} intensity={0.8} color="#ffffff" />
+        <directionalLight position={[-5, 3, -5]} intensity={0.4} color="#06b6d4" />
+        <pointLight position={[0, 0, 5]} intensity={0.6} color="#10b981" distance={12} decay={2} />
 
         <React.Suspense fallback={null}>
-          <SceneControls />
+          <GlobeScene />
         </React.Suspense>
       </Canvas>
     </div>

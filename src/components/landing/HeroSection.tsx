@@ -18,30 +18,30 @@ export default function HeroSection() {
   const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
-  const textX = useTransform(smoothX, [-0.5, 0.5], [-20, 20]);
-  const textY = useTransform(smoothY, [-0.5, 0.5], [-20, 20]);
+  const textX = useTransform(smoothX, [-0.5, 0.5], [-15, 15]);
+  const textY = useTransform(smoothY, [-0.5, 0.5], [-15, 15]);
 
-  const bgX = useTransform(smoothX, [-0.5, 0.5], [-40, 40]);
-  const bgY = useTransform(smoothY, [-0.5, 0.5], [-40, 40]);
+  const bgX = useTransform(smoothX, [-0.5, 0.5], [-30, 30]);
+  const bgY = useTransform(smoothY, [-0.5, 0.5], [-30, 30]);
 
   const containerVariants: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.12,
+        delayChildren: 0.3,
       },
     },
   };
 
   const itemVariants: any = {
-    hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+    hidden: { opacity: 0, y: 30, filter: 'blur(8px)' },
     visible: {
       opacity: 1,
       y: 0,
       filter: 'blur(0px)',
-      transition: { duration: 1, ease: 'easeOut' },
+      transition: { duration: 0.9, ease: [0.23, 1, 0.32, 1] },
     },
   };
 
@@ -61,28 +61,71 @@ export default function HeroSection() {
         paddingBottom: '80px',
       }}
     >
-      {/* Background Effects */}
+      {/* Premium ambient glow — green, top-right */}
       <motion.div
         style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
+          top: '-20%',
+          right: '-10%',
           x: bgX,
           y: bgY,
-          width: '800px',
-          height: '800px',
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, rgba(3, 7, 18, 0) 70%)',
+          width: '900px',
+          height: '900px',
+          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 60%)',
           pointerEvents: 'none',
           zIndex: 0,
-          transform: 'translate(-50%, -50%)',
+        }}
+      />
+
+      {/* Secondary ambient glow — blue, bottom-left for depth */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          bottom: '-30%',
+          left: '-15%',
+          width: '700px',
+          height: '700px',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 60%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+
+      {/* Ultra-fine grid */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+
+      {/* Horizontal line accents */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '30%',
+          left: 0,
+          right: 0,
+          height: '1px',
+          background:
+            'linear-gradient(90deg, transparent, rgba(255,255,255,0.03) 20%, rgba(255,255,255,0.03) 80%, transparent)',
+          pointerEvents: 'none',
+          zIndex: 0,
         }}
       />
       <div
         style={{
           position: 'absolute',
-          inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+          top: '70%',
+          left: 0,
+          right: 0,
+          height: '1px',
+          background:
+            'linear-gradient(90deg, transparent, rgba(255,255,255,0.03) 20%, rgba(255,255,255,0.03) 80%, transparent)',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -108,16 +151,16 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* 3D Scene - Absolute Positioned to span full width and behind text */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none', opacity: 1 }}>
+      {/* 3D Globe Scene */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
         <div
           style={{
             position: 'absolute',
-            right: '-10%',
+            right: '-5%',
             top: '50%',
             transform: 'translateY(-50%)',
-            width: '80%',
-            height: '800px',
+            width: '70%',
+            height: '90vh',
             pointerEvents: 'auto',
           }}
         >

@@ -7,6 +7,7 @@ import MarqueeSection from '@/components/landing/MarqueeSection';
 import PlatformHighlights from '@/components/landing/PlatformHighlights';
 import SmartCardsSection from '@/components/landing/SmartCardsSection';
 import ProductShowcase from '@/components/landing/ProductShowcase';
+import ParticleMeshSection from '@/components/landing/ParticleMeshSection';
 import SecuritySection from '@/components/landing/SecuritySection';
 import ArchitectureSection from '@/components/landing/ArchitectureSection';
 import TechStackSection from '@/components/landing/TechStackSection';
@@ -39,6 +40,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <PlatformHighlights />
       <SmartCardsSection />
       <ProductShowcase />
+
+      {/* ═══ PARTICLE MESH — GLOBAL INFRASTRUCTURE ═══ */}
+      <ParticleMeshSection />
       <WhyChooseSection />
       <SecuritySection />
       <ArchitectureSection />
