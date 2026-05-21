@@ -1,5 +1,12 @@
 import { notFound } from 'next/navigation';
 import { productContent } from '@/data/productContent';
+
+export function generateStaticParams() {
+  return Object.keys(productContent).map((slug) => ({
+    slug,
+  }));
+}
+
 import Navbar from '@/components/landing/Navbar';
 import Footer from '@/components/landing/Footer';
 import CustomCursor from '@/components/common/CustomCursor';
@@ -20,18 +27,24 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <CustomCursor />
       <Navbar />
       <main style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '0' }}>
-        
         {/* Hero with product-specific illustration */}
         <ProductHero title={product.title} subtitle={product.subtitle} slug={slug} />
 
         {/* Content Section */}
         <section className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '64px' }}>
-            
             {/* Overview & Stats */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
               <div className="bento-glass" style={{ padding: '40px', borderRadius: '24px' }}>
-                <h3 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '16px', fontFamily: 'var(--font-syne), sans-serif' }}>
+                <h3
+                  style={{
+                    fontSize: '24px',
+                    fontWeight: 700,
+                    color: 'var(--text-primary)',
+                    marginBottom: '16px',
+                    fontFamily: 'var(--font-syne), sans-serif',
+                  }}
+                >
                   Platform Overview
                 </h3>
                 <p style={{ fontSize: '16px', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
@@ -40,13 +53,40 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
 
               {product.stats && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px' }}>
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '24px',
+                  }}
+                >
                   {product.stats.map((stat, idx) => (
-                    <div key={idx} className="bento-glass" style={{ padding: '32px', borderRadius: '24px', textAlign: 'center' }}>
-                      <span style={{ display: 'block', fontSize: '48px', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif', marginBottom: '8px' }}>
+                    <div
+                      key={idx}
+                      className="bento-glass"
+                      style={{ padding: '32px', borderRadius: '24px', textAlign: 'center' }}
+                    >
+                      <span
+                        style={{
+                          display: 'block',
+                          fontSize: '48px',
+                          fontWeight: 800,
+                          color: 'var(--text-primary)',
+                          fontFamily: 'var(--font-syne), sans-serif',
+                          marginBottom: '8px',
+                        }}
+                      >
                         {stat.value}
                       </span>
-                      <span style={{ fontSize: '13px', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
+                      <span
+                        style={{
+                          fontSize: '13px',
+                          color: 'var(--text-tertiary)',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.1em',
+                          fontWeight: 600,
+                        }}
+                      >
                         {stat.label}
                       </span>
                     </div>
@@ -56,22 +96,54 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Features & Technical Sections */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '24px' }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                gap: '24px',
+              }}
+            >
               {/* Core Features */}
               <div className="bento-glass" style={{ padding: '40px', borderRadius: '24px' }}>
-                <h3 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '32px', fontFamily: 'var(--font-syne), sans-serif' }}>
+                <h3
+                  style={{
+                    fontSize: '24px',
+                    fontWeight: 700,
+                    color: 'var(--text-primary)',
+                    marginBottom: '32px',
+                    fontFamily: 'var(--font-syne), sans-serif',
+                  }}
+                >
                   Core Features
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                   {product.features.map((feature, idx) => (
-                    <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                      <CheckCircleIcon sx={{ color: 'var(--accent)', fontSize: '24px', flexShrink: 0 }} />
+                    <div
+                      key={idx}
+                      style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}
+                    >
+                      <CheckCircleIcon
+                        sx={{ color: 'var(--accent)', fontSize: '24px', flexShrink: 0 }}
+                      />
                       <div>
-                        <h4 style={{ color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600, marginBottom: '8px' }}>
+                        <h4
+                          style={{
+                            color: 'var(--text-primary)',
+                            fontSize: '16px',
+                            fontWeight: 600,
+                            marginBottom: '8px',
+                          }}
+                        >
                           {feature.title}
                         </h4>
                         {feature.description && (
-                          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
+                          <p
+                            style={{
+                              color: 'var(--text-secondary)',
+                              fontSize: '14px',
+                              lineHeight: 1.6,
+                            }}
+                          >
                             {feature.description}
                           </p>
                         )}
@@ -83,8 +155,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               {/* Dynamic Sections */}
               {product.sections.map((section, idx) => (
-                <div key={idx} className="bento-glass" style={{ padding: '40px', borderRadius: '24px' }}>
-                  <h3 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '32px', fontFamily: 'var(--font-syne), sans-serif' }}>
+                <div
+                  key={idx}
+                  className="bento-glass"
+                  style={{ padding: '40px', borderRadius: '24px' }}
+                >
+                  <h3
+                    style={{
+                      fontSize: '24px',
+                      fontWeight: 700,
+                      color: 'var(--text-primary)',
+                      marginBottom: '32px',
+                      fontFamily: 'var(--font-syne), sans-serif',
+                    }}
+                  >
                     {section.title}
                   </h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -92,8 +176,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       const parts = item.split(':');
                       if (parts.length > 1) {
                         return (
-                          <div key={i} style={{ borderBottom: '1px solid var(--border-subtle)', paddingBottom: '16px' }}>
-                            <span style={{ color: 'var(--text-primary)', fontWeight: 600, display: 'block', marginBottom: '4px' }}>
+                          <div
+                            key={i}
+                            style={{
+                              borderBottom: '1px solid var(--border-subtle)',
+                              paddingBottom: '16px',
+                            }}
+                          >
+                            <span
+                              style={{
+                                color: 'var(--text-primary)',
+                                fontWeight: 600,
+                                display: 'block',
+                                marginBottom: '4px',
+                              }}
+                            >
                               {parts[0]}
                             </span>
                             <span style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
@@ -104,8 +201,17 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       }
                       return (
                         <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)' }} />
-                          <span style={{ color: 'var(--text-secondary)', fontSize: '15px' }}>{item}</span>
+                          <div
+                            style={{
+                              width: '6px',
+                              height: '6px',
+                              borderRadius: '50%',
+                              background: 'var(--accent)',
+                            }}
+                          />
+                          <span style={{ color: 'var(--text-secondary)', fontSize: '15px' }}>
+                            {item}
+                          </span>
                         </div>
                       );
                     })}
@@ -113,7 +219,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
@@ -125,7 +230,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <Footer />
 
       {/* Global CSS for bento-glass */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         .bento-glass {
           background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
           backdrop-filter: blur(24px) saturate(120%);
@@ -145,7 +252,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           mix-blend-mode: screen;
           opacity: 0.15;
         }
-      `}} />
+      `,
+        }}
+      />
     </>
   );
 }
