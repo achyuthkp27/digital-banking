@@ -403,8 +403,9 @@ function GlobeScene() {
 
   useFrame((state) => {
     if (groupRef.current) {
-      // Auto-rotate + mouse influence
-      const autoY = state.clock.elapsedTime * 0.08;
+      // Auto-rotate with fast initial spin that decays into a steady pace
+      const t = state.clock.elapsedTime;
+      const autoY = t * 0.08 + 4.0 * (1 - Math.exp(-0.8 * t));
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
         groupRef.current.rotation.y,
         autoY + targetRotation.current.y,
