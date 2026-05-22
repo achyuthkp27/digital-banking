@@ -157,18 +157,8 @@ export default function HeroSection() {
       </div>
 
       {/* 3D Globe Scene */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
-        <div
-          style={{
-            position: 'absolute',
-            right: '-5%',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            width: '70%',
-            height: '90vh',
-            pointerEvents: 'auto',
-          }}
-        >
+      <div className="absolute inset-0 z-[1] pointer-events-none">
+        <div className="absolute top-1/2 -translate-y-1/2 h-[90vh] pointer-events-auto flex items-center justify-center w-full right-0 md:w-[70%] md:right-[-5%]">
           <Hero3DBackground />
         </div>
       </div>

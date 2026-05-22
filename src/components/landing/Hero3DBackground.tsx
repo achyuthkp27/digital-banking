@@ -250,7 +250,7 @@ function ConnectionArcs({ radius }: { radius: number }) {
 // -------------------------------------------------------------------
 // Animated data packets traveling along arcs
 // -------------------------------------------------------------------
-function DataPackets({ radius }: { radius: number }) {
+function DataPackets({ radius, isLight }: { radius: number; isLight?: boolean }) {
   const packetData = useMemo(() => {
     return connections.map(([fromIdx, toIdx]) => {
       const from = latLngToVec3(cities[fromIdx][0], cities[fromIdx][1], radius);
@@ -296,7 +296,7 @@ function DataPackets({ radius }: { radius: number }) {
             color={i % 2 === 0 ? '#34d399' : '#22d3ee'}
             transparent
             opacity={0}
-            blending={THREE.AdditiveBlending}
+            blending={isLight ? THREE.NormalBlending : THREE.AdditiveBlending}
             depthWrite={false}
           />
         </mesh>
@@ -314,12 +314,14 @@ function OrbitRing({
   speed,
   color,
   size,
+  isLight,
 }: {
   radius: number;
   count: number;
   speed: number;
   color: string;
   size: number;
+  isLight?: boolean;
 }) {
   const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
   const offsets = useMemo(
@@ -352,8 +354,8 @@ function OrbitRing({
           <meshBasicMaterial
             color={color}
             transparent
-            opacity={0.6}
-            blending={THREE.AdditiveBlending}
+            opacity={isLight ? 0.9 : 0.6}
+            blending={isLight ? THREE.NormalBlending : THREE.AdditiveBlending}
             depthWrite={false}
           />
         </mesh>
@@ -365,14 +367,14 @@ function OrbitRing({
 // -------------------------------------------------------------------
 // Atmospheric glow shell
 // -------------------------------------------------------------------
-function AtmosphereGlow({ radius }: { radius: number }) {
+function AtmosphereGlow({ radius, isLight }: { radius: number; isLight?: boolean }) {
   return (
     <mesh>
       <sphereGeometry args={[radius + 0.15, 32, 32]} />
       <meshBasicMaterial
         color="#10b981"
         transparent
-        opacity={0.04}
+        opacity={isLight ? 0.08 : 0.04}
         side={THREE.BackSide}
         depthWrite={false}
       />
@@ -403,11 +405,13 @@ function GlobeScene({ isLight }: { isLight: boolean }) {
     if (groupRef.current) {
       // Auto-rotate with fast initial spin that decays into a steady pace
       const t = state.clock.elapsedTime;
-      const autoY = t * 0.08 + 4.0 * (1 - Math.exp(-0.8 * t));
+      // Increased the multiplier from 4.0 to 15.0 and the decay exponent to make it spin very fast initially, 
+      // then settle into a base rotation speed of 0.1 rad/sec.
+      const autoY = t * 0.1 + 15.0 * (1 - Math.exp(-1.5 * t));
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
         groupRef.current.rotation.y,
         autoY + targetRotation.current.y,
-        0.02
+        0.05 // Increased lerp factor so it doesn't lag behind the fast initial curve
       );
       groupRef.current.rotation.x = THREE.MathUtils.lerp(
         groupRef.current.rotation.x,
@@ -425,13 +429,13 @@ function GlobeScene({ isLight }: { isLight: boolean }) {
       <mesh>
         <sphereGeometry args={[RADIUS, 64, 64]} />
         <meshPhysicalMaterial
-          color={isLight ? '#ffffff' : '#0a1628'}
-          metalness={isLight ? 0.2 : 0.1}
-          roughness={isLight ? 0.5 : 0.8}
-          clearcoat={isLight ? 0.5 : 0}
+          color={isLight ? '#1e3a8a' : '#0a1628'}
+          metalness={0.1}
+          roughness={0.8}
+          clearcoat={0}
           transparent
-          opacity={isLight ? 0.95 : 0.85}
-          transmission={isLight ? 0 : 0.1}
+          opacity={0.85}
+          transmission={0.1}
         />
       </mesh>
 
@@ -440,12 +444,12 @@ function GlobeScene({ isLight }: { isLight: boolean }) {
       <GlobeGrid radius={RADIUS + 0.02} />
       <CityNodes radius={RADIUS + 0.03} />
       <ConnectionArcs radius={RADIUS + 0.03} />
-      <DataPackets radius={RADIUS + 0.03} />
-      <AtmosphereGlow radius={RADIUS} />
+      <DataPackets radius={RADIUS + 0.03} isLight={isLight} />
+      <AtmosphereGlow radius={RADIUS} isLight={isLight} />
 
       {/* Outer orbit rings */}
-      <OrbitRing radius={RADIUS + 0.8} count={12} speed={0.3} color="#10b981" size={0.025} />
-      <OrbitRing radius={RADIUS + 1.2} count={8} speed={-0.2} color="#06b6d4" size={0.02} />
+      <OrbitRing radius={RADIUS + 0.8} count={12} speed={0.3} color="#10b981" size={0.025} isLight={isLight} />
+      <OrbitRing radius={RADIUS + 1.2} count={8} speed={-0.2} color="#06b6d4" size={0.02} isLight={isLight} />
     </group>
   );
 }
@@ -459,21 +463,50 @@ export default function Hero3DBackground() {
   const { resolvedTheme } = useTheme();
   const isLight = resolvedTheme === 'light';
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
-    <div ref={ref} style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none', opacity: 1 }}>
-      {inView && (
+    <div ref={ref} className="absolute inset-0 z-10 pointer-events-none opacity-100">
+      {inView && !isMobile && (
         <Canvas gl={{ antialias: true, alpha: true }} camera={{ position: [0, 0, 12], fov: 40 }}>
           {/* Lighting — subtle, cinematic */}
-          <ambientLight intensity={isLight ? 0.8 : 0.3} />
-          <directionalLight position={[5, 5, 5]} intensity={isLight ? 1.5 : 0.8} color="#ffffff" />
-          <directionalLight position={[-5, 3, -5]} intensity={isLight ? 0.8 : 0.4} color={isLight ? '#a7f3d0' : '#06b6d4'} />
-          <pointLight position={[0, 0, 5]} intensity={isLight ? 1.2 : 0.6} color="#10b981" distance={12} decay={2} />
+          <ambientLight intensity={isLight ? 0.6 : 0.3} />
+          <directionalLight position={[5, 5, 5]} intensity={isLight ? 1.0 : 0.8} color="#ffffff" />
+          <directionalLight position={[-5, 3, -5]} intensity={0.4} color="#06b6d4" />
+          <pointLight position={[0, 0, 5]} intensity={isLight ? 1.0 : 0.6} color="#10b981" distance={12} decay={2} />
 
           <React.Suspense fallback={null}>
             <GlobeScene isLight={isLight} />
           </React.Suspense>
         </Canvas>
+      )}
+
+      {isMobile && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-[280px] h-[280px] flex items-center justify-center mt-[-10vh]">
+            {/* Glowing core */}
+            <div className="absolute w-[180px] h-[180px] rounded-full bg-[var(--accent)] blur-[60px] opacity-20 animate-pulse" />
+            
+            {/* CSS Globe / Rings */}
+            <div className="absolute inset-0 rounded-full border border-[rgba(var(--accent-rgb),0.1)] border-t-[rgba(var(--accent-rgb),0.5)] animate-[spin_10s_linear_infinite]" />
+            <div className="absolute inset-[15%] rounded-full border border-[rgba(var(--accent-rgb),0.1)] border-b-[rgba(var(--accent-rgb),0.5)] animate-[spin_15s_linear_infinite_reverse]" />
+            <div className="absolute inset-[30%] rounded-full border border-dashed border-[rgba(var(--accent-rgb),0.3)] animate-[spin_20s_linear_infinite]" />
+            
+            {/* Center node */}
+            <div className="absolute w-12 h-12 rounded-full bg-[rgba(var(--accent-rgb),0.1)] border border-[var(--accent)] flex items-center justify-center shadow-[0_0_20px_rgba(var(--accent-rgb),0.4)]">
+              <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping" />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

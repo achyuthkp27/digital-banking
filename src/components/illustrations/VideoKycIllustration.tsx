@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Camera, ShieldCheck, FileText } from 'lucide-react';
 
 const KF_ID = 'video-kyc-illus-kf';
 
@@ -13,8 +14,8 @@ function injectKF() {
   s.textContent = `
     @keyframes vkyc-scan { 0%,100%{top:10%} 50%{top:85%} }
     @keyframes vkyc-pulse { 0%,100%{transform:scale(1);opacity:.6} 50%{transform:scale(1.15);opacity:1} }
-    @keyframes vkyc-check { 0%{stroke-dashoffset:24} 100%{stroke-dashoffset:0} }
-    @keyframes vkyc-dot { 0%{opacity:0;transform:translateX(0)} 50%{opacity:1} 100%{opacity:0;transform:translateX(60px)} }
+    @keyframes vkyc-pulse-dot { 0%,100%{opacity:0.4; transform:scale(0.8)} 50%{opacity:1; transform:scale(1.2)} }
+    @keyframes vkyc-dash-flow { 0%{stroke-dashoffset: 24} 100%{stroke-dashoffset: 0} }
   `;
   document.head.appendChild(s);
 }
@@ -24,95 +25,110 @@ export default function VideoKycIllustration() {
 
   return (
     <div style={{ width: '100%', height: '100%', minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-      {/* Face scan area */}
+      
+      {/* Background ambient glow */}
+      <div style={{ position: 'absolute', width: '200px', height: '200px', background: 'radial-gradient(circle, rgba(var(--accent-rgb),0.1) 0%, transparent 70%)', filter: 'blur(20px)' }} />
+
+      {/* Main Video Call UI */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        style={{ position: 'relative', width: '140px', height: '180px' }}
+        style={{ position: 'relative', width: '200px', height: '280px', background: 'rgba(var(--color-invert-rgb),0.02)', border: '1px solid rgba(var(--color-invert-rgb),0.1)', borderRadius: '24px', overflow: 'hidden', backdropFilter: 'blur(10px)', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
       >
-        {/* Face oval */}
-        <div style={{
-          width: '100%', height: '100%', borderRadius: '50%',
-          border: '2px solid rgba(var(--accent-rgb), 0.4)',
-          position: 'relative', overflow: 'hidden',
-        }}>
-          {/* Scan line */}
-          <div style={{
-            position: 'absolute', left: 0, right: 0, height: '2px',
-            background: 'linear-gradient(90deg, transparent, var(--accent), transparent)',
-            boxShadow: '0 0 12px rgba(var(--accent-rgb),0.6)',
-            animation: 'vkyc-scan 2.5s ease-in-out infinite',
-          }} />
-          {/* Face features (stylized) */}
-          <svg viewBox="0 0 100 130" style={{ width: '100%', height: '100%', opacity: 0.8 }}>
-            <circle cx="35" cy="45" r="5" fill="var(--accent)" />
-            <circle cx="65" cy="45" r="5" fill="var(--accent)" />
-            <path d="M35 80 Q50 95 65 80" stroke="var(--accent)" strokeWidth="2" fill="none" />
-          </svg>
+        {/* Top bar */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', borderBottom: '1px solid rgba(var(--color-invert-rgb),0.05)' }}>
+          <div style={{ display: 'flex', gap: '6px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(239,68,68,0.8)' }} />
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(234,179,8,0.8)' }} />
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(34,197,94,0.8)' }} />
+          </div>
+          <Camera size={14} style={{ color: 'rgba(var(--color-invert-rgb),0.4)' }} />
         </div>
-        {/* Pulse ring */}
-        <div style={{
-          position: 'absolute', inset: '-16px', borderRadius: '50%',
-          border: '1px solid rgba(var(--accent-rgb),0.3)',
-          animation: 'vkyc-pulse 2s ease-in-out infinite',
-        }} />
-        <div style={{
-          position: 'absolute', inset: '-32px', borderRadius: '50%',
-          border: '1px solid rgba(var(--accent-rgb),0.15)',
-          animation: 'vkyc-pulse 2s ease-in-out 0.3s infinite',
-        }} />
-      </motion.div>
 
-      {/* Data flow dots */}
-      {[0, 1, 2].map(i => (
-        <div key={i} style={{
-          position: 'absolute', left: '52%', top: `${45 + i * 8}%`,
-          width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)',
-          animation: `vkyc-dot 1.5s ease-in-out ${i * 0.3}s infinite`,
-        }} />
-      ))}
+        {/* Video Feed Area */}
+        <div style={{ position: 'relative', height: 'calc(100% - 40px)', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(var(--color-invert-rgb), 0.01)' }}>
+          
+          {/* User Silhouette */}
+          <svg viewBox="0 0 24 24" style={{ width: '120px', height: '120px', color: 'rgba(var(--color-invert-rgb),0.08)' }} fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
 
-      {/* ID Card */}
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          position: 'relative', width: '120px', height: '80px', marginLeft: '60px',
-          borderRadius: '12px', border: '1.5px solid rgba(var(--accent-rgb),0.3)',
-          background: 'rgba(var(--accent-rgb),0.04)', padding: '12px',
-          display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        }}
-      >
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <div style={{ width: '24px', height: '24px', borderRadius: '50%', border: '1px solid rgba(var(--accent-rgb),0.3)' }} />
-          <div>
-            <div style={{ width: '50px', height: '4px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.2)', marginBottom: '4px' }} />
-            <div style={{ width: '35px', height: '3px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.12)' }} />
+          {/* Biometric scanning box */}
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '110px', height: '110px' }}>
+            {/* Corners */}
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '12px', height: '12px', borderTop: '2px solid var(--accent)', borderLeft: '2px solid var(--accent)' }} />
+            <div style={{ position: 'absolute', top: 0, right: 0, width: '12px', height: '12px', borderTop: '2px solid var(--accent)', borderRight: '2px solid var(--accent)' }} />
+            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '12px', height: '12px', borderBottom: '2px solid var(--accent)', borderLeft: '2px solid var(--accent)' }} />
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: '12px', height: '12px', borderBottom: '2px solid var(--accent)', borderRight: '2px solid var(--accent)' }} />
+            
+            {/* Scan line */}
+            <div style={{ position: 'absolute', left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, transparent, var(--accent), transparent)', boxShadow: '0 0 10px var(--accent)', animation: 'vkyc-scan 2.5s ease-in-out infinite' }} />
+            
+            {/* Biometric Dots */}
+            <div style={{ position: 'absolute', top: '35%', left: '35%', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)', animation: 'vkyc-pulse-dot 1.5s infinite 0.2s' }} />
+            <div style={{ position: 'absolute', top: '35%', right: '35%', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)', animation: 'vkyc-pulse-dot 1.5s infinite 0.4s' }} />
+            <div style={{ position: 'absolute', top: '55%', left: '50%', transform: 'translate(-50%,-50%)', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)', animation: 'vkyc-pulse-dot 1.5s infinite 0.6s' }} />
+            <div style={{ position: 'absolute', bottom: '25%', left: '40%', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)', animation: 'vkyc-pulse-dot 1.5s infinite 0.8s' }} />
+            <div style={{ position: 'absolute', bottom: '25%', right: '40%', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)', animation: 'vkyc-pulse-dot 1.5s infinite 1.0s' }} />
+            
+            {/* Connection lines */}
+            <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+               <path d="M 38.5 38.5 L 55 60.5 L 44 82.5" stroke="rgba(var(--accent-rgb),0.3)" strokeWidth="1" fill="none" />
+               <path d="M 71.5 38.5 L 55 60.5 L 66 82.5" stroke="rgba(var(--accent-rgb),0.3)" strokeWidth="1" fill="none" />
+            </svg>
+          </div>
+          
+          {/* Live indicator */}
+          <div style={{ position: 'absolute', bottom: '12px', right: '12px', display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(0,0,0,0.6)', padding: '4px 8px', borderRadius: '12px' }}>
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ef4444', animation: 'vkyc-pulse-dot 2s infinite' }} />
+            <span style={{ fontSize: '10px', color: '#fff', fontWeight: 600, letterSpacing: '0.05em' }}>LIVE</span>
           </div>
         </div>
-        <div>
-          <div style={{ width: '80px', height: '3px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.1)', marginBottom: '4px' }} />
-          <div style={{ width: '60px', height: '3px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.08)' }} />
+      </motion.div>
+
+      {/* Floating ID Document */}
+      <motion.div
+        initial={{ opacity: 0, x: 20, y: 40 }}
+        animate={{ opacity: 1, x: 0, y: 20 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        style={{ position: 'absolute', right: 'calc(50% - 190px)', top: '55%', width: '150px', height: '96px', background: 'rgba(var(--bg-surface), 0.8)', border: '1px solid rgba(var(--color-invert-rgb),0.1)', borderRadius: '12px', backdropFilter: 'blur(8px)', padding: '14px', display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: '0 10px 30px rgba(0,0,0,0.15)', zIndex: 10 }}
+      >
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+          <div style={{ width: '30px', height: '36px', background: 'rgba(var(--color-invert-rgb),0.1)', borderRadius: '4px' }} />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ width: '80%', height: '4px', background: 'rgba(var(--color-invert-rgb),0.2)', borderRadius: '2px' }} />
+            <div style={{ width: '60%', height: '4px', background: 'rgba(var(--color-invert-rgb),0.1)', borderRadius: '2px' }} />
+            <div style={{ width: '40%', height: '4px', background: 'rgba(var(--color-invert-rgb),0.1)', borderRadius: '2px' }} />
+          </div>
         </div>
-        {/* Checkmark */}
+        <div style={{ width: '100%', height: '1px', background: 'rgba(var(--color-invert-rgb),0.05)', margin: '4px 0' }} />
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <FileText size={12} style={{ color: 'rgba(var(--color-invert-rgb),0.3)' }} />
+          <div style={{ width: '40px', height: '4px', background: 'rgba(var(--color-invert-rgb),0.1)', borderRadius: '2px' }} />
+        </div>
+        
+        {/* Verification Checkmark */}
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-          style={{
-            position: 'absolute', top: '-10px', right: '-10px',
-            width: '24px', height: '24px', borderRadius: '50%',
-            background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 0 12px rgba(var(--accent-rgb),0.5)',
-          }}
+          transition={{ duration: 0.5, delay: 1.2, type: 'spring' }}
+          style={{ position: 'absolute', top: '-10px', right: '-10px', width: '28px', height: '28px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(var(--accent-rgb),0.4)' }}
         >
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 8l4 4 6-8" />
-          </svg>
+          <ShieldCheck size={16} color="#000" />
         </motion.div>
       </motion.div>
+      
+      {/* Connection elements between video and ID */}
+      <motion.svg 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        style={{ position: 'absolute', width: '60px', height: '10px', left: 'calc(50% + 100px)', top: '65%', pointerEvents: 'none', zIndex: 1 }}
+      >
+        <line x1="0" y1="5" x2="60" y2="5" stroke="var(--accent)" strokeWidth="2" strokeDasharray="4 4" style={{ animation: 'vkyc-dash-flow 1s linear infinite' }} />
+      </motion.svg>
+
     </div>
   );
 }

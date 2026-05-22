@@ -4,6 +4,293 @@
     "architecture": "Architecture",
     "security": "Security",
     "technology": "Technology",
-    "requestDemo": "Request Demo"
+    "requestDemo": "Request Demo",
+    "home": "Home"
+  },
+  "Hero": {
+    "badge": "Enterprise Platform",
+    "titleLine1": "The future of",
+    "titleHighlight": "digital banking",
+    "titleLine3": "starts here.",
+    "subtitle": "Enterprise-grade infrastructure for next-generation banking. Secure, scalable, and built for the institutions that shape the financial world.",
+    "explorePlatforms": "Explore Platforms",
+    "requestDemo": "Request Demo",
+    "uptimeSla": "Uptime SLA",
+    "transactions": "Transactions",
+    "certified": "Certified"
+  },
+  "Footer": {
+    "tagline": "Enterprise-grade digital banking solutions with cutting-edge security and seamless integration.",
+    "platform": "Platform",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "careers": "Careers",
+    "contact": "Contact",
+    "copyright": "© {year} Digital Banking Platform. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "StatsSection": {
+    "systemUptime": "System Uptime",
+    "apiResponse": "API Response",
+    "requestsPerMin": "Requests/Min",
+    "aesEncryption": "AES Encryption"
+  },
+  "StatsBar": {
+    "uptimeSla": "Uptime SLA",
+    "transactionsDay": "Transactions/Day",
+    "responseTime": "Response Time"
+  },
+  "Architecture": {
+    "badge": "System Architecture",
+    "title": "Scalable Architecture",
+    "subtitle": "Microservices-based, cloud-native architecture designed for high availability and performance",
+    "presentationLayer": "Presentation Layer",
+    "layer1": "Layer 1",
+    "webApp": "Web App",
+    "mobileApp": "Mobile App",
+    "tabletApp": "Tablet App",
+    "kiosk": "Kiosk",
+    "apiGateway": "API Gateway",
+    "layer2": "Layer 2",
+    "loadBalancer": "Load Balancer",
+    "authentication": "Authentication",
+    "rateLimiting": "Rate Limiting",
+    "businessLogic": "Business Logic",
+    "layer3": "Layer 3",
+    "bankingServices": "Banking Services",
+    "paymentProcessing": "Payment Processing",
+    "analytics": "Analytics",
+    "notifications": "Notifications",
+    "dataLayer": "Data Layer",
+    "layer4": "Layer 4",
+    "postgresql": "PostgreSQL",
+    "redisCache": "Redis Cache",
+    "documentStore": "Document Store",
+    "dataWarehouse": "Data Warehouse",
+    "cloudNative": "Cloud Native",
+    "cloudNativeDesc": "Built for Kubernetes, auto-scaling, and multi-region deployment",
+    "secureByDesign": "Secure by Design",
+    "secureByDesignDesc": "Zero-trust architecture with end-to-end encryption",
+    "microservices": "Microservices",
+    "microservicesDesc": "Independent, scalable services with API-first approach"
+  },
+  "Security": {
+    "badge": "// ZERO TRUST CORE",
+    "titleLine1": "Security is not an",
+    "titleLine2": "afterthought.",
+    "iso27001": "ISO 27001",
+    "certified": "Certified",
+    "pciDss": "PCI DSS",
+    "level1": "Level 1",
+    "aes256": "AES-256",
+    "encryption": "Encryption",
+    "zero": "Zero",
+    "dataBreaches": "Data Breaches",
+    "secureDevelopment": "Secure Development",
+    "secureDevelopmentDesc": "SAST/DAST scanning throughout SDLC",
+    "identityAccess": "Identity & Access",
+    "identityAccessDesc": "OAuth 2.0, SSO, MFA, biometric auth",
+    "dataSecurity": "Data Security",
+    "dataSecurityDesc": "Tokenization, GDPR compliance",
+    "appProtection": "App Protection",
+    "appProtectionDesc": "End-to-end encryption, WAF, DDoS"
+  },
+  "WhyChoose": {
+    "badge": "Capabilities",
+    "titleLine1": "Engineered for",
+    "titleLine2": "Absolute Scale.",
+    "globalSettlement": "Global Settlement Time",
+    "platformAvailability": "Platform Availability",
+    "eventsProcessed": "Events Processed / Second",
+    "e2eEncryption": "End-to-End Encryption",
+    "openApis": "Open Financial APIs",
+    "aiFraudDetection": "AI Fraud Detection Accuracy"
+  },
+  "TechStack": {
+    "title": "Modern stack. Proven at scale.",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "devops": "DevOps",
+    "security": "Security",
+    "messaging": "Messaging"
+  },
+  "PlatformHighlights": {
+    "badge": "Enterprise Platform",
+    "title": "Built for massive scale.",
+    "subtitle": "Comprehensive architecture designed to power the future of digital banking globally.",
+    "dashboard": "Digital Platform Dashboard",
+    "dashboardDesc": "Comprehensive unified dashboard with real-time analytics, transaction monitoring, and customizable widgets for complete oversight.",
+    "architecture": "Architecture",
+    "architectureDesc": "Microservices-based scalable architecture with cloud-native design, API-first approach, and seamless third-party integrations.",
+    "capabilities": "Capabilities",
+    "capabilitiesDesc": "Multi-channel banking, instant payments, wealth management, loan origination, and AI-powered financial insights.",
+    "devAndImpl": "Development & Implementation",
+    "devAndImplDesc": "Agile development methodology, CI/CD pipelines, automated testing, and comprehensive API documentation for rapid deployment.",
+    "operationsMaint": "Operations / Maintenance",
+    "operationsMaintDesc": "24/7 monitoring, automated scaling, proactive maintenance, incident management, and comprehensive logging systems.",
+    "techStack": "Technology Stack",
+    "techStackDesc": "Modern tech stack including React, Node.js, Kubernetes, PostgreSQL, Redis, Kafka, and enterprise-grade security frameworks.",
+    "exploreCta": "Explore Platform Architecture"
+  },
+  "SmartCards": {
+    "badge": "Digital Issuance",
+    "titleLine1": "Next-Generation",
+    "titleHighlight": "Smart Cards",
+    "description": "Empower your customers with intelligent card programs. Issue physical, virtual, and single-use cards instantly with programmable spending limits and real-time fraud prevention built into the core.",
+    "virtualPhysical": "Virtual & Physical Cards",
+    "virtualPhysicalDesc": "Instantly issue secure virtual cards for immediate use, while physical metal cards are shipped seamlessly to your corporate clients.",
+    "expenseControls": "Real-Time Expense Controls",
+    "expenseControlsDesc": "Set granular spending limits, merchant category restrictions, and multi-currency budgets directly through the API.",
+    "appleGooglePay": "Apple & Google Pay",
+    "appleGooglePayDesc": "Native integration with digital wallets. Customers can provision their cards directly from your banking app."
+  },
+  "ProductShowcase": {
+    "badge": "PRODUCTS",
+    "title": "Everything a bank needs",
+    "learnMore": "Learn More",
+    "liveDemo": "Live Demo",
+    "switchToVertical": "Switch to Vertical",
+    "switchToHorizontal": "Switch to Horizontal",
+    "products": {
+      "videoKyc": {
+        "label": "Remote Verification",
+        "title": "Video KYC & Video Banking",
+        "description": "Advanced video-based KYC verification and remote banking services with AI-powered identity verification, live video calls with bank officials, document scanning, and secure digital onboarding for seamless customer experience.",
+        "features": {
+          "0": "Automated identity and document verification",
+          "1": "Connect with bank officials via secure video call",
+          "2": "Complete account opening remotely",
+          "3": "Upload and verify documents in real-time"
+        }
+      },
+      "kioskBanking": {
+        "label": "Self-Service",
+        "title": "Kiosk Banking",
+        "description": "Interactive self-service kiosk solution for branches with touchscreen interface, card reader integration, cash acceptance, passbook printing, and assisted customer service functionality.",
+        "features": {
+          "0": "User-friendly touchscreen navigation",
+          "1": "Accept cash deposits and card transactions",
+          "2": "Print account statements and passbooks",
+          "3": "Connect with bank staff via video call"
+        }
+      },
+      "agentBanking": {
+        "label": "Field Services",
+        "title": "Agent Banking",
+        "description": "Mobile application for banking agents and field staff enabling remote account opening, cash transactions, loan collections, customer service, and business correspondent operations with offline capabilities.",
+        "features": {
+          "0": "Open accounts and activate services on-site",
+          "1": "Accept deposits and process withdrawals",
+          "2": "Track and collect loan EMI payments",
+          "3": "Continue operations without internet connectivity"
+        }
+      },
+      "corporateAdmin": {
+        "label": "Enterprise Admin",
+        "title": "Corporate Banking Admin",
+        "description": "Comprehensive administrative dashboard for corporate banking operations with multi-level approval hierarchies, limit management, audit trails, and treasury controls.",
+        "features": {
+          "0": "Manage corporate users and complex role hierarchies",
+          "1": "Configure transaction limits and authorization rules",
+          "2": "Real-time treasury and liquidity monitoring",
+          "3": "Detailed audit trails and compliance reporting"
+        }
+      },
+      "corporateBanking": {
+        "label": "Enterprise Solution",
+        "title": "Corporate Banking",
+        "description": "Enterprise-grade corporate banking platform with multi-level approval workflows, bulk payment processing, treasury management, trade finance, and comprehensive reporting for large organizations.",
+        "features": {
+          "0": "Multi-level authorization for transactions",
+          "1": "Process salary and vendor payments in bulk",
+          "2": "Cash flow forecasting and liquidity management",
+          "3": "Letter of credit and guarantee management"
+        }
+      },
+      "mobileBanking": {
+        "label": "iOS & Android",
+        "title": "Mobile Banking",
+        "description": "Full-featured mobile banking application with intuitive UI, biometric authentication, instant transfers, bill payments, and real-time notifications. Optimized for performance and security.",
+        "features": {
+          "0": "Face ID, Touch ID, and fingerprint authentication",
+          "1": "Send money instantly with UPI, IMPS, and NEFT",
+          "2": "Real-time alerts for all transactions and activities",
+          "3": "Pay utilities, credit cards, and subscriptions"
+        }
+      },
+      "retailBanking": {
+        "label": "Web Platform",
+        "title": "Retail Internet Banking",
+        "description": "Modern, responsive web banking portal with customizable dashboard, multi-lingual support for 15+ languages, advanced transaction search, and comprehensive account management.",
+        "features": {
+          "0": "Responsive web-based banking from any device",
+          "1": "Customizable dashboard and widgets",
+          "2": "Support for 15+ languages with RTL",
+          "3": "Advanced transaction search and filtering"
+        }
+      },
+      "retailAdmin": {
+        "label": "Admin Console",
+        "title": "Retail Banking Admin",
+        "description": "Comprehensive admin dashboard for retail banking operations with real-time KPI monitoring, user management, approval workflows, and fraud detection capabilities.",
+        "features": {
+          "0": "Real-time transaction monitoring and analysis",
+          "1": "Centralized user, role, and permission management",
+          "2": "Maker-checker approval workflows",
+          "3": "Fraud detection and security alerts"
+        }
+      },
+      "twoFactorAuth": {
+        "label": "Security",
+        "title": "Two-Factor Authentication",
+        "description": "Advanced multi-factor authentication protecting against account takeovers with biometric login, liveness detection, PIN authentication, and real-time push notifications.",
+        "features": {
+          "0": "FaceID and fingerprint biometric login",
+          "1": "Advanced liveness detection anti-spoofing",
+          "2": "Approve or reject transactions via push",
+          "3": "Secure 4-6 digit PIN with auto-lock"
+        }
+      }
+    }
+  },
+  "Dashboard": {
+    "headerLabel": "DASHBOARD / LIVE_STREAM",
+    "overview": "Overview",
+    "transactionsNav": "Transactions",
+    "apiLogs": "API Logs",
+    "settings": "Settings",
+    "totalVolume": "Total Volume",
+    "activeSessions": "Active Sessions",
+    "systemHealth": "System Health",
+    "recentTransactions": "Recent Transactions",
+    "settled": "Settled",
+    "processing": "Processing"
+  },
+  "DemoDialog": {
+    "title": "Request a Demo",
+    "subtitle": "Fill this out and we'll get back to you within 24 hours.",
+    "close": "Close",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "workEmail": "Work Email",
+    "companyName": "Company Name",
+    "productInterest": "Product Interest",
+    "videoKyc": "Video KYC",
+    "kioskBanking": "Kiosk Banking",
+    "agentBanking": "Agent Banking",
+    "corporateAdmin": "Corporate Admin",
+    "corporateBanking": "Corporate Banking",
+    "mobileBanking": "Mobile Banking",
+    "other": "Other",
+    "submitRequest": "Submit Request"
+  },
+  "Loading": {
+    "text": "Loading..."
+  },
+  "Metadata": {
+    "title": "Digital Banking Platform | Enterprise Banking Solutions",
+    "description": "Enterprise-grade digital banking solutions with cutting-edge security, scalable architecture, and seamless integration for modern financial institutions."
   }
 }

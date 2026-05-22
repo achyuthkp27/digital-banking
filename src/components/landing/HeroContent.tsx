@@ -4,6 +4,7 @@ import React from 'react';
 import { motion, MotionValue } from 'framer-motion';
 import styles from './HeroContent.module.css';
 import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 interface HeroContentProps {
   containerVariants: any;
@@ -18,6 +19,8 @@ export default function HeroContent({
   textX,
   textY,
 }: HeroContentProps) {
+  const t = useTranslations('Hero');
+
   return (
     <motion.div
       variants={containerVariants}
@@ -33,31 +36,30 @@ export default function HeroContent({
       <motion.div variants={itemVariants} className={styles.statusBadge}>
         <span className={styles.statusBadgeDot} />
         <span className={styles.statusBadgeText}>
-          Enterprise Platform
+          {t('badge')}
         </span>
       </motion.div>
 
       {/* Heading */}
       <motion.h1 variants={itemVariants} className={styles.heading}>
-        The future of
+        {t('titleLine1')}
         <br />
         <span className={styles.headingHighlight}>
-          digital banking
+          {t('titleHighlight')}
         </span>
         <br />
-        starts here.
+        {t('titleLine3')}
       </motion.h1>
 
       {/* Subtext */}
       <motion.p variants={itemVariants} className={styles.subtext}>
-        Enterprise-grade infrastructure for next-generation banking. Secure, scalable, and built for
-        the institutions that shape the financial world.
+        {t('subtitle')}
       </motion.p>
 
       {/* CTAs */}
       <motion.div variants={itemVariants} className={styles.ctaContainer}>
         <a href="#products" className={styles.ctaPrimary}>
-          Explore Platforms
+          {t('explorePlatforms')}
           <svg
             width="14"
             height="14"
@@ -74,16 +76,16 @@ export default function HeroContent({
         </a>
 
         <Link href="/contact" className={styles.ctaSecondary}>
-          Request Demo
+          {t('requestDemo')}
         </Link>
       </motion.div>
 
       {/* Trust indicators */}
       <motion.div variants={itemVariants} className={styles.trustContainer}>
         {[
-          { value: '99.99%', label: 'Uptime SLA' },
-          { value: '50M+', label: 'Transactions' },
-          { value: 'SOC 2', label: 'Certified' },
+          { value: '99.99%', label: t('uptimeSla') },
+          { value: '50M+', label: t('transactions') },
+          { value: 'SOC 2', label: t('certified') },
         ].map((stat, i) => (
           <div key={i} className={styles.trustItem}>
             <span className={styles.trustValue}>{stat.value}</span>

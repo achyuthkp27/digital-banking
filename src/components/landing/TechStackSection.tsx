@@ -1,35 +1,19 @@
 'use client';
 
 import React from 'react';
-
-const techCategories = [
-  {
-    name: 'Frontend',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Redux', 'Next.js'],
-  },
-  {
-    name: 'Backend',
-    technologies: ['Node.js', 'Express', 'Spring Boot', 'GraphQL', 'REST APIs'],
-  },
-  {
-    name: 'Database',
-    technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Cassandra'],
-  },
-  {
-    name: 'DevOps',
-    technologies: ['Kubernetes', 'Docker', 'Jenkins', 'Terraform', 'ArgoCD'],
-  },
-  {
-    name: 'Security',
-    technologies: ['OAuth 2.0', 'JWT', 'Vault', 'WAF', 'SIEM'],
-  },
-  {
-    name: 'Messaging',
-    technologies: ['Apache Kafka', 'RabbitMQ', 'Redis Pub/Sub', 'WebSockets', 'gRPC'],
-  },
-];
+import { useTranslations } from 'next-intl';
 
 export default function TechStackSection() {
+  const t = useTranslations('TechStack');
+
+  const techCategories = [
+    { nameKey: 'frontend' as const, technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Redux', 'Next.js'] },
+    { nameKey: 'backend' as const, technologies: ['Node.js', 'Express', 'Spring Boot', 'GraphQL', 'REST APIs'] },
+    { nameKey: 'database' as const, technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Cassandra'] },
+    { nameKey: 'devops' as const, technologies: ['Kubernetes', 'Docker', 'Jenkins', 'Terraform', 'ArgoCD'] },
+    { nameKey: 'security' as const, technologies: ['OAuth 2.0', 'JWT', 'Vault', 'WAF', 'SIEM'] },
+    { nameKey: 'messaging' as const, technologies: ['Apache Kafka', 'RabbitMQ', 'Redis Pub/Sub', 'WebSockets', 'gRPC'] },
+  ];
   return (
     <section id="technology" className="section container">
       <div style={{ textAlign: 'center', marginBottom: '80px' }}>
@@ -41,7 +25,7 @@ export default function TechStackSection() {
             fontFamily: 'var(--font-syne), sans-serif',
           }}
         >
-          Modern stack. Proven at scale.
+          {t('title')}
         </h2>
       </div>
 
@@ -76,7 +60,7 @@ export default function TechStackSection() {
                     fontWeight: 600,
                   }}
                 >
-                  {category.name}
+                  {t(category.nameKey)}
                 </span>
               </div>
               

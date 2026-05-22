@@ -1,16 +1,17 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useInView, useMotionValue, animate } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
-const stats = [
-  { value: 99.99, suffix: '%', label: 'System Uptime', format: (v: number) => v.toFixed(2) },
-  { value: 100, prefix: '<', suffix: 'ms', label: 'API Response', format: (v: number) => Math.round(v).toString() },
-  { value: 1, suffix: 'M+', label: 'Requests/Min', format: (v: number) => Math.round(v).toString() },
-  { value: 256, suffix: '-bit', label: 'AES Encryption', format: (v: number) => Math.round(v).toString() },
+const statKeys = [
+  { value: 99.99, suffix: '%', labelKey: 'systemUptime' as const, format: (v: number) => v.toFixed(2) },
+  { value: 100, prefix: '<', suffix: 'ms', labelKey: 'apiResponse' as const, format: (v: number) => Math.round(v).toString() },
+  { value: 1, suffix: 'M+', labelKey: 'requestsPerMin' as const, format: (v: number) => Math.round(v).toString() },
+  { value: 256, suffix: '-bit', labelKey: 'aesEncryption' as const, format: (v: number) => Math.round(v).toString() },
 ];
 
-function AnimatedNumber({ stat }: { stat: typeof stats[0] }) {
+function AnimatedNumber({ stat }: { stat: typeof statKeys[0] }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-20%' });
   const startValue = stat.value > 10 ? 0 : (stat.value > 1 ? 0 : 99.0);
@@ -54,6 +55,7 @@ function AnimatedNumber({ stat }: { stat: typeof stats[0] }) {
 }
 
 export default function StatsSection() {
+  const t = useTranslations('StatsSection');
   return (
     <section
       style={{
@@ -73,7 +75,7 @@ export default function StatsSection() {
             textAlign: 'center',
           }}
         >
-          {stats.map((stat, idx) => (
+          {statKeys.map((stat, idx) => (
             <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <AnimatedNumber stat={stat} />
               <span
@@ -85,7 +87,7 @@ export default function StatsSection() {
                   fontWeight: 600,
                 }}
               >
-                {stat.label}
+                {t(stat.labelKey)}
               </span>
             </div>
           ))}

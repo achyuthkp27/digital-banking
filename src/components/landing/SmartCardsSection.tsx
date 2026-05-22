@@ -20,27 +20,17 @@ const SmartCards3D = dynamic(() => import('./SmartCards3D'), {
     </div>
   ),
 });
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
-const cardFeatures = [
-  {
-    title: 'Virtual & Physical Cards',
-    description:
-      'Instantly issue secure virtual cards for immediate use, while physical metal cards are shipped seamlessly to your corporate clients.',
-  },
-  {
-    title: 'Real-Time Expense Controls',
-    description:
-      'Set granular spending limits, merchant category restrictions, and multi-currency budgets directly through the API.',
-  },
-  {
-    title: 'Apple & Google Pay',
-    description:
-      'Native integration with digital wallets. Customers can provision their cards directly from your banking app.',
-  },
-];
+import { CheckCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const SmartCardsSection = React.memo(function SmartCardsSection() {
+  const t = useTranslations('SmartCards');
+
+  const cardFeatures = [
+    { title: t('virtualPhysical'), description: t('virtualPhysicalDesc') },
+    { title: t('expenseControls'), description: t('expenseControlsDesc') },
+    { title: t('appleGooglePay'), description: t('appleGooglePayDesc') },
+  ];
   return (
     <section
       style={{
@@ -78,7 +68,7 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
                 fontWeight: 600,
               }}
             >
-              Digital Issuance
+              {t('badge')}
             </span>
             <h2
               style={{
@@ -91,8 +81,8 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Next-Generation <br />
-              <span style={{ color: 'var(--accent)' }}>Smart Cards</span>
+              {t('titleLine1')} <br />
+              <span style={{ color: 'var(--accent)' }}>{t('titleHighlight')}</span>
             </h2>
             <p
               style={{
@@ -102,16 +92,14 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
                 marginBottom: '40px',
               }}
             >
-              Empower your customers with intelligent card programs. Issue physical, virtual, and
-              single-use cards instantly with programmable spending limits and real-time fraud
-              prevention built into the core.
+              {t('description')}
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               {cardFeatures.map((feature, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <CheckCircleIcon
-                    sx={{ color: 'var(--accent)', fontSize: '24px', flexShrink: 0 }}
+                  <CheckCircle
+                    className="text-accent flex-shrink-0" size={24}
                   />
                   <div>
                     <h4

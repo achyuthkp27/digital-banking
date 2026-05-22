@@ -1,3 +1,16 @@
+@import "tailwindcss";
+@source "../components";
+@source "../illustrations";
+
+@theme {
+  --color-background: var(--bg-base);
+  --color-foreground: var(--text-primary);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-syne: var(--font-syne);
+}
+
 :root {
   --bg-base: #030712;
   --bg-surface: #0a0a0a;
@@ -36,13 +49,7 @@
   --bg-base-rgb: 249, 250, 251;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 
 html {
   scroll-behavior: smooth;

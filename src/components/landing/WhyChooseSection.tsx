@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useMotionValue, animate } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 /* ─── keyframes ─── */
 const KEYFRAMES_ID = 'matrix-why-section-keyframes';
@@ -29,16 +30,16 @@ function injectKeyframes() {
   document.head.appendChild(style);
 }
 
-const stats = [
-  { id: '01', value: 200, prefix: '< ', suffix: 'ms', label: 'Global Settlement Time', format: (v: number) => Math.round(v).toString() },
-  { id: '02', value: 99.999, suffix: '%', label: 'Platform Availability', format: (v: number) => v.toFixed(3) },
-  { id: '03', value: 10, suffix: 'M+', label: 'Events Processed / Second', format: (v: number) => Math.round(v).toString() },
-  { id: '04', value: 256, suffix: '-bit', label: 'End-to-End Encryption', format: (v: number) => Math.round(v).toString() },
-  { id: '05', value: 400, suffix: '+', label: 'Open Financial APIs', format: (v: number) => Math.round(v).toString() },
-  { id: '06', value: 98.7, suffix: '%', label: 'AI Fraud Detection Accuracy', format: (v: number) => v.toFixed(1) },
+const statKeys = [
+  { id: '01', value: 200, prefix: '< ', suffix: 'ms', labelKey: 'globalSettlement' as const, format: (v: number) => Math.round(v).toString() },
+  { id: '02', value: 99.999, suffix: '%', labelKey: 'platformAvailability' as const, format: (v: number) => v.toFixed(3) },
+  { id: '03', value: 10, suffix: 'M+', labelKey: 'eventsProcessed' as const, format: (v: number) => Math.round(v).toString() },
+  { id: '04', value: 256, suffix: '-bit', labelKey: 'e2eEncryption' as const, format: (v: number) => Math.round(v).toString() },
+  { id: '05', value: 400, suffix: '+', labelKey: 'openApis' as const, format: (v: number) => Math.round(v).toString() },
+  { id: '06', value: 98.7, suffix: '%', labelKey: 'aiFraudDetection' as const, format: (v: number) => v.toFixed(1) },
 ];
 
-function AnimatedStatNumber({ stat }: { stat: typeof stats[0] }) {
+function AnimatedStatNumber({ stat }: { stat: typeof statKeys[0] }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-10%' });
   const startValue = stat.value > 50 ? 0 : (stat.value > 5 ? 0 : 99.0);
@@ -76,6 +77,7 @@ function AnimatedStatNumber({ stat }: { stat: typeof stats[0] }) {
 }
 
 export default function WhyChooseSection() {
+  const t = useTranslations('WhyChoose');
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -211,7 +213,7 @@ export default function WhyChooseSection() {
               fontSize: '12px', color: 'var(--accent)', letterSpacing: '0.14em', textTransform: 'uppercase'
             }}
           >
-            Capabilities
+            {t('badge')}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -225,7 +227,7 @@ export default function WhyChooseSection() {
               lineHeight: 1.05, letterSpacing: '-0.03em',
             }}
           >
-            Engineered for <br/> Absolute Scale.
+            {t('titleLine1')} <br/> {t('titleLine2')}
           </motion.h2>
         </div>
 
@@ -235,7 +237,7 @@ export default function WhyChooseSection() {
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: 'clamp(40px, 6vw, 80px)',
         }}>
-          {stats.map((stat, i) => (
+          {statKeys.map((stat, i) => (
             <motion.div
               key={stat.id}
               initial={{ opacity: 0, y: 30 }}
@@ -273,7 +275,7 @@ export default function WhyChooseSection() {
               <div style={{
                 fontSize: '15px', color: 'var(--text-secondary)', fontWeight: 500, letterSpacing: '-0.01em'
               }}>
-                {stat.label}
+                {t(stat.labelKey)}
               </div>
             </motion.div>
           ))}

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Box, Typography, Chip } from '@mui/material';
 import ScrollReveal, { TextReveal } from './ScrollReveal';
 
 interface SectionHeadingProps {
@@ -18,40 +17,15 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
   title,
   subtitle,
   align = 'center',
-  light = false,
   gradientText = false,
 }) => {
   return (
-    <Box
-      sx={{
-        textAlign: align,
-        mb: { xs: 6, md: 8 },
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: align === 'center' ? 'center' : 'flex-start',
-      }}
-    >
+    <div className={`flex flex-col mb-16 md:mb-24 ${align === 'center' ? 'items-center text-center' : 'items-start text-left'}`}>
       {badge && (
         <ScrollReveal delay={0}>
-          <Chip
-            label={badge}
-            sx={{
-              mb: 2.5,
-              px: 2,
-              py: 0.5,
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              letterSpacing: '2px',
-              textTransform: 'uppercase',
-              background: 'rgba(var(--accent-rgb), 0.08)',
-              border: '1px solid rgba(var(--accent-rgb), 0.3)',
-              color: 'var(--accent)',
-              borderRadius: '20px',
-              '& .MuiChip-label': {
-                px: 1,
-              },
-            }}
-          />
+          <div className="mb-6 px-4 py-1.5 text-[0.7rem] font-bold tracking-[2px] uppercase bg-[rgba(var(--accent-rgb),0.08)] border border-[rgba(var(--accent-rgb),0.3)] text-accent rounded-full">
+            {badge}
+          </div>
         </ScrollReveal>
       )}
 
@@ -64,7 +38,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
           fontWeight: 700,
           lineHeight: 1.2,
           letterSpacing: '-0.02em',
-          color: light ? '#F9FAFB' : '#F9FAFB',
+          color: '#F9FAFB',
           marginBottom: subtitle ? '16px' : '0',
           ...(gradientText && {
             background: 'linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%)',
@@ -77,20 +51,12 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
 
       {subtitle && (
         <ScrollReveal delay={0.3}>
-          <Typography
-            variant="body1"
-            sx={{
-              color: 'text.secondary',
-              maxWidth: '600px',
-              lineHeight: 1.8,
-              fontSize: { xs: '0.95rem', md: '1.05rem' },
-            }}
-          >
+          <p className="text-[var(--text-secondary)] max-w-[600px] leading-relaxed text-[0.95rem] md:text-[1.05rem]">
             {subtitle}
-          </Typography>
+          </p>
         </ScrollReveal>
       )}
-    </Box>
+    </div>
   );
 };
 

@@ -2,8 +2,12 @@
 
 import React from 'react';
 import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
+  const t = useTranslations('Footer');
+  const tNav = useTranslations('Navigation');
+
   return (
     <footer
       style={{
@@ -55,8 +59,7 @@ export default function Footer() {
                 marginBottom: '24px',
               }}
             >
-              Enterprise-grade digital banking solutions with cutting-edge security and seamless
-              integration.
+              {t('tagline')}
             </p>
           </div>
 
@@ -71,7 +74,7 @@ export default function Footer() {
                   marginBottom: '20px',
                 }}
               >
-                Platform
+                {t('platform')}
               </h5>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <Link
@@ -82,7 +85,7 @@ export default function Footer() {
                     transition: 'color 0.2s',
                   }}
                 >
-                  Products
+                  {tNav('products')}
                 </Link>
                 <Link
                   href="#architecture"
@@ -92,7 +95,7 @@ export default function Footer() {
                     transition: 'color 0.2s',
                   }}
                 >
-                  Architecture
+                  {tNav('architecture')}
                 </Link>
                 <Link
                   href="#security"
@@ -102,7 +105,7 @@ export default function Footer() {
                     transition: 'color 0.2s',
                   }}
                 >
-                  Security
+                  {tNav('security')}
                 </Link>
                 <Link
                   href="#technology"
@@ -112,7 +115,7 @@ export default function Footer() {
                     transition: 'color 0.2s',
                   }}
                 >
-                  Technology
+                  {tNav('technology')}
                 </Link>
               </div>
             </div>
@@ -125,7 +128,7 @@ export default function Footer() {
                   marginBottom: '20px',
                 }}
               >
-                Company
+                {t('company')}
               </h5>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <Link
@@ -136,7 +139,7 @@ export default function Footer() {
                     transition: 'color 0.2s',
                   }}
                 >
-                  About Us
+                  {t('aboutUs')}
                 </Link>
                 <Link
                   href="#"
@@ -146,7 +149,7 @@ export default function Footer() {
                     transition: 'color 0.2s',
                   }}
                 >
-                  Careers
+                  {t('careers')}
                 </Link>
                 <Link
                   href="#"
@@ -156,7 +159,7 @@ export default function Footer() {
                     transition: 'color 0.2s',
                   }}
                 >
-                  Contact
+                  {t('contact')}
                 </Link>
               </div>
             </div>
@@ -174,14 +177,14 @@ export default function Footer() {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <p style={{ color: 'var(--text-tertiary)', fontSize: '13px' }}>
-            © {new Date().getFullYear()} Digital Banking Platform. All rights reserved.
+            {t('copyright', { year: new Date().getFullYear() })}
           </p>
           <div style={{ display: 'flex', gap: '24px' }}>
             <Link href="#" style={{ color: 'var(--text-tertiary)', fontSize: '13px' }}>
-              Privacy Policy
+              {t('privacyPolicy')}
             </Link>
             <Link href="#" style={{ color: 'var(--text-tertiary)', fontSize: '13px' }}>
-              Terms of Service
+              {t('termsOfService')}
             </Link>
           </div>
         </div>

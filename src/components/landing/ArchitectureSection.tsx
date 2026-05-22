@@ -1,203 +1,140 @@
 'use client';
 
 import React from 'react';
-import LanguageIcon from '@mui/icons-material/Language';
-import RouterIcon from '@mui/icons-material/Router';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import StorageIcon from '@mui/icons-material/Storage';
-import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
-import ShieldOutlinedIcon from '@mui/icons-material/ShieldOutlined';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
-const architectureLayers = [
-  {
-    name: 'Presentation Layer',
-    subtitle: 'Layer 1',
-    icon: <LanguageIcon sx={{ color: 'var(--accent)', fontSize: '28px' }} />,
-    pills: [
-      { label: 'Web App', active: true },
-      { label: 'Mobile App', active: false },
-      { label: 'Tablet App', active: false },
-      { label: 'Kiosk', active: false },
-    ],
-  },
-  {
-    name: 'API Gateway',
-    subtitle: 'Layer 2',
-    icon: <RouterIcon sx={{ color: 'var(--accent)', fontSize: '28px' }} />,
-    pills: [
-      { label: 'Load Balancer', active: false },
-      { label: 'API Gateway', active: true },
-      { label: 'Authentication', active: false },
-      { label: 'Rate Limiting', active: false },
-    ],
-  },
-  {
-    name: 'Business Logic',
-    subtitle: 'Layer 3',
-    icon: <AccountTreeIcon sx={{ color: 'var(--accent)', fontSize: '28px' }} />,
-    pills: [
-      { label: 'Banking Services', active: true },
-      { label: 'Payment Processing', active: false },
-      { label: 'Analytics', active: false },
-      { label: 'Notifications', active: false },
-    ],
-  },
-  {
-    name: 'Data Layer',
-    subtitle: 'Layer 4',
-    icon: <StorageIcon sx={{ color: 'var(--accent)', fontSize: '28px' }} />,
-    pills: [
-      { label: 'PostgreSQL', active: true },
-      { label: 'Redis Cache', active: false },
-      { label: 'Document Store', active: false },
-      { label: 'Data Warehouse', active: false },
-    ],
-  },
-];
-
-const callouts = [
-  {
-    title: 'Cloud Native',
-    description: 'Built for Kubernetes, auto-scaling, and multi-region deployment',
-    icon: <CloudOutlinedIcon sx={{ color: 'var(--accent)', fontSize: '24px' }} />
-  },
-  {
-    title: 'Secure by Design',
-    description: 'Zero-trust architecture with end-to-end encryption',
-    icon: <ShieldOutlinedIcon sx={{ color: 'var(--accent)', fontSize: '24px' }} />
-  },
-  {
-    title: 'Microservices',
-    description: 'Independent, scalable services with API-first approach',
-    icon: <AccountTreeIcon sx={{ color: 'var(--accent)', fontSize: '24px' }} />
-  }
-];
+import { Globe, Router, Network, Database, Cloud, Shield, ChevronDown } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function ArchitectureSection() {
-  return (
-    <section id="architecture" className="section container" style={{ background: 'var(--bg-base)', position: 'relative' }}>
-      
-      {/* Background grid dot pattern for architecture area */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.05) 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-          opacity: 0.5,
-          pointerEvents: 'none',
-        }}
-      />
+  const t = useTranslations('Architecture');
 
-      <div style={{ position: 'relative', zIndex: 10 }}>
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              fontSize: '11px',
-              color: 'var(--accent)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.15em',
-              marginBottom: '16px',
-              fontWeight: 600,
-              background: 'var(--accent-dim)',
-              padding: '6px 12px',
-              borderRadius: '999px',
-              border: '1px solid var(--accent-glow)'
-            }}
-          >
-            System Architecture
+  const architectureLayers = [
+    {
+      name: t('presentationLayer'),
+      subtitle: t('layer1'),
+      icon: <Globe size={22} />,
+      pills: [
+        { label: t('webApp'), active: true },
+        { label: t('mobileApp'), active: false },
+        { label: t('tabletApp'), active: false },
+        { label: t('kiosk'), active: false },
+      ],
+    },
+    {
+      name: t('apiGateway'),
+      subtitle: t('layer2'),
+      icon: <Router size={22} />,
+      pills: [
+        { label: t('loadBalancer'), active: false },
+        { label: t('apiGateway'), active: true },
+        { label: t('authentication'), active: false },
+        { label: t('rateLimiting'), active: false },
+      ],
+    },
+    {
+      name: t('businessLogic'),
+      subtitle: t('layer3'),
+      icon: <Network size={22} />,
+      pills: [
+        { label: t('bankingServices'), active: true },
+        { label: t('paymentProcessing'), active: false },
+        { label: t('analytics'), active: false },
+        { label: t('notifications'), active: false },
+      ],
+    },
+    {
+      name: t('dataLayer'),
+      subtitle: t('layer4'),
+      icon: <Database size={22} />,
+      pills: [
+        { label: t('postgresql'), active: true },
+        { label: t('redisCache'), active: false },
+        { label: t('documentStore'), active: false },
+        { label: t('dataWarehouse'), active: false },
+      ],
+    },
+  ];
+
+  const callouts = [
+    {
+      title: t('cloudNative'),
+      description: t('cloudNativeDesc'),
+      icon: <Cloud size={24} />
+    },
+    {
+      title: t('secureByDesign'),
+      description: t('secureByDesignDesc'),
+      icon: <Shield size={24} />
+    },
+    {
+      title: t('microservices'),
+      description: t('microservicesDesc'),
+      icon: <Network size={24} />
+    }
+  ];
+
+  return (
+    <section id="architecture" className="py-[120px] relative bg-[var(--bg-base)]">
+      
+      {/* Background grid dot pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(var(--color-invert-rgb),0.05)_1px,transparent_1px)] [background-size:24px_24px] opacity-50 pointer-events-none" />
+      
+      {/* Soft center glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-[var(--accent-dim)] rounded-full blur-[120px] opacity-20 pointer-events-none" />
+
+      <div className="container relative z-10 mx-auto px-4 md:px-6">
+        
+        {/* Section Header */}
+        <div className="text-center mb-[80px]">
+          <span className="inline-flex items-center gap-2 text-[11px] text-accent uppercase tracking-[0.15em] mb-4 font-semibold bg-[var(--accent-dim)] px-3 py-1.5 rounded-full border border-[var(--accent-glow)]">
+            <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            {t('badge')}
           </span>
-          <h2
-            style={{
-              fontSize: '48px',
-              fontWeight: 700,
-              color: 'var(--text-primary)',
-              fontFamily: 'var(--font-syne), sans-serif',
-              marginBottom: '16px'
-            }}
-          >
-            Scalable Architecture
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] font-syne mb-4">
+            {t('title')}
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '16px' }}>
-            Microservices-based, cloud-native architecture designed for high availability and performance
+          <p className="text-[var(--text-secondary)] text-base max-w-2xl mx-auto">
+            {t('subtitle')}
           </p>
         </div>
 
-        {/* Diagram container */}
-        <div
-          style={{
-            maxWidth: '900px',
-            margin: '0 auto 64px auto',
-            display: 'flex',
-            flexDirection: 'column',
-            position: 'relative',
-            alignItems: 'center',
-          }}
-        >
+        {/* Architecture Diagram container */}
+        <div className="max-w-[900px] mx-auto mb-[80px] flex flex-col items-center">
           {architectureLayers.map((layer, idx) => (
             <React.Fragment key={idx}>
+              
+              {/* Layer Card */}
               <div
-                className="arch-layer bento-glass"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '24px 32px',
-                  width: '100%',
-                  position: 'relative',
-                }}
+                className="w-full group flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-5 md:pr-8 rounded-[24px] md:rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm hover:border-[var(--border-strong)] hover:shadow-lg transition-all duration-400 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1"
               >
                 {/* Left Side: Icon & Title */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: '0 0 250px', marginRight: '24px' }}>
-                  <div
-                    style={{
-                      width: '56px',
-                      height: '56px',
-                      borderRadius: '12px',
-                      background: 'var(--accent-dim)',
-                      border: '1px solid var(--accent-glow)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {layer.icon}
+                <div className="flex items-center gap-5 w-full md:w-auto">
+                  <div className="w-14 h-14 rounded-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[var(--accent-dim)] group-hover:border-[var(--accent-glow)] transition-all duration-400">
+                    {React.cloneElement(layer.icon as React.ReactElement<{ className?: string }>, {
+                      className: "text-[var(--text-secondary)] group-hover:text-accent transition-colors duration-400"
+                    })}
                   </div>
-                  <div>
-                    <span style={{ display: 'block', color: 'var(--text-primary)', fontWeight: 600, fontSize: '16px', marginBottom: '2px' }}>
+                  <div className="flex flex-col justify-center">
+                    <span className="block text-[var(--text-primary)] font-semibold text-[17px] leading-snug mb-0.5">
                       {layer.name}
                     </span>
-                    <span style={{ display: 'block', color: 'var(--text-tertiary)', fontSize: '12px' }}>
+                    <span className="block text-[var(--text-tertiary)] text-[12px] font-medium uppercase tracking-wider">
                       {layer.subtitle}
                     </span>
                   </div>
                 </div>
 
                 {/* Right Side: Pills */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', flex: 1, justifyContent: 'flex-end' }}>
+                <div className="flex flex-wrap items-center gap-2.5 mt-5 md:mt-0 md:ml-auto w-full md:w-auto justify-start md:justify-end">
                   {layer.pills.map((pill, pIdx) => (
                     <div
                       key={pIdx}
-                      style={{
-                        fontSize: '12px',
-                        fontWeight: 500,
-                        color: 'var(--text-secondary)',
-                        background: 'transparent',
-                        border: '1px solid var(--border-subtle)',
-                        borderRadius: '6px',
-                        padding: '8px 16px',
-                        transition: 'all 0.2s ease',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = 'var(--border-strong)';
-                        e.currentTarget.style.color = 'var(--text-primary)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                        e.currentTarget.style.color = 'var(--text-secondary)';
-                      }}
+                      className={`flex items-center px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-300 ${
+                        pill.active
+                          ? 'bg-[var(--accent-dim)] text-accent border border-[var(--accent-glow)] shadow-[0_0_15px_rgba(var(--accent-rgb),0.1)]'
+                          : 'bg-transparent text-[var(--text-secondary)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]'
+                      }`}
                     >
+                      {pill.active && <div className="w-1.5 h-1.5 rounded-full bg-accent mr-2" />}
                       {pill.label}
                     </div>
                   ))}
@@ -206,8 +143,8 @@ export default function ArchitectureSection() {
               
               {/* Down Arrow between layers */}
               {idx !== architectureLayers.length - 1 && (
-                <div style={{ display: 'flex', justifyContent: 'center', padding: '12px 0' }}>
-                  <KeyboardArrowDownIcon sx={{ color: 'var(--border-strong)', fontSize: '24px' }} />
+                <div className="flex justify-center py-4">
+                  <ChevronDown className="text-[var(--border-strong)]" size={20} />
                 </div>
               )}
             </React.Fragment>
@@ -215,94 +152,27 @@ export default function ArchitectureSection() {
         </div>
 
         {/* Callouts */}
-        <div
-          className="arch-callouts"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '24px',
-            maxWidth: '900px',
-            margin: '0 auto',
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[900px] mx-auto">
           {callouts.map((callout, idx) => (
             <div 
               key={idx} 
-              className="arch-callout bento-glass"
-              style={{ 
-                padding: '24px', 
-              }}
+              className="group relative p-6 md:p-8 rounded-[24px] bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:shadow-xl transition-all duration-400 hover:-translate-y-1 flex flex-col"
             >
-              <div
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  background: 'var(--accent-dim)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '16px',
-                }}
-              >
-                {callout.icon}
+              <div className="w-12 h-12 rounded-[14px] bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-center justify-center mb-6 group-hover:bg-[var(--accent-dim)] group-hover:border-[var(--accent-glow)] group-hover:scale-110 transition-all duration-400 shrink-0">
+                {React.cloneElement(callout.icon as React.ReactElement<{ className?: string }>, {
+                  className: "text-[var(--text-secondary)] group-hover:text-accent transition-colors duration-400"
+                })}
               </div>
-              <h4 style={{ color: 'var(--text-primary)', fontSize: '16px', fontWeight: 600, marginBottom: '8px' }}>
+              <h4 className="text-[17px] font-semibold text-[var(--text-primary)] mb-2">
                 {callout.title}
               </h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6 }}>
+              <p className="text-[14px] text-[var(--text-secondary)] leading-relaxed">
                 {callout.description}
               </p>
             </div>
           ))}
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{__html: `
-        .bento-glass {
-          background: linear-gradient(135deg, rgba(var(--color-invert-rgb), 0.05) 0%, rgba(var(--color-invert-rgb), 0.01) 100%);
-          backdrop-filter: blur(24px) saturate(120%);
-          -webkit-backdrop-filter: blur(24px) saturate(120%);
-          border: 1px solid rgba(var(--color-invert-rgb), 0.06);
-          box-shadow: inset 0 1px 1px rgba(var(--color-invert-rgb), 0.12), 0 8px 32px rgba(var(--color-base-rgb), 0.4);
-          border-radius: 20px;
-          transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
-          overflow: hidden;
-        }
-        .bento-glass::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
-          z-index: 0;
-          pointer-events: none;
-          mix-blend-mode: screen;
-          opacity: 0.15;
-        }
-        .arch-layer:hover, .arch-callout:hover {
-          border-color: rgba(var(--color-invert-rgb), 0.15);
-          transform: translateY(-4px);
-          box-shadow: inset 0 1px 1px rgba(var(--color-invert-rgb), 0.25), inset 0 0 40px rgba(var(--color-invert-rgb), 0.02), 0 16px 40px -10px rgba(var(--color-base-rgb), 0.6);
-        }
-        @media (max-width: 768px) {
-          .arch-callouts {
-            grid-template-columns: 1fr !important;
-          }
-          .arch-layer {
-            flex-direction: column;
-            align-items: flex-start !important;
-            padding: 20px !important;
-          }
-          .arch-layer > div:first-child {
-            margin-bottom: 24px;
-            margin-right: 0 !important;
-            flex: auto !important;
-          }
-          .arch-layer > div:last-child {
-            justify-content: flex-start !important;
-          }
-        }
-      `}} />
     </section>
   );
 }

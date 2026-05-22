@@ -1,54 +1,18 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import DashboardIcon from '@mui/icons-material/DashboardOutlined';
-import AccountTreeIcon from '@mui/icons-material/AccountTreeOutlined';
-import LanguageIcon from '@mui/icons-material/LanguageOutlined';
-import CodeIcon from '@mui/icons-material/CodeOutlined';
-import SettingsIcon from '@mui/icons-material/SettingsOutlined';
-import StorageIcon from '@mui/icons-material/StorageOutlined';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { LayoutDashboard, Network, Globe, Code, Settings, Database, ArrowRight, Sparkles } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
-const features = [
-  {
-    title: 'Digital Platform Dashboard',
-    description: 'Comprehensive unified dashboard with real-time analytics, transaction monitoring, and customizable widgets for complete oversight.',
-    icon: <DashboardIcon sx={{ fontSize: '24px' }} />,
-    color: 'var(--accent)' // Emerald
-  },
-  {
-    title: 'Architecture',
-    description: 'Microservices-based scalable architecture with cloud-native design, API-first approach, and seamless third-party integrations.',
-    icon: <AccountTreeIcon sx={{ fontSize: '24px' }} />,
-    color: '#6366f1' // Indigo
-  },
-  {
-    title: 'Capabilities',
-    description: 'Multi-channel banking, instant payments, wealth management, loan origination, and AI-powered financial insights.',
-    icon: <LanguageIcon sx={{ fontSize: '24px' }} />,
-    color: '#06b6d4' // Cyan
-  },
-  {
-    title: 'Development & Implementation',
-    description: 'Agile development methodology, CI/CD pipelines, automated testing, and comprehensive API documentation for rapid deployment.',
-    icon: <CodeIcon sx={{ fontSize: '24px' }} />,
-    color: '#f43f5e' // Rose
-  },
-  {
-    title: 'Operations / Maintenance',
-    description: '24/7 monitoring, automated scaling, proactive maintenance, incident management, and comprehensive logging systems.',
-    icon: <SettingsIcon sx={{ fontSize: '24px' }} />,
-    color: '#8b5cf6' // Violet
-  },
-  {
-    title: 'Technology Stack',
-    description: 'Modern tech stack including React, Node.js, Kubernetes, PostgreSQL, Redis, Kafka, and enterprise-grade security frameworks.',
-    icon: <StorageIcon sx={{ fontSize: '24px' }} />,
-    color: '#f59e0b' // Amber
-  }
-];
+interface FeatureItem {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  color: string;
+}
 
-const BentoCard = React.memo(function BentoCard({ feature }: { feature: typeof features[0] }) {
+const BentoCard = React.memo(function BentoCard({ feature }: { feature: FeatureItem }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -64,104 +28,154 @@ const BentoCard = React.memo(function BentoCard({ feature }: { feature: typeof f
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      whileHover="hover"
-      initial="rest"
-      style={{
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '32px',
-        background: 'var(--bg-surface)',
-        borderRadius: '24px',
-        border: '1px solid var(--border-subtle)',
-        overflow: 'hidden',
-        cursor: 'default',
-        boxShadow: 'var(--shadow-sm, 0 4px 6px rgba(var(--color-base-rgb),0.05))'
-      }}
-      variants={{
-        rest: { scale: 1, borderColor: 'var(--border-subtle)' },
-        hover: { scale: 1.02, borderColor: 'var(--border-strong)' }
-      }}
-      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="relative flex flex-col p-8 bg-[var(--bg-surface)] backdrop-blur-xl rounded-[24px] overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-colors shadow-sm hover:shadow-lg group h-full"
     >
-      {/* Interactive Spotlight using Motion */}
+      {/* Interactive Spotlight */}
       <motion.div
+        className="absolute inset-0 pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
         style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
           background: useTransform(
             [mouseX, mouseY],
-            ([x, y]) => `radial-gradient(400px circle at ${x}px ${y}px, ${feature.color}15, transparent 40%)`
+            ([x, y]) => `radial-gradient(400px circle at ${x}px ${y}px, ${feature.color}15, transparent 50%)`
           ),
-          pointerEvents: 'none',
-          zIndex: 0,
         }}
-        variants={{
-          rest: { opacity: 0 },
-          hover: { opacity: 1 }
-        }}
-        transition={{ duration: 0.3 }}
       />
       
-      <div style={{ position: 'relative', zIndex: 10 }}>
-        <motion.div
-          variants={{
-            rest: { background: 'var(--bg-elevated)', color: 'var(--text-secondary)', borderColor: 'var(--border-subtle)', boxShadow: 'none' },
-            hover: { background: `${feature.color}20`, color: 'var(--text-primary)', borderColor: feature.color, boxShadow: `0 0 20px ${feature.color}40` }
-          }}
-          transition={{ duration: 0.3 }}
-          style={{
-            width: '56px', height: '56px', borderRadius: '16px', border: '1px solid',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px'
-          }}
-        >
-          {feature.icon}
-        </motion.div>
+      <div className="relative z-10 flex flex-col h-full">
+        <div className="mb-6">
+          <div
+            className="w-12 h-12 rounded-xl flex items-center justify-center border border-[var(--border-default)] bg-[var(--bg-elevated)] shadow-inner transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3"
+            style={{ color: feature.color }}
+          >
+            {feature.icon}
+          </div>
+        </div>
 
-        <motion.h3
-          variants={{ rest: { color: 'var(--text-primary)' }, hover: { color: 'var(--text-primary)' } }}
-          style={{ fontFamily: 'var(--font-syne)', fontSize: '20px', fontWeight: 600, marginBottom: '12px', margin: 0 }}
-        >
-          {feature.title}
-        </motion.h3>
+        <div className="flex-1 flex flex-col">
+          <h3 className="font-syne text-xl font-bold mb-3 text-[var(--text-primary)] tracking-tight transition-colors duration-300">
+            {feature.title}
+          </h3>
 
-        <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.6, margin: 0 }}>
-          {feature.description}
-        </p>
+          <p className="text-[var(--text-secondary)] text-[15px] leading-relaxed font-light transition-colors duration-300">
+            {feature.description}
+          </p>
+        </div>
       </div>
     </motion.div>
   );
 });
 
 const PlatformHighlights = React.memo(function PlatformHighlights() {
+  const t = useTranslations('PlatformHighlights');
+  
+  const features: FeatureItem[] = [
+    { 
+      title: t('dashboard'), 
+      description: t('dashboardDesc'), 
+      icon: <LayoutDashboard size={24} strokeWidth={1.5} />, 
+      color: '#4ade80' // Emerald/Green
+    },
+    { 
+      title: t('architecture'), 
+      description: t('architectureDesc'), 
+      icon: <Network size={24} strokeWidth={1.5} />, 
+      color: '#818cf8' // Indigo
+    },
+    { 
+      title: t('capabilities'), 
+      description: t('capabilitiesDesc'), 
+      icon: <Globe size={24} strokeWidth={1.5} />, 
+      color: '#2dd4bf' // Teal
+    },
+    { 
+      title: t('devAndImpl'), 
+      description: t('devAndImplDesc'), 
+      icon: <Code size={24} strokeWidth={1.5} />, 
+      color: '#f472b6' // Pink
+    },
+    { 
+      title: t('operationsMaint'), 
+      description: t('operationsMaintDesc'), 
+      icon: <Settings size={24} strokeWidth={1.5} />, 
+      color: '#a78bfa' // Purple
+    },
+    { 
+      title: t('techStack'), 
+      description: t('techStackDesc'), 
+      icon: <Database size={24} strokeWidth={1.5} />, 
+      color: '#fbbf24' // Amber
+    },
+  ];
+
   return (
-    <section id="platform" style={{ padding: '120px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div style={{ textAlign: 'center', marginBottom: '80px', maxWidth: '800px' }}>
-        <span style={{ display: 'block', fontSize: '12px', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 700 }}>
-          Enterprise Platform
-        </span>
-        <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif', marginBottom: '24px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-          Built for massive scale.
-        </h2>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '18px', lineHeight: 1.6 }}>
-          Comprehensive architecture designed to power the future of digital banking globally.
-        </p>
+    <section id="platform" className="relative py-[120px] px-6 flex flex-col items-center overflow-hidden">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[600px] bg-[var(--accent)]/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
+
+      <div className="relative z-10 text-center mb-16 max-w-[800px] mx-auto flex flex-col items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/20 mb-6 backdrop-blur-sm"
+        >
+          <Sparkles size={14} className="text-[var(--accent)]" />
+          <span className="text-xs text-[var(--accent)] font-bold uppercase tracking-[0.2em]">
+            {t('badge')}
+          </span>
+        </motion.div>
+        
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-[clamp(36px,5vw,56px)] font-extrabold text-[var(--text-primary)] font-syne mb-6 leading-tight tracking-tight"
+        >
+          {t('title')}
+        </motion.h2>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed font-light max-w-[600px]"
+        >
+          {t('subtitle')}
+        </motion.p>
       </div>
 
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
-        gap: '24px', 
-        width: '100%', 
-        maxWidth: '1280px' 
-      }}>
+      {/* Grid: Exactly 3 columns on desktop, 2 on tablet, 1 on mobile */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[1200px]">
         {features.map((feature, idx) => (
           <BentoCard key={idx} feature={feature} />
         ))}
       </div>
+
+      {/* Call to Action */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+        className="relative z-10 w-full flex justify-center"
+        style={{ marginTop: '64px' }}
+      >
+        <a 
+          href="#architecture"
+          style={{ padding: '16px 32px', backgroundColor: 'var(--text-primary)', color: 'var(--bg-base)' }}
+          className="group relative inline-flex items-center justify-center gap-3 font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(var(--color-invert-rgb),0.2)] active:scale-[0.98] border border-[var(--border-subtle)] no-underline"
+        >
+          <span className="relative z-10 font-syne text-[15px] uppercase tracking-wide whitespace-nowrap">{t('exploreCta')}</span>
+          <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[rgba(var(--color-base-rgb),0.1)] to-[rgba(var(--color-base-rgb),0)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </a>
+      </motion.div>
     </section>
   );
 });

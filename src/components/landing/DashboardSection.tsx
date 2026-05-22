@@ -2,8 +2,10 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export default function DashboardSection() {
+  const t = useTranslations('Dashboard');
   const containerRef = useRef<HTMLDivElement>(null);
   
   // 3D tilt effect based on scroll
@@ -76,10 +78,10 @@ export default function DashboardSection() {
             {/* Sidebar */}
             <div style={{ flex: '0 0 200px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {[
-                { label: 'Overview', active: true },
-                { label: 'Transactions', active: false },
-                { label: 'API Logs', active: false },
-                { label: 'Settings', active: false },
+                { label: t('overview'), active: true },
+                { label: t('transactionsNav'), active: false },
+                { label: t('apiLogs'), active: false },
+                { label: t('settings'), active: false },
               ].map((item, i) => (
                 <div key={i} style={{
                   padding: '12px 16px',
@@ -101,9 +103,9 @@ export default function DashboardSection() {
               {/* Top Stats Row */}
               <div style={{ display: 'flex', gap: '24px' }}>
                 {[
-                  { label: 'Total Volume', value: '$24.5M', color: 'var(--text-primary)' },
-                  { label: 'Active Sessions', value: '1,248', color: 'var(--text-primary)' },
-                  { label: 'System Health', value: '99.9%', color: 'var(--accent)' }
+                  { label: t('totalVolume'), value: '$24.5M', color: 'var(--text-primary)' },
+                  { label: t('activeSessions'), value: '1,248', color: 'var(--text-primary)' },
+                  { label: t('systemHealth'), value: '99.9%', color: 'var(--accent)' }
                 ].map((stat, i) => (
                   <div key={i} style={{
                     flex: 1, background: 'rgba(var(--color-invert-rgb), 0.02)', borderRadius: '8px',
@@ -117,13 +119,13 @@ export default function DashboardSection() {
 
               {/* Transactions Table */}
               <div style={{ flex: 1, background: 'rgba(var(--color-invert-rgb), 0.02)', borderRadius: '8px', border: '1px solid rgba(var(--color-invert-rgb), 0.03)', padding: '24px' }}>
-                <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '12px', color: '#888', marginBottom: '16px', textTransform: 'uppercase' }}>Recent Transactions</div>
+                <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '12px', color: '#888', marginBottom: '16px', textTransform: 'uppercase' }}>{t('recentTransactions')}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   {[
-                    { id: 'tx_8294a', amount: '+$12,450.00', status: 'Settled', time: '2m ago' },
-                    { id: 'tx_1048b', amount: '-$840.00', status: 'Processing', time: '15m ago' },
-                    { id: 'tx_5921c', amount: '+$3,200.50', status: 'Settled', time: '1h ago' },
-                    { id: 'tx_3398d', amount: '-$15.00', status: 'Settled', time: '2h ago' },
+                    { id: 'tx_8294a', amount: '+$12,450.00', status: t('settled'), time: '2m ago' },
+                    { id: 'tx_1048b', amount: '-$840.00', status: t('processing'), time: '15m ago' },
+                    { id: 'tx_5921c', amount: '+$3,200.50', status: t('settled'), time: '1h ago' },
+                    { id: 'tx_3398d', amount: '-$15.00', status: t('settled'), time: '2h ago' },
                   ].map((tx, i) => (
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: i === 3 ? 'none' : '1px solid rgba(var(--color-invert-rgb), 0.05)', paddingBottom: i === 3 ? 0 : '16px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>

@@ -11,7 +11,7 @@ export function generateStaticParams() {
 import Navbar from '@/components/landing/Navbar';
 import Footer from '@/components/landing/Footer';
 import CustomCursor from '@/components/common/CustomCursor';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { CheckCircle } from 'lucide-react';
 import ProductHero from '@/components/landing/ProductHero';
 import TechShowcaseClient from '@/components/landing/TechShowcaseClient';
 
@@ -128,8 +128,8 @@ export default async function ProductPage({
                       key={idx}
                       style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}
                     >
-                      <CheckCircleIcon
-                        sx={{ color: 'var(--accent)', fontSize: '24px', flexShrink: 0 }}
+                      <CheckCircle
+                        className="text-accent flex-shrink-0" size={24}
                       />
                       <div>
                         <h4

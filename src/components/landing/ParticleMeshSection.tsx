@@ -55,7 +55,7 @@ export default function ParticleMeshSection() {
             vy: 0,
             size: 1 + Math.random() * 1.5,
             color: isGreen
-              ? `rgba(var(--accent-rgb), ${0.3 + Math.random() * 0.5})`
+              ? `rgba(16, 185, 129, ${0.3 + Math.random() * 0.5})`
               : `rgba(6, 182, 212, ${0.2 + Math.random() * 0.4})`,
             alpha: 0.3 + Math.random() * 0.5,
           });
@@ -128,10 +128,6 @@ export default function ParticleMeshSection() {
     let time = 0;
 
     const animate = () => {
-      const { w, h } = {
-        w: canvas.width / (window.devicePixelRatio || 1),
-        h: canvas.height / (window.devicePixelRatio || 1),
-      };
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       time += 0.008;
 
@@ -181,7 +177,7 @@ export default function ParticleMeshSection() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < connectionDist) {
             const opacity = (1 - dist / connectionDist) * 0.15;
-            ctx.strokeStyle = `rgba(var(--accent-rgb), ${opacity})`;
+            ctx.strokeStyle = `rgba(16, 185, 129, ${opacity})`;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);

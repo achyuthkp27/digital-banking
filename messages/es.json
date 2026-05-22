@@ -4,6 +4,293 @@
     "architecture": "Arquitectura",
     "security": "Seguridad",
     "technology": "Tecnología",
-    "requestDemo": "Solicitar Demo"
+    "requestDemo": "Solicitar Demo",
+    "home": "Inicio"
+  },
+  "Hero": {
+    "badge": "Plataforma Empresarial",
+    "titleLine1": "El futuro de la",
+    "titleHighlight": "banca digital",
+    "titleLine3": "comienza aquí.",
+    "subtitle": "Infraestructura de nivel empresarial para la banca de próxima generación. Segura, escalable y diseñada para las instituciones que dan forma al mundo financiero.",
+    "explorePlatforms": "Explorar Plataformas",
+    "requestDemo": "Solicitar Demo",
+    "uptimeSla": "SLA de Disponibilidad",
+    "transactions": "Transacciones",
+    "certified": "Certificado"
+  },
+  "Footer": {
+    "tagline": "Soluciones de banca digital de nivel empresarial con seguridad de vanguardia e integración perfecta.",
+    "platform": "Plataforma",
+    "company": "Empresa",
+    "aboutUs": "Sobre Nosotros",
+    "careers": "Carreras",
+    "contact": "Contacto",
+    "copyright": "© {year} Plataforma de Banca Digital. Todos los derechos reservados.",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio"
+  },
+  "StatsSection": {
+    "systemUptime": "Tiempo de Actividad",
+    "apiResponse": "Respuesta API",
+    "requestsPerMin": "Solicitudes/Min",
+    "aesEncryption": "Cifrado AES"
+  },
+  "StatsBar": {
+    "uptimeSla": "SLA Disponibilidad",
+    "transactionsDay": "Transacciones/Día",
+    "responseTime": "Tiempo de Respuesta"
+  },
+  "Architecture": {
+    "badge": "Arquitectura del Sistema",
+    "title": "Arquitectura Escalable",
+    "subtitle": "Arquitectura basada en microservicios y nativa en la nube, diseñada para alta disponibilidad y rendimiento",
+    "presentationLayer": "Capa de Presentación",
+    "layer1": "Capa 1",
+    "webApp": "App Web",
+    "mobileApp": "App Móvil",
+    "tabletApp": "App Tablet",
+    "kiosk": "Kiosco",
+    "apiGateway": "Puerta de Enlace API",
+    "layer2": "Capa 2",
+    "loadBalancer": "Balanceador de Carga",
+    "authentication": "Autenticación",
+    "rateLimiting": "Limitación de Tasa",
+    "businessLogic": "Lógica de Negocio",
+    "layer3": "Capa 3",
+    "bankingServices": "Servicios Bancarios",
+    "paymentProcessing": "Procesamiento de Pagos",
+    "analytics": "Análisis",
+    "notifications": "Notificaciones",
+    "dataLayer": "Capa de Datos",
+    "layer4": "Capa 4",
+    "postgresql": "PostgreSQL",
+    "redisCache": "Caché Redis",
+    "documentStore": "Almacén de Documentos",
+    "dataWarehouse": "Almacén de Datos",
+    "cloudNative": "Nativo en la Nube",
+    "cloudNativeDesc": "Construido para Kubernetes, escalado automático e implementación multirregión",
+    "secureByDesign": "Seguro por Diseño",
+    "secureByDesignDesc": "Arquitectura de confianza cero con cifrado de extremo a extremo",
+    "microservices": "Microservicios",
+    "microservicesDesc": "Servicios independientes y escalables con enfoque API-first"
+  },
+  "Security": {
+    "badge": "// NÚCLEO DE CONFIANZA CERO",
+    "titleLine1": "La seguridad no es una",
+    "titleLine2": "idea tardía.",
+    "iso27001": "ISO 27001",
+    "certified": "Certificado",
+    "pciDss": "PCI DSS",
+    "level1": "Nivel 1",
+    "aes256": "AES-256",
+    "encryption": "Cifrado",
+    "zero": "Cero",
+    "dataBreaches": "Brechas de Datos",
+    "secureDevelopment": "Desarrollo Seguro",
+    "secureDevelopmentDesc": "Escaneo SAST/DAST a lo largo del SDLC",
+    "identityAccess": "Identidad y Acceso",
+    "identityAccessDesc": "OAuth 2.0, SSO, MFA, autenticación biométrica",
+    "dataSecurity": "Seguridad de Datos",
+    "dataSecurityDesc": "Tokenización, cumplimiento GDPR",
+    "appProtection": "Protección de Aplicaciones",
+    "appProtectionDesc": "Cifrado de extremo a extremo, WAF, DDoS"
+  },
+  "WhyChoose": {
+    "badge": "Capacidades",
+    "titleLine1": "Diseñado para",
+    "titleLine2": "Escala Absoluta.",
+    "globalSettlement": "Tiempo de Liquidación Global",
+    "platformAvailability": "Disponibilidad de Plataforma",
+    "eventsProcessed": "Eventos Procesados / Segundo",
+    "e2eEncryption": "Cifrado de Extremo a Extremo",
+    "openApis": "APIs Financieras Abiertas",
+    "aiFraudDetection": "Precisión de Detección de Fraude IA"
+  },
+  "TechStack": {
+    "title": "Stack moderno. Probado a escala.",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Base de Datos",
+    "devops": "DevOps",
+    "security": "Seguridad",
+    "messaging": "Mensajería"
+  },
+  "PlatformHighlights": {
+    "badge": "Plataforma Empresarial",
+    "title": "Construido para escala masiva.",
+    "subtitle": "Arquitectura integral diseñada para impulsar el futuro de la banca digital a nivel mundial.",
+    "dashboard": "Panel de Plataforma Digital",
+    "dashboardDesc": "Panel unificado integral con análisis en tiempo real, monitoreo de transacciones y widgets personalizables para supervisión completa.",
+    "architecture": "Arquitectura",
+    "architectureDesc": "Arquitectura escalable basada en microservicios con diseño nativo en la nube, enfoque API-first e integraciones de terceros sin problemas.",
+    "capabilities": "Capacidades",
+    "capabilitiesDesc": "Banca multicanal, pagos instantáneos, gestión patrimonial, originación de préstamos e información financiera impulsada por IA.",
+    "devAndImpl": "Desarrollo e Implementación",
+    "devAndImplDesc": "Metodología de desarrollo ágil, pipelines CI/CD, pruebas automatizadas y documentación API completa para implementación rápida.",
+    "operationsMaint": "Operaciones / Mantenimiento",
+    "operationsMaintDesc": "Monitoreo 24/7, escalado automático, mantenimiento proactivo, gestión de incidentes y sistemas de registro integral.",
+    "techStack": "Stack Tecnológico",
+    "techStackDesc": "Pila tecnológica moderna que incluye React, Node.js, Kubernetes, PostgreSQL, Redis, Kafka y marcos de seguridad de nivel empresarial.",
+    "exploreCta": "Explorar Arquitectura"
+  },
+  "SmartCards": {
+    "badge": "Emisión Digital",
+    "titleLine1": "Próxima Generación de",
+    "titleHighlight": "Tarjetas Inteligentes",
+    "description": "Empodere a sus clientes con programas de tarjetas inteligentes. Emita tarjetas físicas, virtuales y de un solo uso al instante con límites de gasto programables y prevención de fraude en tiempo real integrada en el núcleo.",
+    "virtualPhysical": "Tarjetas Virtuales y Físicas",
+    "virtualPhysicalDesc": "Emita tarjetas virtuales seguras al instante para uso inmediato, mientras las tarjetas metálicas físicas se envían sin problemas a sus clientes corporativos.",
+    "expenseControls": "Controles de Gastos en Tiempo Real",
+    "expenseControlsDesc": "Establezca límites de gasto granulares, restricciones de categoría de comerciante y presupuestos multidivisa directamente a través de la API.",
+    "appleGooglePay": "Apple y Google Pay",
+    "appleGooglePayDesc": "Integración nativa con billeteras digitales. Los clientes pueden aprovisionar sus tarjetas directamente desde su aplicación bancaria."
+  },
+  "ProductShowcase": {
+    "badge": "PRODUCTOS",
+    "title": "Todo lo que un banco necesita",
+    "learnMore": "Saber Más",
+    "liveDemo": "Demo en Vivo",
+    "switchToVertical": "Cambiar a Vertical",
+    "switchToHorizontal": "Cambiar a Horizontal",
+    "products": {
+      "videoKyc": {
+        "label": "Verificación Remota",
+        "title": "Video KYC y Video Banca",
+        "description": "Verificación KYC avanzada basada en video y servicios de banca remota con verificación de identidad impulsada por IA, videollamadas en vivo con funcionarios bancarios, escaneo de documentos e incorporación digital segura para una experiencia del cliente perfecta.",
+        "features": {
+          "0": "Verificación automatizada de identidad y documentos",
+          "1": "Conéctese con funcionarios bancarios por videollamada segura",
+          "2": "Complete la apertura de cuenta de forma remota",
+          "3": "Cargue y verifique documentos en tiempo real"
+        }
+      },
+      "kioskBanking": {
+        "label": "Autoservicio",
+        "title": "Banca de Kiosco",
+        "description": "Solución interactiva de kiosco de autoservicio para sucursales con interfaz de pantalla táctil, integración de lector de tarjetas, aceptación de efectivo, impresión de libreta y funcionalidad de servicio al cliente asistido.",
+        "features": {
+          "0": "Navegación de pantalla táctil fácil de usar",
+          "1": "Acepta depósitos en efectivo y transacciones con tarjeta",
+          "2": "Imprime estados de cuenta y libretas",
+          "3": "Conéctese con personal bancario por videollamada"
+        }
+      },
+      "agentBanking": {
+        "label": "Servicios de Campo",
+        "title": "Banca de Agentes",
+        "description": "Aplicación móvil para agentes bancarios y personal de campo que permite la apertura remota de cuentas, transacciones en efectivo, cobros de préstamos, servicio al cliente y operaciones de corresponsales comerciales con capacidades fuera de línea.",
+        "features": {
+          "0": "Abra cuentas y active servicios en el sitio",
+          "1": "Acepte depósitos y procese retiros",
+          "2": "Rastree y cobre pagos de EMI de préstamos",
+          "3": "Continúe operaciones sin conectividad a internet"
+        }
+      },
+      "corporateAdmin": {
+        "label": "Administración Empresarial",
+        "title": "Admin de Banca Corporativa",
+        "description": "Panel administrativo integral para operaciones bancarias corporativas con jerarquías de aprobación multinivel, gestión de límites, seguimientos de auditoría y controles de tesorería.",
+        "features": {
+          "0": "Gestione usuarios corporativos y jerarquías de roles complejas",
+          "1": "Configure límites de transacciones y reglas de autorización",
+          "2": "Monitoreo de liquidez y tesorería en tiempo real",
+          "3": "Rastros de auditoría detallados e informes de cumplimiento"
+        }
+      },
+      "corporateBanking": {
+        "label": "Solución Empresarial",
+        "title": "Banca Corporativa",
+        "description": "Plataforma de banca corporativa de nivel empresarial con flujos de aprobación multinivel, procesamiento de pagos masivos, gestión de tesorería, financiamiento comercial e informes completos para grandes organizaciones.",
+        "features": {
+          "0": "Autorización multinivel para transacciones",
+          "1": "Procese pagos de nómina y proveedores en masa",
+          "2": "Previsión de flujo de caja y gestión de liquidez",
+          "3": "Gestión de cartas de crédito y garantías"
+        }
+      },
+      "mobileBanking": {
+        "label": "iOS y Android",
+        "title": "Banca Móvil",
+        "description": "Aplicación de banca móvil con todas las funciones, interfaz intuitiva, autenticación biométrica, transferencias instantáneas, pagos de facturas y notificaciones en tiempo real. Optimizada para rendimiento y seguridad.",
+        "features": {
+          "0": "Autenticación con Face ID, Touch ID y huella digital",
+          "1": "Envíe dinero al instante con UPI, IMPS y NEFT",
+          "2": "Alertas en tiempo real para todas las transacciones y actividades",
+          "3": "Pague servicios, tarjetas de crédito y suscripciones"
+        }
+      },
+      "retailBanking": {
+        "label": "Plataforma Web",
+        "title": "Banca por Internet Minorista",
+        "description": "Portal de banca web moderno y responsivo con panel personalizable, soporte multilingüe para más de 15 idiomas, búsqueda avanzada de transacciones y gestión integral de cuentas.",
+        "features": {
+          "0": "Banca web responsiva desde cualquier dispositivo",
+          "1": "Panel y widgets personalizables",
+          "2": "Soporte para más de 15 idiomas con RTL",
+          "3": "Búsqueda y filtrado avanzado de transacciones"
+        }
+      },
+      "retailAdmin": {
+        "label": "Consola de Administración",
+        "title": "Admin de Banca Minorista",
+        "description": "Panel de administración integral para operaciones de banca minorista con monitoreo de KPI en tiempo real, gestión de usuarios, flujos de aprobación y capacidades de detección de fraude.",
+        "features": {
+          "0": "Monitoreo y análisis de transacciones en tiempo real",
+          "1": "Gestión centralizada de usuarios, roles y permisos",
+          "2": "Flujos de aprobación maker-checker",
+          "3": "Detección de fraude y alertas de seguridad"
+        }
+      },
+      "twoFactorAuth": {
+        "label": "Seguridad",
+        "title": "Autenticación de Dos Factores",
+        "description": "Autenticación multifactor avanzada que protege contra la apropiación de cuentas con inicio de sesión biométrico, detección de vivacidad, autenticación PIN y notificaciones push en tiempo real.",
+        "features": {
+          "0": "Inicio de sesión biométrico con FaceID y huella digital",
+          "1": "Detección avanzada de vivacidad anti-spoofing",
+          "2": "Apruebe o rechace transacciones por push",
+          "3": "PIN seguro de 4-6 dígitos con bloqueo automático"
+        }
+      }
+    }
+  },
+  "Dashboard": {
+    "headerLabel": "PANEL / FLUJO_EN_VIVO",
+    "overview": "Resumen",
+    "transactionsNav": "Transacciones",
+    "apiLogs": "Registros API",
+    "settings": "Configuración",
+    "totalVolume": "Volumen Total",
+    "activeSessions": "Sesiones Activas",
+    "systemHealth": "Estado del Sistema",
+    "recentTransactions": "Transacciones Recientes",
+    "settled": "Liquidado",
+    "processing": "Procesando"
+  },
+  "DemoDialog": {
+    "title": "Solicitar una Demo",
+    "subtitle": "Complete esto y nos comunicaremos con usted dentro de las 24 horas.",
+    "close": "Cerrar",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "workEmail": "Correo Laboral",
+    "companyName": "Nombre de la Empresa",
+    "productInterest": "Interés en Producto",
+    "videoKyc": "Video KYC",
+    "kioskBanking": "Banca de Kiosco",
+    "agentBanking": "Banca de Agentes",
+    "corporateAdmin": "Admin Corporativo",
+    "corporateBanking": "Banca Corporativa",
+    "mobileBanking": "Banca Móvil",
+    "other": "Otro",
+    "submitRequest": "Enviar Solicitud"
+  },
+  "Loading": {
+    "text": "Cargando..."
+  },
+  "Metadata": {
+    "title": "Plataforma de Banca Digital | Soluciones Bancarias Empresariales",
+    "description": "Soluciones de banca digital de nivel empresarial con seguridad de vanguardia, arquitectura escalable e integración perfecta para instituciones financieras modernas."
   }
 }

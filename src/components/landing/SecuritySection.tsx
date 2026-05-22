@@ -2,36 +2,26 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-
-const certs = [
-  { label: 'ISO 27001', value: 'Certified' },
-  { label: 'PCI DSS', value: 'Level 1' },
-  { label: 'AES-256', value: 'Encryption' },
-  { label: 'Zero', value: 'Data Breaches' },
-];
-
-const features = [
-  {
-    title: 'Secure Development',
-    desc: 'SAST/DAST scanning throughout SDLC'
-  },
-  {
-    title: 'Identity & Access',
-    desc: 'OAuth 2.0, SSO, MFA, biometric auth'
-  },
-  {
-    title: 'Data Security',
-    desc: 'Tokenization, GDPR compliance'
-  },
-  {
-    title: 'App Protection',
-    desc: 'End-to-end encryption, WAF, DDoS'
-  }
-];
+import { useTranslations } from 'next-intl';
 
 export default function SecuritySection() {
+  const t = useTranslations('Security');
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  useInView(sectionRef, { once: true, margin: '-100px' });
+
+  const certs = [
+    { label: t('iso27001'), value: t('certified') },
+    { label: t('pciDss'), value: t('level1') },
+    { label: t('aes256'), value: t('encryption') },
+    { label: t('zero'), value: t('dataBreaches') },
+  ];
+
+  const features = [
+    { title: t('secureDevelopment'), desc: t('secureDevelopmentDesc') },
+    { title: t('identityAccess'), desc: t('identityAccessDesc') },
+    { title: t('dataSecurity'), desc: t('dataSecurityDesc') },
+    { title: t('appProtection'), desc: t('appProtectionDesc') },
+  ];
 
   return (
     <section
@@ -82,7 +72,7 @@ export default function SecuritySection() {
                 marginBottom: '20px'
               }}
             >
-              {'// ZERO TRUST CORE'}
+              {t('badge')}
             </motion.div>
             
             <motion.h2
@@ -97,7 +87,7 @@ export default function SecuritySection() {
                 lineHeight: 1.05, letterSpacing: '-0.03em',
               }}
             >
-              Security is not an <br/> afterthought.
+              {t('titleLine1')} <br/> {t('titleLine2')}
             </motion.h2>
           </div>
 

@@ -3,130 +3,21 @@
 import React, { useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ViewColumnIcon from '@mui/icons-material/ViewColumn';
-import ViewStreamIcon from '@mui/icons-material/ViewStream';
+import { CheckCircle, Columns, Rows } from 'lucide-react';
 import ProductIllustration from '@/components/landing/ProductIllustration';
+import { useTranslations } from 'next-intl';
 
-const products = [
-  {
-    label: 'Remote Verification',
-    title: 'Video KYC & Video Banking',
-    slug: 'video-kyc',
-    description:
-      'Advanced video-based KYC verification and remote banking services with AI-powered identity verification, live video calls with bank officials, document scanning, and secure digital onboarding for seamless customer experience.',
-    features: [
-      'Automated identity and document verification',
-      'Connect with bank officials via secure video call',
-      'Complete account opening remotely',
-      'Upload and verify documents in real-time',
-    ],
-  },
-  {
-    label: 'Self-Service',
-    title: 'Kiosk Banking',
-    slug: 'kiosk-banking',
-    description:
-      'Interactive self-service kiosk solution for branches with touchscreen interface, card reader integration, cash acceptance, passbook printing, and assisted customer service functionality.',
-    features: [
-      'User-friendly touchscreen navigation',
-      'Accept cash deposits and card transactions',
-      'Print account statements and passbooks',
-      'Connect with bank staff via video call',
-    ],
-  },
-  {
-    label: 'Field Services',
-    title: 'Agent Banking',
-    slug: 'agent-banking',
-    description:
-      'Mobile application for banking agents and field staff enabling remote account opening, cash transactions, loan collections, customer service, and business correspondent operations with offline capabilities.',
-    features: [
-      'Open accounts and activate services on-site',
-      'Accept deposits and process withdrawals',
-      'Track and collect loan EMI payments',
-      'Continue operations without internet connectivity',
-    ],
-  },
-  {
-    label: 'Payment Solutions',
-    title: 'Merchant Banking',
-    slug: 'merchant-banking',
-    description:
-      'Complete merchant payment solution with POS integration, QR code payments, settlement management, transaction analytics, and support for multiple payment methods including UPI, cards, and wallets.',
-    features: [
-      'Seamless integration with point-of-sale systems',
-      'Dynamic and static QR code payment acceptance',
-      'Real-time settlement tracking and reconciliation',
-      'Accept UPI, cards, wallets, and net banking',
-    ],
-  },
-  {
-    label: 'Enterprise Solution',
-    title: 'Corporate Banking',
-    slug: 'corporate-banking',
-    description:
-      'Enterprise-grade corporate banking platform with multi-level approval workflows, bulk payment processing, treasury management, trade finance, and comprehensive reporting for large organizations.',
-    features: [
-      'Multi-level authorization for transactions',
-      'Process salary and vendor payments in bulk',
-      'Cash flow forecasting and liquidity management',
-      'Letter of credit and guarantee management',
-    ],
-  },
-  {
-    label: 'iOS & Android',
-    title: 'Mobile Banking',
-    slug: 'mobile-banking',
-    description:
-      'Full-featured mobile banking application with intuitive UI, biometric authentication, instant transfers, bill payments, and real-time notifications. Optimized for performance and security.',
-    features: [
-      'Face ID, Touch ID, and fingerprint authentication',
-      'Send money instantly with UPI, IMPS, and NEFT',
-      'Real-time alerts for all transactions and activities',
-      'Pay utilities, credit cards, and subscriptions',
-    ],
-  },
-  {
-    label: 'Web Platform',
-    title: 'Retail Internet Banking',
-    slug: 'retail-banking',
-    description:
-      'Modern, responsive web banking portal with customizable dashboard, multi-lingual support for 15+ languages, advanced transaction search, and comprehensive account management.',
-    features: [
-      'Responsive web-based banking from any device',
-      'Customizable dashboard and widgets',
-      'Support for 15+ languages with RTL',
-      'Advanced transaction search and filtering',
-    ],
-  },
-  {
-    label: 'Admin Console',
-    title: 'Retail Banking Admin',
-    slug: 'retail-admin',
-    description:
-      'Comprehensive admin dashboard for retail banking operations with real-time KPI monitoring, user management, approval workflows, and fraud detection capabilities.',
-    features: [
-      'Real-time transaction monitoring and analysis',
-      'Centralized user, role, and permission management',
-      'Maker-checker approval workflows',
-      'Fraud detection and security alerts',
-    ],
-  },
-  {
-    label: 'Security',
-    title: 'Two-Factor Authentication',
-    slug: 'two-factor-auth',
-    description:
-      'Advanced multi-factor authentication protecting against account takeovers with biometric login, liveness detection, PIN authentication, and real-time push notifications.',
-    features: [
-      'FaceID and fingerprint biometric login',
-      'Advanced liveness detection anti-spoofing',
-      'Approve or reject transactions via push',
-      'Secure 4-6 digit PIN with auto-lock',
-    ],
-  },
-];
+const productKeys = [
+  { key: 'mobileBanking', slug: 'mobile-banking' },
+  { key: 'retailBanking', slug: 'retail-banking' },
+  { key: 'retailAdmin', slug: 'retail-admin' },
+  { key: 'corporateBanking', slug: 'corporate-banking' },
+  { key: 'corporateAdmin', slug: 'corporate-admin' },
+  { key: 'videoKyc', slug: 'video-kyc' },
+  { key: 'agentBanking', slug: 'agent-banking' },
+  { key: 'kioskBanking', slug: 'kiosk-banking' },
+  { key: 'twoFactorAuth', slug: 'two-factor-auth' },
+] as const;
 
 const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
   <div
@@ -219,7 +110,7 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
   </div>
 ));
 
-const ProductContent = React.memo(({ product, index }: { product: any; index: number }) => (
+const ProductContent = React.memo(({ product, index, totalLength, t }: { product: any; index: number, totalLength: number, t: any }) => (
   <div
     style={{
       flex: 1,
@@ -244,7 +135,7 @@ const ProductContent = React.memo(({ product, index }: { product: any; index: nu
         alignSelf: 'flex-start',
       }}
     >
-      {index + 1} / {products.length}
+      {index + 1} / {totalLength}
     </div>
 
     <span
@@ -290,7 +181,7 @@ const ProductContent = React.memo(({ product, index }: { product: any; index: nu
           key={`feature-${i}`}
           style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}
         >
-          <CheckCircleIcon sx={{ color: 'var(--accent)', fontSize: '20px', mt: '2px' }} />
+          <CheckCircle className="text-accent mt-0.5" size={20} />
           <span style={{ color: 'var(--text-primary)', fontSize: '15px' }}>{feature}</span>
         </div>
       ))}
@@ -314,7 +205,7 @@ const ProductContent = React.memo(({ product, index }: { product: any; index: nu
           cursor: 'pointer',
         }}
       >
-        Learn More
+        {t('learnMore')}
       </Link>
 
       <a
@@ -331,22 +222,34 @@ const ProductContent = React.memo(({ product, index }: { product: any; index: nu
           textDecoration: 'none',
         }}
       >
-        Live Demo <span>&rarr;</span>
+        {t('liveDemo')} <span>&rarr;</span>
       </a>
     </div>
   </div>
 ));
 
 export default function ProductShowcase() {
+  const t = useTranslations('ProductShowcase');
   const targetRef = useRef<HTMLDivElement>(null);
-  const [isHorizontal, setIsHorizontal] = useState(true);
+  const [isHorizontal, setIsHorizontal] = useState(false);
+
+  const products = productKeys.map((pk) => ({
+    label: t(`products.${pk.key}.label`),
+    title: t(`products.${pk.key}.title`),
+    slug: pk.slug,
+    description: t(`products.${pk.key}.description`),
+    features: [
+      t(`products.${pk.key}.features.0`),
+      t(`products.${pk.key}.features.1`),
+      t(`products.${pk.key}.features.2`),
+      t(`products.${pk.key}.features.3`),
+    ],
+  }));
 
   React.useEffect(() => {
     const checkMobile = () => {
       if (window.innerWidth < 992) {
         setIsHorizontal(false);
-      } else {
-        setIsHorizontal(true);
       }
     };
     
@@ -384,50 +287,81 @@ export default function ProductShowcase() {
         zIndex: 20,
       }}
     >
-      {/* Dynamic Layout Toggle Button */}
+      {/* Unified Sticky Header */}
       <div
         style={{
-          position: isHorizontal ? 'sticky' : 'absolute',
-          top: isHorizontal ? '32px' : '32px',
-          right: '4vw',
+          position: 'sticky',
+          top: 0,
           zIndex: 100,
+          width: '100%',
+          paddingTop: '40px',
+          paddingBottom: '24px',
           display: 'flex',
-          justifyContent: 'flex-end',
+          flexDirection: 'column',
+          alignItems: 'center',
+          background: 'linear-gradient(to bottom, var(--bg-base) 60%, transparent)',
           pointerEvents: 'none',
         }}
       >
-        <button
-          onClick={() => {
-            setIsHorizontal(!isHorizontal);
-            // Smoothly scroll back to the top of the section when toggling to avoid jumping issues
-            if (targetRef.current) {
-              const yOffset = targetRef.current.getBoundingClientRect().top + window.scrollY - 100;
-              window.scrollTo({ top: yOffset, behavior: 'smooth' });
-            }
-          }}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            padding: '12px 24px',
-            background: 'rgba(var(--color-invert-rgb), 0.08)',
-            border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
-            borderRadius: '999px',
-            color: 'var(--text-primary)',
-            cursor: 'pointer',
-            fontFamily: 'var(--font-syne)',
-            fontWeight: 600,
-            backdropFilter: 'blur(20px)',
-            transition: 'all 0.3s ease',
-            pointerEvents: 'auto',
-            boxShadow: '0 10px 30px rgba(var(--color-base-rgb), 0.3)',
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.12)')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.08)')}
-        >
-          {isHorizontal ? <ViewStreamIcon fontSize="small" /> : <ViewColumnIcon fontSize="small" />}
-          <span>{isHorizontal ? 'Switch to Vertical' : 'Switch to Horizontal'}</span>
-        </button>
+        <div style={{ position: 'absolute', right: '4vw', top: '40px', pointerEvents: 'auto' }}>
+          <button
+            onClick={() => {
+              setIsHorizontal(!isHorizontal);
+              if (targetRef.current) {
+                const yOffset = targetRef.current.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({ top: yOffset, behavior: 'smooth' });
+              }
+            }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '12px 24px',
+              background: 'rgba(var(--color-invert-rgb), 0.08)',
+              border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
+              borderRadius: '999px',
+              color: 'var(--text-primary)',
+              cursor: 'pointer',
+              fontFamily: 'var(--font-syne)',
+              fontWeight: 600,
+              backdropFilter: 'blur(20px)',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 10px 30px rgba(var(--color-base-rgb), 0.3)',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.12)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.08)')}
+          >
+            {isHorizontal ? <Rows size={18} /> : <Columns size={18} />}
+            <span>{isHorizontal ? t('switchToVertical') : t('switchToHorizontal')}</span>
+          </button>
+        </div>
+
+        <div style={{ textAlign: 'center', pointerEvents: 'auto' }}>
+          <span
+            style={{
+              display: 'block',
+              fontSize: '11px',
+              color: 'var(--text-tertiary)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.15em',
+              marginBottom: '16px',
+              fontWeight: 600,
+            }}
+          >
+            {t('badge')}
+          </span>
+          <h2
+            style={{
+              fontSize: 'clamp(32px, 5vw, 48px)',
+              fontWeight: 700,
+              color: 'var(--text-primary)',
+              fontFamily: 'var(--font-syne), sans-serif',
+              margin: 0,
+            }}
+          >
+            {t('title')}
+          </h2>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">
@@ -451,44 +385,6 @@ export default function ProductShowcase() {
                 alignItems: 'center',
               }}
             >
-              {/* Fixed Title that sits above the panels */}
-              <motion.div
-                style={{
-                  position: 'absolute',
-                  top: '10vh',
-                  left: 0,
-                  right: 0,
-                  textAlign: 'center',
-                  zIndex: 50,
-                  opacity: titleOpacity,
-                  y: titleY,
-                  pointerEvents: 'none',
-                }}
-              >
-                <span
-                  style={{
-                    display: 'block',
-                    fontSize: '11px',
-                    color: 'var(--text-tertiary)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.15em',
-                    marginBottom: '16px',
-                    fontWeight: 600,
-                  }}
-                >
-                  PRODUCTS
-                </span>
-                <h2
-                  style={{
-                    fontSize: 'clamp(32px, 5vw, 48px)',
-                    fontWeight: 700,
-                    color: 'var(--text-primary)',
-                    fontFamily: 'var(--font-syne), sans-serif',
-                  }}
-                >
-                  Everything a bank needs
-                </h2>
-              </motion.div>
 
               {/* The horizontal sliding track */}
               <motion.div
@@ -522,10 +418,10 @@ export default function ProductShowcase() {
                         gap: '6vw',
                         width: '100%',
                         maxWidth: '1400px',
-                        marginTop: '8vh', // Offset for the fixed title
+                        marginTop: '120px', // Push cards down so they clear the unified header
                       }}
                     >
-                      <ProductContent product={product} index={index} />
+                      <ProductContent product={product} index={index} totalLength={products.length} t={t} />
                       <IllustrationPanel slug={product.slug} />
                     </div>
                   </div>
@@ -549,33 +445,7 @@ export default function ProductShowcase() {
               paddingRight: '5vw',
             }}
           >
-            <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-              <span
-                style={{
-                  display: 'block',
-                  fontSize: '11px',
-                  color: 'var(--text-tertiary)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.15em',
-                  marginBottom: '16px',
-                  fontWeight: 600,
-                }}
-              >
-                PRODUCTS
-              </span>
-              <h2
-                style={{
-                  fontSize: 'clamp(32px, 5vw, 48px)',
-                  fontWeight: 700,
-                  color: 'var(--text-primary)',
-                  fontFamily: 'var(--font-syne), sans-serif',
-                }}
-              >
-                Everything a bank needs
-              </h2>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '160px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '160px', marginTop: '60px' }}>
               {products.map((product, index) => {
                 const isReversed = index % 2 !== 0;
                 return (
@@ -589,7 +459,7 @@ export default function ProductShowcase() {
                       gap: '6vw',
                     }}
                   >
-                    <ProductContent product={product} index={index} />
+                    <ProductContent product={product} index={index} totalLength={products.length} t={t} />
                     <IllustrationPanel slug={product.slug} />
                   </div>
                 );

@@ -51,6 +51,13 @@ export default function Navbar() {
             aria-label="Digital Banking Home"
             onMouseEnter={() => setIsLogoHovered(true)}
             onMouseLeave={() => setIsLogoHovered(false)}
+            onClick={(e) => {
+              const path = window.location.pathname;
+              if (path === '/' || path === '/en' || path === '/es' || path === '/fr' || path === '/en/' || path === '/es/' || path === '/fr/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
             style={{ display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
           >
             <motion.div
