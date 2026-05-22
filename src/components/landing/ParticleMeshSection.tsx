@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 // -------------------------------------------------------------------
 // Particle Mesh Section — flowing wave with mouse interaction
@@ -20,6 +21,7 @@ interface Particle {
 }
 
 export default function ParticleMeshSection() {
+  const t = useTranslations('ParticleMeshSection');
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef({ x: -9999, y: -9999 });
@@ -27,6 +29,12 @@ export default function ParticleMeshSection() {
   const animFrameRef = useRef<number>(0);
   const isInView = useInView(sectionRef, { margin: '-10%' });
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
+
+  const statsList = useMemo(() => [
+    { value: '< 50ms', label: t('avgLatency') },
+    { value: '15+', label: t('countries') },
+    { value: '5 Nines', label: t('availability') },
+  ], [t]);
 
   const initParticles = useCallback((width: number, height: number) => {
     const particles: Particle[] = [];
@@ -308,7 +316,7 @@ export default function ParticleMeshSection() {
                 fontWeight: 500,
               }}
             >
-              Global Infrastructure
+              {t('globalInfrastructure')}
             </span>
           </motion.div>
 
@@ -325,7 +333,7 @@ export default function ParticleMeshSection() {
               marginBottom: '24px',
             }}
           >
-            Powering the
+            {t('poweringThe')}
             <br />
             <span
               style={{
@@ -334,10 +342,10 @@ export default function ParticleMeshSection() {
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              next generation
+              {t('nextGeneration')}
             </span>
             <br />
-            of finance.
+            {t('ofFinance')}
           </motion.h2>
 
           {/* Description */}
@@ -351,8 +359,7 @@ export default function ParticleMeshSection() {
               marginBottom: '40px',
             }}
           >
-            Our distributed platform processes millions of transactions across continents with
-            sub-millisecond latency. Built for banks that demand absolute reliability at scale.
+            {t('description')}
           </motion.p>
 
           {/* Stats row */}
@@ -364,11 +371,7 @@ export default function ParticleMeshSection() {
               marginBottom: '40px',
             }}
           >
-            {[
-              { value: '< 50ms', label: 'Avg Latency' },
-              { value: '15+', label: 'Countries' },
-              { value: '5 Nines', label: 'Availability' },
-            ].map((stat, i) => (
+            {statsList.map((stat, i) => (
               <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <span
                   style={{
@@ -426,7 +429,7 @@ export default function ParticleMeshSection() {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              View Architecture
+              {t('viewArchitecture')}
               <svg
                 width="14"
                 height="14"

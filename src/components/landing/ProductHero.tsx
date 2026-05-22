@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from '@/i18n/routing';
 import ProductIllustration from '@/components/landing/ProductIllustration';
+import { useTranslations } from 'next-intl';
 
 interface ProductHeroProps {
   title: string;
@@ -11,6 +12,7 @@ interface ProductHeroProps {
 }
 
 export default function ProductHero({ title, subtitle, slug }: ProductHeroProps) {
+  const t = useTranslations('ProductHero');
   return (
     <section
       style={{
@@ -110,7 +112,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
             >
               <path d="M10 12L6 8l4-4" />
             </svg>
-            Back to Products
+            {t('backToProducts')}
           </Link>
 
           <div
@@ -145,19 +147,22 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
                 textTransform: 'uppercase',
               }}
             >
-              Product Overview
+              {t('productOverview')}
             </span>
           </div>
 
           <h1
             style={{
-              fontSize: 'clamp(40px, 6vw, 80px)',
+              fontSize: 'clamp(32px, 4.5vw, 60px)',
               fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: '-0.03em',
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
               color: 'var(--text-primary)',
               fontFamily: 'var(--font-syne), sans-serif',
               marginBottom: '24px',
+              overflowWrap: 'break-word',
+              wordBreak: 'keep-all',
+              hyphens: 'auto'
             }}
           >
             {title}
@@ -206,7 +211,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
                 cursor: 'pointer',
               }}
             >
-              Visit
+              {t('visit')}
               <svg
                 width="14"
                 height="14"
@@ -237,7 +242,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
                 cursor: 'pointer',
               }}
             >
-              View All Products
+              {t('viewAllProducts')}
             </Link>
           </div>
         </div>

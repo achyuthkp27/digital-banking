@@ -7,6 +7,7 @@ import { Float, MeshTransmissionMaterial, Environment } from '@react-three/drei'
 import { Mesh } from 'three';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useTranslations } from 'next-intl';
 
 /* ─── 3D Refractive Knot ─── */
 function RefractiveKnot() {
@@ -45,22 +46,11 @@ function RefractiveKnot() {
   );
 }
 
-/* ─── Capabilities data ─── */
-const capabilities = [
-  { label: 'End-to-End Encryption', desc: 'AES-256 encryption at rest, TLS 1.3 in transit' },
-  {
-    label: 'Microservices Architecture',
-    desc: 'Independently deployable, horizontally scalable services',
-  },
-  {
-    label: 'Event-Driven Processing',
-    desc: 'Real-time event streaming with Apache Kafka backbone',
-  },
-  { label: 'Multi-Region Deploy', desc: 'Active-active deployment across 40+ global data centers' },
-];
-
 const TechShowcase3D = React.memo(function TechShowcase3D() {
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
+  const t = useTranslations('TechShowcase3D');
+
+  const capabilities = t.raw('capabilities') as { label: string; desc: string }[];
 
   return (
     <section
@@ -201,7 +191,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
               marginBottom: '16px',
             }}
           >
-            {'// PLATFORM ARCHITECTURE'}
+            {t('platformArchitecture')}
           </motion.div>
 
           <motion.h2
@@ -219,7 +209,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
               marginBottom: '20px',
             }}
           >
-            Engineered for{' '}
+            {t('engineeredFor')}{' '}
             <span
               style={{
                 background: 'linear-gradient(135deg, var(--accent), #34d399)',
@@ -228,7 +218,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
                 backgroundClip: 'text',
               }}
             >
-              Complexity
+              {t('complexity')}
             </span>
           </motion.h2>
 
@@ -245,8 +235,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
               maxWidth: '500px',
             }}
           >
-            Our platform core is a refractive, self-healing mesh — just like this glass structure,
-            it bends around obstacles, distributes load organically, and never breaks.
+            {t('description')}
           </motion.p>
 
           {/* Capability cards */}

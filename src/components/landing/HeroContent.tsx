@@ -75,9 +75,7 @@ export default function HeroContent({
           </svg>
         </a>
 
-        <Link href="/contact" className={styles.ctaSecondary}>
-          {t('requestDemo')}
-        </Link>
+
       </motion.div>
 
       {/* Trust indicators */}

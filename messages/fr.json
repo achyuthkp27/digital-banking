@@ -37,8 +37,8 @@
     "aesEncryption": "Chiffrement AES"
   },
   "StatsBar": {
-    "uptimeSla": "SLA Disponibilité",
-    "transactionsDay": "Transactions/Jour",
+    "uptimeSla": "SLA de Disponibilité",
+    "transactionsPerDay": "Transactions/Jour",
     "responseTime": "Temps de Réponse"
   },
   "Architecture": {
@@ -150,7 +150,7 @@
     "badge": "PRODUITS",
     "title": "Tout ce dont une banque a besoin",
     "learnMore": "En Savoir Plus",
-    "liveDemo": "Démo en Direct",
+    "liveDemo": "Visiter",
     "switchToVertical": "Passer en Vertical",
     "switchToHorizontal": "Passer en Horizontal",
     "products": {
@@ -292,5 +292,563 @@
   "Metadata": {
     "title": "Plateforme Bancaire Numérique | Solutions Bancaires Entreprise",
     "description": "Solutions bancaires numériques de niveau entreprise avec sécurité de pointe, architecture évolutive et intégration transparente pour les institutions financières modernes."
+  },
+  "ProductPagesUI": {
+    "platformOverview": "Aperçu de la Plateforme",
+    "coreFeatures": "Caractéristiques Principales"
+  },
+  "ProductPages": {
+    "video-kyc": {
+      "title": "Vidéo KYC",
+      "subtitle": "Vérification à distance sécurisée utilisant des appels vidéo en temps réel, la numérisation de documents et des contrôles d'identité basés sur l'IA.",
+      "description": "Un flux d'intégration complet conçu pour une vérification à distance rapide, sécurisée et conforme. Vérification à distance sécurisée utilisant des appels vidéo en temps réel, la numérisation de documents et des contrôles d'identité alimentés par l'IA.",
+      "features": [
+        {
+          "title": "Vérification IA",
+          "description": "Signaux de vérification automatisés pour une révision et une prise de décision plus rapides."
+        },
+        {
+          "title": "Banque Vidéo en Direct",
+          "description": "Connectez-vous avec les responsables bancaires via un appel vidéo sécurisé."
+        },
+        {
+          "title": "Intégration Numérique Sécurisée",
+          "description": "Contrôles multi-couches pour valider l'identité et réduire les risques de fraude."
+        },
+        {
+          "title": "Numérisation de Documents",
+          "description": "Capturez et vérifiez les documents en temps réel avec une capture guidée."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Capacités",
+          "content": [
+            "Sessions Cryptées: Sécurité de la couche de transport pour les sessions de vérification en direct.",
+            "Signaux de Fraude: Heuristiques et contrôles pour détecter les modèles suspects.",
+            "Examen par Agent: Examen humain avec capture de preuves guidée.",
+            "Accès Tokenisé: Accès sécurisé pour les étapes de vérification et les opérations d'administration.",
+            "Délais de Session: Suivre les étapes de capture et de révision avec des jalons clairs.",
+            "Preuves Exportables: Générez des rapports et partagez des artefacts de preuve de vérification."
+          ]
+        }
+      ]
+    },
+    "kiosk-banking": {
+      "title": "Banque de Kiosque",
+      "subtitle": "Expérience de kiosque en libre-service pour les succursales avec des flux guidés sécurisés pour les dépôts, les cartes et les paiements pris en charge.",
+      "description": "Une expérience libre-service guidée et sécurisée conçue pour des transactions en succursale rapides et pratiques. 70% plus rapide que le service de guichet traditionnel, gérant plus de 200 transactions par jour.",
+      "features": [
+        {
+          "title": "Interface Tactile",
+          "description": "Navigation sur écran tactile conviviale."
+        },
+        {
+          "title": "Acceptation d'Espèces",
+          "description": "Accepter les dépôts en espèces et traiter les retraits."
+        },
+        {
+          "title": "Intégration de Cartes",
+          "description": "Intégration transparente avec les lecteurs de cartes."
+        },
+        {
+          "title": "Impression de Livret",
+          "description": "Imprimez instantanément les relevés et les reçus après les transactions."
+        }
+      ],
+      "stats": [
+        {
+          "value": "70%",
+          "label": "Service Plus Rapide"
+        },
+        {
+          "value": "200+",
+          "label": "Transactions/Jour"
+        },
+        {
+          "value": "40%",
+          "label": "Réduction des Coûts"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Services Disponibles",
+          "content": [
+            "Retrait et dépôts d'espèces",
+            "Impression de relevé de compte",
+            "Demandes de chéquier",
+            "Génération/réinitialisation de code PIN",
+            "Transferts de fonds (IMPS, NEFT)",
+            "Ouverture de dépôt à terme",
+            "Paiement de prêt",
+            "Mises à jour KYC"
+          ]
+        },
+        {
+          "title": "Spécifications Techniques",
+          "content": [
+            "Taille de l'Écran: 22\" Tactile",
+            "Traitement d'Espèces: Jusqu'à 10 000 billets",
+            "Vitesse d'Impression: 50 reçus/heure",
+            "Heures de Fonctionnement: Fonctionnement 24/7"
+          ]
+        }
+      ]
+    },
+    "agent-banking": {
+      "title": "Banque d'Agents",
+      "subtitle": "Une expérience bancaire numérique prête pour le terrain pour les agents: intégration, traitement des espèces, recouvrements de prêts et service client.",
+      "description": "Optimisé pour des performances réactives et des opérations sur le terrain. Interface optimisée pour le toucher, conçue spécifiquement pour les tablettes.",
+      "features": [
+        {
+          "title": "Intégration à Distance",
+          "description": "Ouvrez des comptes et activez des services sur place."
+        },
+        {
+          "title": "Traitement des Espèces",
+          "description": "Traitez les dépôts et les retraits avec des confirmations sur place."
+        },
+        {
+          "title": "Collecte de Prêts",
+          "description": "Suivez et collectez les paiements EMI et les cotisations."
+        },
+        {
+          "title": "Mode Hors Ligne",
+          "description": "Poursuivez les opérations sans connectivité internet. Se synchronise de manière sécurisée au retour de la connectivité."
+        }
+      ],
+      "stats": [
+        {
+          "value": "10K+",
+          "label": "Appareils Déployés"
+        },
+        {
+          "value": "60%",
+          "label": "Service Plus Rapide"
+        },
+        {
+          "value": "3x",
+          "label": "Plus de Transactions"
+        },
+        {
+          "value": "95%",
+          "label": "Satisfaction Client"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Capacités des Agents",
+          "content": [
+            "Ouverture de compte et vérification KYC",
+            "Dépôts en espèces et chèques sur le terrain",
+            "Traitement des demandes de prêt",
+            "Vente de produits d'assurance et d'investissement",
+            "Transfert de fonds et paiement de factures",
+            "Signature de documents numériques"
+          ]
+        },
+        {
+          "title": "Cas d'Utilisation des Agents",
+          "content": [
+            "Assistance en Succursale: Gestion des files d'attente et transactions assistées",
+            "Opérations sur le Terrain: Services bancaires à domicile et sensibilisation rurale",
+            "Gestion des Relations: Réunions avec les clients et examen de portefeuille",
+            "Service Client: Formulaires numériques, KYC Vidéo, Signatures électroniques"
+          ]
+        }
+      ]
+    },
+    "merchant-banking": {
+      "title": "Banque Marchande",
+      "subtitle": "Une plateforme complète de paiement marchand avec activation POS/QR, tableaux de bord de règlement et analyse des transactions.",
+      "description": "Plateforme marchande de niveau entreprise offrant des indicateurs clés de performance en temps réel, une visibilité instantanée sur l'état des règlements et une prise en charge de la configuration multi-régions.",
+      "features": [
+        {
+          "title": "Activation POS",
+          "description": "Intégrez et gérez les flux de point de vente sur les terminaux."
+        },
+        {
+          "title": "Paiements QR",
+          "description": "Expériences d'acceptation QR dynamiques/statiques."
+        },
+        {
+          "title": "Suivi des Règlements",
+          "description": "Tableaux de bord de rapprochement et de règlement pour un suivi facile."
+        },
+        {
+          "title": "Informations sur les Transactions",
+          "description": "Analyse et rapports pour l'optimisation des performances."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Hub de Paiements",
+          "content": [
+            "Acceptation Carte et UPI: Acceptation de paiement unifiée sur les canaux pris en charge.",
+            "Gestion de Flux QR: Configurez les paramètres QR, les rappels et les comportements de nouvelle tentative.",
+            "Cycle de Vie POS: Inscrivez, gérez et surveillez l'activation des appareils POS.",
+            "Remboursements et Litiges: Suivez les statuts de remboursement et résolvez les litiges avec des journaux d'audit."
+          ]
+        },
+        {
+          "title": "Paramètres et Contrôle d'Accès",
+          "content": [
+            "Rôles et autorisations gérés par l'administrateur pour les opérations marchandes.",
+            "Appliquez des rappels sécurisés, des règles d'appareils et des pistes d'audit.",
+            "Gérez les paramètres multi-régions et les règles de règlement.",
+            "Configurez les intégrations API, les points de terminaison et les abonnements aux événements."
+          ]
+        }
+      ]
+    },
+    "corporate-banking": {
+      "title": "Plateforme de Banque d'Entreprise",
+      "subtitle": "Solution numérique de niveau entreprise rationalisant les processus bancaires d'entreprise.",
+      "description": "En simplifiant les processus, en réduisant les risques et en offrant de la commodité, les solutions numériques permettent aux entreprises de s'inscrire elles-mêmes et de gérer des opérations financières complexes en toute sécurité.",
+      "features": [
+        {
+          "title": "Processus Rationalisés",
+          "description": "Intégration d'entreprise simplifiée grâce à l'automatisation numérique."
+        },
+        {
+          "title": "Risque Réduit",
+          "description": "Mesures de sécurité et de conformité améliorées."
+        },
+        {
+          "title": "Commodité",
+          "description": "Capacités d'auto-inscription pour les entreprises."
+        },
+        {
+          "title": "Créateur-Vérificateur",
+          "description": "Principe du Double Contrôle pour prévenir les erreurs, la fraude et la mauvaise conduite."
+        }
+      ],
+      "stats": [
+        {
+          "value": "50K+",
+          "label": "Clients Entreprises"
+        },
+        {
+          "value": "$2T+",
+          "label": "Actifs Sous Gestion"
+        },
+        {
+          "value": "24/7",
+          "label": "Support & Service"
+        },
+        {
+          "value": "AAA",
+          "label": "Note de Crédit"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Solutions Entreprise",
+          "content": [
+            "Gestion de Trésorerie: Gestion de trésorerie, optimisation des liquidités et prévisions",
+            "Financement du Commerce: Lettres de crédit, garanties bancaires et encaissements documentaires",
+            "Prêts aux Entreprises: Fonds de roulement, prêts à terme et facilités de crédit",
+            "Paiements et Recouvrements: Paiements de masse, gestion des fournisseurs et créances",
+            "Analyse Financière: Rapports en temps réel et intelligence d'affaires",
+            "Gestion des Risques: Couverture, dérivés et atténuation des risques de change"
+          ]
+        },
+        {
+          "title": "Gestion de Trésorerie",
+          "content": [
+            "Balayage multi-comptes",
+            "Mutualisation notionnelle",
+            "Comptes à solde nul",
+            "Comptes virtuels"
+          ]
+        }
+      ]
+    },
+    "retail-banking": {
+      "title": "Banque par Internet de Détail",
+      "subtitle": "Plateforme bancaire web moderne avec des fonctionnalités complètes et un support multilingue.",
+      "description": "Portail bancaire basé sur le web réactif accessible depuis n'importe quel appareil. Tableau de bord personnalisable, widgets et préférences utilisateur avec support pour plus de 15 langues et RTL.",
+      "features": [
+        {
+          "title": "Plateforme Web",
+          "description": "Portail bancaire basé sur le web réactif accessible depuis n'importe quel appareil."
+        },
+        {
+          "title": "Personnalisation",
+          "description": "Tableau de bord, widgets et préférences utilisateur personnalisables."
+        },
+        {
+          "title": "Multilingue",
+          "description": "Support de plus de 15 langues avec la prise en charge RTL."
+        },
+        {
+          "title": "Authentification Multi-Facteurs",
+          "description": "Sécurité en couches avec OTP, questions de sécurité et vérification de l'appareil."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Gestion des Comptes",
+          "content": [
+            "Liste des comptes avec filtres rapides",
+            "Détails du compte et vue du relevé",
+            "Catégoriser et marquer les transactions favorites",
+            "Recherche avancée et filtrage de transactions",
+            "Relevés certifiés (PDF, HTML, Excel)"
+          ]
+        },
+        {
+          "title": "Transferts de Fonds",
+          "content": [
+            "IMPS (Service de Paiement Immédiat)",
+            "RTGS (Règlement Brut en Temps Réel)",
+            "NEFT (Transfert Électronique National de Fonds)",
+            "Remises internationales",
+            "Transferts planifiés, récurrents et répétés"
+          ]
+        },
+        {
+          "title": "Dépôts et Gestion de Patrimoine",
+          "content": [
+            "Dépôts à Terme et Dépôts Récurrents",
+            "Dépôts d'Épargne Fiscale",
+            "Investissements en bourse et suivi",
+            "Plans d'Investissement Financier (FIP)",
+            "Aperçu complet et analyse de portefeuille"
+          ]
+        }
+      ]
+    },
+    "retail-admin": {
+      "title": "Admin de la Banque par Internet",
+      "subtitle": "Tableau de bord administratif complet pour les opérations de banque de détail.",
+      "description": "Un centre centralisé pour gérer toutes les opérations de banque de détail, surveiller les performances et garantir une expérience client fluide sur tous les canaux avec un suivi des KPI en temps réel.",
+      "features": [
+        {
+          "title": "Affichage Visuel des Données",
+          "description": "Représentation visuelle complète de toutes les données des clients de détail en un coup d'œil."
+        },
+        {
+          "title": "Tableau de Bord",
+          "description": "Suivez les indicateurs de performance clés en temps réel avec des tableaux de bord interactifs."
+        },
+        {
+          "title": "Gestion des Utilisateurs",
+          "description": "Gestion centralisée des utilisateurs, rôles et permissions."
+        },
+        {
+          "title": "Flux d'Approbation",
+          "description": "Cadre créateur-vérificateur pour des approbations et validations sécurisées."
+        }
+      ],
+      "stats": [
+        {
+          "value": "125K+",
+          "label": "Utilisateurs Actifs",
+          "trend": "+12%"
+        },
+        {
+          "value": "2.4M",
+          "label": "Transactions",
+          "trend": "+18%"
+        },
+        {
+          "value": "$45M",
+          "label": "Revenus",
+          "trend": "+24%"
+        },
+        {
+          "value": "99.2%",
+          "label": "Taux de Réussite",
+          "trend": "+2%"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Capacités d'Administration",
+          "content": [
+            "Surveillance et analyse des transactions en temps réel",
+            "Gestion des comptes clients et provisionnement",
+            "Détection des fraudes et alertes de sécurité",
+            "Analyses financières complètes et rapports",
+            "Rapports exportables pour analyse et besoins réglementaires"
+          ]
+        }
+      ]
+    },
+    "mobile-banking": {
+      "title": "Plateforme de Banque Mobile",
+      "subtitle": "Expérience bancaire mobile moderne pour iOS et Android avec des performances natives.",
+      "description": "Expérience native authentique pour les plateformes iOS et Android avec des optimisations spécifiques à la plateforme, un support multilingue et une sécurité de niveau entreprise.",
+      "features": [
+        {
+          "title": "Natif iOS & Android",
+          "description": "Expérience native authentique pour les deux plateformes avec des optimisations spécifiques à la plateforme."
+        },
+        {
+          "title": "Authentification Biométrique",
+          "description": "Sécurité en couches avec Face ID, Touch ID et vérification de l'appareil."
+        },
+        {
+          "title": "Authentification par Jeton",
+          "description": "Mécanisme d'authentification sécurisé basé sur des jetons avec expiration automatique."
+        },
+        {
+          "title": "Personnalisation",
+          "description": "Tableau de bord configurable basé sur des widgets avec des capacités de personnalisation."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Fonctionnalités Principales",
+          "content": [
+            "Vue complète de tous les comptes clients",
+            "Accès rapide à tout compte spécifique",
+            "Accès facile aux transactions récentes via des mini-relevés",
+            "Offres personnalisées, campagnes et notifications",
+            "Support de plus de 15 langues avec la prise en charge RTL"
+          ]
+        },
+        {
+          "title": "Paiements et Transferts",
+          "content": [
+            "Support IMPS, RTGS, NEFT et AEPS",
+            "Transfert de fonds instantané et capacités de planification",
+            "Recherche intelligente dans tous les champs pour les bénéficiaires",
+            "Interface de style répertoire pour la gestion des contacts",
+            "Présentation de factures et paiements ponctuels/planifiés"
+          ]
+        }
+      ]
+    },
+    "two-factor-auth": {
+      "title": "Authentification à Deux Facteurs",
+      "subtitle": "Solution avancée d'authentification multifacteur protégeant contre les usurpations de compte et la fraude.",
+      "description": "Couche de sécurité d'entreprise protégeant contre l'accès non autorisé avec sécurité biométrique et par code PIN. La banque numérique devrait atteindre 395 milliards de dollars d'ici 2026. Ne laissez pas les fraudeurs exploiter vos processus.",
+      "features": [
+        {
+          "title": "Authentification Biométrique",
+          "description": "Connexion sécurisée en utilisant la reconnaissance FaceID ou d'empreinte digitale."
+        },
+        {
+          "title": "Détection de Vivacité",
+          "description": "Détection avancée de vivacité pour prévenir l'usurpation d'identité."
+        },
+        {
+          "title": "Authentification par PIN",
+          "description": "PIN sécurisé de 4 à 6 chiffres pour un accès rapide avec verrouillage automatique."
+        },
+        {
+          "title": "Notifications en Temps Réel",
+          "description": "Approuvez ou rejetez les transactions instantanément à partir des notifications push."
+        }
+      ],
+      "stats": [
+        {
+          "value": "15B",
+          "label": "Mots de Passe Volés"
+        },
+        {
+          "value": "20%",
+          "label": "Hausse des Usurpations"
+        },
+        {
+          "value": "93%",
+          "label": "Fraude en Ligne"
+        },
+        {
+          "value": "$6.1B",
+          "label": "Pertes en 2021"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Tableau de Bord d'Authentification",
+          "content": [
+            "Tableau de bord complet pour la gestion des demandes d'authentification.",
+            "Profil utilisateur complet et détails du compte.",
+            "Actions en Attente: Transactions en attente d'approbation ou de rejet.",
+            "Actions Terminées: Historique des transactions approuvées et rejetées.",
+            "Demandes de Notification: Notifications d'approbation de transaction en temps réel."
+          ]
+        },
+        {
+          "title": "Canaux de Notification",
+          "content": [
+            "Notifications Push via l'App",
+            "Alertes SMS",
+            "Notifications par Email",
+            "Alertes dans l'App"
+          ]
+        }
+      ]
+    }
+  },
+  "ProductHero": {
+    "backToProducts": "Retour aux Produits",
+    "productOverview": "Aperçu du Produit",
+    "visit": "Visiter",
+    "viewAllProducts": "Voir Tous les Produits"
+  },
+  "ParticleMeshSection": {
+    "globalInfrastructure": "Infrastructure Globale",
+    "poweringThe": "Propulser la",
+    "nextGeneration": "prochaine génération",
+    "ofFinance": "de la finance.",
+    "description": "Notre plateforme distribuée traite des millions de transactions à travers les continents avec une latence inférieure à la milliseconde. Conçu pour les banques qui exigent une fiabilité absolue à grande échelle.",
+    "avgLatency": "Latence Moyenne",
+    "countries": "Pays",
+    "availability": "Disponibilité",
+    "viewArchitecture": "Voir l'Architecture"
+  },
+  "HeroPremium": {
+    "nextGen": "PROCHAINE GÉN",
+    "banking": "BANCAIRE",
+    "description": "Une plateforme numérique de confiance zéro, infiniment évolutive, conçue pour l'avenir de la finance.",
+    "requestAccess": "Demander l'Accès",
+    "explorePlatform": "Explorer la Plateforme"
+  },
+  "TechShowcase3D": {
+    "platformArchitecture": "// ARCHITECTURE DE LA PLATEFORME",
+    "engineeredFor": "Conçu pour la",
+    "complexity": "Complexité",
+    "description": "Le cœur de notre plateforme est un maillage réfractif et auto-cicatrisant - tout comme cette structure en verre, il se plie autour des obstacles, distribue la charge de manière organique et ne se brise jamais.",
+    "capabilities": [
+      {
+        "label": "Chiffrement de Bout en Bout",
+        "desc": "Chiffrement AES-256 au repos, TLS 1.3 en transit"
+      },
+      {
+        "label": "Architecture de Microservices",
+        "desc": "Services déployables indépendamment, évolutifs horizontalement"
+      },
+      {
+        "label": "Traitement Basé sur les Événements",
+        "desc": "Diffusion d'événements en temps réel avec l'épine dorsale Apache Kafka"
+      },
+      {
+        "label": "Déploiement Multi-Régions",
+        "desc": "Déploiement actif-actif dans plus de 40 centres de données mondiaux"
+      }
+    ]
+  },
+  "ContactPage": {
+    "title": "Demander une Démo",
+    "subtitle": "Découvrez comment notre plateforme bancaire numérique de nouvelle génération peut transformer votre institution.",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Email Professionnel",
+    "company": "Entreprise",
+    "jobTitle": "Poste",
+    "message": "Comment pouvons-nous vous aider ?",
+    "submit": "Demander l'Accès",
+    "successMessage": "Merci ! Notre équipe vous contactera sous peu.",
+    "featuresTitle": "Pourquoi choisir la Plateforme DB ?",
+    "features": [
+      "Accélérez la mise sur le marché avec des modules éprouvés",
+      "Garantissez une sécurité et une conformité de niveau entreprise",
+      "Intégrez facilement avec les systèmes centraux existants",
+      "Offrez des expériences utilisateur époustouflantes sur tous les canaux"
+    ]
   }
 }

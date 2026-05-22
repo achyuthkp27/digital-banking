@@ -7,7 +7,7 @@ import CustomCursor from '@/components/common/CustomCursor';
 import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 
 export function generateStaticParams() {
@@ -22,11 +22,11 @@ const syne = Syne({
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
   
   return {
-    title: 'DB | Digital Banking Platform',
-    description:
-      'Enterprise-grade digital banking solutions with cutting-edge security, seamless integration, and unparalleled user experience across all platforms.',
+    title: t('title'),
+    description: t('description'),
     keywords: [
       'digital banking',
       'fintech',
@@ -45,16 +45,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       },
     },
     openGraph: {
-      title: 'DB | Digital Banking Platform',
-      description: 'Enterprise-grade digital banking solutions with cutting-edge security.',
+      title: t('title'),
+      description: t('description'),
       url: `https://db-demo.example.com/${locale}`,
-      siteName: 'Digital Banking Platform',
+      siteName: t('title'),
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'DB | Digital Banking Platform',
-      description: 'Enterprise-grade digital banking solutions with cutting-edge security.',
+      title: t('title'),
+      description: t('description'),
     },
   };
 }

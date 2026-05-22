@@ -1,17 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import AnimatedCounter from '../common/AnimatedCounter';
 import GlassCard from '../common/GlassCard';
 import { StaggerContainer, StaggerItem } from '../common/ScrollReveal';
-
-const stats = [
-  { value: 99.9, suffix: '%', label: 'Uptime SLA', decimals: 1 },
-  { value: 10, suffix: 'M+', label: 'Transactions/Day', decimals: 0 },
-  { value: 2, prefix: '<', suffix: 's', label: 'Response Time', decimals: 0 },
-];
+import { useTranslations } from 'next-intl';
 
 const StatsBar: React.FC = () => {
+  const t = useTranslations('StatsBar');
+  
+  const stats = useMemo(() => [
+    { value: 99.9, suffix: '%', label: t('uptimeSla'), decimals: 1 },
+    { value: 10, suffix: 'M+', label: t('transactionsPerDay'), decimals: 0 },
+    { value: 2, prefix: '<', suffix: 's', label: t('responseTime'), decimals: 0 },
+  ], [t]);
+
   return (
     <div className="py-12 md:py-16 relative">
       <div className="container max-w-6xl mx-auto px-4">

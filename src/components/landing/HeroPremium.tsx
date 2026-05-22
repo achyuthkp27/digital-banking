@@ -12,6 +12,7 @@ import {
 import { Mesh } from 'three';
 import { Link } from '@/i18n/routing';
 import { useInView } from 'react-intersection-observer';
+import { useTranslations } from 'next-intl';
 
 function RefractiveKnot() {
   const meshRef = useRef<Mesh>(null);
@@ -56,6 +57,7 @@ function RefractiveKnot() {
 function Typography() {
   const { viewport } = useThree();
   const isMobile = viewport.width < 5;
+  const t = useTranslations('HeroPremium');
 
   return (
     <group position={[0, 0, -2]}>
@@ -67,7 +69,7 @@ function Typography() {
         anchorY="bottom"
         position={[0, 0, 0]}
       >
-        NEXT GEN
+        {t('nextGen')}
       </Text>
       <Text
         fontSize={isMobile ? 1 : 2}
@@ -77,7 +79,7 @@ function Typography() {
         anchorY="top"
         position={[0, 0, 0]}
       >
-        BANKING
+        {t('banking')}
       </Text>
     </group>
   );
@@ -85,6 +87,7 @@ function Typography() {
 
 export default function HeroPremium() {
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
+  const t = useTranslations('HeroPremium');
 
   return (
     <section
@@ -146,17 +149,11 @@ export default function HeroPremium() {
             border: '1px solid rgba(var(--color-invert-rgb), 0.05)',
           }}
         >
-          An infinitely scalable, zero-trust digital platform engineered for the future of finance.
+          {t('description')}
         </p>
 
         <div style={{ display: 'flex', gap: '16px', pointerEvents: 'auto' }}>
-          <Link
-            href="/demo"
-            className="pill-button"
-            style={{ background: 'var(--text-primary)', color: '#000', padding: '16px 40px', fontSize: '15px' }}
-          >
-            Request Access
-          </Link>
+
           <Link
             href="/architecture"
             className="pill-button"
@@ -169,7 +166,7 @@ export default function HeroPremium() {
               backdropFilter: 'blur(10px)',
             }}
           >
-            Explore Platform
+            {t('explorePlatform')}
           </Link>
         </div>
       </div>

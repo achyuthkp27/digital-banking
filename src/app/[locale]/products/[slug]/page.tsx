@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
-import { productContent } from '@/data/productContent';
-import { setRequestLocale } from 'next-intl/server';
+import { productSlugs } from '@/data/productContent';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
 export function generateStaticParams() {
-  return Object.keys(productContent).map((slug) => ({
+  return productSlugs.map((slug) => ({
     slug,
   }));
 }
@@ -22,11 +22,19 @@ export default async function ProductPage({
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const product = productContent[slug];
 
-  if (!product) {
+  if (!productSlugs.includes(slug)) {
     notFound();
   }
+
+  const t = await getTranslations({ locale, namespace: `ProductPages.${slug}` });
+  const ui = await getTranslations({ locale, namespace: 'ProductPagesUI' });
+
+  // Use t.raw for arrays, or fallback to empty array if missing
+  const features = t.raw('features') as { title: string; description?: string }[];
+  const hasStats = t.has('stats');
+  const stats = hasStats ? t.raw('stats') as { value: string; label: string; trend?: string }[] : null;
+  const sections = t.raw('sections') as { title: string; content: string[] }[];
 
   return (
     <>
@@ -34,7 +42,7 @@ export default async function ProductPage({
       <Navbar />
       <main style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '0' }}>
         {/* Hero with product-specific illustration */}
-        <ProductHero title={product.title} subtitle={product.subtitle} slug={slug} />
+        <ProductHero title={t('title')} subtitle={t('subtitle')} slug={slug} />
 
         {/* Content Section */}
         <section className="container">
@@ -51,14 +59,14 @@ export default async function ProductPage({
                     fontFamily: 'var(--font-syne), sans-serif',
                   }}
                 >
-                  Platform Overview
+                  {ui('platformOverview')}
                 </h3>
                 <p style={{ fontSize: '16px', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
-                  {product.description}
+                  {t('description')}
                 </p>
               </div>
 
-              {product.stats && (
+              {stats && (
                 <div
                   style={{
                     display: 'grid',
@@ -66,7 +74,7 @@ export default async function ProductPage({
                     gap: '24px',
                   }}
                 >
-                  {product.stats.map((stat, idx) => (
+                  {stats.map((stat, idx) => (
                     <div
                       key={idx}
                       className="bento-glass"
@@ -120,10 +128,10 @@ export default async function ProductPage({
                     fontFamily: 'var(--font-syne), sans-serif',
                   }}
                 >
-                  Core Features
+                  {ui('coreFeatures')}
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                  {product.features.map((feature, idx) => (
+                  {features.map((feature, idx) => (
                     <div
                       key={idx}
                       style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}
@@ -160,7 +168,7 @@ export default async function ProductPage({
               </div>
 
               {/* Dynamic Sections */}
-              {product.sections.map((section, idx) => (
+              {sections.map((section, idx) => (
                 <div
                   key={idx}
                   className="bento-glass"

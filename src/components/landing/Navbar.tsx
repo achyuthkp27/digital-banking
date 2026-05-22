@@ -160,13 +160,7 @@ export default function Navbar() {
         <div style={{ justifySelf: 'end', display: 'flex', alignItems: 'center', gap: '16px' }}>
           <LanguageSwitcher />
           <ThemeToggle />
-          <button
-            className="pill-button pill-button-secondary"
-            aria-label="Request Demo"
-            style={{ fontSize: '14px', padding: '10px 24px' }}
-          >
-            {t('requestDemo')}
-          </button>
+
         </div>
       </div>
     </nav>

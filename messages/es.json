@@ -37,8 +37,8 @@
     "aesEncryption": "Cifrado AES"
   },
   "StatsBar": {
-    "uptimeSla": "SLA Disponibilidad",
-    "transactionsDay": "Transacciones/Día",
+    "uptimeSla": "SLA de Tiempo de Actividad",
+    "transactionsPerDay": "Transacciones/Día",
     "responseTime": "Tiempo de Respuesta"
   },
   "Architecture": {
@@ -150,7 +150,7 @@
     "badge": "PRODUCTOS",
     "title": "Todo lo que un banco necesita",
     "learnMore": "Saber Más",
-    "liveDemo": "Demo en Vivo",
+    "liveDemo": "Visitar",
     "switchToVertical": "Cambiar a Vertical",
     "switchToHorizontal": "Cambiar a Horizontal",
     "products": {
@@ -292,5 +292,563 @@
   "Metadata": {
     "title": "Plataforma de Banca Digital | Soluciones Bancarias Empresariales",
     "description": "Soluciones de banca digital de nivel empresarial con seguridad de vanguardia, arquitectura escalable e integración perfecta para instituciones financieras modernas."
+  },
+  "ProductPagesUI": {
+    "platformOverview": "Descripción de la Plataforma",
+    "coreFeatures": "Características Principales"
+  },
+  "ProductPages": {
+    "video-kyc": {
+      "title": "Video KYC",
+      "subtitle": "Verificación remota segura mediante videollamadas en tiempo real, escaneo de documentos y controles de identidad basados en IA.",
+      "description": "Un flujo de incorporación completo diseñado para una verificación remota rápida, segura y compatible. Verificación remota segura utilizando videollamadas en tiempo real, escaneo de documentos y controles de identidad impulsados por IA.",
+      "features": [
+        {
+          "title": "Verificación con IA",
+          "description": "Señales de verificación automatizadas para una revisión y toma de decisiones más rápidas."
+        },
+        {
+          "title": "Video Banca en Vivo",
+          "description": "Conéctese con funcionarios bancarios mediante videollamada segura."
+        },
+        {
+          "title": "Incorporación Digital Segura",
+          "description": "Controles de múltiples capas para validar la identidad y reducir el riesgo de fraude."
+        },
+        {
+          "title": "Escaneo de Documentos",
+          "description": "Capture y verifique documentos en tiempo real con captura guiada."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Capacidades",
+          "content": [
+            "Sesiones Encriptadas: Seguridad a nivel de transporte para sesiones de verificación en vivo.",
+            "Señales de Fraude: Heurísticas y controles para detectar patrones sospechosos.",
+            "Revisión de Agente: Revisión con humano en el ciclo con captura de evidencia guiada.",
+            "Acceso Tokenizado: Acceso seguro para pasos de verificación y operaciones de administrador.",
+            "Líneas de Tiempo de Sesión: Rastrear etapas de captura y revisión con hitos claros.",
+            "Evidencia Exportable: Genere informes y comparta artefactos de prueba de verificación."
+          ]
+        }
+      ]
+    },
+    "kiosk-banking": {
+      "title": "Banca de Kiosco",
+      "subtitle": "Experiencia de kiosco de autoservicio para sucursales con flujos guiados seguros para depósitos, tarjetas y pagos admitidos.",
+      "description": "Una experiencia de autoservicio guiada y segura diseñada para transacciones de sucursales rápidas y convenientes. 70% más rápido que el servicio de cajero tradicional, manejando más de 200 transacciones por día.",
+      "features": [
+        {
+          "title": "Interfaz Táctil",
+          "description": "Navegación de pantalla táctil fácil de usar."
+        },
+        {
+          "title": "Aceptación de Efectivo",
+          "description": "Acepte depósitos en efectivo y procese retiros."
+        },
+        {
+          "title": "Integración de Tarjetas",
+          "description": "Integración perfecta con lectores de tarjetas."
+        },
+        {
+          "title": "Impresión de Libretas",
+          "description": "Imprima estados de cuenta y recibos instantáneamente después de las transacciones."
+        }
+      ],
+      "stats": [
+        {
+          "value": "70%",
+          "label": "Servicio Más Rápido"
+        },
+        {
+          "value": "200+",
+          "label": "Transacciones/Día"
+        },
+        {
+          "value": "40%",
+          "label": "Reducción de Costos"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Servicios Disponibles",
+          "content": [
+            "Retiro y depósitos de efectivo",
+            "Impresión de estado de cuenta",
+            "Solicitudes de chequera",
+            "Generación/restablecimiento de PIN",
+            "Transferencias de fondos (IMPS, NEFT)",
+            "Apertura de depósito fijo",
+            "Pago de préstamo",
+            "Actualizaciones de KYC"
+          ]
+        },
+        {
+          "title": "Especificaciones Técnicas",
+          "content": [
+            "Tamaño de Pantalla: 22\" Táctil",
+            "Manejo de Efectivo: Hasta 10,000 billetes",
+            "Velocidad de Impresión: 50 recibos/hora",
+            "Horario de Operación: Operación 24/7"
+          ]
+        }
+      ]
+    },
+    "agent-banking": {
+      "title": "Banca de Agentes",
+      "subtitle": "Una experiencia de banca digital lista para el campo para agentes: incorporación, manejo de efectivo, cobros de préstamos y servicio al cliente.",
+      "description": "Optimizado para rendimiento receptivo y operaciones de campo. Interfaz optimizada para uso táctil construida específicamente para dispositivos de tableta.",
+      "features": [
+        {
+          "title": "Incorporación Remota",
+          "description": "Abra cuentas y active servicios en el sitio."
+        },
+        {
+          "title": "Manejo de Efectivo",
+          "description": "Procese depósitos y retiros con confirmaciones en el lugar."
+        },
+        {
+          "title": "Cobro de Préstamos",
+          "description": "Rastree y cobre pagos de EMI y cuotas."
+        },
+        {
+          "title": "Modo Fuera de Línea",
+          "description": "Continúe las operaciones sin conectividad a internet. Se sincroniza de forma segura cuando regresa la conectividad."
+        }
+      ],
+      "stats": [
+        {
+          "value": "10K+",
+          "label": "Dispositivos Desplegados"
+        },
+        {
+          "value": "60%",
+          "label": "Servicio Más Rápido"
+        },
+        {
+          "value": "3x",
+          "label": "Más Transacciones"
+        },
+        {
+          "value": "95%",
+          "label": "Satisfacción del Cliente"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Capacidades del Agente",
+          "content": [
+            "Apertura de cuenta y verificación KYC",
+            "Depósitos en efectivo y cheques en el campo",
+            "Procesamiento de solicitudes de préstamos",
+            "Venta de productos de seguros e inversiones",
+            "Transferencia de fondos y pago de facturas",
+            "Firma de documentos digitales"
+          ]
+        },
+        {
+          "title": "Casos de Uso del Agente",
+          "content": [
+            "Asistencia en Sucursal: Gestión de colas y transacciones asistidas",
+            "Operaciones de Campo: Banca a domicilio y alcance rural",
+            "Gestión de Relaciones: Reuniones con clientes y revisión de cartera",
+            "Servicio al Cliente: Formularios digitales, Video KYC, Firmas electrónicas"
+          ]
+        }
+      ]
+    },
+    "merchant-banking": {
+      "title": "Banca Comercial",
+      "subtitle": "Una plataforma completa de pagos comerciales con habilitación POS/QR, paneles de liquidación y análisis de transacciones.",
+      "description": "Plataforma comercial de nivel empresarial que ofrece KPI en tiempo real, visibilidad instantánea del estado de las liquidaciones y soporte de configuración multirregional.",
+      "features": [
+        {
+          "title": "Habilitación POS",
+          "description": "Integre y administre flujos de punto de venta a través de terminales."
+        },
+        {
+          "title": "Pagos QR",
+          "description": "Experiencias de aceptación de QR dinámicas/estáticas."
+        },
+        {
+          "title": "Seguimiento de Liquidación",
+          "description": "Paneles de reconciliación y liquidación para un fácil seguimiento."
+        },
+        {
+          "title": "Perspectivas de Transacción",
+          "description": "Análisis e informes para la optimización del rendimiento."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Centro de Pagos",
+          "content": [
+            "Aceptación de Tarjeta y UPI: Aceptación de pago unificada en los canales compatibles.",
+            "Gestión de Flujo QR: Configure parámetros QR, devoluciones de llamada y comportamientos de reintento.",
+            "Ciclo de Vida POS: Inscriba, administre y monitoree la activación de dispositivos POS.",
+            "Reembolsos y Disputas: Rastree estados de reembolso y resuelva disputas con registros de auditoría."
+          ]
+        },
+        {
+          "title": "Configuración y Control de Acceso",
+          "content": [
+            "Roles y permisos administrados por el administrador para operaciones comerciales.",
+            "Aplique devoluciones de llamada seguras, reglas de dispositivos y seguimientos de auditoría.",
+            "Maneje configuraciones multirregionales y reglas de liquidación.",
+            "Configure integraciones de API, puntos finales y suscripciones a eventos."
+          ]
+        }
+      ]
+    },
+    "corporate-banking": {
+      "title": "Plataforma de Banca Corporativa",
+      "subtitle": "Solución digital de nivel empresarial que agiliza los procesos bancarios corporativos.",
+      "description": "Al agilizar los procesos, reducir el riesgo y ofrecer comodidad, las soluciones digitales facilitan que los clientes corporativos se auto-inscriban y administren operaciones financieras complejas de forma segura.",
+      "features": [
+        {
+          "title": "Procesos Agilizados",
+          "description": "Incorporación corporativa simplificada con automatización digital."
+        },
+        {
+          "title": "Riesgo Reducido",
+          "description": "Medidas mejoradas de seguridad y cumplimiento."
+        },
+        {
+          "title": "Comodidad",
+          "description": "Capacidades de auto-inscripción para clientes corporativos."
+        },
+        {
+          "title": "Hacedor-Revisor",
+          "description": "Principio de Doble Control para prevenir errores, fraude y mala conducta."
+        }
+      ],
+      "stats": [
+        {
+          "value": "50K+",
+          "label": "Clientes Corporativos"
+        },
+        {
+          "value": "$2T+",
+          "label": "Activos Bajo Administración"
+        },
+        {
+          "value": "24/7",
+          "label": "Soporte y Servicio"
+        },
+        {
+          "value": "AAA",
+          "label": "Calificación Crediticia"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Soluciones Corporativas",
+          "content": [
+            "Gestión de Tesorería: Gestión de efectivo, optimización de liquidez y previsión",
+            "Financiamiento Comercial: Cartas de crédito, garantías bancarias y cobranzas documentales",
+            "Préstamos Corporativos: Capital de trabajo, préstamos a plazo y facilidades de crédito",
+            "Pagos y Cobranzas: Pagos masivos, gestión de proveedores y cuentas por cobrar",
+            "Análisis Financiero: Informes en tiempo real e inteligencia empresarial",
+            "Gestión de Riesgos: Cobertura, derivados y mitigación de riesgo cambiario"
+          ]
+        },
+        {
+          "title": "Gestión de Efectivo",
+          "content": [
+            "Barrido multicuentas",
+            "Agrupación teórica",
+            "Cuentas de saldo cero",
+            "Cuentas virtuales"
+          ]
+        }
+      ]
+    },
+    "retail-banking": {
+      "title": "Banca por Internet Minorista",
+      "subtitle": "Plataforma web de banca moderna y contemporánea con características completas y soporte multilingüe.",
+      "description": "Portal bancario web responsivo accesible desde cualquier dispositivo. Panel personalizable, widgets y preferencias de usuario con soporte para más de 15 idiomas y RTL.",
+      "features": [
+        {
+          "title": "Plataforma Web",
+          "description": "Portal bancario web responsivo accesible desde cualquier dispositivo."
+        },
+        {
+          "title": "Personalización",
+          "description": "Panel personalizable, widgets y preferencias del usuario."
+        },
+        {
+          "title": "Multilingüe",
+          "description": "Soporte para más de 15 idiomas con soporte de idioma RTL."
+        },
+        {
+          "title": "Autenticación Multifactor",
+          "description": "Seguridad en capas con OTP, preguntas de seguridad y verificación del dispositivo."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Gestión de Cuentas",
+          "content": [
+            "Listado de cuentas con filtros rápidos",
+            "Detalles de cuenta y vista de estado de cuenta",
+            "Categorizar y marcar transacciones favoritas",
+            "Búsqueda y filtro de transacciones avanzadas",
+            "Estados de cuenta certificados (PDF, HTML, Excel)"
+          ]
+        },
+        {
+          "title": "Transferencias de Fondos",
+          "content": [
+            "IMPS (Servicio de Pago Inmediato)",
+            "RTGS (Liquidación Bruta en Tiempo Real)",
+            "NEFT (Transferencia Electrónica de Fondos Nacionales)",
+            "Remesas internacionales",
+            "Transferencias programadas, recurrentes y repetidas"
+          ]
+        },
+        {
+          "title": "Depósitos y Gestión Patrimonial",
+          "content": [
+            "Depósitos Fijos y Depósitos Recurrentes",
+            "Depósitos de Ahorro Fiscal",
+            "Inversiones en bolsa y seguimiento",
+            "Planes de Inversión Financiera (FIP)",
+            "Revisión y análisis completo de cartera"
+          ]
+        }
+      ]
+    },
+    "retail-admin": {
+      "title": "Admin de Banca por Internet Minorista",
+      "subtitle": "Panel administrativo integral para operaciones de banca minorista.",
+      "description": "Un centro centralizado para administrar todas las operaciones bancarias minoristas, monitorear el rendimiento y garantizar una experiencia perfecta del cliente en todos los canales con monitoreo de KPI en tiempo real.",
+      "features": [
+        {
+          "title": "Visualización de Datos",
+          "description": "Representación visual completa de todos los datos de los clientes minoristas de un vistazo."
+        },
+        {
+          "title": "Panel de Control",
+          "description": "Rastree los indicadores clave de rendimiento en tiempo real con paneles interactivos."
+        },
+        {
+          "title": "Gestión de Usuarios",
+          "description": "Gestión centralizada de usuarios, roles y permisos."
+        },
+        {
+          "title": "Flujos de Aprobación",
+          "description": "Marco maker-checker para aprobaciones y validaciones seguras."
+        }
+      ],
+      "stats": [
+        {
+          "value": "125K+",
+          "label": "Usuarios Activos",
+          "trend": "+12%"
+        },
+        {
+          "value": "2.4M",
+          "label": "Transacciones",
+          "trend": "+18%"
+        },
+        {
+          "value": "$45M",
+          "label": "Ingresos",
+          "trend": "+24%"
+        },
+        {
+          "value": "99.2%",
+          "label": "Tasa de Éxito",
+          "trend": "+2%"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Capacidades de Administración",
+          "content": [
+            "Monitoreo y análisis de transacciones en tiempo real",
+            "Gestión y aprovisionamiento de cuentas de clientes",
+            "Detección de fraude y alertas de seguridad",
+            "Análisis e informes financieros completos",
+            "Informes exportables para análisis y necesidades regulatorias"
+          ]
+        }
+      ]
+    },
+    "mobile-banking": {
+      "title": "Plataforma de Banca Móvil",
+      "subtitle": "Experiencia moderna de banca móvil para iOS y Android con rendimiento nativo.",
+      "description": "Verdadera experiencia nativa para plataformas iOS y Android con optimizaciones específicas de la plataforma, soporte multilingüe y seguridad de nivel empresarial.",
+      "features": [
+        {
+          "title": "Nativo iOS y Android",
+          "description": "Experiencia nativa verdadera para ambas plataformas con optimizaciones específicas de la plataforma."
+        },
+        {
+          "title": "Autenticación Biométrica",
+          "description": "Seguridad en capas con Face ID, Touch ID y verificación del dispositivo."
+        },
+        {
+          "title": "Autenticación por Token",
+          "description": "Mecanismo seguro de autenticación basada en tokens con caducidad automática."
+        },
+        {
+          "title": "Personalización",
+          "description": "Panel impulsado por widgets y configurable con capacidades de personalización."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Características Principales",
+          "content": [
+            "Vista completa de todas las cuentas del cliente",
+            "Acceso rápido a cualquier cuenta específica",
+            "Fácil acceso a transacciones recientes a través de mini extractos",
+            "Ofertas personalizadas, campañas y notificaciones",
+            "Soporte para más de 15 idiomas con soporte de idioma RTL"
+          ]
+        },
+        {
+          "title": "Pagos y Transferencias",
+          "content": [
+            "Soporte IMPS, RTGS, NEFT y AEPS",
+            "Transferencia instantánea de fondos y capacidades de programación",
+            "Búsqueda inteligente en todos los campos para beneficiarios",
+            "Interfaz estilo agenda para la gestión de contactos",
+            "Presentación de facturas y pagos ad hoc/programados"
+          ]
+        }
+      ]
+    },
+    "two-factor-auth": {
+      "title": "Autenticación de Dos Factores",
+      "subtitle": "Solución avanzada de autenticación multifactor que protege contra el robo de cuentas y el fraude.",
+      "description": "Capa de seguridad empresarial que protege contra el acceso no autorizado con seguridad biométrica y basada en PIN. Se espera que la banca digital alcance los $395 mil millones para 2026. No permita que los estafadores exploten sus procesos.",
+      "features": [
+        {
+          "title": "Autenticación Biométrica",
+          "description": "Inicio de sesión seguro usando reconocimiento de FaceID o Huella Digital."
+        },
+        {
+          "title": "Detección de Vivacidad",
+          "description": "Detección avanzada de vivacidad para evitar la suplantación de identidad."
+        },
+        {
+          "title": "Autenticación con PIN",
+          "description": "PIN seguro de 4-6 dígitos para acceso rápido con bloqueo automático."
+        },
+        {
+          "title": "Notificaciones en Tiempo Real",
+          "description": "Apruebe o rechace transacciones instantáneamente desde notificaciones push."
+        }
+      ],
+      "stats": [
+        {
+          "value": "15B",
+          "label": "Contraseñas Robadas"
+        },
+        {
+          "value": "20%",
+          "label": "Aumento de Apropiaciones"
+        },
+        {
+          "value": "93%",
+          "label": "Fraude en Línea"
+        },
+        {
+          "value": "$6.1B",
+          "label": "Pérdidas en 2021"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Panel de Autenticación",
+          "content": [
+            "Panel completo para gestionar solicitudes de autenticación.",
+            "Perfil completo de usuario y detalles de cuenta.",
+            "Acciones Pendientes: Transacciones en espera de aprobación o rechazo.",
+            "Acciones Completadas: Historial de transacciones aprobadas y rechazadas.",
+            "Solicitudes de Notificación: Notificaciones de aprobación de transacciones en tiempo real."
+          ]
+        },
+        {
+          "title": "Canales de Notificación",
+          "content": [
+            "Notificaciones Push a través de la App",
+            "Alertas SMS",
+            "Notificaciones por Email",
+            "Alertas en la App"
+          ]
+        }
+      ]
+    }
+  },
+  "ProductHero": {
+    "backToProducts": "Volver a Productos",
+    "productOverview": "Descripción del Producto",
+    "visit": "Visitar",
+    "viewAllProducts": "Ver Todos los Productos"
+  },
+  "ParticleMeshSection": {
+    "globalInfrastructure": "Infraestructura Global",
+    "poweringThe": "Impulsando la",
+    "nextGeneration": "próxima generación",
+    "ofFinance": "de finanzas.",
+    "description": "Nuestra plataforma distribuida procesa millones de transacciones a través de continentes con latencia de sub-milisegundos. Creado para bancos que exigen confiabilidad absoluta a gran escala.",
+    "avgLatency": "Latencia Promedio",
+    "countries": "Países",
+    "availability": "Disponibilidad",
+    "viewArchitecture": "Ver Arquitectura"
+  },
+  "HeroPremium": {
+    "nextGen": "PRÓXIMA GEN",
+    "banking": "BANCARIA",
+    "description": "Una plataforma digital de confianza cero e infinitamente escalable, diseñada para el futuro de las finanzas.",
+    "requestAccess": "Solicitar Acceso",
+    "explorePlatform": "Explorar Plataforma"
+  },
+  "TechShowcase3D": {
+    "platformArchitecture": "// ARQUITECTURA DE PLATAFORMA",
+    "engineeredFor": "Diseñado para la",
+    "complexity": "Complejidad",
+    "description": "El núcleo de nuestra plataforma es una malla refractiva y de autocuración: al igual que esta estructura de vidrio, se dobla alrededor de los obstáculos, distribuye la carga orgánicamente y nunca se rompe.",
+    "capabilities": [
+      {
+        "label": "Cifrado de Extremo a Extremo",
+        "desc": "Cifrado AES-256 en reposo, TLS 1.3 en tránsito"
+      },
+      {
+        "label": "Arquitectura de Microservicios",
+        "desc": "Servicios escalables horizontalmente y desplegables de forma independiente"
+      },
+      {
+        "label": "Procesamiento Basado en Eventos",
+        "desc": "Transmisión de eventos en tiempo real con la columna vertebral de Apache Kafka"
+      },
+      {
+        "label": "Despliegue Multirregional",
+        "desc": "Implementación activo-activo en más de 40 centros de datos globales"
+      }
+    ]
+  },
+  "ContactPage": {
+    "title": "Solicitar una Demo",
+    "subtitle": "Descubra cómo nuestra plataforma de banca digital de próxima generación puede transformar su institución.",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo de Trabajo",
+    "company": "Empresa",
+    "jobTitle": "Cargo",
+    "message": "¿Cómo podemos ayudar?",
+    "submit": "Solicitar Acceso",
+    "successMessage": "¡Gracias! Nuestro equipo se pondrá en contacto en breve.",
+    "featuresTitle": "¿Por qué elegir la Plataforma DB?",
+    "features": [
+      "Acelere el tiempo de comercialización con módulos probados",
+      "Garantice la seguridad y el cumplimiento a nivel empresarial",
+      "Intégrese perfectamente con los sistemas centrales heredados",
+      "Ofrezca experiencias de usuario impresionantes en todos los canales"
+    ]
   }
 }
