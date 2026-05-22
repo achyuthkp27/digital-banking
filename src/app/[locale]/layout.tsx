@@ -76,18 +76,18 @@ export default async function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable} ${syne.variable}`}
       suppressHydrationWarning
     >
-      <body className={GeistSans.className}>
-        <NextIntlClientProvider messages={messages}>
-          <CustomCursor />
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
+      <body className={GeistSans.className} suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages}>
+            <CustomCursor />
             <ErrorBoundary>{children}</ErrorBoundary>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
