@@ -7,6 +7,12 @@
     "requestDemo": "Demander une Démo",
     "home": "Accueil"
   },
+  "Brand": {
+    "word1First": "B",
+    "word1Rest": "anque",
+    "word2First": "D",
+    "word2Rest": "igitale"
+  },
   "Hero": {
     "badge": "Plateforme Entreprise",
     "titleLine1": "L'avenir de la",
@@ -850,5 +856,30 @@
       "Intégrez facilement avec les systèmes centraux existants",
       "Offrez des expériences utilisateur époustouflantes sur tous les canaux"
     ]
+  },
+  "AppFlow": {
+    "secureLogin": "Connexion Sécurisée",
+    "authenticating": "Authentification...",
+    "sidebarOverview": "Aperçu",
+    "sidebarTransactions": "Transactions",
+    "sidebarCards": "Cartes",
+    "sidebarAnalytics": "Analyses",
+    "sidebarSettings": "Paramètres",
+    "financialOverviewTitle": "Aperçu Financier",
+    "financialOverviewSubtitle": "Indicateurs d'entreprise en temps réel.",
+    "totalBalance": "Solde Total",
+    "monthlySpend": "Dépenses Mensuelles",
+    "pendingYield": "Rendement en Attente",
+    "thisMonth": "ce mois-ci",
+    "cashFlow": "Flux de Trésorerie",
+    "activeCards": "Cartes Actives",
+    "corporate": "ENTREPRISE",
+    "wealthManagementTitle": "Gestion de Patrimoine",
+    "wealthManagementSubtitle": "Portefeuille et allocation d'actifs.",
+    "totalNetWorth": "Valeur Nette Totale",
+    "assets": "Actifs",
+    "equities": "Actions",
+    "fixedIncome": "Revenu Fixe",
+    "alternatives": "Alternatives"
   }
 }

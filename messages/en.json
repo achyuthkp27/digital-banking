@@ -7,6 +7,12 @@
     "requestDemo": "Request Demo",
     "home": "Home"
   },
+  "Brand": {
+    "word1First": "D",
+    "word1Rest": "igital",
+    "word2First": "B",
+    "word2Rest": "anking"
+  },
   "Hero": {
     "badge": "Enterprise Platform",
     "titleLine1": "The future of",
@@ -850,5 +856,30 @@
       "Seamlessly integrate with legacy core systems",
       "Deliver stunning user experiences across all channels"
     ]
+  },
+  "AppFlow": {
+    "secureLogin": "Secure Login",
+    "authenticating": "Authenticating...",
+    "sidebarOverview": "Overview",
+    "sidebarTransactions": "Transactions",
+    "sidebarCards": "Cards",
+    "sidebarAnalytics": "Analytics",
+    "sidebarSettings": "Settings",
+    "financialOverviewTitle": "Financial Overview",
+    "financialOverviewSubtitle": "Real-time enterprise metrics.",
+    "totalBalance": "Total Balance",
+    "monthlySpend": "Monthly Spend",
+    "pendingYield": "Pending Yield",
+    "thisMonth": "this month",
+    "cashFlow": "Cash Flow",
+    "activeCards": "Active Cards",
+    "corporate": "CORPORATE",
+    "wealthManagementTitle": "Wealth Management",
+    "wealthManagementSubtitle": "Portfolio and asset allocation.",
+    "totalNetWorth": "Total Net Worth",
+    "assets": "Assets",
+    "equities": "Equities",
+    "fixedIncome": "Fixed Income",
+    "alternatives": "Alternatives"
   }
 }

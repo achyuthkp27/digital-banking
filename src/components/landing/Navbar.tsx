@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl';
 
 export default function Navbar() {
   const t = useTranslations('Navigation');
+  const tBrand = useTranslations('Brand');
   const [scrolled, setScrolled] = useState(false);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
 
@@ -69,8 +70,8 @@ export default function Navbar() {
                 letterSpacing: '-0.03em',
               }}
             >
-              {/* D -> Digital */}
-              <span style={{ color: 'var(--text-primary)' }}>D</span>
+              {/* Word 1 */}
+              <span style={{ color: 'var(--text-primary)' }}>{tBrand('word1First')}</span>
               <AnimatePresence>
                 {isLogoHovered && (
                   <motion.span
@@ -85,12 +86,12 @@ export default function Navbar() {
                       overflow: 'hidden',
                     }}
                   >
-                    igital
+                    {tBrand('word1Rest')}
                   </motion.span>
                 )}
               </AnimatePresence>
 
-              {/* B -> Banking */}
+              {/* Word 2 */}
               <span
                 style={{
                   color: 'var(--accent)',
@@ -98,7 +99,7 @@ export default function Navbar() {
                   transition: 'margin 0.3s ease',
                 }}
               >
-                B
+                {tBrand('word2First')}
               </span>
               <AnimatePresence>
                 {isLogoHovered && (
@@ -114,7 +115,7 @@ export default function Navbar() {
                       overflow: 'hidden',
                     }}
                   >
-                    anking
+                    {tBrand('word2Rest')}
                   </motion.span>
                 )}
               </AnimatePresence>

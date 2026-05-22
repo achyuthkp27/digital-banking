@@ -7,6 +7,12 @@
     "requestDemo": "Solicitar Demo",
     "home": "Inicio"
   },
+  "Brand": {
+    "word1First": "B",
+    "word1Rest": "anca",
+    "word2First": "D",
+    "word2Rest": "igital"
+  },
   "Hero": {
     "badge": "Plataforma Empresarial",
     "titleLine1": "El futuro de la",
@@ -850,5 +856,30 @@
       "Intégrese perfectamente con los sistemas centrales heredados",
       "Ofrezca experiencias de usuario impresionantes en todos los canales"
     ]
+  },
+  "AppFlow": {
+    "secureLogin": "Inicio de Sesión Seguro",
+    "authenticating": "Autenticando...",
+    "sidebarOverview": "Resumen",
+    "sidebarTransactions": "Transacciones",
+    "sidebarCards": "Tarjetas",
+    "sidebarAnalytics": "Análisis",
+    "sidebarSettings": "Configuración",
+    "financialOverviewTitle": "Resumen Financiero",
+    "financialOverviewSubtitle": "Métricas empresariales en tiempo real.",
+    "totalBalance": "Saldo Total",
+    "monthlySpend": "Gasto Mensual",
+    "pendingYield": "Rendimiento Pendiente",
+    "thisMonth": "este mes",
+    "cashFlow": "Flujo de Caja",
+    "activeCards": "Tarjetas Activas",
+    "corporate": "CORPORATIVO",
+    "wealthManagementTitle": "Gestión Patrimonial",
+    "wealthManagementSubtitle": "Cartera y asignación de activos.",
+    "totalNetWorth": "Patrimonio Neto Total",
+    "assets": "Activos",
+    "equities": "Acciones",
+    "fixedIncome": "Renta Fija",
+    "alternatives": "Alternativas"
   }
 }
