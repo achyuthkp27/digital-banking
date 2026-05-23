@@ -429,7 +429,7 @@ function GlobeScene({ isLight }: { isLight: boolean }) {
       <mesh>
         <sphereGeometry args={[RADIUS, 64, 64]} />
         <meshPhysicalMaterial
-          color={isLight ? '#f1f5f9' : '#0a1628'}
+          color={isLight ? '#1e3a8a' : '#0a1628'}
           metalness={isLight ? 0.05 : 0.1}
           roughness={isLight ? 0.4 : 0.8}
           clearcoat={0}

@@ -21,21 +21,17 @@ const productKeys = [
 
 const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
   <div
+    className="glass-panel"
     style={{
       flex: 1,
       height: '60vh',
       minHeight: '400px',
       maxHeight: '600px',
-      background: 'var(--glass-bg-start)',
-      borderRadius: '24px',
-      border: '1px solid var(--glass-border)',
-      backdropFilter: 'blur(24px)',
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      boxShadow: '0 24px 64px -16px var(--glass-shadow-drop)',
     }}
   >
     <div style={{ position: 'absolute', inset: 0, zIndex: 10 }}>

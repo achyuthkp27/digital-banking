@@ -40,6 +40,9 @@ export function LanguageSwitcher() {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
+        id="language-menu-button"
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
         disabled={isPending}
         className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--border-default)] bg-transparent text-[var(--text-primary)] font-syne text-sm transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] outline-none"
@@ -68,11 +71,14 @@ export function LanguageSwitcher() {
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
             className="absolute right-0 top-full mt-2 w-24 rounded-xl border border-[var(--border-strong)] bg-[var(--bg-elevated)] shadow-lg overflow-hidden z-[9999] backdrop-blur-xl"
+            role="menu"
+            aria-labelledby="language-menu-button"
           >
             <div className="flex flex-col py-1">
               {locales.map((l) => (
                 <button
                   key={l.code}
+                  role="menuitem"
                   onClick={() => handleLocaleChange(l.code)}
                   className={`px-4 py-2 text-sm text-left font-syne transition-colors ${
                     locale === l.code

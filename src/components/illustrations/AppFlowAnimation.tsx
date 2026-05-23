@@ -46,6 +46,7 @@ export default function AppFlowAnimation() {
   return (
     <section
       ref={containerRef}
+      aria-hidden="true"
       style={{
         position: 'relative',
         width: '100%',

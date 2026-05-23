@@ -203,7 +203,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
                 padding: '16px 40px',
                 borderRadius: '9999px',
                 background: 'var(--text-primary)',
-                color: '#000000',
+                color: 'var(--bg-base)',
                 fontSize: '15px',
                 fontWeight: 600,
                 textDecoration: 'none',
