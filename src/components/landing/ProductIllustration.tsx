@@ -3,6 +3,8 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 
+import { useInView } from 'react-intersection-observer';
+
 /* ─── Lazy-load all product illustrations ─── */
 const illustrations: Record<string, React.ComponentType> = {
   'video-kyc': dynamic(() => import('@/components/illustrations/VideoKycIllustration'), { ssr: false }),
@@ -20,59 +22,57 @@ interface ProductIllustrationProps {
   slug: string;
 }
 
-const ProductIllustration = React.memo(function ProductIllustration({ slug }: ProductIllustrationProps) {
-  const IllustrationComponent = illustrations[slug];
-
-  if (!IllustrationComponent) {
-    /* Fallback: subtle animated gradient placeholder */
-    return (
+const Fallback = () => (
+  <div
+    style={{
+      width: '100%',
+      height: '100%',
+      minHeight: '400px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: '32px',
+      background: 'radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.08) 0%, transparent 60%)',
+    }}
+  >
+    <div
+      style={{
+        width: '120px',
+        height: '120px',
+        borderRadius: '50%',
+        border: '2px solid rgba(var(--accent-rgb), 0.2)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        animation: 'fallback-pulse 2s ease-in-out infinite',
+      }}
+    >
       <div
         style={{
-          width: '100%',
-          height: '100%',
-          minHeight: '400px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '32px',
-          background: 'radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.08) 0%, transparent 60%)',
+          width: '40px',
+          height: '40px',
+          borderRadius: '50%',
+          background: 'var(--accent)',
+          opacity: 0.3,
         }}
-      >
-        <div
-          style={{
-            width: '120px',
-            height: '120px',
-            borderRadius: '50%',
-            border: '2px solid rgba(var(--accent-rgb), 0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            animation: 'fallback-pulse 2s ease-in-out infinite',
-          }}
-        >
-          <div
-            style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              background: 'var(--accent)',
-              opacity: 0.3,
-            }}
-          />
-        </div>
-        <style dangerouslySetInnerHTML={{ __html: `
-          @keyframes fallback-pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(0.95); opacity: 0.7; }
-          }
-        `}} />
-      </div>
-    );
-  }
+      />
+    </div>
+    <style dangerouslySetInnerHTML={{ __html: `
+      @keyframes fallback-pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(0.95); opacity: 0.7; }
+      }
+    `}} />
+  </div>
+);
+
+const ProductIllustration = React.memo(function ProductIllustration({ slug }: ProductIllustrationProps) {
+  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '400px 0px' });
+  const IllustrationComponent = illustrations[slug];
 
   return (
-    <div style={{ width: '100%', height: '100%', minHeight: '400px' }}>
-      <IllustrationComponent />
+    <div ref={ref} style={{ width: '100%', height: '100%', minHeight: '400px' }}>
+      {inView && IllustrationComponent ? <IllustrationComponent /> : <Fallback />}
     </div>
   );
 });

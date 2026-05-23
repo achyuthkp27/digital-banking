@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
@@ -13,6 +13,12 @@ import HeroContent from './HeroContent';
 export default function HeroSection() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const [load3D, setLoad3D] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoad3D(true), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
@@ -161,7 +167,7 @@ export default function HeroSection() {
       {/* 3D Globe Scene */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
         <div className="absolute top-1/2 -translate-y-1/2 h-[90vh] pointer-events-auto flex items-center justify-center w-full right-0 md:w-[70%] md:right-[-5%]">
-          <Hero3DBackground />
+          {load3D && <Hero3DBackground />}
         </div>
       </div>
     </section>
