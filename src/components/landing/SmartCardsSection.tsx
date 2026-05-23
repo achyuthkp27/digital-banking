@@ -102,7 +102,7 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
                     className="text-accent flex-shrink-0" size={24}
                   />
                   <div>
-                    <h4
+                    <h3
                       style={{
                         color: 'var(--text-primary)',
                         fontSize: '16px',
@@ -111,7 +111,7 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
                       }}
                     >
                       {feature.title}
-                    </h4>
+                    </h3>
                     <p
                       style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}
                     >

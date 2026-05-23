@@ -40,8 +40,8 @@ export default function Navbar() {
           margin: '0 auto',
           padding: '0 24px',
           height: '72px',
-          display: 'grid',
-          gridTemplateColumns: '1fr auto 1fr',
+          display: 'flex',
+          justifyContent: 'space-between',
           alignItems: 'center',
         }}
       >
@@ -124,7 +124,7 @@ export default function Navbar() {
         </div>
 
         {/* Center: Nav Links */}
-        <div style={{ display: 'flex', gap: '32px', justifySelf: 'center' }}>
+        <div className="hidden md:flex" style={{ gap: '32px', justifySelf: 'center' }}>
           {[
             { key: 'products', href: '/#products' },
             { key: 'security', href: '/#security' },

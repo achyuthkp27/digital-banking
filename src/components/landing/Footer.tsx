@@ -66,7 +66,7 @@ export default function Footer() {
           {/* Links */}
           <div style={{ display: 'flex', gap: '80px' }}>
             <div>
-              <h5
+              <h3
                 style={{
                   color: 'var(--text-primary)',
                   fontSize: '14px',
@@ -75,7 +75,7 @@ export default function Footer() {
                 }}
               >
                 {t('platform')}
-              </h5>
+              </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <Link
                   href="#products"
@@ -120,7 +120,7 @@ export default function Footer() {
               </div>
             </div>
             <div>
-              <h5
+              <h3
                 style={{
                   color: 'var(--text-primary)',
                   fontSize: '14px',
@@ -129,7 +129,7 @@ export default function Footer() {
                 }}
               >
                 {t('company')}
-              </h5>
+              </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <Link
                   href="#"

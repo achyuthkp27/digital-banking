@@ -19,10 +19,11 @@ export default function TechStackSection() {
       <div style={{ textAlign: 'center', marginBottom: '80px' }}>
         <h2
           style={{
-            fontSize: '48px',
+            fontSize: 'clamp(32px, 8vw, 48px)',
             fontWeight: 700,
             color: 'var(--text-primary)',
             fontFamily: 'var(--font-syne), sans-serif',
+            lineHeight: 1.2,
           }}
         >
           {t('title')}

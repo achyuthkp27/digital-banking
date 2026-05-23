@@ -26,15 +26,16 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
       height: '60vh',
       minHeight: '400px',
       maxHeight: '600px',
-      background: 'rgba(var(--color-invert-rgb), 0.015)',
+      background: 'var(--glass-bg-start)',
       borderRadius: '24px',
-      border: '1px solid rgba(var(--color-invert-rgb), 0.06)',
+      border: '1px solid var(--glass-border)',
+      backdropFilter: 'blur(24px)',
       position: 'relative',
       overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      boxShadow: '0 24px 64px -16px rgba(var(--color-base-rgb), 0.4)',
+      boxShadow: '0 24px 64px -16px var(--glass-shadow-drop)',
     }}
   >
     <div style={{ position: 'absolute', inset: 0, zIndex: 10 }}>
@@ -303,7 +304,7 @@ export default function ProductShowcase() {
           pointerEvents: 'none',
         }}
       >
-        <div style={{ position: 'absolute', right: '4vw', top: '40px', pointerEvents: 'auto' }}>
+        <div className="hidden lg:block" style={{ position: 'absolute', right: '4vw', top: '40px', pointerEvents: 'auto' }}>
           <button
             onClick={() => {
               setIsHorizontal(!isHorizontal);
@@ -326,7 +327,7 @@ export default function ProductShowcase() {
               fontWeight: 600,
               backdropFilter: 'blur(20px)',
               transition: 'all 0.3s ease',
-              boxShadow: '0 10px 30px rgba(var(--color-base-rgb), 0.3)',
+              boxShadow: '0 10px 30px var(--glass-shadow-drop)',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.12)')}
             onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.08)')}

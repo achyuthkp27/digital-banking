@@ -7,10 +7,10 @@ interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export default function GlassCard({ children, hover = false, className = '', ...props }: GlassCardProps) {
-  let baseClass = `relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[rgba(var(--color-invert-rgb),0.05)] to-[rgba(var(--color-invert-rgb),0.01)] backdrop-blur-[24px] saturate-[120%] border border-[rgba(var(--color-invert-rgb),0.06)] shadow-[inset_0_1px_1px_rgba(var(--color-invert-rgb),0.12),0_8px_32px_rgba(var(--color-base-rgb),0.4)] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] `;
+  let baseClass = `relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[var(--glass-bg-start)] to-[var(--glass-bg-end)] backdrop-blur-[24px] saturate-[120%] border border-[var(--glass-border)] shadow-[inset_0_1px_1px_var(--glass-shadow-inner),0_8px_32px_var(--glass-shadow-drop)] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] `;
   
   if (hover) {
-    baseClass += 'hover:-translate-y-1 hover:border-[rgba(var(--color-invert-rgb),0.15)] hover:shadow-[inset_0_1px_1px_rgba(var(--color-invert-rgb),0.25),0_16px_40px_-10px_rgba(var(--color-base-rgb),0.6)] ';
+    baseClass += 'hover:-translate-y-1 hover:border-[var(--glass-border-hover)] hover:shadow-[inset_0_1px_1px_var(--glass-shadow-inner-hover),0_16px_40px_-10px_var(--glass-shadow-drop-hover)] ';
   }
 
   return (

@@ -143,10 +143,11 @@ export default function HeroPremium() {
             marginBottom: '32px',
             lineHeight: 1.6,
             backdropFilter: 'blur(4px)',
-            background: 'rgba(var(--color-base-rgb), 0.2)',
+            background: 'var(--glass-bg-start)',
             padding: '16px 24px',
             borderRadius: '16px',
-            border: '1px solid rgba(var(--color-invert-rgb), 0.05)',
+            border: '1px solid var(--glass-border)',
+            boxShadow: 'var(--glass-shadow-drop)',
           }}
         >
           {t('description')}
@@ -158,12 +159,13 @@ export default function HeroPremium() {
             href="/architecture"
             className="pill-button"
             style={{
-              background: 'rgba(var(--color-invert-rgb), 0.05)',
+              background: 'var(--glass-bg-start)',
               color: 'var(--text-primary)',
-              border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
+              border: '1px solid var(--glass-border)',
               padding: '16px 40px',
               fontSize: '15px',
               backdropFilter: 'blur(10px)',
+              boxShadow: 'var(--glass-shadow-drop)',
             }}
           >
             {t('explorePlatform')}

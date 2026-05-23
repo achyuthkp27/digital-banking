@@ -42,7 +42,8 @@ export async function getGlobeDotsGeometry(radius: number): Promise<THREE.Buffer
 
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.src = '/earth-map.jpg';
+    const basePath = window.location.pathname.startsWith('/digital-banking') ? '/digital-banking' : '';
+    img.src = `${basePath}/earth-map.jpg`;
     img.onload = () => {
       const canvas = document.createElement('canvas');
       const w = 512;

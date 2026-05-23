@@ -72,10 +72,10 @@ export default function AppFlowAnimation() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         style={{
           width: '100%', maxWidth: '1200px', height: '750px',
-          background: 'rgba(var(--color-base-rgb), 0.8)', backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
-          borderRadius: '16px', overflow: 'hidden',
-          boxShadow: '0 50px 120px -20px rgba(var(--color-base-rgb), 0.9), 0 0 0 1px rgba(var(--color-invert-rgb), 0.05) inset',
+          background: 'var(--glass-bg-start)', backdropFilter: 'blur(20px)',
+          border: '1px solid var(--glass-border)',
+          borderRadius: '24px',
+          boxShadow: '0 50px 120px -20px var(--glass-shadow-drop), 0 0 0 1px var(--glass-border) inset',
           position: 'relative', zIndex: 10,
           display: 'flex', flexDirection: 'column'
         }}
@@ -117,7 +117,7 @@ export default function AppFlowAnimation() {
                   position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}
               >
-                <div style={{ width: '400px', padding: '48px', background: 'rgba(var(--color-invert-rgb), 0.03)', borderRadius: '24px', border: '1px solid rgba(var(--color-invert-rgb), 0.05)', display: 'flex', flexDirection: 'column', gap: '24px', boxShadow: '0 20px 40px rgba(var(--color-base-rgb), 0.5)' }}>
+                <div style={{ width: '400px', padding: '48px', background: 'var(--glass-bg-start)', borderRadius: '24px', border: '1px solid var(--glass-border)', display: 'flex', flexDirection: 'column', gap: '24px', boxShadow: '0 20px 40px var(--glass-shadow-drop)' }}>
                   <div style={{ textAlign: 'center', marginBottom: '8px' }}>
                     <div style={{ width: '56px', height: '56px', background: 'linear-gradient(135deg, var(--accent), #047857)', borderRadius: '16px', margin: '0 auto 24px', boxShadow: '0 10px 30px rgba(var(--accent-rgb),0.3)' }} />
                     <h2 style={{ fontFamily: 'var(--font-syne), sans-serif', fontSize: '28px', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>Welcome back</h2>
@@ -138,7 +138,7 @@ export default function AppFlowAnimation() {
                     whileTap={{ scale: 0.98 }}
                     style={{
                       height: '56px', background: 'var(--text-primary)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: '#000', fontFamily: 'var(--font-syne), sans-serif', fontSize: '16px', fontWeight: 600, cursor: 'pointer', overflow: 'hidden', position: 'relative', marginTop: '8px'
+                      color: 'var(--bg-base)', fontFamily: 'var(--font-syne), sans-serif', fontSize: '16px', fontWeight: 600, cursor: 'pointer', overflow: 'hidden', position: 'relative', marginTop: '8px'
                     }}
                   >
                     {step === 3 ? (
@@ -198,7 +198,7 @@ export default function AppFlowAnimation() {
                     </motion.div>
                     <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }} style={{ display: 'flex', gap: '16px' }}>
                       <div style={{ padding: '10px 20px', background: 'rgba(var(--color-invert-rgb), 0.05)', borderRadius: '8px', color: 'var(--text-primary)', fontSize: '14px', border: '1px solid rgba(var(--color-invert-rgb), 0.1)' }}>Download Report</div>
-                      <div style={{ padding: '10px 20px', background: 'var(--text-primary)', color: '#000', borderRadius: '8px', fontSize: '14px', fontWeight: 600 }}>+ Add Funds</div>
+                      <div style={{ padding: '10px 20px', background: 'var(--text-primary)', color: 'var(--bg-base)', borderRadius: '8px', fontSize: '14px', fontWeight: 600 }}>+ Add Funds</div>
                     </motion.div>
                   </div>
 
@@ -214,7 +214,7 @@ export default function AppFlowAnimation() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + (0.1 * i), duration: 0.5 }}
-                        style={{ background: 'linear-gradient(180deg, rgba(var(--color-invert-rgb), 0.03) 0%, rgba(var(--color-invert-rgb), 0.01) 100%)', border: '1px solid rgba(var(--color-invert-rgb), 0.05)', borderRadius: '16px', padding: '24px', boxShadow: '0 10px 30px rgba(var(--color-base-rgb), 0.2)' }}
+                        style={{ background: 'var(--glass-bg-start)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '24px', boxShadow: '0 10px 30px var(--glass-shadow-drop)' }}
                       >
                         <div style={{ color: 'rgba(var(--color-invert-rgb), 0.5)', fontSize: '13px', marginBottom: '12px', fontWeight: 500 }}>{stat.label}</div>
                         <div style={{ fontFamily: 'var(--font-syne), sans-serif', fontSize: '26px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '12px' }}>
@@ -247,7 +247,7 @@ export default function AppFlowAnimation() {
                         <div style={{ color: 'var(--text-primary)', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-syne)' }}>Cash Flow Analytics</div>
                         <div style={{ display: 'flex', gap: '8px', background: 'rgba(var(--color-base-rgb), 0.3)', padding: '4px', borderRadius: '8px' }}>
                           {['1W', '1M', '3M', '1Y', 'ALL'].map((time, idx) => (
-                            <div key={time} style={{ padding: '4px 12px', fontSize: '12px', color: idx === 1 ? '#000' : 'rgba(var(--color-invert-rgb), 0.6)', background: idx === 1 ? 'var(--text-primary)' : 'transparent', borderRadius: '4px', fontWeight: idx === 1 ? 600 : 400, cursor: 'pointer' }}>{time}</div>
+                            <div key={time} style={{ padding: '4px 12px', fontSize: '12px', color: idx === 1 ? 'var(--bg-base)' : 'rgba(var(--color-invert-rgb), 0.6)', background: idx === 1 ? 'var(--text-primary)' : 'transparent', borderRadius: '4px', fontWeight: idx === 1 ? 600 : 400, cursor: 'pointer' }}>{time}</div>
                           ))}
                         </div>
                       </div>
@@ -274,7 +274,7 @@ export default function AppFlowAnimation() {
                               initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 + (i * 0.1) }}
                               style={{ position: 'absolute', top: '-8px', left: '50%', transform: 'translate(-50%, -100%)', opacity: i === 5 ? 1 : 0 }}
                             >
-                              <div style={{ background: 'var(--text-primary)', color: '#000', padding: '4px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: 700 }}>
+                              <div style={{ background: 'var(--text-primary)', color: 'var(--bg-base)', padding: '4px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: 700 }}>
                                 ${h}k
                               </div>
                             </motion.div>
@@ -342,7 +342,7 @@ export default function AppFlowAnimation() {
                                     background: card.bg,
                                     border: `1px solid ${card.border}`, borderRadius: '16px',
                                     padding: '20px',
-                                    boxShadow: isFront ? '0 20px 40px rgba(var(--color-base-rgb), 0.5)' : 'none',
+                                    boxShadow: isFront ? '0 20px 40px var(--glass-shadow-drop)' : 'none',
                                     color: card.color || 'var(--text-primary)',
                                     display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
                                     transformOrigin: 'top center'

@@ -163,9 +163,9 @@ export default function ArchitectureSection() {
                   className: "text-[var(--text-secondary)] group-hover:text-accent transition-colors duration-400"
                 })}
               </div>
-              <h4 className="text-[17px] font-semibold text-[var(--text-primary)] mb-2">
+              <h3 className="text-[17px] font-semibold text-[var(--text-primary)] mb-2">
                 {callout.title}
-              </h4>
+              </h3>
               <p className="text-[14px] text-[var(--text-secondary)] leading-relaxed">
                 {callout.description}
               </p>

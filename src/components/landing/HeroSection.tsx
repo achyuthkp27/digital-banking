@@ -41,7 +41,7 @@ export default function HeroSection() {
   };
 
   const itemVariants: any = {
-    hidden: { opacity: 0, y: 30, filter: 'blur(8px)' },
+    hidden: { opacity: 0.01, y: 30, filter: 'blur(8px)' },
     visible: {
       opacity: 1,
       y: 0,
@@ -68,6 +68,7 @@ export default function HeroSection() {
     >
       {/* Premium ambient glow — green, top-right */}
       <motion.div
+        className="dark:opacity-100 opacity-60"
         style={{
           position: 'absolute',
           top: '-20%',
@@ -76,7 +77,7 @@ export default function HeroSection() {
           y: bgY,
           width: '900px',
           height: '900px',
-          background: 'radial-gradient(circle, rgba(var(--accent-rgb), 0.06) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 60%)',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -84,13 +85,14 @@ export default function HeroSection() {
 
       {/* Secondary ambient glow — blue, bottom-left for depth */}
       <motion.div
+        className="dark:opacity-100 opacity-60"
         style={{
           position: 'absolute',
           bottom: '-30%',
           left: '-15%',
           width: '700px',
           height: '700px',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 60%)',
           pointerEvents: 'none',
           zIndex: 0,
         }}

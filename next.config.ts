@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
+  productionBrowserSourceMaps: true,
 };
 
 export default withNextIntl(nextConfig);

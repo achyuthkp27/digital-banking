@@ -8,9 +8,16 @@ export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window) || window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
 
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -40,13 +47,14 @@ export default function CustomCursor() {
     window.addEventListener('mouseleave', handleMouseOut);
 
     return () => {
+      window.removeEventListener('resize', checkMobile);
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseover', handleMouseOver);
       window.removeEventListener('mouseleave', handleMouseOut);
     };
   }, [isVisible]);
 
-  if (!mounted) return null; // Prevent hydration error by waiting for client mount
+  if (!mounted || isMobile) return null; // Prevent hydration error and disable on mobile
 
   return (
     <>

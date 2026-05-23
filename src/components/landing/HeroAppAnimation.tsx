@@ -36,11 +36,11 @@ export default function HeroAppAnimation() {
           width: '100%',
           maxWidth: '800px',
           aspectRatio: '16/10',
-          background: 'rgba(var(--color-base-rgb), 0.8)',
+          background: 'var(--glass-bg-start)',
           backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
+          border: '1px solid var(--glass-border)',
           borderRadius: '16px',
-          boxShadow: '-30px 30px 100px rgba(var(--color-base-rgb), 0.8), inset 0 1px 1px rgba(var(--color-invert-rgb), 0.2)',
+          boxShadow: '-30px 30px 100px var(--glass-shadow-drop), inset 0 1px 1px var(--glass-shadow-inner)',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
@@ -230,7 +230,7 @@ export default function HeroAppAnimation() {
                           const rotateY = isFocus ? (i === 0 ? -15 : 15) : 0;
 
                           return (
-                            <motion.div key={i} animate={{ y, scale, zIndex, rotateX, rotateY }} transition={{ type: 'spring', stiffness: 100, damping: 20 }} style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100px', background: c.bg, border: `1px solid ${c.border}`, borderRadius: '12px', padding: '12px', color: c.color, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxShadow: '0 10px 20px rgba(var(--color-base-rgb), 0.5)', transformOrigin: 'center center' }}>
+                            <motion.div key={i} animate={{ y, scale, zIndex, rotateX, rotateY }} transition={{ type: 'spring', stiffness: 100, damping: 20 }} style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '100px', background: c.bg, border: `1px solid ${c.border}`, borderRadius: '12px', padding: '12px', color: c.color, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxShadow: '0 10px 20px var(--glass-shadow-drop)', transformOrigin: 'center center' }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '10px' }}>CORP</div>
                                 <svg width="16" height="12" viewBox="0 0 32 24" fill="none"><rect width="32" height="24" rx="4" fill={i===0?"rgba(var(--color-invert-rgb), 0.8)":"rgba(var(--color-base-rgb), 0.6)"}/></svg>

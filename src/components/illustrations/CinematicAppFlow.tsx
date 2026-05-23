@@ -94,8 +94,7 @@ export default function CinematicAppFlow() {
 
       <div style={{
         perspective: '1500px',
-        width: '100%',
-        maxWidth: '1024px',
+        width: '1024px',
         zIndex: 10,
         transform: `scale(${scaleFactor})`,
         transformOrigin: 'center center'
@@ -106,10 +105,10 @@ export default function CinematicAppFlow() {
             scale,
             opacity,
             transformStyle: 'preserve-3d',
-            background: 'rgba(var(--color-base-rgb), 0.8)', backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
+            background: 'var(--glass-bg-start)', backdropFilter: 'blur(20px)',
+            border: '1px solid var(--glass-border)',
             borderRadius: '24px',
-            boxShadow: '0 50px 120px -20px rgba(var(--color-base-rgb), 0.9), 0 0 0 1px rgba(var(--color-invert-rgb), 0.05) inset',
+            boxShadow: '0 50px 120px -20px var(--glass-shadow-drop), 0 0 0 1px var(--glass-border) inset',
             aspectRatio: '16/9',
             position: 'relative',
             overflow: 'hidden',
@@ -154,10 +153,10 @@ export default function CinematicAppFlow() {
                   <div style={{ width: '400px', padding: '48px', background: 'rgba(var(--color-invert-rgb), 0.02)', borderRadius: '24px', border: '1px solid rgba(var(--color-invert-rgb), 0.05)' }}>
                     <div style={{ 
                       width: '64px', height: '64px', 
-                      background: 'rgba(var(--color-invert-rgb), 0.03)', 
-                      border: '1px solid rgba(var(--color-invert-rgb), 0.1)',
-                      boxShadow: 'inset 0 1px 1px rgba(var(--color-invert-rgb), 0.1), 0 8px 16px rgba(var(--color-base-rgb), 0.5)',
-                      borderRadius: '16px', 
+                      background: 'var(--glass-bg-start)', 
+                      border: '1px solid var(--glass-border)',
+                      borderRadius: '16px', padding: '16px',
+                      boxShadow: 'inset 0 1px 1px var(--glass-shadow-inner), 0 8px 16px var(--glass-shadow-drop)',
                       margin: '0 auto 24px',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontFamily: 'var(--font-syne)', fontSize: '28px', fontWeight: 800
@@ -317,7 +316,7 @@ export default function CinematicAppFlow() {
                                   position: 'absolute', top: 0, left: 0, right: 0, height: '180px',
                                   background: c.bg, border: `1px solid ${c.border}`, borderRadius: '16px',
                                   padding: '20px', color: c.color, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-                                  boxShadow: '0 20px 40px rgba(var(--color-base-rgb), 0.5)', transformOrigin: 'center center'
+                                  boxShadow: '0 20px 40px var(--glass-shadow-drop)', transformOrigin: 'center center'
                                 }}
                               >
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>

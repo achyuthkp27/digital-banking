@@ -16,8 +16,8 @@
   --bg-surface: #0a0a0a;
   --bg-elevated: #0d1117;
   --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --text-tertiary: #6b7280;
+  --text-secondary: #d1d5db; /* Lightened from 9ca3af */
+  --text-tertiary: #9ca3af; /* Lightened from 6b7280 */
   --accent: #10b981;
   --accent-rgb: 16, 185, 129;
   --accent-dim: rgba(var(--accent-rgb), 0.1);
@@ -28,25 +28,47 @@
   --color-invert-rgb: 255, 255, 255;
   --color-base-rgb: 0, 0, 0;
   --bg-base-rgb: 3, 7, 18;
+  
+  /* Glass and Shadows */
+  --color-shadow-rgb: 0, 0, 0;
+  --glass-bg-start: rgba(255, 255, 255, 0.05);
+  --glass-bg-end: rgba(255, 255, 255, 0.01);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-border-hover: rgba(255, 255, 255, 0.15);
+  --glass-shadow-inner: rgba(255, 255, 255, 0.12);
+  --glass-shadow-inner-hover: rgba(255, 255, 255, 0.25);
+  --glass-shadow-drop: rgba(var(--color-shadow-rgb), 0.4);
+  --glass-shadow-drop-hover: rgba(var(--color-shadow-rgb), 0.6);
 }
 
 .light {
-  --bg-base: #f9fafb;
-  --bg-surface: #ffffff;
-  --bg-elevated: #f3f4f6;
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
-  --text-tertiary: #6b7280;
+  --bg-base: #ffffff;
+  --bg-surface: rgba(255, 255, 255, 0.6);
+  --bg-elevated: rgba(255, 255, 255, 0.8);
+  --text-primary: #020617;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
   --accent: #10b981;
   --accent-rgb: 16, 185, 129;
-  --accent-dim: rgba(var(--accent-rgb), 0.1);
-  --accent-glow: rgba(var(--accent-rgb), 0.2);
-  --border-subtle: rgba(var(--color-invert-rgb), 0.05);
-  --border-default: rgba(var(--color-invert-rgb), 0.1);
-  --border-strong: rgba(var(--color-invert-rgb), 0.2);
-  --color-invert-rgb: 0, 0, 0;
+  --accent-dim: rgba(var(--accent-rgb), 0.08);
+  --accent-glow: rgba(var(--accent-rgb), 0.15);
+  --border-subtle: rgba(15, 23, 42, 0.04);
+  --border-default: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.15);
+  --color-invert-rgb: 15, 23, 42;
   --color-base-rgb: 255, 255, 255;
-  --bg-base-rgb: 249, 250, 251;
+  --bg-base-rgb: 255, 255, 255;
+  
+  /* Glass and Shadows */
+  --color-shadow-rgb: 15, 23, 42;
+  --glass-bg-start: rgba(255, 255, 255, 0.85);
+  --glass-bg-end: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-border-hover: rgba(255, 255, 255, 1);
+  --glass-shadow-inner: rgba(255, 255, 255, 0.8);
+  --glass-shadow-inner-hover: rgba(255, 255, 255, 1);
+  --glass-shadow-drop: rgba(var(--color-shadow-rgb), 0.04);
+  --glass-shadow-drop-hover: rgba(var(--color-shadow-rgb), 0.08);
 }
 
 
@@ -104,6 +126,10 @@ a {
   z-index: 0;
   pointer-events: none;
   opacity: 0.8;
+}
+
+.light .texture-noise::after {
+  opacity: 0.1; /* Much softer noise for light theme */
 }
 
 /* Utilities */
