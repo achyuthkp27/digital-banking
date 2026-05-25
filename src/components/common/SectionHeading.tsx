@@ -20,7 +20,9 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
   gradientText = false,
 }) => {
   return (
-    <div className={`flex flex-col mb-16 md:mb-24 ${align === 'center' ? 'items-center text-center' : 'items-start text-left'}`}>
+    <div
+      className={`flex flex-col mb-16 md:mb-24 ${align === 'center' ? 'items-center text-center' : 'items-start text-left'}`}
+    >
       {badge && (
         <ScrollReveal delay={0}>
           <div className="mb-6 px-4 py-1.5 text-[0.7rem] font-bold tracking-[2px] uppercase bg-[rgba(var(--accent-rgb),0.08)] border border-[rgba(var(--accent-rgb),0.3)] text-accent rounded-full">

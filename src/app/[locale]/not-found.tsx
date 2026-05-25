@@ -9,10 +9,10 @@ export default function NotFoundPage() {
       <h2 className="text-3xl font-syne font-bold text-[var(--text-primary)] mb-4">
         Page Not Found
       </h2>
-      <p className="text-[var(--text-secondary)] mb-8 max-w-md">
-        The page you are looking for doesn't exist or has been moved.
-      </p>
-      <Link 
+        <p className="text-[var(--text-secondary)] mb-8 max-w-md">
+          The page you are looking for doesn&rsquo;t exist or has been moved.
+        </p>
+      <Link
         href="/"
         className="px-8 py-4 rounded-full bg-[var(--accent)] text-[var(--bg-base)] font-bold transition-transform hover:scale-105"
       >

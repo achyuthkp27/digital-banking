@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion, MotionValue } from 'framer-motion';
 import styles from './HeroContent.module.css';
-import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 
 interface HeroContentProps {
@@ -32,31 +31,27 @@ export default function HeroContent({
         y: textY,
       }}
     >
-      {/* Status Badge */}
+      {}
       <motion.div variants={itemVariants} className={styles.statusBadge}>
         <span className={styles.statusBadgeDot} />
-        <span className={styles.statusBadgeText}>
-          {t('badge')}
-        </span>
+        <span className={styles.statusBadgeText}>{t('badge')}</span>
       </motion.div>
 
-      {/* Heading */}
+      {}
       <motion.h1 variants={itemVariants} className={styles.heading}>
         {t('titleLine1')}
         <br />
-        <span className={styles.headingHighlight}>
-          {t('titleHighlight')}
-        </span>
+        <span className={styles.headingHighlight}>{t('titleHighlight')}</span>
         <br />
         {t('titleLine3')}
       </motion.h1>
 
-      {/* Subtext */}
+      {}
       <motion.p variants={itemVariants} className={styles.subtext}>
         {t('subtitle')}
       </motion.p>
 
-      {/* CTAs */}
+      {}
       <motion.div variants={itemVariants} className={styles.ctaContainer}>
         <a href="#products" className={styles.ctaPrimary}>
           {t('explorePlatforms')}
@@ -74,11 +69,9 @@ export default function HeroContent({
             <path d="m12 5 7 7-7 7" />
           </svg>
         </a>
-
-
       </motion.div>
 
-      {/* Trust indicators */}
+      {}
       <motion.div variants={itemVariants} className={styles.trustContainer}>
         {[
           { value: '99.99%', label: t('uptimeSla') },

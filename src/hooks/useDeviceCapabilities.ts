@@ -18,23 +18,16 @@ export function useDeviceCapabilities(): DeviceCapabilities {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Check hardware concurrency (CPU cores)
     const hardwareConcurrency = navigator.hardwareConcurrency || 4;
 
-    // Check device memory (RAM in GB) if available (Chrome/Edge only)
-    // @ts-ignore - deviceMemory is non-standard
-    const deviceMemory = navigator.deviceMemory || 4;
+    const deviceMemory = (navigator as any).deviceMemory || 4;
 
-    // Check if network is in save-data mode
-    // @ts-ignore - connection is non-standard
-    const saveData = navigator.connection?.saveData || false;
+    const saveData = (navigator as any).connection?.saveData || false;
 
-    // Simple mobile detection via User Agent
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
 
-    // Consider low end only if severely restricted (e.g., <2 cores or <2GB RAM) or explicitly in save-data mode
     const isLowEndDevice = hardwareConcurrency < 2 || deviceMemory < 2 || saveData;
 
     setCapabilities({

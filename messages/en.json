@@ -7,12 +7,13 @@
     "requestDemo": "Request Demo",
     "home": "Home"
   },
-  "Brand": {
-    "word1First": "D",
-    "word1Rest": "igital",
-    "word2First": "B",
-    "word2Rest": "anking"
-  },
+   "Brand": {
+     "word1First": "D",
+     "word1Rest": "igital",
+     "word2First": "B",
+     "word2Rest": "anking",
+     "appName": "Digital Banking"
+   },
   "Hero": {
     "badge": "Enterprise Platform",
     "titleLine1": "The future of",

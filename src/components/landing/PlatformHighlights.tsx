@@ -2,7 +2,16 @@
 
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { LayoutDashboard, Network, Globe, Code, Settings, Database, ArrowRight, Sparkles } from 'lucide-react';
+import {
+  LayoutDashboard,
+  Network,
+  Globe,
+  Code,
+  Settings,
+  Database,
+  ArrowRight,
+  Sparkles,
+} from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 interface FeatureItem {
@@ -30,21 +39,22 @@ const BentoCard = React.memo(function BentoCard({ feature }: { feature: FeatureI
       onMouseMove={handleMouseMove}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
       className="relative flex flex-col p-8 bg-[var(--bg-surface)] backdrop-blur-xl rounded-[24px] overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-strong)] transition-colors shadow-sm hover:shadow-lg group h-full"
     >
-      {/* Interactive Spotlight */}
+      {}
       <motion.div
         className="absolute inset-0 pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
         style={{
           background: useTransform(
             [mouseX, mouseY],
-            ([x, y]) => `radial-gradient(400px circle at ${x}px ${y}px, ${feature.color}15, transparent 50%)`
+            ([x, y]) =>
+              `radial-gradient(400px circle at ${x}px ${y}px, ${feature.color}15, transparent 50%)`
           ),
         }}
       />
-      
+
       <div className="relative z-10 flex flex-col h-full">
         <div className="mb-6">
           <div
@@ -71,53 +81,56 @@ const BentoCard = React.memo(function BentoCard({ feature }: { feature: FeatureI
 
 const PlatformHighlights = React.memo(function PlatformHighlights() {
   const t = useTranslations('PlatformHighlights');
-  
+
   const features: FeatureItem[] = [
-    { 
-      title: t('dashboard'), 
-      description: t('dashboardDesc'), 
-      icon: <LayoutDashboard size={24} strokeWidth={1.5} />, 
-      color: '#4ade80' // Emerald/Green
+    {
+      title: t('dashboard'),
+      description: t('dashboardDesc'),
+      icon: <LayoutDashboard size={24} strokeWidth={1.5} />,
+      color: '#4ade80',
     },
-    { 
-      title: t('architecture'), 
-      description: t('architectureDesc'), 
-      icon: <Network size={24} strokeWidth={1.5} />, 
-      color: '#818cf8' // Indigo
+    {
+      title: t('architecture'),
+      description: t('architectureDesc'),
+      icon: <Network size={24} strokeWidth={1.5} />,
+      color: '#818cf8',
     },
-    { 
-      title: t('capabilities'), 
-      description: t('capabilitiesDesc'), 
-      icon: <Globe size={24} strokeWidth={1.5} />, 
-      color: '#2dd4bf' // Teal
+    {
+      title: t('capabilities'),
+      description: t('capabilitiesDesc'),
+      icon: <Globe size={24} strokeWidth={1.5} />,
+      color: '#2dd4bf',
     },
-    { 
-      title: t('devAndImpl'), 
-      description: t('devAndImplDesc'), 
-      icon: <Code size={24} strokeWidth={1.5} />, 
-      color: '#f472b6' // Pink
+    {
+      title: t('devAndImpl'),
+      description: t('devAndImplDesc'),
+      icon: <Code size={24} strokeWidth={1.5} />,
+      color: '#f472b6',
     },
-    { 
-      title: t('operationsMaint'), 
-      description: t('operationsMaintDesc'), 
-      icon: <Settings size={24} strokeWidth={1.5} />, 
-      color: '#a78bfa' // Purple
+    {
+      title: t('operationsMaint'),
+      description: t('operationsMaintDesc'),
+      icon: <Settings size={24} strokeWidth={1.5} />,
+      color: '#a78bfa',
     },
-    { 
-      title: t('techStack'), 
-      description: t('techStackDesc'), 
-      icon: <Database size={24} strokeWidth={1.5} />, 
-      color: '#fbbf24' // Amber
+    {
+      title: t('techStack'),
+      description: t('techStackDesc'),
+      icon: <Database size={24} strokeWidth={1.5} />,
+      color: '#fbbf24',
     },
   ];
 
   return (
-    <section id="platform" className="relative py-[120px] px-6 flex flex-col items-center overflow-hidden">
-      {/* Background Ambient Glow */}
+    <section
+      id="platform"
+      className="relative py-[120px] px-6 flex flex-col items-center overflow-hidden"
+    >
+      {}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[600px] bg-[var(--accent)]/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
 
       <div className="relative z-10 text-center mb-16 max-w-[800px] mx-auto flex flex-col items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -128,8 +141,8 @@ const PlatformHighlights = React.memo(function PlatformHighlights() {
             {t('badge')}
           </span>
         </motion.div>
-        
-        <motion.h2 
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -138,8 +151,8 @@ const PlatformHighlights = React.memo(function PlatformHighlights() {
         >
           {t('title')}
         </motion.h2>
-        
-        <motion.p 
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -150,15 +163,15 @@ const PlatformHighlights = React.memo(function PlatformHighlights() {
         </motion.p>
       </div>
 
-      {/* Grid: Exactly 3 columns on desktop, 2 on tablet, 1 on mobile */}
+      {}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[1200px]">
         {features.map((feature, idx) => (
           <BentoCard key={idx} feature={feature} />
         ))}
       </div>
 
-      {/* Call to Action */}
-      <motion.div 
+      {}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -166,13 +179,22 @@ const PlatformHighlights = React.memo(function PlatformHighlights() {
         className="relative z-10 w-full flex justify-center"
         style={{ marginTop: '64px' }}
       >
-        <a 
+        <a
           href="#architecture"
-          style={{ padding: '16px 32px', backgroundColor: 'var(--text-primary)', color: 'var(--bg-base)' }}
+          style={{
+            padding: '16px 32px',
+            backgroundColor: 'var(--text-primary)',
+            color: 'var(--bg-base)',
+          }}
           className="group relative inline-flex items-center justify-center gap-3 font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(var(--color-invert-rgb),0.2)] active:scale-[0.98] border border-[var(--border-subtle)] no-underline"
         >
-          <span className="relative z-10 font-syne text-[15px] uppercase tracking-wide whitespace-nowrap">{t('exploreCta')}</span>
-          <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+          <span className="relative z-10 font-syne text-[15px] uppercase tracking-wide whitespace-nowrap">
+            {t('exploreCta')}
+          </span>
+          <ArrowRight
+            size={18}
+            className="relative z-10 group-hover:translate-x-1 transition-transform duration-300"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-[rgba(var(--color-base-rgb),0.1)] to-[rgba(var(--color-base-rgb),0)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </a>
       </motion.div>

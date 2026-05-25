@@ -7,12 +7,13 @@
     "requestDemo": "Solicitar Demo",
     "home": "Inicio"
   },
-  "Brand": {
-    "word1First": "B",
-    "word1Rest": "anca",
-    "word2First": "D",
-    "word2Rest": "igital"
-  },
+   "Brand": {
+     "word1First": "B",
+     "word1Rest": "anca",
+     "word2First": "D",
+     "word2Rest": "igital",
+     "appName": "Banca Digital"
+   },
   "Hero": {
     "badge": "Plataforma Empresarial",
     "titleLine1": "El futuro de la",

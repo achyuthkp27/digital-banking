@@ -7,9 +7,6 @@ import { AdaptiveCanvas as Canvas } from '@/components/common/AdaptiveCanvas';
 import * as THREE from 'three';
 import { useInView } from 'react-intersection-observer';
 
-// -------------------------------------------------------------------
-// Convert lat/lng (degrees) to 3D position on a sphere
-// -------------------------------------------------------------------
 function latLngToVec3(lat: number, lng: number, radius: number): THREE.Vector3 {
   const phi = (90 - lat) * (Math.PI / 180);
   const theta = (lng + 180) * (Math.PI / 180);
@@ -20,28 +17,24 @@ function latLngToVec3(lat: number, lng: number, radius: number): THREE.Vector3 {
   );
 }
 
-// -------------------------------------------------------------------
-// Major financial city coordinates
-// -------------------------------------------------------------------
 const cities: [number, number][] = [
-  [40.71, -74.01], // New York
-  [51.51, -0.13], // London
-  [35.68, 139.69], // Tokyo
-  [22.32, 114.17], // Hong Kong
-  [1.35, 103.82], // Singapore
-  [48.86, 2.35], // Paris
-  [19.08, 72.88], // Mumbai
-  [37.57, 126.98], // Seoul
-  [-33.87, 151.21], // Sydney
-  [55.76, 37.62], // Moscow
-  [25.2, 55.27], // Dubai
-  [-23.55, -46.63], // São Paulo
-  [47.37, 8.54], // Zurich
-  [35.69, 51.39], // Tehran
-  [31.23, 121.47], // Shanghai
+  [40.71, -74.01],
+  [51.51, -0.13],
+  [35.68, 139.69],
+  [22.32, 114.17],
+  [1.35, 103.82],
+  [48.86, 2.35],
+  [19.08, 72.88],
+  [37.57, 126.98],
+  [-33.87, 151.21],
+  [55.76, 37.62],
+  [25.2, 55.27],
+  [-23.55, -46.63],
+  [47.37, 8.54],
+  [35.69, 51.39],
+  [31.23, 121.47],
 ];
 
-// Connection pairs (indices into cities array)
 const connections: [number, number][] = [
   [0, 1],
   [0, 5],
@@ -60,16 +53,13 @@ const connections: [number, number][] = [
   [14, 7],
 ];
 
-// -------------------------------------------------------------------
-// Geographically accurate dotted world map
-// -------------------------------------------------------------------
 function GlobeDots({ radius }: { radius: number }) {
   const [dotsGeometry, setDotsGeometry] = React.useState<THREE.BufferGeometry | null>(null);
 
   React.useEffect(() => {
     const img = new Image();
     const isProd = process.env.NODE_ENV === 'production';
-    img.src = isProd ? '/digital-banking/earth-map.jpg' : '/earth-map.jpg'; // Load local specular map
+    img.src = isProd ? '/digital-banking/earth-map.jpg' : '/earth-map.jpg';
     img.onload = () => {
       const canvas = document.createElement('canvas');
       const w = 512;
@@ -82,32 +72,28 @@ function GlobeDots({ radius }: { radius: number }) {
       const imgData = ctx.getImageData(0, 0, w, h).data;
 
       const positions: number[] = [];
-      const numPoints = 40000; // Generate dense uniform points
-      const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
+      const numPoints = 40000;
+      const phi = Math.PI * (3 - Math.sqrt(5));
 
       for (let i = 0; i < numPoints; i++) {
-        const y = 1 - (i / (numPoints - 1)) * 2; // y goes from 1 to -1
+        const y = 1 - (i / (numPoints - 1)) * 2;
         const r = Math.sqrt(1 - y * y);
         const theta = phi * i;
 
         const x = Math.cos(theta) * r;
         const z = Math.sin(theta) * r;
 
-        // Convert to spherical coords
-        const latitude = Math.asin(y); // -PI/2 to PI/2
-        const longitude = Math.atan2(z, x); // -PI to PI
+        const latitude = Math.asin(y);
+        const longitude = Math.atan2(z, x);
 
-        // Map to image pixel
         const px = Math.floor(((longitude + Math.PI) / (2 * Math.PI)) * w);
         const py = Math.floor(((-latitude + Math.PI / 2) / Math.PI) * h);
 
-        // Clamp bounds
         const safePx = Math.max(0, Math.min(w - 1, px));
         const safePy = Math.max(0, Math.min(h - 1, py));
 
         const idx = (safePy * w + safePx) * 4;
 
-        // In this specular map, land is dark (low red channel value)
         if (imgData[idx] < 50) {
           positions.push(x * radius, y * radius, z * radius);
         }
@@ -135,13 +121,10 @@ function GlobeDots({ radius }: { radius: number }) {
   );
 }
 
-// -------------------------------------------------------------------
-// Wireframe latitude / longitude lines
-// -------------------------------------------------------------------
 function GlobeGrid({ radius }: { radius: number }) {
   const lines = useMemo(() => {
     const result: THREE.Vector3[][] = [];
-    // Latitudes
+
     for (let lat = -60; lat <= 60; lat += 30) {
       const points: THREE.Vector3[] = [];
       for (let lng = 0; lng <= 360; lng += 5) {
@@ -149,7 +132,7 @@ function GlobeGrid({ radius }: { radius: number }) {
       }
       result.push(points);
     }
-    // Longitudes
+
     for (let lng = 0; lng < 360; lng += 30) {
       const points: THREE.Vector3[] = [];
       for (let lat = -90; lat <= 90; lat += 5) {
@@ -165,7 +148,7 @@ function GlobeGrid({ radius }: { radius: number }) {
       {lines.map((points, i) => {
         const geo = new THREE.BufferGeometry().setFromPoints(points);
         return (
-          // @ts-ignore - line element
+          // @ts-ignore
           <line key={i} geometry={geo}>
             <lineBasicMaterial color="#10b981" transparent opacity={0.1} linewidth={1} />
           </line>
@@ -175,9 +158,6 @@ function GlobeGrid({ radius }: { radius: number }) {
   );
 }
 
-// -------------------------------------------------------------------
-// Glowing city points
-// -------------------------------------------------------------------
 function CityNodes({ radius }: { radius: number }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const tempMatrix = useMemo(() => new THREE.Matrix4(), []);
@@ -185,7 +165,7 @@ function CityNodes({ radius }: { radius: number }) {
   const tempScale = useMemo(() => new THREE.Vector3(), []);
 
   const positions = useMemo(() => {
-    return cities.map(city => latLngToVec3(city[0], city[1], radius));
+    return cities.map((city) => latLngToVec3(city[0], city[1], radius));
   }, [radius]);
 
   useFrame((state) => {
@@ -208,16 +188,12 @@ function CityNodes({ radius }: { radius: number }) {
   );
 }
 
-// -------------------------------------------------------------------
-// Animated connection arcs between cities
-// -------------------------------------------------------------------
 function ConnectionArcs({ radius }: { radius: number }) {
   const arcs = useMemo(() => {
     return connections.map(([fromIdx, toIdx]) => {
       const from = latLngToVec3(cities[fromIdx][0], cities[fromIdx][1], radius);
       const to = latLngToVec3(cities[toIdx][0], cities[toIdx][1], radius);
 
-      // Create a curved arc by raising midpoint above the surface
       const mid = new THREE.Vector3().addVectors(from, to).multiplyScalar(0.5);
       const dist = from.distanceTo(to);
       mid.normalize().multiplyScalar(radius + dist * 0.25);
@@ -247,9 +223,6 @@ function ConnectionArcs({ radius }: { radius: number }) {
   );
 }
 
-// -------------------------------------------------------------------
-// Animated data packets traveling along arcs
-// -------------------------------------------------------------------
 function DataPackets({ radius, isLight }: { radius: number; isLight?: boolean }) {
   const packetData = useMemo(() => {
     return connections.map(([fromIdx, toIdx]) => {
@@ -275,7 +248,7 @@ function DataPackets({ radius, isLight }: { radius: number; isLight?: boolean })
         const t = (state.clock.elapsedTime * p.speed + p.offset) % 1;
         const pos = p.curve.getPointAt(t);
         mesh.position.copy(pos);
-        // Pulse opacity
+
         const opacity = Math.sin(t * Math.PI);
         (mesh.material as THREE.MeshBasicMaterial).opacity = opacity * 0.9;
       }
@@ -305,9 +278,6 @@ function DataPackets({ radius, isLight }: { radius: number; isLight?: boolean })
   );
 }
 
-// -------------------------------------------------------------------
-// Orbiting outer ring particles
-// -------------------------------------------------------------------
 function OrbitRing({
   radius,
   count,
@@ -364,9 +334,6 @@ function OrbitRing({
   );
 }
 
-// -------------------------------------------------------------------
-// Atmospheric glow shell
-// -------------------------------------------------------------------
 function AtmosphereGlow({ radius, isLight }: { radius: number; isLight?: boolean }) {
   return (
     <mesh>
@@ -382,9 +349,6 @@ function AtmosphereGlow({ radius, isLight }: { radius: number; isLight?: boolean
   );
 }
 
-// -------------------------------------------------------------------
-// Main scene controller — mouse-reactive rotation
-// -------------------------------------------------------------------
 function GlobeScene({ isLight }: { isLight: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
   const targetRotation = useRef({ x: 0, y: 0 });
@@ -403,29 +367,27 @@ function GlobeScene({ isLight }: { isLight: boolean }) {
 
   useFrame((state) => {
     if (groupRef.current) {
-      // Auto-rotate with fast initial spin that decays into a steady pace
       const t = state.clock.elapsedTime;
-      // Increased the multiplier from 4.0 to 15.0 and the decay exponent to make it spin very fast initially, 
-      // then settle into a base rotation speed of 0.1 rad/sec.
+
       const autoY = t * 0.1 + 15.0 * (1 - Math.exp(-1.5 * t));
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
         groupRef.current.rotation.y,
         autoY + targetRotation.current.y,
-        0.05 // Increased lerp factor so it doesn't lag behind the fast initial curve
+        0.05
       );
       groupRef.current.rotation.x = THREE.MathUtils.lerp(
         groupRef.current.rotation.x,
         0.15 + targetRotation.current.x,
         0.02
       );
-      // Gentle floating
+
       groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.15;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* Core globe */}
+      {}
       <mesh>
         <sphereGeometry args={[RADIUS, 64, 64]} />
         <meshPhysicalMaterial
@@ -439,7 +401,7 @@ function GlobeScene({ isLight }: { isLight: boolean }) {
         />
       </mesh>
 
-      {/* Globe surface details */}
+      {}
       <GlobeDots radius={RADIUS + 0.01} />
       <GlobeGrid radius={RADIUS + 0.02} />
       <CityNodes radius={RADIUS + 0.03} />
@@ -447,18 +409,29 @@ function GlobeScene({ isLight }: { isLight: boolean }) {
       <DataPackets radius={RADIUS + 0.03} isLight={isLight} />
       <AtmosphereGlow radius={RADIUS} isLight={isLight} />
 
-      {/* Outer orbit rings */}
-      <OrbitRing radius={RADIUS + 0.8} count={12} speed={0.3} color="#10b981" size={0.025} isLight={isLight} />
-      <OrbitRing radius={RADIUS + 1.2} count={8} speed={-0.2} color="#06b6d4" size={0.02} isLight={isLight} />
+      {}
+      <OrbitRing
+        radius={RADIUS + 0.8}
+        count={12}
+        speed={0.3}
+        color="#10b981"
+        size={0.025}
+        isLight={isLight}
+      />
+      <OrbitRing
+        radius={RADIUS + 1.2}
+        count={8}
+        speed={-0.2}
+        color="#06b6d4"
+        size={0.02}
+        isLight={isLight}
+      />
     </group>
   );
 }
 
 import { useTheme } from 'next-themes';
 
-// -------------------------------------------------------------------
-// Exported component
-// -------------------------------------------------------------------
 export default function Hero3DBackground() {
   const { resolvedTheme } = useTheme();
   const isLight = resolvedTheme === 'light';
@@ -478,11 +451,17 @@ export default function Hero3DBackground() {
     <div ref={ref} className="absolute inset-0 z-10 pointer-events-none opacity-100">
       {inView && !isMobile && (
         <Canvas gl={{ antialias: true, alpha: true }} camera={{ position: [0, 0, 12], fov: 40 }}>
-          {/* Lighting — subtle, cinematic */}
+          {}
           <ambientLight intensity={isLight ? 0.6 : 0.3} />
           <directionalLight position={[5, 5, 5]} intensity={isLight ? 1.0 : 0.8} color="#ffffff" />
           <directionalLight position={[-5, 3, -5]} intensity={0.4} color="#06b6d4" />
-          <pointLight position={[0, 0, 5]} intensity={isLight ? 1.0 : 0.6} color="#10b981" distance={12} decay={2} />
+          <pointLight
+            position={[0, 0, 5]}
+            intensity={isLight ? 1.0 : 0.6}
+            color="#10b981"
+            distance={12}
+            decay={2}
+          />
 
           <React.Suspense fallback={null}>
             <GlobeScene isLight={isLight} />
@@ -493,15 +472,15 @@ export default function Hero3DBackground() {
       {isMobile && (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-[280px] h-[280px] flex items-center justify-center mt-[-10vh]">
-            {/* Glowing core */}
+            {}
             <div className="absolute w-[180px] h-[180px] rounded-full bg-[var(--accent)] blur-[60px] opacity-20 animate-pulse" />
-            
-            {/* CSS Globe / Rings */}
+
+            {}
             <div className="absolute inset-0 rounded-full border border-[rgba(var(--accent-rgb),0.1)] border-t-[rgba(var(--accent-rgb),0.5)] animate-[spin_10s_linear_infinite]" />
             <div className="absolute inset-[15%] rounded-full border border-[rgba(var(--accent-rgb),0.1)] border-b-[rgba(var(--accent-rgb),0.5)] animate-[spin_15s_linear_infinite_reverse]" />
             <div className="absolute inset-[30%] rounded-full border border-dashed border-[rgba(var(--accent-rgb),0.3)] animate-[spin_20s_linear_infinite]" />
-            
-            {/* Center node */}
+
+            {}
             <div className="absolute w-12 h-12 rounded-full bg-[rgba(var(--accent-rgb),0.1)] border border-[var(--accent)] flex items-center justify-center shadow-[0_0_20px_rgba(var(--accent-rgb),0.4)]">
               <div className="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping" />
             </div>

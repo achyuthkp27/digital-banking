@@ -14,7 +14,11 @@ export default function CustomCursor() {
     setMounted(true);
 
     const checkMobile = () => {
-      setIsMobile(window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window) || window.innerWidth < 768);
+      setIsMobile(
+        window.matchMedia('(pointer: coarse)').matches ||
+          'ontouchstart' in window ||
+          window.innerWidth < 768
+      );
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -26,7 +30,7 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Check if hovering over clickable elements or specific data attributes
+
       if (
         window.getComputedStyle(target).cursor === 'pointer' ||
         target.tagName.toLowerCase() === 'a' ||
@@ -40,7 +44,7 @@ export default function CustomCursor() {
 
     const handleMouseOut = () => {
       setIsVisible(false);
-    }
+    };
 
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mouseover', handleMouseOver);
@@ -54,11 +58,11 @@ export default function CustomCursor() {
     };
   }, [isVisible]);
 
-  if (!mounted || isMobile) return null; // Prevent hydration error and disable on mobile
+  if (!mounted || isMobile) return null;
 
   return (
     <>
-      {/* Outer ring */}
+      {}
       <motion.div
         style={{
           position: 'fixed',
@@ -86,7 +90,7 @@ export default function CustomCursor() {
           mass: 0.5,
         }}
       />
-      {/* Inner dot */}
+      {}
       <motion.div
         style={{
           position: 'fixed',

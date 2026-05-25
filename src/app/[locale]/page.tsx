@@ -29,19 +29,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     >
       <Navbar />
 
-      {/* ═══ HERO SECTION ═══ */}
+      {}
       <HeroSection />
 
-      {/* ═══ CINEMATIC APP FLOW ═══ */}
+      {}
       <CinematicAppFlow />
 
-      {/* ═══ REST OF LANDING PAGE ═══ */}
+      {}
       <MarqueeSection />
       <PlatformHighlights />
       <SmartCardsSection />
       <ProductShowcase />
 
-      {/* ═══ PARTICLE MESH — GLOBAL INFRASTRUCTURE ═══ */}
+      {}
       <ParticleMeshSection />
       <WhyChooseSection />
       <SecuritySection />

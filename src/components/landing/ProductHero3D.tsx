@@ -8,7 +8,6 @@ import { Mesh } from 'three';
 import { Link } from '@/i18n/routing';
 import { useInView } from 'react-intersection-observer';
 
-/* ─── 3D Refractive Knot (contained in right panel) ─── */
 function RefractiveKnot() {
   const meshRef = useRef<Mesh>(null);
 
@@ -47,7 +46,6 @@ function RefractiveKnot() {
   );
 }
 
-/* ─── Props ─── */
 interface ProductHero3DProps {
   title: string;
   subtitle: string;
@@ -70,7 +68,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
         justifyContent: 'center',
       }}
     >
-      {/* ── Ambient background glows ── */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -98,19 +96,20 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
         }}
       />
 
-      {/* ── Dot grid background ── */}
+      {}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.04) 1px, transparent 1px)',
+          backgroundImage:
+            'radial-gradient(rgba(var(--color-invert-rgb), 0.04) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
           zIndex: 1,
         }}
       />
 
-      {/* ── Main split layout container ── */}
+      {}
       <div
         style={{
           position: 'relative',
@@ -125,7 +124,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
           minHeight: '100vh',
         }}
       >
-        {/* ─── LEFT: Text content ─── */}
+        {}
         <div
           style={{
             flex: '1 1 55%',
@@ -135,7 +134,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             minWidth: 0,
           }}
         >
-          {/* Breadcrumb / Back link */}
+          {}
           <Link
             href="/#products"
             style={{
@@ -168,7 +167,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             Back to Products
           </Link>
 
-          {/* Product badge */}
+          {}
           <div
             style={{
               display: 'inline-flex',
@@ -205,7 +204,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             </span>
           </div>
 
-          {/* Title */}
+          {}
           <h1
             style={{
               fontSize: 'clamp(40px, 6vw, 80px)',
@@ -220,7 +219,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             {title}
           </h1>
 
-          {/* Accent line */}
+          {}
           <div
             style={{
               width: '80px',
@@ -232,7 +231,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             }}
           />
 
-          {/* Subtitle */}
+          {}
           <p
             style={{
               fontSize: 'clamp(16px, 1.3vw, 20px)',
@@ -245,7 +244,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             {subtitle}
           </p>
 
-          {/* CTAs */}
+          {}
           <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
             <Link
               href="/demo"
@@ -301,7 +300,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
           </div>
         </div>
 
-        {/* ─── RIGHT: 3D Canvas (self-contained, no text overlap) ─── */}
+        {}
         <div
           style={{
             flex: '1 1 45%',
@@ -314,7 +313,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             background: 'rgba(var(--color-invert-rgb), 0.015)',
           }}
         >
-          {/* Inner glow */}
+          {}
           <div
             style={{
               position: 'absolute',
@@ -340,7 +339,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
             </Canvas>
           )}
 
-          {/* Corner accents */}
+          {}
           <div
             style={{
               position: 'absolute',
@@ -400,7 +399,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
         </div>
       </div>
 
-      {/* ── Noise grain overlay ── */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -413,7 +412,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
         }}
       />
 
-      {/* ── Bottom fade ── */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -427,7 +426,7 @@ export default function ProductHero3D({ title, subtitle }: ProductHero3DProps) {
         }}
       />
 
-      {/* Keyframes */}
+      {}
       <style
         dangerouslySetInnerHTML={{
           __html: `

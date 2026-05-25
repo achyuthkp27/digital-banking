@@ -4,10 +4,6 @@ import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react'
 import { motion, useInView } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
-// -------------------------------------------------------------------
-// Particle Mesh Section — flowing wave with mouse interaction
-// -------------------------------------------------------------------
-
 interface Particle {
   x: number;
   y: number;
@@ -30,11 +26,14 @@ export default function ParticleMeshSection() {
   const isInView = useInView(sectionRef, { margin: '-10%' });
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
 
-  const statsList = useMemo(() => [
-    { value: '< 50ms', label: t('avgLatency') },
-    { value: '15+', label: t('countries') },
-    { value: '5 Nines', label: t('availability') },
-  ], [t]);
+  const statsList = useMemo(
+    () => [
+      { value: '< 50ms', label: t('avgLatency') },
+      { value: '15+', label: t('countries') },
+      { value: '5 Nines', label: t('availability') },
+    ],
+    [t]
+  );
 
   const initParticles = useCallback((width: number, height: number) => {
     const particles: Particle[] = [];
@@ -46,7 +45,6 @@ export default function ParticleMeshSection() {
         const x = (i / cols) * width + (Math.random() - 0.5) * 8;
         const y = (j / rows) * height + (Math.random() - 0.5) * 8;
 
-        // Create a wave shape — particles in the center-right are denser
         const nx = x / width;
         const ny = y / height;
         const waveInfluence = Math.sin(nx * Math.PI * 2) * 0.5 + 0.5;
@@ -96,7 +94,6 @@ export default function ParticleMeshSection() {
     return () => window.removeEventListener('resize', handleResize);
   }, [initParticles]);
 
-  // Mouse tracking relative to section
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -121,7 +118,6 @@ export default function ParticleMeshSection() {
     };
   }, []);
 
-  // Animation loop
   useEffect(() => {
     if (!isInView) {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
@@ -143,13 +139,10 @@ export default function ParticleMeshSection() {
       const mouse = mouseRef.current;
       const mouseRadius = 150;
 
-      // Update particles
       for (const p of particles) {
-        // Wave motion
         const waveX = Math.sin(time + p.baseY * 0.008) * 15;
         const waveY = Math.cos(time * 0.7 + p.baseX * 0.005) * 10;
 
-        // Mouse repulsion
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -162,11 +155,9 @@ export default function ParticleMeshSection() {
           forceY = -(dy / dist) * force;
         }
 
-        // Target position with wave
         const targetX = p.baseX + waveX + forceX;
         const targetY = p.baseY + waveY + forceY;
 
-        // Smooth spring
         p.vx += (targetX - p.x) * 0.04;
         p.vy += (targetY - p.y) * 0.04;
         p.vx *= 0.85;
@@ -175,7 +166,6 @@ export default function ParticleMeshSection() {
         p.y += p.vy;
       }
 
-      // Draw connections
       const connectionDist = 35;
       ctx.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
@@ -194,7 +184,6 @@ export default function ParticleMeshSection() {
         }
       }
 
-      // Draw particles
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -241,7 +230,7 @@ export default function ParticleMeshSection() {
         overflow: 'hidden',
       }}
     >
-      {/* Canvas for particle mesh — full bleed */}
+      {}
       <canvas
         ref={canvasRef}
         style={{
@@ -254,7 +243,7 @@ export default function ParticleMeshSection() {
         }}
       />
 
-      {/* Gradient mask — left side fades for text readability */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -266,7 +255,7 @@ export default function ParticleMeshSection() {
         }}
       />
 
-      {/* Content */}
+      {}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -282,7 +271,7 @@ export default function ParticleMeshSection() {
         }}
       >
         <div style={{ maxWidth: '560px' }}>
-          {/* Badge */}
+          {}
           <motion.div
             variants={itemVariants}
             style={{
@@ -320,7 +309,7 @@ export default function ParticleMeshSection() {
             </span>
           </motion.div>
 
-          {/* Heading */}
+          {}
           <motion.h2
             variants={itemVariants}
             style={{
@@ -348,7 +337,7 @@ export default function ParticleMeshSection() {
             {t('ofFinance')}
           </motion.h2>
 
-          {/* Description */}
+          {}
           <motion.p
             variants={itemVariants}
             style={{
@@ -362,7 +351,7 @@ export default function ParticleMeshSection() {
             {t('description')}
           </motion.p>
 
-          {/* Stats row */}
+          {}
           <motion.div
             variants={itemVariants}
             style={{
@@ -398,7 +387,7 @@ export default function ParticleMeshSection() {
             ))}
           </motion.div>
 
-          {/* CTA */}
+          {}
           <motion.div variants={itemVariants}>
             <a
               href="#architecture"

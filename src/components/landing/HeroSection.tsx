@@ -72,7 +72,7 @@ export default function HeroSection() {
         paddingBottom: '80px',
       }}
     >
-      {/* Premium ambient glow — green, top-right */}
+      {}
       <motion.div
         className="dark:opacity-100 opacity-60"
         style={{
@@ -89,7 +89,7 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Secondary ambient glow — blue, bottom-left for depth */}
+      {}
       <motion.div
         className="dark:opacity-100 opacity-60"
         style={{
@@ -104,19 +104,20 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Ultra-fine grid */}
+      {}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.015) 1px, transparent 1px)',
+          backgroundImage:
+            'radial-gradient(rgba(var(--color-invert-rgb), 0.015) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
           zIndex: 0,
         }}
       />
 
-      {/* Horizontal line accents */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -164,7 +165,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* 3D Globe Scene */}
+      {}
       <div className="absolute inset-0 z-[1] pointer-events-none">
         <div className="absolute top-1/2 -translate-y-1/2 h-[90vh] pointer-events-auto flex items-center justify-center w-full right-0 md:w-[70%] md:right-[-5%]">
           {load3D && <Hero3DBackground />}

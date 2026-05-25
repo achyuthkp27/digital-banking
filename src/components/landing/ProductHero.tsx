@@ -26,7 +26,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
         justifyContent: 'center',
       }}
     >
-      {/* Ambient glows */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -54,19 +54,20 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
         }}
       />
 
-      {/* Dot grid */}
+      {}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb), 0.04) 1px, transparent 1px)',
+          backgroundImage:
+            'radial-gradient(rgba(var(--color-invert-rgb), 0.04) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
           zIndex: 1,
         }}
       />
 
-      {/* Main split layout */}
+      {}
       <div
         style={{
           position: 'relative',
@@ -81,7 +82,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
           minHeight: '100vh',
         }}
       >
-        {/* LEFT: Text */}
+        {}
         <div style={{ flex: '1 1 50%', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
           <Link
             href="/#products"
@@ -162,7 +163,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
               marginBottom: '24px',
               overflowWrap: 'break-word',
               wordBreak: 'keep-all',
-              hyphens: 'auto'
+              hyphens: 'auto',
             }}
           >
             {title}
@@ -247,7 +248,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
           </div>
         </div>
 
-        {/* RIGHT: Product-specific illustration */}
+        {}
         <div
           style={{
             flex: '1 1 50%',
@@ -275,7 +276,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
             <ProductIllustration slug={slug} />
           </div>
 
-          {/* Corner accents */}
+          {}
           {[
             { top: '16px', left: '16px', bT: true, bL: true, br: '4px 0 0 0' },
             { top: '16px', right: '16px', bT: true, bR: true, br: '0 4px 0 0' },
@@ -305,7 +306,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
         </div>
       </div>
 
-      {/* Noise overlay */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -318,7 +319,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
         }}
       />
 
-      {/* Bottom fade */}
+      {}
       <div
         style={{
           position: 'absolute',

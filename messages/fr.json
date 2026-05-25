@@ -7,12 +7,13 @@
     "requestDemo": "Demander une Démo",
     "home": "Accueil"
   },
-  "Brand": {
-    "word1First": "B",
-    "word1Rest": "anque",
-    "word2First": "D",
-    "word2Rest": "igitale"
-  },
+   "Brand": {
+     "word1First": "B",
+     "word1Rest": "anque",
+     "word2First": "D",
+     "word2Rest": "igitale",
+     "appName": "Banque Digitale"
+   },
   "Hero": {
     "badge": "Plateforme Entreprise",
     "titleLine1": "L'avenir de la",

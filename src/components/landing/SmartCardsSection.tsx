@@ -44,7 +44,7 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
         borderBottom: '1px solid var(--border-subtle)',
       }}
     >
-      {/* Global noise applied via body tag in globals.css */}
+      {}
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         <div
@@ -55,7 +55,7 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
             alignItems: 'center',
           }}
         >
-          {/* Text Content Left */}
+          {}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span
               style={{
@@ -98,9 +98,7 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               {cardFeatures.map((feature, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <CheckCircle
-                    className="text-accent flex-shrink-0" size={24}
-                  />
+                  <CheckCircle className="text-accent flex-shrink-0" size={24} />
                   <div>
                     <h3
                       style={{
@@ -123,12 +121,12 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
             </div>
           </div>
 
-          {/* Empty spacer for grid */}
+          {}
           <div className="spacer-right" />
         </div>
       </div>
 
-      {/* 3D Content Right (Absolute to bleed off edge) */}
+      {}
       <div
         className="canvas-wrapper"
         aria-hidden="true"

@@ -18,14 +18,16 @@ export default function DemoDialog({ open, onClose }: DemoDialogProps) {
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => { document.body.style.overflow = 'unset'; };
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [open]);
 
   if (!open) return null;
 
   return (
     <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div 
+      <div
         className="bg-[var(--bg-surface)] border border-[rgba(var(--color-invert-rgb),0.1)] rounded-2xl w-full max-w-lg shadow-2xl relative flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
@@ -34,8 +36,8 @@ export default function DemoDialog({ open, onClose }: DemoDialogProps) {
             <h2 className="text-xl font-bold text-[var(--text-primary)]">{t('title')}</h2>
             <p className="text-sm text-[var(--text-secondary)] mt-1">{t('subtitle')}</p>
           </div>
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-2 rounded-full hover:bg-[rgba(var(--color-invert-rgb),0.05)]"
             aria-label={t('close')}
           >
@@ -44,39 +46,78 @@ export default function DemoDialog({ open, onClose }: DemoDialogProps) {
         </div>
 
         <div className="p-6">
-          <form className="flex flex-col gap-5" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
+          <form
+            className="flex flex-col gap-5"
+            onSubmit={(e) => {
+              e.preventDefault();
+              onClose();
+            }}
+          >
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1 flex flex-col gap-1.5">
                 <label className="text-sm text-[var(--text-secondary)]">{t('firstName')} *</label>
-                <input required type="text" className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors" />
+                <input
+                  required
+                  type="text"
+                  className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors"
+                />
               </div>
               <div className="flex-1 flex flex-col gap-1.5">
                 <label className="text-sm text-[var(--text-secondary)]">{t('lastName')} *</label>
-                <input required type="text" className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors" />
+                <input
+                  required
+                  type="text"
+                  className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors"
+                />
               </div>
             </div>
 
             <div className="flex flex-col gap-1.5">
               <label className="text-sm text-[var(--text-secondary)]">{t('workEmail')} *</label>
-              <input required type="email" className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors" />
+              <input
+                required
+                type="email"
+                className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors"
+              />
             </div>
 
             <div className="flex flex-col gap-1.5">
               <label className="text-sm text-[var(--text-secondary)]">{t('companyName')} *</label>
-              <input required type="text" className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors" />
+              <input
+                required
+                type="text"
+                className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors"
+              />
             </div>
 
             <div className="flex flex-col gap-1.5">
               <label className="text-sm text-[var(--text-secondary)]">{t('productInterest')}</label>
-              <select defaultValue="" className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors appearance-none">
+              <select
+                defaultValue=""
+                className="w-full bg-[rgba(var(--color-invert-rgb),0.03)] border border-[rgba(var(--color-invert-rgb),0.1)] text-[var(--text-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[rgba(var(--color-invert-rgb),0.3)] transition-colors appearance-none"
+              >
                 <option value="" disabled hidden></option>
-                <option value="video-kyc" className="bg-[var(--bg-surface)]">{t('videoKyc')}</option>
-                <option value="kiosk" className="bg-[var(--bg-surface)]">{t('kioskBanking')}</option>
-                <option value="agent" className="bg-[var(--bg-surface)]">{t('agentBanking')}</option>
-                <option value="merchant" className="bg-[var(--bg-surface)]">{t('merchantBanking')}</option>
-                <option value="corporate" className="bg-[var(--bg-surface)]">{t('corporateBanking')}</option>
-                <option value="mobile" className="bg-[var(--bg-surface)]">{t('mobileBanking')}</option>
-                <option value="other" className="bg-[var(--bg-surface)]">{t('other')}</option>
+                <option value="video-kyc" className="bg-[var(--bg-surface)]">
+                  {t('videoKyc')}
+                </option>
+                <option value="kiosk" className="bg-[var(--bg-surface)]">
+                  {t('kioskBanking')}
+                </option>
+                <option value="agent" className="bg-[var(--bg-surface)]">
+                  {t('agentBanking')}
+                </option>
+                <option value="merchant" className="bg-[var(--bg-surface)]">
+                  {t('merchantBanking')}
+                </option>
+                <option value="corporate" className="bg-[var(--bg-surface)]">
+                  {t('corporateBanking')}
+                </option>
+                <option value="mobile" className="bg-[var(--bg-surface)]">
+                  {t('mobileBanking')}
+                </option>
+                <option value="other" className="bg-[var(--bg-surface)]">
+                  {t('other')}
+                </option>
               </select>
             </div>
 

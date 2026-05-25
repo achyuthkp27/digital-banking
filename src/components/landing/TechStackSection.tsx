@@ -7,12 +7,27 @@ export default function TechStackSection() {
   const t = useTranslations('TechStack');
 
   const techCategories = [
-    { nameKey: 'frontend' as const, technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Redux', 'Next.js'] },
-    { nameKey: 'backend' as const, technologies: ['Node.js', 'Express', 'Spring Boot', 'GraphQL', 'REST APIs'] },
-    { nameKey: 'database' as const, technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Cassandra'] },
-    { nameKey: 'devops' as const, technologies: ['Kubernetes', 'Docker', 'Jenkins', 'Terraform', 'ArgoCD'] },
+    {
+      nameKey: 'frontend' as const,
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Redux', 'Next.js'],
+    },
+    {
+      nameKey: 'backend' as const,
+      technologies: ['Node.js', 'Express', 'Spring Boot', 'GraphQL', 'REST APIs'],
+    },
+    {
+      nameKey: 'database' as const,
+      technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Cassandra'],
+    },
+    {
+      nameKey: 'devops' as const,
+      technologies: ['Kubernetes', 'Docker', 'Jenkins', 'Terraform', 'ArgoCD'],
+    },
     { nameKey: 'security' as const, technologies: ['OAuth 2.0', 'JWT', 'Vault', 'WAF', 'SIEM'] },
-    { nameKey: 'messaging' as const, technologies: ['Apache Kafka', 'RabbitMQ', 'Redis Pub/Sub', 'WebSockets', 'gRPC'] },
+    {
+      nameKey: 'messaging' as const,
+      technologies: ['Apache Kafka', 'RabbitMQ', 'Redis Pub/Sub', 'WebSockets', 'gRPC'],
+    },
   ];
   return (
     <section id="technology" className="section container">
@@ -64,7 +79,7 @@ export default function TechStackSection() {
                   {t(category.nameKey)}
                 </span>
               </div>
-              
+
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', flex: 1 }}>
                 {category.technologies.map((tech, tIdx) => (
                   <span
@@ -95,13 +110,15 @@ export default function TechStackSection() {
                 ))}
               </div>
             </div>
-            
+
             <div style={{ width: '100%', height: '1px', background: 'var(--border-subtle)' }} />
           </div>
         ))}
       </div>
 
-      <style dangerouslySetInnerHTML={{__html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @media (max-width: 768px) {
           .tech-row {
             flex-direction: column;
@@ -109,7 +126,9 @@ export default function TechStackSection() {
             gap: 24px !important;
           }
         }
-      `}} />
+      `,
+        }}
+      />
     </section>
   );
 }

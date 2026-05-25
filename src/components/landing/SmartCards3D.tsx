@@ -11,7 +11,7 @@ function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
   return (
     <Float speed={floatSpeed} rotationIntensity={0.4} floatIntensity={0.6}>
       <group position={position} rotation={rotation}>
-        {/* Main Card Body (Glass) */}
+        {}
         <RoundedBox args={[3.37, 2.125, 0.05]} radius={0.15} smoothness={4}>
           <meshPhysicalMaterial
             color={color}
@@ -27,7 +27,7 @@ function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
           />
         </RoundedBox>
 
-        {/* Smart Chip (Gold/Metallic) */}
+        {}
         <RoundedBox
           args={[0.4, 0.3, 0.06]}
           radius={0.05}
@@ -37,7 +37,7 @@ function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
           <meshStandardMaterial color="#fbbf24" metalness={0.9} roughness={0.2} />
         </RoundedBox>
 
-        {/* Holographic/NFC Icon detail */}
+        {}
         <mesh position={[-1.3, -0.5, 0.026]}>
           <ringGeometry args={[0.08, 0.12, 32]} />
           <meshBasicMaterial color="#ffffff" transparent opacity={0.3} side={DoubleSide} />
@@ -47,7 +47,7 @@ function CreditCard({ position, rotation, color, floatSpeed = 1 }: any) {
           <meshBasicMaterial color="#ffffff" transparent opacity={0.3} side={DoubleSide} />
         </mesh>
 
-        {/* Abstract Magnetic Strip on back (visible through glass) */}
+        {}
         <mesh position={[0, 0.5, -0.026]}>
           <planeGeometry args={[3.37, 0.4]} />
           <meshBasicMaterial color="#000000" transparent opacity={0.4} side={DoubleSide} />
@@ -100,7 +100,10 @@ export default function SmartCards3D() {
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0 });
 
   return (
-    <div ref={ref} style={{ width: '100%', height: '100%', minHeight: '500px', position: 'relative' }}>
+    <div
+      ref={ref}
+      style={{ width: '100%', height: '100%', minHeight: '500px', position: 'relative' }}
+    >
       {inView && (
         <Canvas camera={{ position: [0, 0, 8], fov: 40 }}>
           <React.Suspense fallback={null}>

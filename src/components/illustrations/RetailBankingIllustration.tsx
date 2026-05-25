@@ -17,44 +17,95 @@ function injectKF() {
 }
 
 export default function RetailBankingIllustration() {
-  useEffect(() => { injectKF(); }, []);
+  useEffect(() => {
+    injectKF();
+  }, []);
 
   return (
-    <div style={{ width: '100%', height: '100%', minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-      {/* Browser window */}
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        minHeight: '400px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+      }}
+    >
+      {}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         style={{
-          width: '260px', borderRadius: '12px',
+          width: '260px',
+          borderRadius: '12px',
           border: '1.5px solid rgba(var(--accent-rgb),0.25)',
           background: 'rgba(var(--accent-rgb),0.02)',
           overflow: 'hidden',
         }}
       >
-        {/* Title bar */}
-        <div style={{
-          padding: '10px 14px', display: 'flex', alignItems: 'center', gap: '6px',
-          borderBottom: '1px solid rgba(var(--accent-rgb),0.1)',
-        }}>
+        {}
+        <div
+          style={{
+            padding: '10px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            borderBottom: '1px solid rgba(var(--accent-rgb),0.1)',
+          }}
+        >
           {['#ff5f57', '#febc2e', '#28c840'].map((c, i) => (
-            <div key={i} style={{ width: '7px', height: '7px', borderRadius: '50%', background: c, opacity: 0.5 }} />
+            <div
+              key={i}
+              style={{
+                width: '7px',
+                height: '7px',
+                borderRadius: '50%',
+                background: c,
+                opacity: 0.5,
+              }}
+            />
           ))}
-          {/* Address bar */}
-          <div style={{
-            flex: 1, marginLeft: '8px', height: '18px', borderRadius: '4px',
-            background: 'rgba(var(--accent-rgb),0.06)', border: '1px solid rgba(var(--accent-rgb),0.1)',
-            display: 'flex', alignItems: 'center', padding: '0 8px',
-          }}>
-            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)', marginRight: '6px', opacity: 0.5 }} />
-            <div style={{ width: '60%', height: '3px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.15)' }} />
+          {}
+          <div
+            style={{
+              flex: 1,
+              marginLeft: '8px',
+              height: '18px',
+              borderRadius: '4px',
+              background: 'rgba(var(--accent-rgb),0.06)',
+              border: '1px solid rgba(var(--accent-rgb),0.1)',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0 8px',
+            }}
+          >
+            <div
+              style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: 'var(--accent)',
+                marginRight: '6px',
+                opacity: 0.5,
+              }}
+            />
+            <div
+              style={{
+                width: '60%',
+                height: '3px',
+                borderRadius: '2px',
+                background: 'rgba(var(--accent-rgb),0.15)',
+              }}
+            />
           </div>
         </div>
 
-        {/* Content area */}
+        {}
         <div style={{ padding: '14px' }}>
-          {/* Account cards */}
+          {}
           {['Savings Account', 'Current Account'].map((acc, i) => (
             <motion.div
               key={acc}
@@ -62,25 +113,52 @@ export default function RetailBankingIllustration() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.5 + i * 0.3 }}
               style={{
-                padding: '10px 12px', marginBottom: '8px', borderRadius: '8px',
+                padding: '10px 12px',
+                marginBottom: '8px',
+                borderRadius: '8px',
                 border: '1px solid rgba(var(--accent-rgb),0.12)',
                 background: 'rgba(var(--accent-rgb),0.03)',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
               }}
             >
               <div>
-                <div style={{ fontSize: '7px', color: 'rgba(var(--accent-rgb),0.4)', fontFamily: 'var(--font-geist-mono), monospace', marginBottom: '3px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                <div
+                  style={{
+                    fontSize: '7px',
+                    color: 'rgba(var(--accent-rgb),0.4)',
+                    fontFamily: 'var(--font-geist-mono), monospace',
+                    marginBottom: '3px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                  }}
+                >
                   {acc}
                 </div>
-                <div style={{ width: '50px', height: '3px', borderRadius: '2px', background: 'rgba(var(--accent-rgb),0.2)' }} />
+                <div
+                  style={{
+                    width: '50px',
+                    height: '3px',
+                    borderRadius: '2px',
+                    background: 'rgba(var(--accent-rgb),0.2)',
+                  }}
+                />
               </div>
-              <span style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(var(--accent-rgb),0.5)', fontFamily: 'var(--font-geist-mono), monospace' }}>
+              <span
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  color: 'rgba(var(--accent-rgb),0.5)',
+                  fontFamily: 'var(--font-geist-mono), monospace',
+                }}
+              >
                 {i === 0 ? '₹4,82,350' : '₹12,45,800'}
               </span>
             </motion.div>
           ))}
 
-          {/* Graph line drawing itself */}
+          {}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -90,14 +168,18 @@ export default function RetailBankingIllustration() {
             <svg width="230" height="50" viewBox="0 0 230 50">
               <motion.path
                 d="M0 40 Q30 35 50 28 T100 20 T150 15 T200 8 L230 5"
-                fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round"
+                fill="none"
+                stroke="var(--accent)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 2, delay: 1.5, ease: 'easeInOut' }}
               />
               <motion.path
                 d="M0 40 Q30 35 50 28 T100 20 T150 15 T200 8 L230 5 L230 50 L0 50 Z"
-                fill="url(#retailGrad)" opacity="0.15"
+                fill="url(#retailGrad)"
+                opacity="0.15"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.15 }}
                 transition={{ duration: 2, delay: 1.5 }}
@@ -111,7 +193,7 @@ export default function RetailBankingIllustration() {
             </svg>
           </motion.div>
 
-          {/* Quick action buttons */}
+          {}
           <div style={{ display: 'flex', gap: '6px' }}>
             {['Transfer', 'Pay Bill', 'Deposit'].map((a, i) => (
               <motion.div
@@ -120,11 +202,17 @@ export default function RetailBankingIllustration() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 2 + i * 0.15 }}
                 style={{
-                  flex: 1, padding: '6px', borderRadius: '4px', textAlign: 'center',
-                  border: '1px solid rgba(var(--accent-rgb),0.1)', background: 'rgba(var(--accent-rgb),0.04)',
-                  fontSize: '6px', color: 'rgba(var(--accent-rgb),0.5)',
+                  flex: 1,
+                  padding: '6px',
+                  borderRadius: '4px',
+                  textAlign: 'center',
+                  border: '1px solid rgba(var(--accent-rgb),0.1)',
+                  background: 'rgba(var(--accent-rgb),0.04)',
+                  fontSize: '6px',
+                  color: 'rgba(var(--accent-rgb),0.5)',
                   fontFamily: 'var(--font-geist-mono), monospace',
-                  textTransform: 'uppercase', letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
                 }}
               >
                 {a}
@@ -134,36 +222,65 @@ export default function RetailBankingIllustration() {
         </div>
       </motion.div>
 
-      {/* Notification bell */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
         style={{
-          position: 'absolute', top: '18%', right: '25%',
+          position: 'absolute',
+          top: '18%',
+          right: '25%',
           animation: 'retail-bell 3s ease-in-out infinite',
         }}
       >
-        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="rgba(var(--accent-rgb),0.5)" strokeWidth="1.5" strokeLinecap="round">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="rgba(var(--accent-rgb),0.5)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        >
           <path d="M8 1a4 4 0 014 4v3l2 2H2l2-2V5a4 4 0 014-4zM6 14h4" />
         </svg>
-        <div style={{
-          position: 'absolute', top: '-3px', right: '-3px',
-          width: '10px', height: '10px', borderRadius: '50%',
-          background: 'var(--accent)', fontSize: '6px', color: '#000',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontWeight: 700,
-        }}>3</div>
+        <div
+          style={{
+            position: 'absolute',
+            top: '-3px',
+            right: '-3px',
+            width: '10px',
+            height: '10px',
+            borderRadius: '50%',
+            background: 'var(--accent)',
+            fontSize: '6px',
+            color: '#000',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontWeight: 700,
+          }}
+        >
+          3
+        </div>
       </motion.div>
 
-      {/* Globe icon */}
+      {}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.4 }}
         transition={{ delay: 1.5 }}
         style={{ position: 'absolute', bottom: '20%', right: '22%' }}
       >
-        <svg width="24" height="24" viewBox="0 0 16 16" fill="none" stroke="rgba(var(--accent-rgb),0.4)" strokeWidth="1">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="rgba(var(--accent-rgb),0.4)"
+          strokeWidth="1"
+        >
           <circle cx="8" cy="8" r="7" />
           <path d="M1 8h14M8 1c2 2 3 4.5 3 7s-1 5-3 7c-2-2-3-4.5-3-7s1-5 3-7" />
         </svg>

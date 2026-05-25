@@ -11,8 +11,6 @@ interface AdaptiveCanvasProps extends Omit<CanvasProps, 'children'> {
   fallback?: React.ReactNode;
 }
 
-
-
 export function AdaptiveCanvas({ children, fallback, ...props }: AdaptiveCanvasProps) {
   const { isLowEndDevice } = useDeviceCapabilities();
   const [dpr] = React.useState(1.5);
@@ -25,7 +23,8 @@ export function AdaptiveCanvas({ children, fallback, ...props }: AdaptiveCanvasP
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'radial-gradient(circle at center, rgba(var(--accent-rgb), 0.1) 0%, transparent 70%)',
+        background:
+          'radial-gradient(circle at center, rgba(var(--accent-rgb), 0.1) 0%, transparent 70%)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -37,7 +36,8 @@ export function AdaptiveCanvas({ children, fallback, ...props }: AdaptiveCanvasP
           width: '60%',
           height: '60%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle at center, rgba(var(--accent-rgb), 0.2) 0%, transparent 60%)',
+          background:
+            'radial-gradient(circle at center, rgba(var(--accent-rgb), 0.2) 0%, transparent 60%)',
           filter: 'blur(40px)',
         }}
       />

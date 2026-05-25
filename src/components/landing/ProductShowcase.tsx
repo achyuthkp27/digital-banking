@@ -37,8 +37,8 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
     <div style={{ position: 'absolute', inset: 0, zIndex: 10 }}>
       <ProductIllustration slug={slug} />
     </div>
-    
-    {/* Inner glow */}
+
+    {}
     <div
       style={{
         position: 'absolute',
@@ -51,7 +51,7 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
         opacity: 0.4,
       }}
     />
-    {/* Corner accents */}
+    {}
     <div
       style={{
         position: 'absolute',
@@ -107,123 +107,135 @@ const IllustrationPanel = React.memo(({ slug }: { slug: string }) => (
   </div>
 ));
 
-const ProductContent = React.memo(({ product, index, totalLength, t }: { product: any; index: number, totalLength: number, t: any }) => (
-  <div
-    style={{
-      flex: 1,
-      paddingRight: '2vw',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-    }}
-  >
+const ProductContent = React.memo(
+  ({
+    product,
+    index,
+    totalLength,
+    t,
+  }: {
+    product: any;
+    index: number;
+    totalLength: number;
+    t: any;
+  }) => (
     <div
       style={{
-        display: 'inline-flex',
-        padding: '6px 12px',
-        background: 'rgba(var(--accent-rgb),0.1)',
-        borderRadius: '8px',
-        color: 'var(--accent)',
-        fontSize: '12px',
-        fontWeight: 700,
-        textTransform: 'uppercase',
-        letterSpacing: '0.1em',
-        marginBottom: '24px',
-        alignSelf: 'flex-start',
+        flex: 1,
+        paddingRight: '2vw',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
       }}
     >
-      {index + 1} / {totalLength}
-    </div>
-
-    <span
-      style={{
-        display: 'block',
-        fontSize: '14px',
-        color: 'rgba(var(--color-invert-rgb), 0.5)',
-        fontWeight: 600,
-        marginBottom: '8px',
-      }}
-    >
-      {product.label}
-    </span>
-
-    <h3
-      style={{
-        fontSize: 'clamp(32px, 4vw, 48px)',
-        fontWeight: 800,
-        color: 'var(--text-primary)',
-        marginBottom: '24px',
-        fontFamily: 'var(--font-syne), sans-serif',
-        lineHeight: 1.1,
-      }}
-    >
-      {product.title}
-    </h3>
-
-    <p
-      style={{
-        fontSize: '18px',
-        color: 'var(--text-secondary)',
-        lineHeight: 1.6,
-        marginBottom: '40px',
-        maxWidth: '500px',
-      }}
-    >
-      {product.description}
-    </p>
-
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '48px' }}>
-      {product.features.map((feature: string, i: number) => (
-        <div
-          key={`feature-${i}`}
-          style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}
-        >
-          <CheckCircle className="text-accent mt-0.5" size={20} />
-          <span style={{ color: 'var(--text-primary)', fontSize: '15px' }}>{feature}</span>
-        </div>
-      ))}
-    </div>
-
-    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-      <Link
-        href={`/products/${product.slug}`}
+      <div
         style={{
           display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '14px 32px',
-          borderRadius: '9999px',
-          background: 'var(--accent)',
-          color: '#000',
-          fontSize: '15px',
+          padding: '6px 12px',
+          background: 'rgba(var(--accent-rgb),0.1)',
+          borderRadius: '8px',
+          color: 'var(--accent)',
+          fontSize: '12px',
           fontWeight: 700,
-          textDecoration: 'none',
-          transition: 'transform 0.25s ease',
-          cursor: 'pointer',
+          textTransform: 'uppercase',
+          letterSpacing: '0.1em',
+          marginBottom: '24px',
+          alignSelf: 'flex-start',
         }}
       >
-        {t('learnMore')}
-      </Link>
+        {index + 1} / {totalLength}
+      </div>
 
-      <a
-        href="https://dev.fisdbs.com/OLBRETAIL/"
-        target="_blank"
-        rel="noopener noreferrer"
+      <span
         style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          color: 'var(--text-primary)',
-          fontSize: '15px',
+          display: 'block',
+          fontSize: '14px',
+          color: 'rgba(var(--color-invert-rgb), 0.5)',
           fontWeight: 600,
-          textDecoration: 'none',
+          marginBottom: '8px',
         }}
       >
-        {t('liveDemo')} <span>&rarr;</span>
-      </a>
+        {product.label}
+      </span>
+
+      <h3
+        style={{
+          fontSize: 'clamp(32px, 4vw, 48px)',
+          fontWeight: 800,
+          color: 'var(--text-primary)',
+          marginBottom: '24px',
+          fontFamily: 'var(--font-syne), sans-serif',
+          lineHeight: 1.1,
+        }}
+      >
+        {product.title}
+      </h3>
+
+      <p
+        style={{
+          fontSize: '18px',
+          color: 'var(--text-secondary)',
+          lineHeight: 1.6,
+          marginBottom: '40px',
+          maxWidth: '500px',
+        }}
+      >
+        {product.description}
+      </p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '48px' }}>
+        {product.features.map((feature: string, i: number) => (
+          <div
+            key={`feature-${i}`}
+            style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}
+          >
+            <CheckCircle className="text-accent mt-0.5" size={20} />
+            <span style={{ color: 'var(--text-primary)', fontSize: '15px' }}>{feature}</span>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+        <Link
+          href={`/products/${product.slug}`}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '14px 32px',
+            borderRadius: '9999px',
+            background: 'var(--accent)',
+            color: '#000',
+            fontSize: '15px',
+            fontWeight: 700,
+            textDecoration: 'none',
+            transition: 'transform 0.25s ease',
+            cursor: 'pointer',
+          }}
+        >
+          {t('learnMore')}
+        </Link>
+
+        <a
+          href="https://dev.fisdbs.com/OLBRETAIL/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: 'var(--text-primary)',
+            fontSize: '15px',
+            fontWeight: 600,
+            textDecoration: 'none',
+          }}
+        >
+          {t('liveDemo')} <span>&rarr;</span>
+        </a>
+      </div>
     </div>
-  </div>
-));
+  )
+);
 
 export default function ProductShowcase() {
   const t = useTranslations('ProductShowcase');
@@ -249,7 +261,7 @@ export default function ProductShowcase() {
         setIsHorizontal(false);
       }
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -260,18 +272,11 @@ export default function ProductShowcase() {
     offset: ['start start', 'end end'],
   });
 
-  // Map vertical scroll progress (0 to 1) to horizontal translation
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['0%', `-${100 * ((products.length - 1) / products.length)}%`]
-  );
-
-  // Fade out the main title in horizontal mode
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-  const titleY = useTransform(scrollYProgress, [0, 0.1], [0, -50]);
-
-  // ProductContent is now imported/defined above and memoized
+   const x = useTransform(
+     scrollYProgress,
+     [0, 1],
+     ['0%', `-${100 * ((products.length - 1) / products.length)}%`]
+   );
 
   return (
     <section
@@ -284,7 +289,7 @@ export default function ProductShowcase() {
         zIndex: 20,
       }}
     >
-      {/* Unified Sticky Header */}
+      {}
       <div
         style={{
           position: 'sticky',
@@ -300,7 +305,10 @@ export default function ProductShowcase() {
           pointerEvents: 'none',
         }}
       >
-        <div className="hidden lg:block" style={{ position: 'absolute', right: '4vw', top: '40px', pointerEvents: 'auto' }}>
+        <div
+          className="hidden lg:block"
+          style={{ position: 'absolute', right: '4vw', top: '40px', pointerEvents: 'auto' }}
+        >
           <button
             onClick={() => {
               setIsHorizontal(!isHorizontal);
@@ -325,8 +333,12 @@ export default function ProductShowcase() {
               transition: 'all 0.3s ease',
               boxShadow: '0 10px 30px var(--glass-shadow-drop)',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.12)')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.08)')}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.12)')
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.background = 'rgba(var(--color-invert-rgb), 0.08)')
+            }
           >
             {isHorizontal ? <Rows size={18} /> : <Columns size={18} />}
             <span>{isHorizontal ? t('switchToVertical') : t('switchToHorizontal')}</span>
@@ -371,7 +383,7 @@ export default function ProductShowcase() {
             transition={{ duration: 0.5 }}
             style={{ height: '100%' }}
           >
-            {/* Sticky container that locks to the viewport */}
+            {}
             <div
               style={{
                 position: 'sticky',
@@ -382,8 +394,7 @@ export default function ProductShowcase() {
                 alignItems: 'center',
               }}
             >
-
-              {/* The horizontal sliding track */}
+              {}
               <motion.div
                 style={{
                   x,
@@ -415,10 +426,15 @@ export default function ProductShowcase() {
                         gap: '6vw',
                         width: '100%',
                         maxWidth: '1400px',
-                        marginTop: '120px', // Push cards down so they clear the unified header
+                        marginTop: '120px',
                       }}
                     >
-                      <ProductContent product={product} index={index} totalLength={products.length} t={t} />
+                      <ProductContent
+                        product={product}
+                        index={index}
+                        totalLength={products.length}
+                        t={t}
+                      />
                       <IllustrationPanel slug={product.slug} />
                     </div>
                   </div>
@@ -442,7 +458,9 @@ export default function ProductShowcase() {
               paddingRight: '5vw',
             }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '160px', marginTop: '60px' }}>
+            <div
+              style={{ display: 'flex', flexDirection: 'column', gap: '160px', marginTop: '60px' }}
+            >
               {products.map((product, index) => {
                 const isReversed = index % 2 !== 0;
                 return (
@@ -456,7 +474,12 @@ export default function ProductShowcase() {
                       gap: '6vw',
                     }}
                   >
-                    <ProductContent product={product} index={index} totalLength={products.length} t={t} />
+                    <ProductContent
+                      product={product}
+                      index={index}
+                      totalLength={products.length}
+                      t={t}
+                    />
                     <IllustrationPanel slug={product.slug} />
                   </div>
                 );

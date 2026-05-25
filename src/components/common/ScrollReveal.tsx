@@ -146,7 +146,10 @@ export function StaggerContainer({
   );
 }
 
-export function StaggerItem({ children, ...props }: HTMLMotionProps<'div'> & { children: React.ReactNode }) {
+export function StaggerItem({
+  children,
+  ...props
+}: HTMLMotionProps<'div'> & { children: React.ReactNode }) {
   return (
     <motion.div
       variants={{

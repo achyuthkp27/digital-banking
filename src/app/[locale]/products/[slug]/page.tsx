@@ -30,10 +30,11 @@ export default async function ProductPage({
   const t = await getTranslations({ locale, namespace: `ProductPages.${slug}` });
   const ui = await getTranslations({ locale, namespace: 'ProductPagesUI' });
 
-  // Use t.raw for arrays, or fallback to empty array if missing
   const features = t.raw('features') as { title: string; description?: string }[];
   const hasStats = t.has('stats');
-  const stats = hasStats ? t.raw('stats') as { value: string; label: string; trend?: string }[] : null;
+  const stats = hasStats
+    ? (t.raw('stats') as { value: string; label: string; trend?: string }[])
+    : null;
   const sections = t.raw('sections') as { title: string; content: string[] }[];
 
   return (
@@ -41,13 +42,13 @@ export default async function ProductPage({
       <CustomCursor />
       <Navbar />
       <main style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '0' }}>
-        {/* Hero with product-specific illustration */}
+        {}
         <ProductHero title={t('title')} subtitle={t('subtitle')} slug={slug} />
 
-        {/* Content Section */}
+        {}
         <section className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '64px' }}>
-            {/* Overview & Stats */}
+            {}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
               <div className="bento-glass" style={{ padding: '40px', borderRadius: '24px' }}>
                 <h3
@@ -109,7 +110,7 @@ export default async function ProductPage({
               )}
             </div>
 
-            {/* Features & Technical Sections */}
+            {}
             <div
               style={{
                 display: 'grid',
@@ -117,7 +118,7 @@ export default async function ProductPage({
                 gap: '24px',
               }}
             >
-              {/* Core Features */}
+              {}
               <div className="bento-glass" style={{ padding: '40px', borderRadius: '24px' }}>
                 <h3
                   style={{
@@ -136,9 +137,7 @@ export default async function ProductPage({
                       key={idx}
                       style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}
                     >
-                      <CheckCircle
-                        className="text-accent flex-shrink-0" size={24}
-                      />
+                      <CheckCircle className="text-accent flex-shrink-0" size={24} />
                       <div>
                         <h4
                           style={{
@@ -167,7 +166,7 @@ export default async function ProductPage({
                 </div>
               </div>
 
-              {/* Dynamic Sections */}
+              {}
               {sections.map((section, idx) => (
                 <div
                   key={idx}
@@ -236,14 +235,14 @@ export default async function ProductPage({
           </div>
         </section>
 
-        {/* 3D Tech Showcase Section */}
+        {}
         <div style={{ marginTop: '80px' }}>
           <TechShowcaseClient />
         </div>
       </main>
       <Footer />
 
-      {/* Global CSS for bento-glass */}
+      {}
       <style
         dangerouslySetInnerHTML={{
           __html: `

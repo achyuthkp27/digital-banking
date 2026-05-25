@@ -5,11 +5,12 @@ export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const isProd = process.env.NODE_ENV === 'production';
-  const baseUrl = isProd ? 'https://achyuthkp27.github.io/digital-banking' : 'http://localhost:3000';
+  const baseUrl = isProd
+    ? 'https://achyuthkp27.github.io/digital-banking'
+    : 'http://localhost:3000';
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  // Add the root path for all locales
   for (const locale of routing.locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,
@@ -19,7 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  // Add dynamic product pages
   const products = [
     'mobile-banking',
     'retail-banking',
@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'video-kyc',
     'agent-banking',
     'kiosk-banking',
-    'two-factor-auth'
+    'two-factor-auth',
   ];
 
   for (const locale of routing.locales) {

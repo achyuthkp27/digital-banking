@@ -2,7 +2,6 @@ import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import {
   BufferGeometry,
-
   Vector3,
   Mesh,
   MeshBasicMaterial,
@@ -13,9 +12,6 @@ import {
 import { globeCities, globeConnections } from '@/data/globeData';
 import { latLngToVec3, getGlobeDotsGeometry } from '@/utils/globeUtils';
 
-// -------------------------------------------------------------------
-// Shared Materials to prevent memory leaks (Flyweight Pattern)
-// -------------------------------------------------------------------
 const materials = {
   dots: new MeshBasicMaterial({
     color: '#10b981',
@@ -244,7 +240,6 @@ export function OrbitRing({
     [count]
   );
 
-  // Shared material per ring to avoid creating duplicates
   const ringMat = useMemo(
     () =>
       new MeshBasicMaterial({

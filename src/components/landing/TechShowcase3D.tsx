@@ -9,7 +9,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslations } from 'next-intl';
 
-/* ─── 3D Refractive Knot ─── */
 function RefractiveKnot() {
   const meshRef = useRef<Mesh>(null);
 
@@ -63,12 +62,13 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
         padding: 'clamp(80px, 10vw, 140px) 0',
       }}
     >
-      {/* Background grid */}
+      {}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(var(--color-invert-rgb),0.03) 1px, transparent 1px)',
+          backgroundImage:
+            'radial-gradient(rgba(var(--color-invert-rgb),0.03) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
         }}
@@ -87,7 +87,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
           flexWrap: 'wrap',
         }}
       >
-        {/* LEFT: 3D Canvas */}
+        {}
         <div
           style={{
             flex: '1 1 45%',
@@ -120,7 +120,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
             </Canvas>
           )}
 
-          {/* Corner accents */}
+          {}
           <div
             style={{
               position: 'absolute',
@@ -175,7 +175,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
           />
         </div>
 
-        {/* RIGHT: Content */}
+        {}
         <div style={{ flex: '1 1 45%', minWidth: '300px' }}>
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -238,7 +238,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
             {t('description')}
           </motion.p>
 
-          {/* Capability cards */}
+          {}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {capabilities.map((cap, i) => (
               <motion.div
@@ -306,7 +306,7 @@ const TechShowcase3D = React.memo(function TechShowcase3D() {
         </div>
       </div>
 
-      {/* Noise overlay */}
+      {}
       <div
         style={{
           position: 'absolute',

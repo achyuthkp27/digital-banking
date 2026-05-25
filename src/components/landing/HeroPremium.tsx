@@ -22,7 +22,6 @@ function RefractiveKnot() {
       meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.1;
       meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.15;
 
-      // Interactive floating based on mouse
       const targetX = state.pointer.x * 0.5;
       const targetY = state.pointer.y * 0.5;
 
@@ -34,7 +33,7 @@ function RefractiveKnot() {
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
       <mesh ref={meshRef} position={[0, 0, 2]}>
-        {/* Torus Knot representing complex, secure, infinite banking flow */}
+        {}
         <torusKnotGeometry args={[1.5, 0.5, 256, 64]} />
         <MeshTransmissionMaterial
           backside
@@ -104,7 +103,7 @@ export default function HeroPremium() {
         justifyContent: 'center',
       }}
     >
-      {/* 3D Canvas rendering Text AND the Refractive Glass */}
+      {}
       <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
         {inView && (
           <Canvas camera={{ position: [0, 0, 10], fov: 35 }}>
@@ -120,7 +119,7 @@ export default function HeroPremium() {
         )}
       </div>
 
-      {/* HTML Overlay Content (CTAs, Subtitle) sitting on top of canvas */}
+      {}
       <div
         style={{
           position: 'absolute',
@@ -131,7 +130,7 @@ export default function HeroPremium() {
           alignItems: 'center',
           width: '100%',
           padding: '0 24px',
-          pointerEvents: 'none', // Let mouse events pass through to Canvas
+          pointerEvents: 'none',
         }}
       >
         <p
@@ -154,7 +153,6 @@ export default function HeroPremium() {
         </p>
 
         <div style={{ display: 'flex', gap: '16px', pointerEvents: 'auto' }}>
-
           <Link
             href="/architecture"
             className="pill-button"

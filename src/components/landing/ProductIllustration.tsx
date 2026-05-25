@@ -5,17 +5,36 @@ import dynamic from 'next/dynamic';
 
 import { useInView } from 'react-intersection-observer';
 
-/* ─── Lazy-load all product illustrations ─── */
 const illustrations: Record<string, React.ComponentType> = {
-  'video-kyc': dynamic(() => import('@/components/illustrations/VideoKycIllustration'), { ssr: false }),
-  'kiosk-banking': dynamic(() => import('@/components/illustrations/KioskBankingIllustration'), { ssr: false }),
-  'agent-banking': dynamic(() => import('@/components/illustrations/AgentBankingIllustration'), { ssr: false }),
-  'corporate-admin': dynamic(() => import('@/components/illustrations/CorporateAdminIllustration'), { ssr: false }),
-  'corporate-banking': dynamic(() => import('@/components/illustrations/CorporateBankingIllustration'), { ssr: false }),
-  'retail-banking': dynamic(() => import('@/components/illustrations/RetailBankingIllustration'), { ssr: false }),
-  'retail-admin': dynamic(() => import('@/components/illustrations/RetailAdminIllustration'), { ssr: false }),
-  'mobile-banking': dynamic(() => import('@/components/illustrations/MobileBankingIllustration'), { ssr: false }),
-  'two-factor-auth': dynamic(() => import('@/components/illustrations/TwoFactorAuthIllustration'), { ssr: false }),
+  'video-kyc': dynamic(() => import('@/components/illustrations/VideoKycIllustration'), {
+    ssr: false,
+  }),
+  'kiosk-banking': dynamic(() => import('@/components/illustrations/KioskBankingIllustration'), {
+    ssr: false,
+  }),
+  'agent-banking': dynamic(() => import('@/components/illustrations/AgentBankingIllustration'), {
+    ssr: false,
+  }),
+  'corporate-admin': dynamic(
+    () => import('@/components/illustrations/CorporateAdminIllustration'),
+    { ssr: false }
+  ),
+  'corporate-banking': dynamic(
+    () => import('@/components/illustrations/CorporateBankingIllustration'),
+    { ssr: false }
+  ),
+  'retail-banking': dynamic(() => import('@/components/illustrations/RetailBankingIllustration'), {
+    ssr: false,
+  }),
+  'retail-admin': dynamic(() => import('@/components/illustrations/RetailAdminIllustration'), {
+    ssr: false,
+  }),
+  'mobile-banking': dynamic(() => import('@/components/illustrations/MobileBankingIllustration'), {
+    ssr: false,
+  }),
+  'two-factor-auth': dynamic(() => import('@/components/illustrations/TwoFactorAuthIllustration'), {
+    ssr: false,
+  }),
 };
 
 interface ProductIllustrationProps {
@@ -32,7 +51,8 @@ const Fallback = () => (
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: '32px',
-      background: 'radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.08) 0%, transparent 60%)',
+      background:
+        'radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.08) 0%, transparent 60%)',
     }}
   >
     <div
@@ -57,16 +77,22 @@ const Fallback = () => (
         }}
       />
     </div>
-    <style dangerouslySetInnerHTML={{ __html: `
+    <style
+      dangerouslySetInnerHTML={{
+        __html: `
       @keyframes fallback-pulse {
         0%, 100% { transform: scale(1); opacity: 1; }
         50% { transform: scale(0.95); opacity: 0.7; }
       }
-    `}} />
+    `,
+      }}
+    />
   </div>
 );
 
-const ProductIllustration = React.memo(function ProductIllustration({ slug }: ProductIllustrationProps) {
+const ProductIllustration = React.memo(function ProductIllustration({
+  slug,
+}: ProductIllustrationProps) {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '400px 0px' });
   const IllustrationComponent = illustrations[slug];
 

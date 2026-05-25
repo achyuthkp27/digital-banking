@@ -21,13 +21,22 @@ export default function Footer() {
           className="footer-content"
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
             marginBottom: '64px',
+            gap: '40px',
           }}
         >
-          {/* Logo and Copyright */}
-          <div style={{ flex: '1', maxWidth: '300px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              maxWidth: '400px',
+              textAlign: 'center',
+            }}
+          >
             <Link
               href="/"
               style={{
@@ -56,113 +65,25 @@ export default function Footer() {
                 color: 'var(--text-secondary)',
                 fontSize: '14px',
                 lineHeight: 1.6,
-                marginBottom: '24px',
               }}
             >
               {t('tagline')}
             </p>
           </div>
 
-          {/* Links */}
-          <div style={{ display: 'flex', gap: '80px' }}>
-            <div>
-              <h3
-                style={{
-                  color: 'var(--text-primary)',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  marginBottom: '20px',
-                }}
-              >
-                {t('platform')}
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <Link
-                  href="#products"
-                  style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14px',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {tNav('products')}
-                </Link>
-                <Link
-                  href="#architecture"
-                  style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14px',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {tNav('architecture')}
-                </Link>
-                <Link
-                  href="#security"
-                  style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14px',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {tNav('security')}
-                </Link>
-                <Link
-                  href="#technology"
-                  style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14px',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {tNav('technology')}
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3
-                style={{
-                  color: 'var(--text-primary)',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  marginBottom: '20px',
-                }}
-              >
-                {t('company')}
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <Link
-                  href="#"
-                  style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14px',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {t('aboutUs')}
-                </Link>
-                <Link
-                  href="#"
-                  style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14px',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {t('careers')}
-                </Link>
-                <Link
-                  href="#"
-                  style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14px',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {t('contact')}
-                </Link>
-              </div>
-            </div>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <Link href="#products" className="footer-nav-btn">
+              {tNav('products')}
+            </Link>
+            <Link href="#architecture" className="footer-nav-btn">
+              {tNav('architecture')}
+            </Link>
+            <Link href="#security" className="footer-nav-btn">
+              {tNav('security')}
+            </Link>
+            <Link href="#technology" className="footer-nav-btn">
+              {tNav('technology')}
+            </Link>
           </div>
         </div>
 
@@ -175,32 +96,34 @@ export default function Footer() {
           }}
         />
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p style={{ color: 'var(--text-tertiary)', fontSize: '13px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <p style={{ color: 'var(--text-tertiary)', fontSize: '13px', textAlign: 'center' }}>
             {t('copyright', { year: new Date().getFullYear() })}
           </p>
-          <div style={{ display: 'flex', gap: '24px' }}>
-            <Link href="#" style={{ color: 'var(--text-tertiary)', fontSize: '13px' }}>
-              {t('privacyPolicy')}
-            </Link>
-            <Link href="#" style={{ color: 'var(--text-tertiary)', fontSize: '13px' }}>
-              {t('termsOfService')}
-            </Link>
-          </div>
         </div>
       </div>
 
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        .footer-content a:hover {
-          color: var(--text-primary) !important;
+        .footer-nav-btn {
+          color: var(--text-secondary);
+          font-size: 14px;
+          text-decoration: none;
+          padding: 8px 24px;
+          border-radius: 100px;
+          background: var(--border-subtle);
+          border: 1px solid var(--border-default);
+          transition: all 0.2s ease;
         }
-        @media (max-width: 768px) {
-          .footer-content {
-            flex-direction: column;
-            gap: 48px;
-          }
+        .footer-nav-btn:hover {
+          color: var(--text-primary) !important;
+          background: var(--border-default);
+          border-color: var(--border-strong);
+          transform: translateY(-1px);
+        }
+        .footer-content a:not(.footer-nav-btn):hover {
+          color: var(--text-primary) !important;
         }
       `,
         }}

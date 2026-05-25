@@ -5,16 +5,37 @@ import { useInView, useMotionValue, animate } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 const statKeys = [
-  { value: 99.99, suffix: '%', labelKey: 'systemUptime' as const, format: (v: number) => v.toFixed(2) },
-  { value: 100, prefix: '<', suffix: 'ms', labelKey: 'apiResponse' as const, format: (v: number) => Math.round(v).toString() },
-  { value: 1, suffix: 'M+', labelKey: 'requestsPerMin' as const, format: (v: number) => Math.round(v).toString() },
-  { value: 256, suffix: '-bit', labelKey: 'aesEncryption' as const, format: (v: number) => Math.round(v).toString() },
+  {
+    value: 99.99,
+    suffix: '%',
+    labelKey: 'systemUptime' as const,
+    format: (v: number) => v.toFixed(2),
+  },
+  {
+    value: 100,
+    prefix: '<',
+    suffix: 'ms',
+    labelKey: 'apiResponse' as const,
+    format: (v: number) => Math.round(v).toString(),
+  },
+  {
+    value: 1,
+    suffix: 'M+',
+    labelKey: 'requestsPerMin' as const,
+    format: (v: number) => Math.round(v).toString(),
+  },
+  {
+    value: 256,
+    suffix: '-bit',
+    labelKey: 'aesEncryption' as const,
+    format: (v: number) => Math.round(v).toString(),
+  },
 ];
 
-function AnimatedNumber({ stat }: { stat: typeof statKeys[0] }) {
+function AnimatedNumber({ stat }: { stat: (typeof statKeys)[0] }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-20%' });
-  const startValue = stat.value > 10 ? 0 : (stat.value > 1 ? 0 : 99.0);
+  const startValue = stat.value > 10 ? 0 : stat.value > 1 ? 0 : 99.0;
   const motionValue = useMotionValue(startValue);
 
   useEffect(() => {
@@ -46,7 +67,7 @@ function AnimatedNumber({ stat }: { stat: typeof statKeys[0] }) {
         marginBottom: '8px',
         lineHeight: 1,
         display: 'inline-block',
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
       }}
     >
       0
@@ -76,7 +97,10 @@ export default function StatsSection() {
           }}
         >
           {statKeys.map((stat, idx) => (
-            <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div
+              key={idx}
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+            >
               <AnimatedNumber stat={stat} />
               <span
                 style={{
@@ -94,7 +118,9 @@ export default function StatsSection() {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{__html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @media (max-width: 992px) {
           .stats-grid {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -107,7 +133,9 @@ export default function StatsSection() {
             gap: 64px !important;
           }
         }
-      `}} />
+      `,
+        }}
+      />
     </section>
   );
 }
