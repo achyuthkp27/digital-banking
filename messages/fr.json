@@ -40,7 +40,7 @@
   "Architecture": {
     "badge": "Architecture Système",
     "title": "Architecture Évolutive",
-    "subtitle": "Architecture basée sur les microservices et cloud-native, conçue pour une haute disponibilité et performance",
+    "subtitle": "Architecture basée sur les microservices et hautement évolutive, conçue pour une haute disponibilité et performance",
     "presentationLayer": "Couche de Présentation",
     "layer1": "Couche 1",
     "webApp": "App Web",
@@ -64,8 +64,8 @@
     "redisCache": "Cache Redis",
     "documentStore": "Stockage Documents",
     "dataWarehouse": "Entrepôt de Données",
-    "cloudNative": "Cloud Natif",
-    "cloudNativeDesc": "Conçu pour Kubernetes, mise à l'échelle automatique et déploiement multi-régions",
+    "elasticScale": "Évolutivité élastique",
+    "elasticScaleDesc": "Conçu pour Kubernetes, mise à l'échelle automatique et déploiement multi-régions",
     "secureByDesign": "Sécurisé par Conception",
     "secureByDesignDesc": "Architecture zéro confiance avec chiffrement de bout en bout",
     "microservices": "Microservices",
@@ -101,7 +101,7 @@
     "eventsProcessed": "Événements Traités / Seconde",
     "e2eEncryption": "Chiffrement de Bout en Bout",
     "openApis": "APIs Financières Ouvertes",
-    "aiFraudDetection": "Précision de Détection de Fraude IA"
+    "fraudDetection": "Précision de Détection de Fraude"
   },
   "TechStack": {
     "title": "Stack moderne. Éprouvé à grande échelle.",
@@ -119,9 +119,9 @@
     "dashboard": "Tableau de Bord Numérique",
     "dashboardDesc": "Tableau de bord unifié complet avec analytique en temps réel, surveillance des transactions et widgets personnalisables pour une supervision complète.",
     "architecture": "Architecture",
-    "architectureDesc": "Architecture évolutive basée sur les microservices avec conception cloud-native, approche API-first et intégrations tierces transparentes.",
+    "architectureDesc": "Architecture évolutive basée sur les microservices avec conception résiliente, approche API-first et intégrations tierces transparentes.",
     "capabilities": "Capacités",
-    "capabilitiesDesc": "Banque multicanal, paiements instantanés, gestion de patrimoine, origination de prêts et insights financiers alimentés par l'IA.",
+    "capabilitiesDesc": "Banque multicanal, paiements instantanés, gestion de patrimoine, origination de prêts et insights financiers en temps réel.",
     "devAndImpl": "Développement et Implémentation",
     "devAndImplDesc": "Méthodologie de développement agile, pipelines CI/CD, tests automatisés et documentation API complète pour un déploiement rapide.",
     "operationsMaint": "Opérations / Maintenance",
@@ -153,7 +153,7 @@
       "videoKyc": {
         "label": "Vérification à Distance",
         "title": "Vidéo KYC et Banque Vidéo",
-        "description": "Vérification KYC avancée basée sur la vidéo et services bancaires à distance avec vérification d'identité alimentée par l'IA, appels vidéo en direct avec des responsables bancaires, numérisation de documents et intégration numérique sécurisée pour une expérience client transparente.",
+        "description": "Vérification KYC avancée basée sur la vidéo et services bancaires à distance avec vérification d'identité biométrique, appels vidéo en direct avec des responsables bancaires, numérisation de documents et intégration numérique sécurisée pour une expérience client transparente.",
         "features": {
           "0": "Vérification automatisée de l'identité et des documents",
           "1": "Connectez-vous avec des responsables bancaires par appel vidéo sécurisé",
@@ -265,11 +265,11 @@
   "ProductPages": {
     "video-kyc": {
       "title": "Vidéo KYC",
-      "subtitle": "Vérification à distance sécurisée utilisant des appels vidéo en temps réel, la numérisation de documents et des contrôles d'identité basés sur l'IA.",
-      "description": "Un flux d'intégration complet conçu pour une vérification à distance rapide, sécurisée et conforme. Vérification à distance sécurisée utilisant des appels vidéo en temps réel, la numérisation de documents et des contrôles d'identité alimentés par l'IA.",
+      "subtitle": "Vérification à distance sécurisée utilisant des appels vidéo en temps réel, la numérisation de documents et des contrôles d'identité biométriques.",
+      "description": "Un flux d'intégration complet conçu pour une vérification à distance rapide, sécurisée et conforme. Vérification à distance sécurisée utilisant des appels vidéo en temps réel, la numérisation de documents et des contrôles d'identité biométriques.",
       "features": [
         {
-          "title": "Vérification IA",
+          "title": "Vérification biométrique",
           "description": "Signaux de vérification automatisés pour une révision et une prise de décision plus rapides."
         },
         {

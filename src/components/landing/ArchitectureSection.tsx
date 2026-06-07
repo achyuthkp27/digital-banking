@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Globe, Router, Network, Database, Cloud, Shield, ChevronDown } from 'lucide-react';
+import { Globe, Router, Network, Database, Layers, Shield, ChevronDown } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { BlurReveal, BlurText } from '@/components/common/ScrollReveal';
@@ -63,9 +63,9 @@ export default function ArchitectureSection() {
 
   const callouts = [
     {
-      title: t('cloudNative'),
-      description: t('cloudNativeDesc'),
-      icon: <Cloud size={24} />,
+      title: t('elasticScale'),
+      description: t('elasticScaleDesc'),
+      icon: <Layers size={24} />,
     },
     {
       title: t('secureByDesign'),

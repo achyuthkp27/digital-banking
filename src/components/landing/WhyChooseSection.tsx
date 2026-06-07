@@ -71,7 +71,7 @@ const statKeys = [
     id: '06',
     value: 98.7,
     suffix: '%',
-    labelKey: 'aiFraudDetection' as const,
+    labelKey: 'fraudDetection' as const,
     format: (v: number) => v.toFixed(1),
   },
 ];

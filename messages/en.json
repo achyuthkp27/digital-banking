@@ -40,7 +40,7 @@
   "Architecture": {
     "badge": "System Architecture",
     "title": "Scalable Architecture",
-    "subtitle": "Microservices-based, cloud-native architecture designed for high availability and performance",
+    "subtitle": "Microservices-based, horizontally scalable architecture designed for high availability and performance",
     "presentationLayer": "Presentation Layer",
     "layer1": "Layer 1",
     "webApp": "Web App",
@@ -64,8 +64,8 @@
     "redisCache": "Redis Cache",
     "documentStore": "Document Store",
     "dataWarehouse": "Data Warehouse",
-    "cloudNative": "Cloud Native",
-    "cloudNativeDesc": "Built for Kubernetes, auto-scaling, and multi-region deployment",
+    "elasticScale": "Elastic Scale",
+    "elasticScaleDesc": "Built for Kubernetes, auto-scaling, and multi-region deployment",
     "secureByDesign": "Secure by Design",
     "secureByDesignDesc": "Zero-trust architecture with end-to-end encryption",
     "microservices": "Microservices",
@@ -101,7 +101,7 @@
     "eventsProcessed": "Events Processed / Second",
     "e2eEncryption": "End-to-End Encryption",
     "openApis": "Open Financial APIs",
-    "aiFraudDetection": "AI Fraud Detection Accuracy"
+    "fraudDetection": "Fraud Detection Accuracy"
   },
   "TechStack": {
     "title": "Modern stack. Proven at scale.",
@@ -119,9 +119,9 @@
     "dashboard": "Digital Platform Dashboard",
     "dashboardDesc": "Comprehensive unified dashboard with real-time analytics, transaction monitoring, and customizable widgets for complete oversight.",
     "architecture": "Architecture",
-    "architectureDesc": "Microservices-based scalable architecture with cloud-native design, API-first approach, and seamless third-party integrations.",
+    "architectureDesc": "Microservices-based scalable architecture with resilient design, API-first approach, and seamless third-party integrations.",
     "capabilities": "Capabilities",
-    "capabilitiesDesc": "Multi-channel banking, instant payments, wealth management, loan origination, and AI-powered financial insights.",
+    "capabilitiesDesc": "Multi-channel banking, instant payments, wealth management, loan origination, and real-time financial insights.",
     "devAndImpl": "Development & Implementation",
     "devAndImplDesc": "Agile development methodology, CI/CD pipelines, automated testing, and comprehensive API documentation for rapid deployment.",
     "operationsMaint": "Operations / Maintenance",
@@ -153,7 +153,7 @@
       "videoKyc": {
         "label": "Remote Verification",
         "title": "Video KYC & Video Banking",
-        "description": "Advanced video-based KYC verification and remote banking services with AI-powered identity verification, live video calls with bank officials, document scanning, and secure digital onboarding for seamless customer experience.",
+        "description": "Advanced video-based KYC verification and remote banking services with biometric identity verification, live video calls with bank officials, document scanning, and secure digital onboarding for seamless customer experience.",
         "features": {
           "0": "Automated identity and document verification",
           "1": "Connect with bank officials via secure video call",
@@ -265,11 +265,11 @@
   "ProductPages": {
     "video-kyc": {
       "title": "Video KYC",
-      "subtitle": "Secure remote verification using real-time video calls, document scanning, and AI-powered identity checks.",
-      "description": "A complete onboarding flow designed for fast, secure, and compliant remote verification. Secure remote verification using real-time video calls, document scanning, and AI-powered identity checks.",
+      "subtitle": "Secure remote verification using real-time video calls, document scanning, and biometric identity checks.",
+      "description": "A complete onboarding flow designed for fast, secure, and compliant remote verification. Secure remote verification using real-time video calls, document scanning, and biometric identity checks.",
       "features": [
         {
-          "title": "AI Verification",
+          "title": "Biometric Verification",
           "description": "Automated verification signals for faster review and decisioning."
         },
         {

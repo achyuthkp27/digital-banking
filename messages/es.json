@@ -40,7 +40,7 @@
   "Architecture": {
     "badge": "Arquitectura del Sistema",
     "title": "Arquitectura Escalable",
-    "subtitle": "Arquitectura basada en microservicios y nativa en la nube, diseñada para alta disponibilidad y rendimiento",
+    "subtitle": "Arquitectura basada en microservicios y altamente escalable, diseñada para alta disponibilidad y rendimiento",
     "presentationLayer": "Capa de Presentación",
     "layer1": "Capa 1",
     "webApp": "App Web",
@@ -64,8 +64,8 @@
     "redisCache": "Caché Redis",
     "documentStore": "Almacén de Documentos",
     "dataWarehouse": "Almacén de Datos",
-    "cloudNative": "Nativo en la Nube",
-    "cloudNativeDesc": "Construido para Kubernetes, escalado automático e implementación multirregión",
+    "elasticScale": "Escalabilidad elástica",
+    "elasticScaleDesc": "Construido para Kubernetes, escalado automático e implementación multirregión",
     "secureByDesign": "Seguro por Diseño",
     "secureByDesignDesc": "Arquitectura de confianza cero con cifrado de extremo a extremo",
     "microservices": "Microservicios",
@@ -101,7 +101,7 @@
     "eventsProcessed": "Eventos Procesados / Segundo",
     "e2eEncryption": "Cifrado de Extremo a Extremo",
     "openApis": "APIs Financieras Abiertas",
-    "aiFraudDetection": "Precisión de Detección de Fraude IA"
+    "fraudDetection": "Precisión de Detección de Fraude"
   },
   "TechStack": {
     "title": "Stack moderno. Probado a escala.",
@@ -119,9 +119,9 @@
     "dashboard": "Panel de Plataforma Digital",
     "dashboardDesc": "Panel unificado integral con análisis en tiempo real, monitoreo de transacciones y widgets personalizables para supervisión completa.",
     "architecture": "Arquitectura",
-    "architectureDesc": "Arquitectura escalable basada en microservicios con diseño nativo en la nube, enfoque API-first e integraciones de terceros sin problemas.",
+    "architectureDesc": "Arquitectura escalable basada en microservicios con diseño resiliente, enfoque API-first e integraciones de terceros sin problemas.",
     "capabilities": "Capacidades",
-    "capabilitiesDesc": "Banca multicanal, pagos instantáneos, gestión patrimonial, originación de préstamos e información financiera impulsada por IA.",
+    "capabilitiesDesc": "Banca multicanal, pagos instantáneos, gestión patrimonial, originación de préstamos e información financiera en tiempo real.",
     "devAndImpl": "Desarrollo e Implementación",
     "devAndImplDesc": "Metodología de desarrollo ágil, pipelines CI/CD, pruebas automatizadas y documentación API completa para implementación rápida.",
     "operationsMaint": "Operaciones / Mantenimiento",
@@ -153,7 +153,7 @@
       "videoKyc": {
         "label": "Verificación Remota",
         "title": "Video KYC y Video Banca",
-        "description": "Verificación KYC avanzada basada en video y servicios de banca remota con verificación de identidad impulsada por IA, videollamadas en vivo con funcionarios bancarios, escaneo de documentos e incorporación digital segura para una experiencia del cliente perfecta.",
+        "description": "Verificación KYC avanzada basada en video y servicios de banca remota con verificación de identidad biométrica, videollamadas en vivo con funcionarios bancarios, escaneo de documentos e incorporación digital segura para una experiencia del cliente perfecta.",
         "features": {
           "0": "Verificación automatizada de identidad y documentos",
           "1": "Conéctese con funcionarios bancarios por videollamada segura",
@@ -265,11 +265,11 @@
   "ProductPages": {
     "video-kyc": {
       "title": "Video KYC",
-      "subtitle": "Verificación remota segura mediante videollamadas en tiempo real, escaneo de documentos y controles de identidad basados en IA.",
-      "description": "Un flujo de incorporación completo diseñado para una verificación remota rápida, segura y compatible. Verificación remota segura utilizando videollamadas en tiempo real, escaneo de documentos y controles de identidad impulsados por IA.",
+      "subtitle": "Verificación remota segura mediante videollamadas en tiempo real, escaneo de documentos y controles de identidad biométricos.",
+      "description": "Un flujo de incorporación completo diseñado para una verificación remota rápida, segura y compatible. Verificación remota segura utilizando videollamadas en tiempo real, escaneo de documentos y controles de identidad biométricos.",
       "features": [
         {
-          "title": "Verificación con IA",
+          "title": "Verificación biométrica",
           "description": "Señales de verificación automatizadas para una revisión y toma de decisiones más rápidas."
         },
         {
