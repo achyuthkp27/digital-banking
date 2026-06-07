@@ -3,9 +3,23 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  max-width: 720px;
+  max-width: 780px;
   position: relative;
   z-index: 20;
+}
+
+/* Soft emerald bloom behind the headline — fills the flat dark space with depth */
+.heroContainer::before {
+  content: '';
+  position: absolute;
+  left: -120px;
+  top: -60px;
+  width: 640px;
+  height: 420px;
+  background: radial-gradient(60% 60% at 32% 42%, rgba(16, 185, 129, 0.12), transparent 70%);
+  filter: blur(50px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .statusBadge {
@@ -40,18 +54,40 @@
 
 .heading {
   font-family: var(--font-syne), sans-serif;
-  font-size: clamp(44px, 6vw, 80px);
-  font-weight: 700;
+  font-size: clamp(44px, 5.8vw, 78px);
+  font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.08;
+  line-height: 1.06;
   letter-spacing: -0.035em;
   margin-bottom: 28px;
 }
 
 .headingHighlight {
-  background: linear-gradient(135deg, #10b981 0%, #34d399 40%, #6ee7b7 100%);
+  background: linear-gradient(
+    110deg,
+    #059669 0%,
+    #10b981 22%,
+    #6ee7b7 50%,
+    #10b981 78%,
+    #059669 100%
+  );
+  background-size: 250% 100%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 0 30px rgba(16, 185, 129, 0.28));
+  animation: heroShimmer 6s ease-in-out infinite;
+}
+
+@keyframes heroShimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .subtext {

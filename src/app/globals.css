@@ -265,3 +265,44 @@ button:focus-visible {
   opacity: 0.4;
   pointer-events: none;
 }
+
+/* ---------------------------------------------------------------------------
+   Frontend-design polish: premium atmosphere + refined chrome (site-wide)
+   --------------------------------------------------------------------------- */
+
+/* Fine film-grain overlay — adds analog depth/texture over the flat dark base.
+   Static, so it's untouched by the reduced-motion rule above. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.light body::after {
+  opacity: 0.03;
+}
+
+/* Refined, on-brand scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--accent-rgb), 0.35) transparent;
+}
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--accent-rgb), 0.32);
+  border-radius: 999px;
+  border: 3px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--accent-rgb), 0.55);
+}
