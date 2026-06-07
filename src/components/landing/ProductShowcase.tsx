@@ -6,13 +6,14 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { CheckCircle, Columns, Rows } from 'lucide-react';
 import ProductIllustration from '@/components/landing/ProductIllustration';
 import { useTranslations } from 'next-intl';
+import { EXTERNAL_APP_URL } from '@/config/links';
 
 const productKeys = [
   { key: 'mobileBanking', slug: 'mobile-banking' },
   { key: 'retailBanking', slug: 'retail-banking' },
   { key: 'retailAdmin', slug: 'retail-admin' },
   { key: 'corporateBanking', slug: 'corporate-banking' },
-  { key: 'corporateAdmin', slug: 'corporate-admin' },
+  { key: 'merchantBanking', slug: 'merchant-banking' },
   { key: 'videoKyc', slug: 'video-kyc' },
   { key: 'agentBanking', slug: 'agent-banking' },
   { key: 'kioskBanking', slug: 'kiosk-banking' },
@@ -217,7 +218,7 @@ const ProductContent = React.memo(
         </Link>
 
         <a
-          href="https://dev.fisdbs.com/OLBRETAIL/"
+          href={EXTERNAL_APP_URL}
           target="_blank"
           rel="noopener noreferrer"
           style={{

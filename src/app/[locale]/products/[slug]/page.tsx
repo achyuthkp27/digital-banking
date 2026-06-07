@@ -1,11 +1,70 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { productSlugs } from '@/data/productContent';
+import { routing } from '@/i18n/routing';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+
+const SITE_URL = 'https://achyuthkp27.github.io/digital-banking';
 
 export function generateStaticParams() {
   return productSlugs.map((slug) => ({
     slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  if (!productSlugs.includes(slug)) return {};
+
+  const t = await getTranslations({ locale, namespace: `ProductPages.${slug}` });
+  const title = t('title');
+  const description = t('subtitle');
+  const url = `${SITE_URL}/${locale}/products/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/digital-banking/${locale}/products/${slug}`,
+      languages: {
+        ...Object.fromEntries(
+          routing.locales.map((l) => [l, `/digital-banking/${l}/products/${slug}`])
+        ),
+        'x-default': `/digital-banking/${routing.defaultLocale}/products/${slug}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'website',
+      images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${SITE_URL}/og-image.png`],
+    },
+  };
+}
+
+interface ProductFeatureContent {
+  title: string;
+  description?: string;
+}
+interface ProductStat {
+  value: string;
+  label: string;
+  trend?: string;
+}
+interface ProductSection {
+  title: string;
+  content: string[];
 }
 
 import Navbar from '@/components/landing/Navbar';
@@ -30,18 +89,32 @@ export default async function ProductPage({
   const t = await getTranslations({ locale, namespace: `ProductPages.${slug}` });
   const ui = await getTranslations({ locale, namespace: 'ProductPagesUI' });
 
-  const features = t.raw('features') as { title: string; description?: string }[];
-  const hasStats = t.has('stats');
-  const stats = hasStats
-    ? (t.raw('stats') as { value: string; label: string; trend?: string }[])
-    : null;
-  const sections = t.raw('sections') as { title: string; content: string[] }[];
+  const features = t.has('features') ? (t.raw('features') as ProductFeatureContent[]) : [];
+  const stats = t.has('stats') ? (t.raw('stats') as ProductStat[]) : null;
+  const sections = t.has('sections') ? (t.raw('sections') as ProductSection[]) : [];
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: t('title'),
+            description: t('description'),
+            brand: { '@type': 'Brand', name: 'Digital Banking' },
+            url: `${SITE_URL}/${locale}/products/${slug}`,
+          }),
+        }}
+      />
       <CustomCursor />
       <Navbar />
-      <main style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '0' }}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '0' }}
+      >
         {}
         <ProductHero title={t('title')} subtitle={t('subtitle')} slug={slug} />
 

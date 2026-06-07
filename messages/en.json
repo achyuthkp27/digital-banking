@@ -7,13 +7,13 @@
     "requestDemo": "Request Demo",
     "home": "Home"
   },
-   "Brand": {
-     "word1First": "D",
-     "word1Rest": "igital",
-     "word2First": "B",
-     "word2Rest": "anking",
-     "appName": "Digital Banking"
-   },
+  "Brand": {
+    "word1First": "D",
+    "word1Rest": "igital",
+    "word2First": "B",
+    "word2Rest": "anking",
+    "appName": "Digital Banking"
+  },
   "Hero": {
     "badge": "Enterprise Platform",
     "titleLine1": "The future of",
@@ -42,11 +42,6 @@
     "apiResponse": "API Response",
     "requestsPerMin": "Requests/Min",
     "aesEncryption": "AES Encryption"
-  },
-  "StatsBar": {
-    "uptimeSla": "Uptime SLA",
-    "transactionsPerDay": "Transactions/Day",
-    "responseTime": "Response Time"
   },
   "Architecture": {
     "badge": "System Architecture",
@@ -194,17 +189,6 @@
           "3": "Continue operations without internet connectivity"
         }
       },
-      "corporateAdmin": {
-        "label": "Enterprise Admin",
-        "title": "Corporate Banking Admin",
-        "description": "Comprehensive administrative dashboard for corporate banking operations with multi-level approval hierarchies, limit management, audit trails, and treasury controls.",
-        "features": {
-          "0": "Manage corporate users and complex role hierarchies",
-          "1": "Configure transaction limits and authorization rules",
-          "2": "Real-time treasury and liquidity monitoring",
-          "3": "Detailed audit trails and compliance reporting"
-        }
-      },
       "corporateBanking": {
         "label": "Enterprise Solution",
         "title": "Corporate Banking",
@@ -259,39 +243,19 @@
           "2": "Approve or reject transactions via push",
           "3": "Secure 4-6 digit PIN with auto-lock"
         }
+      },
+      "merchantBanking": {
+        "label": "Merchant Solutions",
+        "title": "Merchant Banking",
+        "description": "Complete merchant payment platform with POS and QR enablement, real-time settlement dashboards, and transaction analytics to grow and manage your business.",
+        "features": {
+          "0": "Enable and manage POS terminals and devices",
+          "1": "Accept dynamic and static QR payments",
+          "2": "Track settlements and reconciliation in real-time",
+          "3": "Analyze transactions with actionable insights"
+        }
       }
     }
-  },
-  "Dashboard": {
-    "headerLabel": "DASHBOARD / LIVE_STREAM",
-    "overview": "Overview",
-    "transactionsNav": "Transactions",
-    "apiLogs": "API Logs",
-    "settings": "Settings",
-    "totalVolume": "Total Volume",
-    "activeSessions": "Active Sessions",
-    "systemHealth": "System Health",
-    "recentTransactions": "Recent Transactions",
-    "settled": "Settled",
-    "processing": "Processing"
-  },
-  "DemoDialog": {
-    "title": "Request a Demo",
-    "subtitle": "Fill this out and we'll get back to you within 24 hours.",
-    "close": "Close",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "workEmail": "Work Email",
-    "companyName": "Company Name",
-    "productInterest": "Product Interest",
-    "videoKyc": "Video KYC",
-    "kioskBanking": "Kiosk Banking",
-    "agentBanking": "Agent Banking",
-    "corporateAdmin": "Corporate Admin",
-    "corporateBanking": "Corporate Banking",
-    "mobileBanking": "Mobile Banking",
-    "other": "Other",
-    "submitRequest": "Submit Request"
   },
   "Loading": {
     "text": "Loading..."
@@ -808,13 +772,6 @@
     "availability": "Availability",
     "viewArchitecture": "View Architecture"
   },
-  "HeroPremium": {
-    "nextGen": "NEXT GEN",
-    "banking": "BANKING",
-    "description": "An infinitely scalable, zero-trust digital platform engineered for the future of finance.",
-    "requestAccess": "Request Access",
-    "explorePlatform": "Explore Platform"
-  },
   "TechShowcase3D": {
     "platformArchitecture": "// PLATFORM ARCHITECTURE",
     "engineeredFor": "Engineered for",
@@ -837,25 +794,6 @@
         "label": "Multi-Region Deploy",
         "desc": "Active-active deployment across 40+ global data centers"
       }
-    ]
-  },
-  "ContactPage": {
-    "title": "Request a Demo",
-    "subtitle": "Discover how our next-generation digital banking platform can transform your institution.",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "email": "Work Email",
-    "company": "Company Name",
-    "jobTitle": "Job Title",
-    "message": "How can we help?",
-    "submit": "Request Access",
-    "successMessage": "Thank you! Our team will be in touch shortly.",
-    "featuresTitle": "Why choose DB Platform?",
-    "features": [
-      "Accelerate time-to-market with proven modules",
-      "Ensure enterprise-grade security and compliance",
-      "Seamlessly integrate with legacy core systems",
-      "Deliver stunning user experiences across all channels"
     ]
   },
   "AppFlow": {
@@ -882,5 +820,17 @@
     "equities": "Equities",
     "fixedIncome": "Fixed Income",
     "alternatives": "Alternatives"
+  },
+  "Marquee": {
+    "items": [
+      "ISO 27001 Certified",
+      "PCI DSS Level 1",
+      "AES-256 Encryption",
+      "Zero Data Breaches",
+      "SOC 2 Type II",
+      "GDPR Compliant",
+      "RBI Regulated",
+      "99.9% SLA"
+    ]
   }
 }

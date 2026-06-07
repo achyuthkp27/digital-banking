@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
+import { productSlugs } from '@/data/productContent';
 
 export const dynamic = 'force-static';
 
@@ -20,20 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  const products = [
-    'mobile-banking',
-    'retail-banking',
-    'retail-admin',
-    'corporate-banking',
-    'corporate-admin',
-    'video-kyc',
-    'agent-banking',
-    'kiosk-banking',
-    'two-factor-auth',
-  ];
-
   for (const locale of routing.locales) {
-    for (const product of products) {
+    for (const product of productSlugs) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/products/${product}`,
         lastModified: new Date(),

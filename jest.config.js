@@ -1,19 +1,17 @@
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({ dir: './' });
+
+/** @type {import('jest').Config} */
+const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '^@/components/(.*)$': '<rootDir>/src/components/$1',
-    '^@/app/(.*)$': '<rootDir>/src/app/$1',
   },
-  testMatch: [
-    '**/__tests__/**/*.+(ts|tsx|js)',
-    '**/?(*.)+(spec|test).+(ts|tsx|js)',
-  ],
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    '!src/**/*.d.ts',
-    '!src/app/**/*.tsx',
-  ],
+  // next-intl / use-intl ship ESM; they are transpiled for Jest via
+  // `transpilePackages` in next.config.ts (read by next/jest).
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts', '!src/app/**/*.tsx'],
 };
+
+module.exports = createJestConfig(customJestConfig);

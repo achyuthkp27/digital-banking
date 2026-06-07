@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from '@/i18n/routing';
 import ProductIllustration from '@/components/landing/ProductIllustration';
 import { useTranslations } from 'next-intl';
+import { EXTERNAL_APP_URL } from '@/config/links';
 
 interface ProductHeroProps {
   title: string;
@@ -193,8 +194,8 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
           </p>
 
           <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-            <Link
-              href="https://dev.fisdbs.com/OLBRETAIL/"
+            <a
+              href={EXTERNAL_APP_URL}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -225,7 +226,7 @@ export default function ProductHero({ title, subtitle, slug }: ProductHeroProps)
               >
                 <path d="M3 8h10M9 4l4 4-4 4" />
               </svg>
-            </Link>
+            </a>
             <Link
               href="/#products"
               style={{

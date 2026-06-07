@@ -19,6 +19,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   setRequestLocale(await (await params).locale);
   return (
     <main
+      id="main-content"
+      tabIndex={-1}
       style={{
         minHeight: '100vh',
         background: 'var(--bg-base)',

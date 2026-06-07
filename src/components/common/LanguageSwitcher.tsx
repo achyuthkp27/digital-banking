@@ -79,6 +79,7 @@ export function LanguageSwitcher() {
                 <button
                   key={l.code}
                   role="menuitem"
+                  aria-current={locale === l.code ? 'true' : undefined}
                   onClick={() => handleLocaleChange(l.code)}
                   className={`px-4 py-2 text-sm text-left font-syne transition-colors ${
                     locale === l.code

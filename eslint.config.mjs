@@ -18,11 +18,11 @@ const eslintConfig = defineConfig([
   },
   
   globalIgnores([
-    
     ".next/**",
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "jest.config.js",
   ]),
 ]);
 

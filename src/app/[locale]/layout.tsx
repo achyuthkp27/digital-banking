@@ -9,6 +9,9 @@ import { ThemeProvider } from '@/components/common/ThemeProvider';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
+import { MotionProvider } from '@/components/common/MotionProvider';
+
+const SITE_URL = 'https://achyuthkp27.github.io/digital-banking';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -21,7 +24,10 @@ const syne = Syne({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#020617',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#020617' },
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+  ],
   minimumScale: 1,
   initialScale: 1,
   width: 'device-width',
@@ -40,7 +46,6 @@ export async function generateMetadata({
     title: t('title'),
     description: t('description'),
     applicationName: t('title'),
-    manifest: '/manifest.json',
     appleWebApp: {
       capable: true,
       statusBarStyle: 'default',
@@ -61,22 +66,30 @@ export async function generateMetadata({
     alternates: {
       canonical: `/digital-banking/${locale}`,
       languages: {
-        en: '/digital-banking/en',
-        es: '/digital-banking/es',
-        'en-US': '/digital-banking/en',
+        ...Object.fromEntries(routing.locales.map((l) => [l, `/digital-banking/${l}`])),
+        'x-default': `/digital-banking/${routing.defaultLocale}`,
       },
     },
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `https://achyuthkp27.github.io/digital-banking/${locale}`,
+      url: `${SITE_URL}/${locale}`,
       siteName: t('title'),
       type: 'website',
+      images: [
+        {
+          url: `${SITE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: t('title'),
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
+      images: [`${SITE_URL}/og-image.png`],
     },
   };
 }
@@ -92,6 +105,27 @@ export default async function RootLayout({
   const { locale } = await params;
   const messages = await getMessages({ locale });
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${SITE_URL}/#organization`,
+        name: 'Digital Banking',
+        url: SITE_URL,
+        logo: `${SITE_URL}/icon-512x512.png`,
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        name: 'Digital Banking',
+        url: SITE_URL,
+        inLanguage: locale,
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+    ],
+  };
+
   return (
     <html
       lang={locale}
@@ -99,10 +133,16 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className={GeistSans.className} suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <NextIntlClientProvider messages={messages}>
-            <CustomCursor />
-            <ErrorBoundary>{children}</ErrorBoundary>
+            <MotionProvider>
+              <CustomCursor />
+              <ErrorBoundary>{children}</ErrorBoundary>
+            </MotionProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

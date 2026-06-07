@@ -4,6 +4,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 
 import { useInView } from 'react-intersection-observer';
+import { productSlugs } from '@/data/productContent';
 
 const illustrations: Record<string, React.ComponentType> = {
   'video-kyc': dynamic(() => import('@/components/illustrations/VideoKycIllustration'), {
@@ -15,8 +16,8 @@ const illustrations: Record<string, React.ComponentType> = {
   'agent-banking': dynamic(() => import('@/components/illustrations/AgentBankingIllustration'), {
     ssr: false,
   }),
-  'corporate-admin': dynamic(
-    () => import('@/components/illustrations/CorporateAdminIllustration'),
+  'merchant-banking': dynamic(
+    () => import('@/components/illustrations/MerchantBankingIllustration'),
     { ssr: false }
   ),
   'corporate-banking': dynamic(
@@ -36,6 +37,14 @@ const illustrations: Record<string, React.ComponentType> = {
     ssr: false,
   }),
 };
+
+// Guard against drift: every real product slug must have an illustration.
+if (process.env.NODE_ENV !== 'production') {
+  const missing = productSlugs.filter((slug) => !illustrations[slug]);
+  if (missing.length > 0) {
+    console.warn(`[ProductIllustration] Missing illustration(s) for slug(s): ${missing.join(', ')}`);
+  }
+}
 
 interface ProductIllustrationProps {
   slug: string;

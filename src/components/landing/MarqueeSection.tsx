@@ -1,21 +1,14 @@
 import React from 'react';
+import { getTranslations } from 'next-intl/server';
 
-const trustItems = [
-  'ISO 27001 Certified',
-  'PCI DSS Level 1',
-  'AES-256 Encryption',
-  'Zero Data Breaches',
-  'SOC 2 Type II',
-  'GDPR Compliant',
-  'RBI Regulated',
-  '99.9% SLA',
-];
-
-export default function MarqueeSection() {
+export default async function MarqueeSection() {
+  const t = await getTranslations('Marquee');
+  const trustItems = t.raw('items') as string[];
   const displayItems = [...trustItems, ...trustItems, ...trustItems, ...trustItems];
 
   return (
     <div
+      aria-hidden="true"
       style={{
         width: '100%',
         background: 'var(--bg-surface)',
