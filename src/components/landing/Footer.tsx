@@ -3,6 +3,14 @@
 import React from 'react';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
+import { scrollToSection } from '@/utils/scrollToSection';
+
+const navItems = [
+  { key: 'products', id: 'products' },
+  { key: 'architecture', id: 'architecture' },
+  { key: 'security', id: 'security' },
+  { key: 'technology', id: 'technology' },
+] as const;
 
 export default function Footer() {
   const t = useTranslations('Footer');
@@ -72,18 +80,16 @@ export default function Footer() {
           </div>
 
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="#products" className="footer-nav-btn">
-              {tNav('products')}
-            </Link>
-            <Link href="#architecture" className="footer-nav-btn">
-              {tNav('architecture')}
-            </Link>
-            <Link href="#security" className="footer-nav-btn">
-              {tNav('security')}
-            </Link>
-            <Link href="#technology" className="footer-nav-btn">
-              {tNav('technology')}
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.key}
+                href={`/#${item.id}`}
+                className="footer-nav-btn"
+                onClick={(e) => scrollToSection(e, item.id)}
+              >
+                {tNav(item.key)}
+              </Link>
+            ))}
           </div>
         </div>
 

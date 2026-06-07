@@ -37,12 +37,6 @@
     "privacyPolicy": "Politique de Confidentialité",
     "termsOfService": "Conditions d'Utilisation"
   },
-  "StatsSection": {
-    "systemUptime": "Disponibilité Système",
-    "apiResponse": "Réponse API",
-    "requestsPerMin": "Requêtes/Min",
-    "aesEncryption": "Chiffrement AES"
-  },
   "Architecture": {
     "badge": "Architecture Système",
     "title": "Architecture Évolutive",
@@ -831,6 +825,18 @@
       "Conforme au RGPD",
       "Régulé par la RBI",
       "99.9% SLA"
+    ]
+  },
+  "CTA": {
+    "badge": "Commencez à Construire",
+    "title": "Prêt à redéfinir la banque numérique ?",
+    "subtitle": "Lancez plus rapidement une expérience bancaire sécurisée, évolutive et multicanale, sur une infrastructure à laquelle font confiance les institutions qui façonnent la finance mondiale.",
+    "primaryCta": "Voir la Démo en Direct",
+    "secondaryCta": "Explorer les Produits",
+    "chips": [
+      "Déployez en semaines, pas en années",
+      "Sécurité de niveau bancaire par défaut",
+      "Support entreprise 24/7"
     ]
   }
 }

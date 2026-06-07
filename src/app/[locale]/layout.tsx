@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import '../globals.css';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
-import { Syne } from 'next/font/google';
+import localFont from 'next/font/local';
 import CustomCursor from '@/components/common/CustomCursor';
 import { ErrorBoundary } from '@/components/common/ErrorBoundary';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
@@ -17,10 +17,14 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const syne = Syne({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+// Self-hosted to avoid any build/runtime download from Google Fonts.
+// Variable font (weight 400–800), latin subset covers en/es/fr.
+const syne = localFont({
+  src: '../fonts/Syne-latin.woff2',
+  weight: '400 800',
+  style: 'normal',
   variable: '--font-syne',
+  display: 'swap',
 });
 
 export const viewport: Viewport = {

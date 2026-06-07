@@ -4,6 +4,7 @@ import React from 'react';
 import { motion, MotionValue } from 'framer-motion';
 import styles from './HeroContent.module.css';
 import { useTranslations } from 'next-intl';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 interface HeroContentProps {
   containerVariants: any;
@@ -53,7 +54,11 @@ export default function HeroContent({
 
       {}
       <motion.div variants={itemVariants} className={styles.ctaContainer}>
-        <a href="#products" className={styles.ctaPrimary}>
+        <a
+          href="#products"
+          className={styles.ctaPrimary}
+          onClick={(e) => scrollToSection(e, 'products')}
+        >
           {t('explorePlatforms')}
           <svg
             width="14"

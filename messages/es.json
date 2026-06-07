@@ -37,12 +37,6 @@
     "privacyPolicy": "Política de Privacidad",
     "termsOfService": "Términos de Servicio"
   },
-  "StatsSection": {
-    "systemUptime": "Tiempo de Actividad",
-    "apiResponse": "Respuesta API",
-    "requestsPerMin": "Solicitudes/Min",
-    "aesEncryption": "Cifrado AES"
-  },
   "Architecture": {
     "badge": "Arquitectura del Sistema",
     "title": "Arquitectura Escalable",
@@ -831,6 +825,18 @@
       "Conforme al RGPD",
       "Regulado por el RBI",
       "99.9% SLA"
+    ]
+  },
+  "CTA": {
+    "badge": "Comienza a Construir",
+    "title": "¿Listo para redefinir la banca digital?",
+    "subtitle": "Lleve al mercado una experiencia bancaria segura, escalable y multicanal más rápido, sobre una infraestructura en la que confían las instituciones que dan forma a las finanzas globales.",
+    "primaryCta": "Ver Demo en Vivo",
+    "secondaryCta": "Explorar Productos",
+    "chips": [
+      "Implemente en semanas, no en años",
+      "Seguridad de nivel bancario por defecto",
+      "Soporte empresarial 24/7"
     ]
   }
 }

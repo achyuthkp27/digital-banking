@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 interface Particle {
   x: number;
@@ -391,6 +392,7 @@ export default function ParticleMeshSection() {
           <motion.div variants={itemVariants}>
             <a
               href="#architecture"
+              onClick={(e) => scrollToSection(e, 'architecture')}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',

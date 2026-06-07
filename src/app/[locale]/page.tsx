@@ -11,7 +11,7 @@ import ParticleMeshSection from '@/components/landing/ParticleMeshSection';
 import SecuritySection from '@/components/landing/SecuritySection';
 import ArchitectureSection from '@/components/landing/ArchitectureSection';
 import TechStackSection from '@/components/landing/TechStackSection';
-import StatsSection from '@/components/landing/StatsSection';
+import CtaSection from '@/components/landing/CtaSection';
 import WhyChooseSection from '@/components/landing/WhyChooseSection';
 import Footer from '@/components/landing/Footer';
 
@@ -49,7 +49,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <SecuritySection />
       <ArchitectureSection />
       <TechStackSection />
-      <StatsSection />
+      <CtaSection />
       <Footer />
     </main>
   );

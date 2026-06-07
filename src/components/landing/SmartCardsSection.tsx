@@ -22,6 +22,7 @@ const SmartCards3D = dynamic(() => import('./SmartCards3D'), {
 });
 import { CheckCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { BlurReveal } from '@/components/common/ScrollReveal';
 
 const SmartCardsSection = React.memo(function SmartCardsSection() {
   const t = useTranslations('SmartCards');
@@ -57,7 +58,8 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
         >
           {}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span
+            <BlurReveal
+              as="span"
               style={{
                 display: 'block',
                 fontSize: '11px',
@@ -69,8 +71,10 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
               }}
             >
               {t('badge')}
-            </span>
-            <h2
+            </BlurReveal>
+            <BlurReveal
+              as="h2"
+              delay={0.1}
               style={{
                 fontSize: '48px',
                 fontWeight: 700,
@@ -83,8 +87,10 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
             >
               {t('titleLine1')} <br />
               <span style={{ color: 'var(--accent)' }}>{t('titleHighlight')}</span>
-            </h2>
-            <p
+            </BlurReveal>
+            <BlurReveal
+              as="p"
+              delay={0.2}
               style={{
                 fontSize: '18px',
                 color: 'var(--text-secondary)',
@@ -93,7 +99,7 @@ const SmartCardsSection = React.memo(function SmartCardsSection() {
               }}
             >
               {t('description')}
-            </p>
+            </BlurReveal>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               {cardFeatures.map((feature, idx) => (

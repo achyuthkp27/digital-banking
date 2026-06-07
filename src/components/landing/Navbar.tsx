@@ -8,6 +8,7 @@ import { LanguageSwitcher } from '@/components/common/LanguageSwitcher';
 import { Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { createFocusTrap } from 'focus-trap';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 export default function Navbar() {
   const t = useTranslations('Navigation');
@@ -191,15 +192,7 @@ export default function Navbar() {
                 <Link
                   key={item.key}
                   href={item.href}
-                  onClick={(e) => {
-                    const targetId = item.href.replace('/#', '');
-                    const element = document.getElementById(targetId);
-                    if (element) {
-                      e.preventDefault();
-                      const yOffset = element.getBoundingClientRect().top + window.scrollY - 72; // 72px is navbar height
-                      window.scrollTo({ top: yOffset, behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={(e) => scrollToSection(e, item.href.replace('/#', ''))}
                   style={{
                     color: 'var(--text-secondary)',
                     fontSize: '14px',
@@ -282,14 +275,8 @@ export default function Navbar() {
                       key={item.key}
                       href={item.href}
                       onClick={(e) => {
-                        const targetId = item.href.replace('/#', '');
-                        const element = document.getElementById(targetId);
-                        if (element) {
-                          e.preventDefault();
-                          const yOffset = element.getBoundingClientRect().top + window.scrollY - 72;
-                          window.scrollTo({ top: yOffset, behavior: 'smooth' });
-                          handleMenuToggle(); // Close menu after navigation
-                        }
+                        scrollToSection(e, item.href.replace('/#', ''));
+                        handleMenuToggle();
                       }}
                       style={{
                         display: 'block',

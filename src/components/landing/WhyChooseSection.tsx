@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useMotionValue, animate } from 'framer-motion';
+import { BlurReveal } from '@/components/common/ScrollReveal';
 import { useTranslations } from 'next-intl';
 
 const KEYFRAMES_ID = 'matrix-why-section-keyframes';
@@ -269,10 +270,8 @@ export default function WhyChooseSection() {
             maxWidth: '800px',
           }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <BlurReveal
+            as="div"
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '12px',
@@ -282,12 +281,10 @@ export default function WhyChooseSection() {
             }}
           >
             {t('badge')}
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          </BlurReveal>
+          <BlurReveal
+            as="h2"
+            delay={0.1}
             style={{
               fontFamily: 'var(--font-syne), sans-serif',
               fontSize: 'clamp(40px, 6vw, 80px)',
@@ -298,7 +295,7 @@ export default function WhyChooseSection() {
             }}
           >
             {t('titleLine1')} <br /> {t('titleLine2')}
-          </motion.h2>
+          </BlurReveal>
         </div>
 
         {}

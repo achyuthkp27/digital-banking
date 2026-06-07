@@ -7,6 +7,7 @@ import { CheckCircle, Columns, Rows } from 'lucide-react';
 import ProductIllustration from '@/components/landing/ProductIllustration';
 import { useTranslations } from 'next-intl';
 import { EXTERNAL_APP_URL } from '@/config/links';
+import { BlurReveal, BlurText } from '@/components/common/ScrollReveal';
 
 const productKeys = [
   { key: 'mobileBanking', slug: 'mobile-banking' },
@@ -347,7 +348,8 @@ export default function ProductShowcase() {
         </div>
 
         <div style={{ textAlign: 'center', pointerEvents: 'auto' }}>
-          <span
+          <BlurReveal
+            as="span"
             style={{
               display: 'block',
               fontSize: '11px',
@@ -359,8 +361,11 @@ export default function ProductShowcase() {
             }}
           >
             {t('badge')}
-          </span>
-          <h2
+          </BlurReveal>
+          <BlurText
+            as="h2"
+            text={t('title')}
+            delay={0.1}
             style={{
               fontSize: 'clamp(32px, 5vw, 48px)',
               fontWeight: 700,
@@ -368,9 +373,7 @@ export default function ProductShowcase() {
               fontFamily: 'var(--font-syne), sans-serif',
               margin: 0,
             }}
-          >
-            {t('title')}
-          </h2>
+          />
         </div>
       </div>
 

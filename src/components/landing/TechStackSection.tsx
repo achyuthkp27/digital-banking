@@ -1,10 +1,15 @@
 'use client';
 
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { BlurText } from '@/components/common/ScrollReveal';
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function TechStackSection() {
   const t = useTranslations('TechStack');
+  const reduce = useReducedMotion();
 
   const techCategories = [
     {
@@ -29,10 +34,49 @@ export default function TechStackSection() {
       technologies: ['Apache Kafka', 'RabbitMQ', 'Redis Pub/Sub', 'WebSockets', 'gRPC'],
     },
   ];
+
+  const rowReveal = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24, filter: 'blur(8px)' },
+          whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
+          viewport: { once: true, margin: '-50px' },
+          transition: { duration: 0.6, delay, ease: EASE },
+        };
+
+  const lineReveal = reduce
+    ? {}
+    : {
+        initial: { scaleX: 0 },
+        whileInView: { scaleX: 1 },
+        viewport: { once: true, margin: '-40px' },
+        transition: { duration: 0.9, ease: EASE },
+      };
+
+  const pillsContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: reduce ? 0 : 0.045, delayChildren: 0.1 } },
+  };
+  const pillItem = reduce
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : {
+        hidden: { opacity: 0, y: 8, scale: 0.95, filter: 'blur(5px)' },
+        visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          filter: 'blur(0px)',
+          transition: { duration: 0.45, ease: EASE },
+        },
+      };
+
   return (
     <section id="technology" className="section container">
       <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-        <h2
+        <BlurText
+          as="h2"
+          text={t('title')}
           style={{
             fontSize: 'clamp(32px, 8vw, 48px)',
             fontWeight: 700,
@@ -40,9 +84,7 @@ export default function TechStackSection() {
             fontFamily: 'var(--font-syne), sans-serif',
             lineHeight: 1.2,
           }}
-        >
-          {t('title')}
-        </h2>
+        />
       </div>
 
       <div
@@ -53,11 +95,20 @@ export default function TechStackSection() {
           margin: '0 auto',
         }}
       >
-        <div style={{ width: '100%', height: '1px', background: 'var(--border-subtle)' }} />
+        <motion.div
+          {...lineReveal}
+          style={{
+            width: '100%',
+            height: '1px',
+            background: 'var(--border-subtle)',
+            transformOrigin: 'left',
+          }}
+        />
 
         {techCategories.map((category, idx) => (
           <div key={idx}>
-            <div
+            <motion.div
+              {...rowReveal(idx * 0.06)}
               className="tech-row"
               style={{
                 display: 'flex',
@@ -66,7 +117,25 @@ export default function TechStackSection() {
                 gap: '48px',
               }}
             >
-              <div style={{ flex: '0 0 120px' }}>
+              <div
+                style={{
+                  flex: '0 0 150px',
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  gap: '12px',
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: 'var(--font-geist-mono), monospace',
+                    color: 'var(--accent)',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
                 <span
                   style={{
                     color: 'var(--text-tertiary)',
@@ -80,38 +149,35 @@ export default function TechStackSection() {
                 </span>
               </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', flex: 1 }}>
+              <motion.div
+                variants={pillsContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-40px' }}
+                style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', flex: 1 }}
+              >
                 {category.technologies.map((tech, tIdx) => (
-                  <span
+                  <motion.span
                     key={tIdx}
+                    variants={pillItem}
+                    whileHover={reduce ? undefined : { y: -3 }}
                     className="tech-pill"
-                    style={{
-                      background: 'var(--bg-elevated)',
-                      border: '1px solid var(--border-subtle)',
-                      color: 'var(--text-primary)',
-                      fontSize: '13px',
-                      fontWeight: 500,
-                      borderRadius: '999px',
-                      padding: '8px 20px',
-                      transition: 'all 0.2s ease',
-                      cursor: 'default',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--border-strong)';
-                      e.currentTarget.style.color = 'var(--text-primary)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                      e.currentTarget.style.color = 'var(--text-secondary)';
-                    }}
                   >
                     {tech}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div style={{ width: '100%', height: '1px', background: 'var(--border-subtle)' }} />
+            <motion.div
+              {...lineReveal}
+              style={{
+                width: '100%',
+                height: '1px',
+                background: 'var(--border-subtle)',
+                transformOrigin: 'left',
+              }}
+            />
           </div>
         ))}
       </div>
@@ -119,6 +185,22 @@ export default function TechStackSection() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
+        .tech-pill {
+          background: var(--bg-elevated);
+          border: 1px solid var(--border-subtle);
+          color: var(--text-secondary);
+          font-size: 13px;
+          font-weight: 500;
+          border-radius: 999px;
+          padding: 8px 20px;
+          cursor: default;
+          transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .tech-pill:hover {
+          border-color: var(--accent-glow);
+          color: var(--text-primary);
+          box-shadow: 0 10px 24px -8px rgba(var(--accent-rgb), 0.3);
+        }
         @media (max-width: 768px) {
           .tech-row {
             flex-direction: column;

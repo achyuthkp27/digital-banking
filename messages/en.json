@@ -37,12 +37,6 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
   },
-  "StatsSection": {
-    "systemUptime": "System Uptime",
-    "apiResponse": "API Response",
-    "requestsPerMin": "Requests/Min",
-    "aesEncryption": "AES Encryption"
-  },
   "Architecture": {
     "badge": "System Architecture",
     "title": "Scalable Architecture",
@@ -831,6 +825,18 @@
       "GDPR Compliant",
       "RBI Regulated",
       "99.9% SLA"
+    ]
+  },
+  "CTA": {
+    "badge": "Start Building",
+    "title": "Ready to redefine digital banking?",
+    "subtitle": "Bring a secure, scalable, multi-channel banking experience to market faster — on infrastructure trusted to power the institutions shaping global finance.",
+    "primaryCta": "Launch Live Demo",
+    "secondaryCta": "Explore Products",
+    "chips": [
+      "Deploy in weeks, not years",
+      "Bank-grade security by default",
+      "24/7 enterprise support"
     ]
   }
 }

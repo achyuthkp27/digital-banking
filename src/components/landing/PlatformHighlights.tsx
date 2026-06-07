@@ -13,6 +13,8 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { scrollToSection } from '@/utils/scrollToSection';
+import { BlurReveal, BlurText } from '@/components/common/ScrollReveal';
 
 interface FeatureItem {
   title: string;
@@ -130,37 +132,30 @@ const PlatformHighlights = React.memo(function PlatformHighlights() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[600px] bg-[var(--accent)]/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
 
       <div className="relative z-10 text-center mb-16 max-w-[800px] mx-auto flex flex-col items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <BlurReveal
+          as="div"
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/20 mb-6 backdrop-blur-sm"
         >
           <Sparkles size={14} className="text-[var(--accent)]" />
           <span className="text-xs text-[var(--accent)] font-bold uppercase tracking-[0.2em]">
             {t('badge')}
           </span>
-        </motion.div>
+        </BlurReveal>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+        <BlurText
+          as="h2"
+          text={t('title')}
+          delay={0.1}
           className="text-[clamp(36px,5vw,56px)] font-extrabold text-[var(--text-primary)] font-syne mb-6 leading-tight tracking-tight"
-        >
-          {t('title')}
-        </motion.h2>
+        />
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+        <BlurReveal
+          as="p"
+          delay={0.2}
           className="text-[var(--text-secondary)] text-lg md:text-xl leading-relaxed font-light max-w-[600px]"
         >
           {t('subtitle')}
-        </motion.p>
+        </BlurReveal>
       </div>
 
       {}
@@ -181,6 +176,7 @@ const PlatformHighlights = React.memo(function PlatformHighlights() {
       >
         <a
           href="#architecture"
+          onClick={(e) => scrollToSection(e, 'architecture')}
           style={{
             padding: '16px 32px',
             backgroundColor: 'var(--text-primary)',

@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { BlurReveal } from '@/components/common/ScrollReveal';
 import { useTranslations } from 'next-intl';
 
 export default function SecuritySection() {
@@ -76,10 +77,8 @@ export default function SecuritySection() {
         <div style={{ flex: '1 1 700px', display: 'flex', flexDirection: 'column' }}>
           {}
           <div style={{ marginBottom: '64px' }}>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <BlurReveal
+              as="div"
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '12px',
@@ -90,13 +89,11 @@ export default function SecuritySection() {
               }}
             >
               {t('badge')}
-            </motion.div>
+            </BlurReveal>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+            <BlurReveal
+              as="h2"
+              delay={0.1}
               style={{
                 fontFamily: 'var(--font-syne), sans-serif',
                 fontSize: 'clamp(40px, 5vw, 64px)',
@@ -107,7 +104,7 @@ export default function SecuritySection() {
               }}
             >
               {t('titleLine1')} <br /> {t('titleLine2')}
-            </motion.h2>
+            </BlurReveal>
           </div>
 
           {}
